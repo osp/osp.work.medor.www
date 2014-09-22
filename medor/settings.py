@@ -58,6 +58,11 @@ USE_L10N = True
 USE_TZ = True
 
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "medor/static"),
+)
+
+
 try:
     LOCAL_SETTINGS
 except NameError:
