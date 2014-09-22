@@ -1,0 +1,9 @@
+*.swp
+.~*
+cache
+*.pyc
+venv
+
+medor/local_settings.py
+medor.db
+
