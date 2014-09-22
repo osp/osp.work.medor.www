@@ -15,7 +15,7 @@ COOPERATION_FORMS = [
 
 COOPERATION_TEMPLATES = [
     "subscribe/cooperation-registration.html",
-    "subscribe/cooperation-confirmation.html",
+    "subscribe/cooperation-verification.html",
 ]
 
 
@@ -26,7 +26,7 @@ SUBSCRIPTION_FORMS = [
 
 SUBSCRIPTION_TEMPLATES = [
     "subscribe/subscription-registration.html",
-    "subscribe/subscription-confirmation.html",
+    "subscribe/subscription-verification.html",
 ]
 
 
@@ -60,7 +60,7 @@ class CooperationWizardView(CookieWizardView):
 
         send_mail(subject, message, sender, recipients)
 
-        return render(self.request, 'subscribe/cooperation-done.html', {
+        return render(self.request, 'subscribe/cooperation-confirmation.html', {
             'communication': form_list[0].instance.communication(),
             'form_data': [form.cleaned_data for form in form_list],
         })
@@ -95,7 +95,7 @@ class SubscriptionWizardView(CookieWizardView):
 
         send_mail(subject, message, sender, recipients)
 
-        return render(self.request, 'subscribe/cooperation-done.html', {
+        return render(self.request, 'subscribe/subscription-confirmation.html', {
             'communication': form_list[0].instance.communication(),
             'form_data': [form.cleaned_data for form in form_list],
         })
