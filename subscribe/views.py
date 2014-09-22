@@ -38,7 +38,7 @@ class CooperationWizardView(CookieWizardView):
         if self.steps.current == '1':
             context.update({
                 'infos': self.get_cleaned_data_for_step("0"),
-                'total': self.get_cleaned_data_for_step("0")['share_number'] * 20
+                'amount': self.get_cleaned_data_for_step("0")['share_number'] * 20
             })
         return context
 

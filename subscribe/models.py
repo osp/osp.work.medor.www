@@ -35,7 +35,7 @@ class Person(models.Model):
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=2, choices=COUNTRY_CHOICES, default="BE")
-    phone_number = PhoneNumberField(blank=True, verbose_name='téléphone')
+    phone_number = PhoneNumberField(blank=True, verbose_name='téléphone (facultatif)')
 
 
     def __unicode__(self):

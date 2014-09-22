@@ -52,6 +52,7 @@ div#steps {
     font-family: 'urw-grotesk-t';
     text-align: center;
     color: darkgray;
+    width: 100%;
 
 
     div {
@@ -63,7 +64,7 @@ div#steps {
         margin: @line-height  0;
         height:  @line-height * 2;
         padding: @line-height / 2;
-        width: @width / 2 - 1;
+        width: 100%;
         float: left;
     }
     div + div {
@@ -130,7 +131,7 @@ th {
 label {
     font-family: 'alfphabetbipocatcondensed';
     margin-right: @line-height / 2;
-    color: gray;
+    color: lightgray;
 }
 
 div.required label {
@@ -165,10 +166,14 @@ input {
     }
 
     &[type=submit] {
-        font-family: 'alfphabetbipocatcondensed';
         font-size: @font-size;
         cursor: pointer;
-        border-top: 1px solid black;
+        border: 0;
+        font-family: 'urw-grotesk-t';
+        background-color: @color-D1;
+        padding: 0 1em;
+        height: 48px;
+        vertical-align: text-bottom;
 
         &:hover {
             background-color: @color-A3;
@@ -178,14 +183,13 @@ input {
 
 button {
     border: 0;
-    background-color: white; 
     font-family: 'urw-grotesk-t';
     cursor: pointer;
     background-color: @color-D1;
-    padding: 1em;
+    padding: 0 1em;
     height: 48px;
     vertical-align: text-bottom;
-    font-size: @font-size / 1.5;
+    font-size: @font-size;
 
     &:hover {
         background-color: @color-A3;
@@ -218,7 +222,6 @@ div#confirm {
         margin: @line-height  0;
         height:  @line-height * 2;
         padding: @line-height / 2;
-        width: 50%;
         clear: both;
         color: black;
 
@@ -276,4 +279,12 @@ a:visited {
 a:visited {
     text-decoration: none;
     color: @color-A1;
+}
+
+div#done {
+    margin-top: @line-height * 2;
+
+    p + p {
+        margin-top: @line-height;
+    }
 }
