@@ -7,7 +7,7 @@ class ConfirmForm(forms.Form):
     error_css_class = 'error'
     required_css_class = 'required'
 
-    confirm = forms.BooleanField()
+    confirm = forms.BooleanField(label="Je confirme")
 
 
 class CooperationForm(forms.ModelForm):
@@ -26,6 +26,7 @@ class CooperationForm(forms.ModelForm):
         kwargs['initial'] = _initial
         super(CooperationForm, self).__init__(*args, **kwargs)
         self.fields.update(fields_for_model(Person, self._person_fields))
+        self.fields['zip_code'].widget = forms.TextInput()
         self.fields['birth_date'].required = True
         self.fields['id_number'].required = True
         self.fields['nationality'].required = True

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Person(models.Model):
@@ -28,23 +27,37 @@ class Person(models.Model):
     birth_date = models.DateTimeField('date de naissance', null=True, blank=True)
     title = models.BooleanField('civilité', default=False, choices=TITLE_CHOICES)
     nationality = models.CharField('nationalité', max_length=2, choices=NATIONALITY_CHOICES, default="BE", blank=True)
-    id_number = models.CharField("N° d'identité nationale", max_length=30, blank=True)
+    id_number = models.CharField("N° d'identification au registre national", max_length=30, blank=True)
     street = models.CharField('rue', max_length=30)
     number = models.CharField('numéro', max_length=10) # 27 bis
     letterbox = models.PositiveSmallIntegerField('boîte postale', max_length=30, null=True, blank=True)
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=2, choices=COUNTRY_CHOICES, default="BE")
-    phone_number = PhoneNumberField(blank=True, verbose_name='téléphone')
+    phone_number = models.CharField('téléphone', blank=True, max_length=30)
 
 
     def __unicode__(self):
         return self.first_name
 
 
-class Subscription(models.Model):
-    """ Describes a cooperation"""
+class TransactionBase(models.Model):
+    STATUS_CHOICES = (
+        (0, u'en cours'),
+        (1, u'confirmé')
+    )
+
     person = models.ForeignKey(Person)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
+    communication = models.PositiveIntegerField('communication', max_length=12)
+
+    class Meta:
+        abstract = True
+
+
+class Subscription(TransactionBase):
+    """ Describes a cooperation"""
 
     #def __unicode__(self):
         #return self.person
@@ -55,7 +68,7 @@ class Subscription(models.Model):
         return "+++{}/{}/{}+++".format(nbr[:3], nbr[3:6], nbr[6:])
 
 
-class Cooperation(models.Model):
+class Cooperation(TransactionBase):
     """ Describes a cooperation"""
     SHARE_CHOICES = (
         (1, u'1 (€ 20)'),
@@ -66,7 +79,6 @@ class Cooperation(models.Model):
         (6, u'6 (€ 120)')
     )
 
-    person = models.ForeignKey(Person)
     share_number = models.PositiveSmallIntegerField('nombre de parts', choices=SHARE_CHOICES, default="1")
 
     def __unicode__(self):
