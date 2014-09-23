@@ -12,7 +12,7 @@
             <div class="active">Enregistrement</div>
     </div>
 
-    <form action="" method="post" class="step-{{ wizard.steps.step1 }} cooperation">
+    <form id="cooperation" action="" method="post" class="step-{{ wizard.steps.step1 }} cooperation">
         {% csrf_token %}
         {{ wizard.management_form }}
 
