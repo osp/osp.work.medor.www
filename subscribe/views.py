@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
-from django.core.mail import send_mail
-from django.views.generic.edit import FormView
-from django.template.loader import render_to_string
-
-from django.shortcuts import render
 from django.contrib.formtools.wizard.views import CookieWizardView
+from django.core.mail import send_mail
+from django.shortcuts import render
+from django.template.loader import render_to_string
+from django.views.generic.base import TemplateView
 
 
 COOPERATION_FORMS = [
@@ -96,3 +95,7 @@ class SubscriptionWizardView(CookieWizardView):
             'communication': form_list[0].instance.structured_communication(),
             'form_data': [form.cleaned_data for form in form_list],
         })
+
+
+class HomePageView(TemplateView):
+    template_name = "subscribe/home.html"
