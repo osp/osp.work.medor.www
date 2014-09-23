@@ -85,13 +85,13 @@ $(function() {
     var controller = new ScrollMagic();
 
     var contentIn = TweenMax.to("#cover-content", 0.000001, {left: "0px"});
-    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-500px"});
+    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-800px"});
     var detailIn = TweenMax.to("#cover-detail", 0.000001, {left: "0px"});
-    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-500px"});
+    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-800px"});
     var coopIn = TweenMax.to("#cover-coop", 0.000001, {left: "0px"});
-    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-500px"});
+    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-800px"});
     var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px"});
-    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-500px"});
+    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-800px"});
 
     new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: 0})
         .setTween(detailIn)
