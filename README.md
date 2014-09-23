@@ -20,5 +20,16 @@ deactivate
 ### once you've launched the venv, you're able to get all the project dependencies/requirements through pip;
 pip install -r requirements.txt
 
-### when pip is done and if you're starting from scratch grab the database by running
+### then, on the root level of the repo copy the local_settings.example.py file onto local_settings.py
+cp local_setting.example.py local_settings.py
+
+### edit the new file, and add in your SECRET_KEY where required, look this up in your favourite search engine if you don't have one yet
+
+### if pip is done installing and the SECRET_KEY is at the right place in the local_settings.py, grab the database by running
 python managa.py migrate
+
+### off you go then, launch the server:
+python managa.py runserver
+
+### head over to localhost:8000 (if you've not changed the default port settings) and get to work!
+
