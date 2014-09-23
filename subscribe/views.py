@@ -52,12 +52,10 @@ class CooperationWizardView(CookieWizardView):
         message = render_to_string('subscribe/cooperation-email.txt', {
                 'data': form_list[0].cleaned_data,
                 'amount': form_list[0].cleaned_data['share_number'] * 20,
-                #'communication': form_list[0].instance.communication()
+                'communication': form_list[0].instance.structured_communication(),
             })
         sender = "medor@medor.coop"
-
-        recipients = [form_list[0].email]
-
+        recipients = [form_list[0].cleaned_data['email']]
         send_mail(subject, message, sender, recipients)
 
         return render(self.request, 'subscribe/cooperation-done.html', {
@@ -85,19 +83,16 @@ class SubscriptionWizardView(CookieWizardView):
         form_list[0].save()
 
         subject = "Médor SCRL FS. Détails de votre paiement"
-        message = render_to_string('subscribe/cooperation-email.txt', {
+        message = render_to_string('subscribe/subscription-email.txt', {
                 'data': form_list[0].cleaned_data,
                 'amount': 60,
                 'communication': form_list[0].instance.structured_communication(),
             })
         sender = "medor@medor.coop"
-
-        recipients = [form_list[0].email]
-
-
+        recipients = [form_list[0].cleaned_data['email']]
         send_mail(subject, message, sender, recipients)
 
         return render(self.request, 'subscribe/subscription-done.html', {
-            #'communication': form_list[0].instance.communication(),
+            'communication': form_list[0].instance.structured_communication(),
             'form_data': [form.cleaned_data for form in form_list],
         })
