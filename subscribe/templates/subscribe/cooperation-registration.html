@@ -42,21 +42,6 @@
                     {{ form.last_name }}
                 </div>
                 <div class="required">
-                    {{ form.birth_date.errors }}
-                    {{ form.birth_date.label_tag }}
-                    {{ form.birth_date }}
-                </div>
-                <div class="required">
-                    {{ form.nationality.errors }}
-                    {{ form.nationality.label_tag }}
-                    {{ form.nationality }}
-                </div>
-                <div class="required">
-                    {{ form.id_number.errors }}
-                    {{ form.id_number.label_tag }}
-                    {{ form.id_number }}
-                </div>
-                <div class="required">
                     {{ form.email.errors }}
                     {{ form.email.label_tag }}
                     {{ form.email }}
@@ -92,14 +77,6 @@
                     {{ form.country.errors }}
                     {{ form.country.label_tag }}
                     {{ form.country }}
-                </div>
-                <div>
-                {% if form.phone_number.errors %}
-                    <ul class="errorlist"><li>Veuillez entrer un numéro de téléphone valide au format international.</li></ul>
-                {% endif %}
-                    <!--{{ form.phone_number.errors }}-->
-                    {{ form.phone_number.label_tag }}
-                    {{ form.phone_number }}
                 </div>
             </div>
             <div class="box">

@@ -23,15 +23,12 @@ class CooperationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(CooperationForm, self).__init__(*args, **kwargs)
-        self.fields['birth_date'].widget.attrs["placeholder"] = "JJ/MM/AAAA"
-        self.fields['phone_number'].widget.attrs["placeholder"] = "+32 "
 
     class Meta:
         model = Cooperation
         exclude = ('status', 'communication')
         widgets = {
             'title': forms.RadioSelect(),
-            'nationality': forms.RadioSelect(),
             'country': forms.RadioSelect(),
             'letterbox': forms.TextInput(),
             'zip_code': forms.TextInput(),
@@ -48,7 +45,12 @@ class SubscriptionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(SubscriptionForm, self).__init__(*args, **kwargs)
-        self.fields['phone_number'].widget.attrs["placeholder"] = "+32 "
 
     class Meta:
         model = Subscription
+        widgets = {
+            'title': forms.RadioSelect(),
+            'country': forms.RadioSelect(),
+            'letterbox': forms.TextInput(),
+            'zip_code': forms.TextInput(),
+        }

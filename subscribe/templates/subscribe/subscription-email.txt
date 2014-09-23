@@ -1,9 +1,11 @@
-Cher(e) {{ data.first_name }} {{ data.last_name }},
+{{ data.title|yesno:"Monsieur,Madame" }} {{ data.first_name }} {{ data.last_name }},
 
 Via notre site web, vous vous êtes abonné.
 
 Nous vous prions de transférer aujourd'hui {{ amount }} euros sur le compte
 BE 96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée {{ communication }}.
 
-Avec nos remerciements
+Votre abonnement sera comptabilisé au moment du paiement.
+
+Avec nos remerciements,
 L'équipe Médor

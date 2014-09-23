@@ -42,8 +42,8 @@ h2 {
     text-align: center;
 }
 h3 {
-    font-family: 'alfphabetbipocatcondensed';
-    margin-bottom: 1em;
+    /*font-family: 'alfphabetbipocatcondensed';*/
+    font-family: 'urw-grotesk-t';
 }
 p {
     line-height: @line-height;
@@ -52,7 +52,6 @@ p {
 div#steps {
     font-family: 'urw-grotesk-t';
     text-align: center;
-    color: darkgray;
     width: 100%;
 
 
@@ -76,6 +75,10 @@ div#steps {
         background-color: @color-B3;
         color: black;
     }
+    
+    p {
+        margin-bottom: @line-height;
+    }
 }
 
 form {
@@ -84,6 +87,15 @@ form {
 
     div {
         text-align: left;
+    }
+
+    li {
+        float: left;
+
+        label {
+            font-family: @font;
+            font-size: @font-size - 2;
+        }
     }
 }
 
@@ -101,7 +113,7 @@ div.box {
         display: flex;
         flex-wrap: wrap;
     }
-    input, select {
+    input[type=text], input[type=email], select {
         flex: 1;
         height: @line-height;
         position: relative;
@@ -120,7 +132,7 @@ div.box:nth-of-type(3) {
     border-left: 3px double black;
     border-top: 1px double black;
 }
-div.box:nth-of-type(2) {
+form#souscription div.box:nth-of-type(2) {
     border-bottom: 0;
 }
 
@@ -164,6 +176,7 @@ input {
     &:focus {
         background-color: @color-B3;
         border-top: 1px solid black;
+        outline: none;
     }
 
     &[type=submit] {
@@ -244,6 +257,7 @@ sup {
     color: @color-C2;
     line-height: @line-height;
     flex: 1 100%;
+    z-index: 1000;
 }
 .step-1 .errorlist {
     margin-bottom: -14px;
@@ -262,6 +276,10 @@ sup {
     float: left;
     line-height: @line-height;
     border-left: 3px double black;
+
+    li {
+        float: none;
+    }
 }
 
 strong {
