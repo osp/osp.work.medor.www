@@ -72,7 +72,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                 <div id="panel-descriptions">
                     <div id="subscribing" class="fund">
                         <div class="fund-top">
-                            <a href="todo.html">
+                            <a href="{% url 'subscribe-wizard' %}">
                                 <span class="arrow-money">
                                     <span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>
                                 </span>
@@ -117,7 +117,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                     <div id="cooperating" class="fund">
                         <div class="fund-top">
-                            <a href="todo.html">
+                            <a href="{% url 'cooperate-wizard' %}">
                                 <span class="arrow-money">
                                     <span class="inner">je prends<br />une part à<br /><span class="price">20<sup>€</sup></span></span>
                                 </span>
@@ -141,7 +141,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                             </div>
 
                             <div class="fund-text">
-                                <p>Prenez une ou plusieurs parts de 20&nbsp;euros dans la coopérative Médor SCRLFC et devenez copropriétaire d'un titre de presse. Participez aux assemblées générales et soyez garant(e) de la philosophie de Médor. Remplissez le <a href="todo.html">formulaire</a> puis acquittez-vous du montant engagé. Avant, consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="todo.html">plan financier</a> et notre&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.
+                                <p>Prenez une ou plusieurs parts de 20&nbsp;euros dans la coopérative Médor SCRLFC et devenez copropriétaire d'un titre de presse. Participez aux assemblées générales et soyez garant(e) de la philosophie de Médor. Remplissez le <a href="{% url 'cooperate-wizard' %}">formulaire</a> puis acquittez-vous du montant engagé. Avant, consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="todo.html">plan financier</a> et notre&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.
                                 </p>
                             </div>
 
@@ -162,11 +162,10 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                     <div id="donating" class="fund">
                         <div class="fund-top">
-                            <a href="todo.html">
+                            <a href="http://www.halles.be/fr/europerefresh/62/M%C3%A9dor-magazine-belge-denqu%C3%AAtes-et-de-r%C3%A9cits">
                                 <span class="arrow-money">
                                     <span class="inner">je fais<br />un don de<br />
-                                    <span class="price">5<sup>€</sup></span>
-                                    <sup>ou</sup><br />plus
+                                        <span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>
                                     </span>
                                 </span>
                             </a>

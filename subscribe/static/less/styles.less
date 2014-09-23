@@ -725,12 +725,26 @@ content: "";
     font-size: 3em;
     font-weight: normal;
     line-height: 0.95em;
+    display: inline-block;
+    position: relative;
 }
 
 .arrow-money .price sup {
-    font-size: 0.5em;
-    vertical-align: super;
-    line-height: 0;
+    font-size: 0.60em;
+    line-height: 1.2em;
+    position: absolute;
+    top: 0; 
+    left: 100%;
+}
+
+.arrow-money .price sub {
+    font-size: 0.35em;
+    line-height: 1.4em;
+    padding-left: 0.15em;
+    /*vertical-align: 0.25em;*/
+    position: absolute;
+    bottom: 0; 
+    left: 100%;
 }
 
 #panels {
