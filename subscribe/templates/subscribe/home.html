@@ -47,7 +47,7 @@
                 <div id="main-intro">
                     <p> <span class="sm">médor, ce n’est pas un chien. c’est&nbsp;un magazine.
                         Médor, ce sera un <strong>trimestriel</strong> coopératif, un magazine belge d'enquêtes et de récits.</span>
-                    Au programme des 128&nbsp;pages en quadrichromie, 16&#8239;<span style="line-height: 0; vertical-align: -2px;">×</span>&#8239;23&nbsp;cm, avec 100&#8239;% de journalisme, des enquêtes, des récits, des portraits, de photos, des graphes, des rubriques qui en ont dans le ventre. Le tout centré sur la&nbsp;Belgique.<br/> 
+                    Au programme des 128&nbsp;pages en quadrichromie, 16&#8239;<span style="line-height: 0; vertical-align: -2px;">×</span>&#8239;23&nbsp;cm, avec 100&#8239;% de journalisme, des enquêtes, des récits, des portraits, de photos, des graphes, des rubriques qui en ont dans le ventre. Le tout centré sur la&nbsp;Belgique.<br/>
                     </p>
                     <p>
                     Médor, c’est un <strong>nouveau processus</strong> pour
@@ -213,7 +213,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                     <!--</a>-->
                 <!--</div>-->
             </div>
-            
+
 
 
 
@@ -301,7 +301,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                     <h3>Des équipes plurielles</h3>
                     <p>Chaque article est entamé, écrit, développé  et bouclé par un duo&#8239;: journaliste et auteur visuel, que ce  soit un photographe, un illustrateur et/ou un graphiste. Tout tableau de  données, plan, cartographie, schéma, potentielle trace visuelle est mis  en forme en même temps que le texte et vient le compléter ou en  remplacer une partie.
                     </p>
-                    <figure class="louis-image"><img  src="static/img/medor-extrait.jpg" alt="Médor au travail"  /></figure>
+                    <figure class="louis-image"><img  src="static/img/medor-extrait.png" alt="Médor au travail"  /></figure>
 
                     <h3>Des outils partagés</h3>
                     <p>Médor construit une plateforme de  publication permettant aux journalistes de montrer les avancées  rédactionnelles, d'appeler à l'aide pour la recherche d'un contact,  d'une info, pour une relecture provisoire, une question déontologique.  Cette plateforme est développée sous licence libre et proposée à tous  les médias qui comme Médor, basculent leurs pratiques et écosystèmes.  Partage, on vous dit.
@@ -445,7 +445,15 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 <h2 class="tranche" data-shortname="qui ?"><span>Médor,<br/>c'est déjà</span></h2>
                 <div class="wrap">
                     <h3>Des partenaires et soutiens</h3>
-                    <p>Ils nous soutiennent. On est heureux. <a  href="todo.html">Rejoignez-les</a>&#8239;!</p>
+                    <p>Ils nous soutiennent. On est heureux. <a href="{% url 'cooperate-wizard' %}">Rejoignez-les</a>&#8239;!</p>
+
+                    <ul>
+                        <li><a target="_blank" href="http://www.poche.be/">Théâtre de Poche</a></li>
+                        <li><a target="_blank" href="http://www.dancingdog.be/">Dancing Dogs productions</a></li>
+                        <li><a target="_blank" href="http://www.article27.be/">Article 27</a></li>
+                        <li><a target="_blank" href="http://www.davidvanreybrouck.be/">David Van Reybrouck</a></li>
+                        <li><a target="_blank" href="http://www.ihecs.be/">IHECS</a></li>
+                    </ul>
 
                     <h3>Une équipe</h3>
                     <p id="equipe">
@@ -635,7 +643,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                             <!--</div>-->
                         </li>
                         <li>Abonnez-vous à notre liste d'information&#8239;:
-                            <form id="newsletter" method="post" action="http://list.medor.coop/process.php" name="signup">
+                            <form target="_blank" id="newsletter" method="post" action="http://list.medor.coop/process.php" name="signup">
                                 <input type="text" name="Email" id="email" maxlength="120" VALUE="Votre adresse e-mail" />
                                 <!--*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.-->
                                 <input type="hidden" name="pommo_signup" value="true" />
