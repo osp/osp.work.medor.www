@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
-from django.core.mail import send_mail
-from django.views.generic.edit import FormView
-from django.template.loader import render_to_string
-
-from django.shortcuts import render
 from django.contrib.formtools.wizard.views import CookieWizardView
+from django.core.mail import send_mail
+from django.shortcuts import render
+from django.template.loader import render_to_string
+from django.views.generic.base import TemplateView
 
 
 COOPERATION_FORMS = [
@@ -52,12 +51,10 @@ class CooperationWizardView(CookieWizardView):
         message = render_to_string('subscribe/cooperation-email.txt', {
                 'data': form_list[0].cleaned_data,
                 'amount': form_list[0].cleaned_data['share_number'] * 20,
-                #'communication': form_list[0].instance.communication()
+                'communication': form_list[0].instance.structured_communication(),
             })
         sender = "medor@medor.coop"
-
-        recipients = ['alexandre@stdin.fr']
-
+        recipients = [form_list[0].cleaned_data['email']]
         send_mail(subject, message, sender, recipients)
 
         return render(self.request, 'subscribe/cooperation-done.html', {
@@ -85,18 +82,20 @@ class SubscriptionWizardView(CookieWizardView):
         form_list[0].save()
 
         subject = "Médor SCRL FS. Détails de votre paiement"
-        message = render_to_string('subscribe/cooperation-email.txt', {
+        message = render_to_string('subscribe/subscription-email.txt', {
                 'data': form_list[0].cleaned_data,
                 'amount': 60,
                 'communication': form_list[0].instance.structured_communication(),
             })
         sender = "medor@medor.coop"
-
-        recipients = ['alexandre@stdin.fr']
-
+        recipients = [form_list[0].cleaned_data['email']]
         send_mail(subject, message, sender, recipients)
 
         return render(self.request, 'subscribe/subscription-done.html', {
-            #'communication': form_list[0].instance.communication(),
+            'communication': form_list[0].instance.structured_communication(),
             'form_data': [form.cleaned_data for form in form_list],
         })
+
+
+class HomePageView(TemplateView):
+    template_name = "subscribe/home.html"

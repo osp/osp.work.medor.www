@@ -1,5 +1,4 @@
 from django import forms
-from django.forms.models import model_to_dict, fields_for_model
 from subscribe.models import Cooperation, Subscription
 
 
