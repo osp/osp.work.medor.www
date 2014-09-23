@@ -84,16 +84,16 @@ $(function() {
     // SCROLL MAGIC !
     var controller = new ScrollMagic();
 
-    var contentIn = TweenMax.to("#cover-content", 0.000001, {left: "0px"});
-    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-800px"});
-    var detailIn = TweenMax.to("#cover-detail", 0.000001, {left: "0px"});
-    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-800px"});
-    var coopIn = TweenMax.to("#cover-coop", 0.000001, {left: "0px"});
-    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-800px"});
-    var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px"});
-    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-800px"});
+    var contentIn = TweenMax.to("#cover-content", 0.000001, {left: "0px", autoAlpha: 1});
+    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-500px", autoAlpha: 0});
+    var detailIn = TweenMax.to("#cover-detail", 0.000001, {left: "0px", autoAlpha: 1});
+    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-500px", autoAlpha: 0});
+    var coopIn = TweenMax.to("#cover-coop", 0.000001, {left: "0px", autoAlpha: 1});
+    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-500px", autoAlpha: 0});
+    var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px", autoAlpha: 1});
+    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-500px", autoAlpha: 0});
 
-    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: 0})
+    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: -100})
         .setTween(detailIn)
         .addTo(controller)
 
@@ -101,7 +101,7 @@ $(function() {
         .setTween(detailOut)
         .addTo(controller)
 
-    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: 0})
+    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: -100})
         .setTween(coopIn)
         .addTo(controller)
 
@@ -109,7 +109,7 @@ $(function() {
         .setTween(coopOut)
         .addTo(controller)
 
-    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: 0})
+    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: -100})
         .setTween(budgetIn)
         .addTo(controller)
 
