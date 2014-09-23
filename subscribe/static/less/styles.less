@@ -32,7 +32,7 @@
 .jcarousel {
     position: relative;
     overflow: hidden;
-    /*margin: 0 50px;*/
+    margin: 0 50px;
     z-index: 2;
 }
 
@@ -72,12 +72,12 @@
 }
 
 .jcarousel-control-prev {
-    left: -64px;
+    left: 0px;
     background-image: url("../img/arrow-left3.svg");
 }
 
 .jcarousel-control-next {
-    right: -64px;
+    right: 0px;
     background-image: url("../img/arrow3.svg");
 }
 /* }}} */
@@ -133,7 +133,7 @@ body {
 
 .cover {
     position: absolute;
-    left: -500px;
+    left: -1000px;
     top: 0px;
     text-align: center;
     width: 33.333%;
@@ -263,6 +263,7 @@ header {
 
 .anim {
      width: 60%; 
+     max-width:         
      text-align:center; 
      margin-left:120px;
      margin-top:-50px;
@@ -929,13 +930,6 @@ content: "";
 .pourcentage {
     width: 15%;
     text-align: right;
-}
-
-#frais,
-#abonnes {
-  & td:not(:first-child) {
-    text-align: right;
-  }
 }
 
 #equipe {
