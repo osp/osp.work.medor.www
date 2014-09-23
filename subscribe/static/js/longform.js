@@ -79,27 +79,41 @@ $(function() {
         target: '+=1',
     });
 
-    var $elts = $('#outer-wrapper, #main-header, #magazine, #collaborative-experience, #accounting, #status');
+    
+    // SCROLL MAGIC !
+    var controller = new ScrollMagic();
 
-    $elts.waypoint({
-        offset: 70,
-        handler: function(direction) {
-            if (direction === 'down') {
-                var selector = $(this).attr('data-waypoint-target');
-                $(selector).addClass('active');
+    var contentIn = TweenMax.to("#cover-content", 0.000001, {left: "0px"});
+    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-500px"});
+    var detailIn = TweenMax.to("#cover-detail", 0.000001, {left: "0px"});
+    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-500px"});
+    var coopIn = TweenMax.to("#cover-coop", 0.000001, {left: "0px"});
+    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-500px"});
+    var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px"});
+    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-500px"});
 
-                selector = $(this).waypoint('prev').attr('data-waypoint-target');
-                $(selector).removeClass('active');
-            } else {
-                var selector = $(this).attr('data-waypoint-target');
-                $(selector).removeClass('active');
+    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: 0})
+        .setTween(detailIn)
+        .addTo(controller)
 
-                selector = $(this).waypoint('prev').attr('data-waypoint-target');
-                $(selector).addClass('active');
-            }
-        }
-    });
+    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: -300})
+        .setTween(detailOut)
+        .addTo(controller)
 
-    //$('#panel-acting').waypoint('sticky');
+    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: 0})
+        .setTween(coopIn)
+        .addTo(controller)
+
+    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: -300})
+        .setTween(coopOut)
+        .addTo(controller)
+
+    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: 0})
+        .setTween(budgetIn)
+        .addTo(controller)
+
+    new ScrollScene({triggerElement: "#status", duration: 1200, offset: -300})
+        .setTween(budgetOut)
+        .addTo(controller)
 
 });
