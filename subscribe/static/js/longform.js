@@ -14,22 +14,17 @@ $(function() {
         "hashGenerator": "pretty"
     });
     
-    if (Modernizr.details) {
-        console.log('support ok');
-    } else {
-        console.log('support not ok');
-        // script to run if local storage is not supported
-    }
-    Modernizr.load({
-        test: Modernizr.details,
-        yep : 'geo.js',
-        nope: 'geo-polyfill.js'
-    });
-    /*
-    $("#main").mCustomScrollbar({
-        theme:"rounded-dots"
-    });
-    */
+    //if (Modernizr.details) {
+        //console.log('support ok');
+    //} else {
+        //console.log('support not ok');
+        //// script to run if local storage is not supported
+    //}
+    //Modernizr.load({
+        //test: Modernizr.details,
+        //yep : 'geo.js',
+        //nope: 'geo-polyfill.js'
+    //});
 
     //$('a[href^="#"]').click(function(){
         //var the_id = $(this).attr("href");
