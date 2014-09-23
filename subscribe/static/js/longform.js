@@ -13,6 +13,7 @@ $(function() {
         "selectors": "h2",
         "hashGenerator": "pretty",
         "highlightOffset": 10,
+        "extendPage": false,
     });
     
     //if (Modernizr.details) {
