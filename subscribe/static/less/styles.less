@@ -32,7 +32,7 @@
 .jcarousel {
     position: relative;
     overflow: hidden;
-    margin: 0 50px;
+    /*margin: 0 50px;*/
     z-index: 2;
 }
 
@@ -72,12 +72,12 @@
 }
 
 .jcarousel-control-prev {
-    left: 0px;
+    left: -64px;
     background-image: url("../img/arrow-left3.svg");
 }
 
 .jcarousel-control-next {
-    right: 0px;
+    right: -64px;
     background-image: url("../img/arrow3.svg");
 }
 /* }}} */
@@ -929,6 +929,13 @@ content: "";
 .pourcentage {
     width: 15%;
     text-align: right;
+}
+
+#frais,
+#abonnes {
+  & td:not(:first-child) {
+    text-align: right;
+  }
 }
 
 #equipe {
