@@ -29,7 +29,6 @@ class TransactionBase(models.Model):
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=2, choices=COUNTRY_CHOICES, default="BE")
-    phone_number = models.CharField('téléphone (facultatif)', blank=True, max_length=30)
     creation_date = models.DateTimeField(auto_now_add=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0, blank=True)
     communication = models.PositiveIntegerField('communication', max_length=12, null=True, blank=True)
@@ -56,11 +55,6 @@ class Subscription(TransactionBase):
 
 class Cooperation(TransactionBase):
     """ Describes a cooperation"""
-    NATIONALITY_CHOICES = (
-        ('BE', u'Belge'),
-        ('FR', u'Française'),
-        ('LU', u'Luxembourgeoise')
-    )
 
     SHARE_CHOICES = (
         (1, u'1 (€ 20)'),
@@ -71,7 +65,4 @@ class Cooperation(TransactionBase):
         (6, u'6 (€ 120)')
     )
 
-    birth_date = models.DateTimeField('date de naissance')
-    nationality = models.CharField('nationalité', max_length=2, choices=NATIONALITY_CHOICES, default="BE")
-    id_number = models.CharField("N° d'identification au registre national", max_length=30)
     share_number = models.PositiveSmallIntegerField('nombre de parts', choices=SHARE_CHOICES, default="1")

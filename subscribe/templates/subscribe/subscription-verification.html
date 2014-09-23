@@ -6,21 +6,22 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Je m'abonne</h2>
+    <h2>Je m’abonne</h2>
 
     <div id="steps">
             <div class="active">Confirmation</div>
     </div>
 
 
+    <h3>Adresse de livraison :</h3>
     <p>{{ infos.title|yesno:"Monsieur,Madame" }} {{ infos.first_name }} {{ infos.last_name }}</p>
     <p>{{ infos.street }}, {{ infos.number }}</p>
+    {% if infos.letterbox %}<p>{{ infos.letterbox }}</p>{% endif %}
     <p>{{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}</p>
-    <p>{% if infos.phone_number %}{{ infos.phone_number }}{% endif %}</p>
     <p>{{ infos.email }}</p>
 
 
-    <form action="" method="post" class="step-{{ wizard.steps.step1 }}">
+    <form id="souscription" action="" method="post" class="step-{{ wizard.steps.step1 }}">
         {% csrf_token %}
         {{ wizard.management_form }}
 
@@ -47,7 +48,7 @@
         {% endif %}
 
         <div id="confirm">
-            <input id="prendre-part" type="submit" value="Souscrire pour 60€"/>
+            <input id="prendre-part" type="submit" value="S’abonner"/>
         </div>
     </form>
 {% endblock %}

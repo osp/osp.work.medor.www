@@ -15,13 +15,11 @@
 
     <p>{{ infos.title|yesno:"Monsieur,Madame" }} {{ infos.first_name }} {{ infos.last_name }}</p>
     <p>{{ infos.street }}, {{ infos.number }}</p>
+    {% if infos.letterbox %}<p>{{ infos.letterbox }}</p>{% endif %}
     <p>{{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}</p>
-    <p>{% if infos.phone_number %}{{ infos.phone_number }}{% endif %}</p>
     <p>{{ infos.email }}</p>
-    <p>N<sup>0</sup> d'identité nationale {{ infos.nationality }}&thinsp;: {{ infos.id_number }}</p>
 
-
-    <form action="" method="post" class="step-{{ wizard.steps.step1 }}">
+    <form id="cooperation" action="" method="post" class="step-{{ wizard.steps.step1 }}">
         {% csrf_token %}
         {{ wizard.management_form }}
 
@@ -39,8 +37,8 @@
 
         <ul class="declaration">
            <li>Je déclare ces informations conformes. </li>
-           <li>J'ai bien pris connaissance des <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, du <a target="_blank" href="todo.html">plan financier</a> et de la&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.</li>
-           <li>Je m'engage à prendre <strong>{{ infos.share_number }} part{{ infos.share_number|pluralize }}</strong> pour un montant de <strong>{{ amount }} euros</strong>. </li>
+           <!--<li>J'ai bien pris connaissance des <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, du <a target="_blank" href="todo.html">plan financier</a> et de la&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.</li>-->
+           <li>Je m’engage à prendre <strong>{{ infos.share_number }} part{{ infos.share_number|pluralize }}</strong> pour un montant de <strong>{{ amount }} euros</strong>. </li>
         </ul>
 
 

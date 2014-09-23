@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Je m'abonne</h2>
+    <h2>Je m’abonne</h2>
 
     <div id="steps">
-            <div class="active">Enregistrement</div>
+        <div class="active">Enregistrement</div>
+        <p>Si 3779 personnes font comme vous, vous recevrez votre premier
+        Médor en&nbsp;septembre&nbsp;2015. Si ce n'est pas le cas, Médor vous
+        remboursera les 60&nbsp;euros.</p>
     </div>
 
-    <form action="" method="post" class="step-{{ wizard.steps.step1 }}">
+    <form id="souscription" action="" method="post" class="step-{{ wizard.steps.step1 }}">
         {% csrf_token %}
         {{ wizard.management_form }}
 
@@ -46,16 +49,9 @@
                 {{ form.email.label_tag }}
                 {{ form.email }}
             </div>
-            <div>
-            {% if form.phone_number.errors %}
-                <ul class="errorlist"><li>Veuillez entrer un numéro de téléphone valide au format international.</li></ul>
-            {% endif %}
-                <!--{{ form.phone_number.errors }}-->
-                {{ form.phone_number.label_tag }}
-                {{ form.phone_number }}
-            </div>
         </div>
         <div class="box">
+            <h3>Adresse de livraison :</h3>
             <div class="required">
                 {{ form.street.errors }}
                 {{ form.street.label_tag }}
@@ -97,7 +93,7 @@
         {% endif %}
 
         <div id="confirm">
-            <input id="prendre-part" type="submit" value="Souscrire pour 60€"/>
+            <input id="prendre-part" type="submit" value="S’abonner"/>
         </div>
     </form>
 {% endblock %}
