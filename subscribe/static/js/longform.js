@@ -78,7 +78,7 @@ $(function() {
         target: '+=1',
     });
 
-    var $elts = $('#outer-wrapper, #main-header, #magazine, #collaborative-experience, #accounting');
+    var $elts = $('#outer-wrapper, #main-header, #magazine, #collaborative-experience, #accounting, #status');
 
     $elts.waypoint({
         offset: 70,
