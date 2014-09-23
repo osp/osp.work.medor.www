@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
 from django.contrib.formtools.wizard.views import CookieWizardView
 from django.core.mail import send_mail
+from django.db.models import Count
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.views.generic.base import TemplateView
+
+from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
+from subscribe.models import Subscription, Cooperation
 
 
 COOPERATION_FORMS = [
@@ -96,6 +99,11 @@ class SubscriptionWizardView(CookieWizardView):
             'form_data': [form.cleaned_data for form in form_list],
         })
 
-
 class HomePageView(TemplateView):
     template_name = "subscribe/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['subscriber_count'] = Subscription.objects.count()
+        context['cooperative_money'] = Cooperation.objects.aggregate(Count('share_number'))['share_number__count'] * 20
+        return context
