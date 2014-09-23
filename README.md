@@ -1,10 +1,10 @@
 # to run the django project:
 
 ### install virtualenv:
-apt-get install python-virtualenv
+sudo apt-get install python-virtualenv
 
 ### then create a virtual environment for the project, we call it 'venv' as it is already omitted by git through the gitignore
-to do so run
+### to do so run
 virtualenv --no-site-packages venv
 
 ### this creates a micro-system inside the new 'venv' folder
