@@ -133,16 +133,18 @@ body {
 
 .cover {
     position: absolute;
-    left: -1000px;
+    left: -500px;
     top: 0px;
     text-align: center;
     width: 33.333%;
     padding-right: 20px;
+    opacity: 0;
 }
 #cover-content {
-    position: absolute;
-    top: 350px;
-    left: 0 !important;
+    position: static;
+    float: left;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .cover img {
@@ -282,7 +284,10 @@ header {
      text-indent: 20px;
 } 
      
-
+.footer{
+text-align:center;
+margin-bottom: 90px;
+}
      
 #logo {
     width: 85%;
@@ -932,6 +937,13 @@ font-family:'CenturySchL-Ital';
 .pourcentage {
     width: 15%;
     text-align: right;
+}
+
+#frais,
+#abonnes {
+  & td:not(:first-child) {
+    text-align: right;
+  }
 }
 
 #equipe {
