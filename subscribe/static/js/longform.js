@@ -11,7 +11,8 @@ $(function() {
 
     $("#menu").tocify({
         "selectors": "h2",
-        "hashGenerator": "pretty"
+        "hashGenerator": "pretty",
+        "highlightOffset": 10,
     });
     
     //if (Modernizr.details) {
