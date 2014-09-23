@@ -142,8 +142,6 @@ body {
     padding-right: 20px;
 }
 
-
-
 .cover.active {
     left: 0;
 }
@@ -162,7 +160,7 @@ body {
 }
 
 p + p {
-    margin-top: 1.31em;
+    margin-top: 1.22em;
 }
 
 em {
@@ -171,7 +169,7 @@ em {
 
 .sm {
     font-variant: small-caps;
-    }
+}
 
 
 a {
@@ -314,6 +312,14 @@ blockquote#stiegler > .footer {
 #main-intro {
     .column-count(2);
     .column-gap(20px);
+}
+
+#main-intro p {
+    /*margin-top: 0;*/
+    /*text-indent: 1.31em;*/
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+
 }
 /* }}} */
 
