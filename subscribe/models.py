@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from datetime import datetime
 
 
 class TransactionBase(models.Model):
@@ -30,31 +31,33 @@ class TransactionBase(models.Model):
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=2, choices=COUNTRY_CHOICES, default="BE")
     creation_date = models.DateTimeField(auto_now_add=True)
-    status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0, blank=True)
-    communication = models.PositiveIntegerField('communication', max_length=12, null=True, blank=True)
+    status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
+    invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True)
 
     class Meta:
         abstract = True
 
     def save(self, *args, **kwargs):
-        self.status = 0
-        #invoice_nbr = 1234567890
-        #nbr = "{:010d}{:02d}".format(invoice_nbr, invoice_nbr % 97)
-        self.communication = 1234567890
+        now = datetime.now()
+        count = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).count() + 1
+        invoice_reference = u"{}{}{:04d}".format(now.strftime("%y%m"), self.__class__.transaction_type, count)
+        self.invoice_reference = int(invoice_reference)
         super(TransactionBase, self).save(*args, **kwargs)
 
     def structured_communication(self):
-        nbr = str(self.communication)
+        ref = self.invoice_reference
+        nbr = "{}{:02d}".format(ref, ref % 97)
         return "+++{}/{}/{}+++".format(nbr[:3], nbr[3:6], nbr[6:])
 
 
 class Subscription(TransactionBase):
     """ Describes a cooperation"""
-    pass
+    transaction_type = '01'
 
 
 class Cooperation(TransactionBase):
     """ Describes a cooperation"""
+    transaction_type = '02'
 
     SHARE_CHOICES = (
         (1, u'1 (€ 20)'),

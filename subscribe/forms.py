@@ -26,7 +26,7 @@ class CooperationForm(forms.ModelForm):
 
     class Meta:
         model = Cooperation
-        exclude = ('status', 'communication')
+        exclude = ('status', 'invoice_reference')
         widgets = {
             'title': forms.RadioSelect(),
             'country': forms.RadioSelect(),
@@ -48,6 +48,7 @@ class SubscriptionForm(forms.ModelForm):
 
     class Meta:
         model = Subscription
+        exclude = ('status', 'invoice_reference')
         widgets = {
             'title': forms.RadioSelect(),
             'country': forms.RadioSelect(),
