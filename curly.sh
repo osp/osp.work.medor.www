@@ -4,4 +4,4 @@
 html="http://osp.club:9999/p/medor-html/export/txt"
 
 #curl -o "static/css/styles.less" "${css}"
-curl -o "subsribe/templates/home.html" "${html}"
+curl -o "subscribe/templates/subscribe/home.html" "${html}"
