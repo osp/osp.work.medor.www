@@ -99,6 +99,7 @@ class SubscriptionWizardView(CookieWizardView):
             'form_data': [form.cleaned_data for form in form_list],
         })
 
+
 class HomePageView(TemplateView):
     template_name = "subscribe/home.html"
 
@@ -107,3 +108,7 @@ class HomePageView(TemplateView):
         context['subscriber_count'] = Subscription.objects.count()
         context['cooperative_money'] = Cooperation.objects.aggregate(Count('share_number'))['share_number__count'] * 20
         return context
+
+
+class FAQPageView(TemplateView):
+    template_name = "subscribe/FAQ.html"
