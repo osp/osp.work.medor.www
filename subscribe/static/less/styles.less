@@ -90,7 +90,7 @@ body {
 }
 
 #foo {
-    z-index: -1;
+    z-index: 10;
     position: fixed;
     top: 50px;
     left: 50px;
@@ -133,17 +133,16 @@ body {
 
 .cover {
     position: absolute;
-    z-index: 1;
-    .transition(left, 1000ms, ease-out, 0s);
-    left: -2000px;
+    left: -500px;
     top: 0px;
     text-align: center;
     width: 33.333%;
     padding-right: 20px;
 }
-
-.cover.active {
-    left: 0;
+#cover-content {
+    position: absolute;
+    top: 350px;
+    left: 0 !important;
 }
 
 .cover img {
