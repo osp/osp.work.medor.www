@@ -93,7 +93,7 @@ $(function() {
     var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px", autoAlpha: 1});
     var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-500px", autoAlpha: 0});
 
-    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: 0})
+    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: -100})
         .setTween(detailIn)
         .addTo(controller)
 
@@ -101,7 +101,7 @@ $(function() {
         .setTween(detailOut)
         .addTo(controller)
 
-    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: 0})
+    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: -100})
         .setTween(coopIn)
         .addTo(controller)
 
@@ -109,7 +109,7 @@ $(function() {
         .setTween(coopOut)
         .addTo(controller)
 
-    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: 0})
+    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: -100})
         .setTween(budgetIn)
         .addTo(controller)
 
