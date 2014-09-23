@@ -133,7 +133,7 @@ body {
 
 .cover {
     position: absolute;
-    left: -1000px;
+    left: -500px;
     top: 0px;
     text-align: center;
     width: 33.333%;
@@ -929,6 +929,13 @@ content: "";
 .pourcentage {
     width: 15%;
     text-align: right;
+}
+
+#frais,
+#abonnes {
+  & td:not(:first-child) {
+    text-align: right;
+  }
 }
 
 #equipe {
