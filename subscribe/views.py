@@ -56,7 +56,7 @@ class CooperationWizardView(CookieWizardView):
             })
         sender = "medor@medor.coop"
 
-        recipients = ['alexandre@stdin.fr']
+        recipients = [form_list[0].email]
 
         send_mail(subject, message, sender, recipients)
 
@@ -92,7 +92,8 @@ class SubscriptionWizardView(CookieWizardView):
             })
         sender = "medor@medor.coop"
 
-        recipients = ['alexandre@stdin.fr']
+        recipients = [form_list[0].email]
+
 
         send_mail(subject, message, sender, recipients)
 
