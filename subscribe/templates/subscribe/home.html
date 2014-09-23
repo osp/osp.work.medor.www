@@ -83,7 +83,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                                     <div>
                                         actuellement<br />
-                                        <span class="number">2129</span>
+                                        <span class="number">{{ subscriber_count }}</span>
                                     </div>
 
                                     <div class="goal-arrow"></div>
@@ -127,7 +127,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                                 <div class="goal-middle">
                                     <div>
                                         actuellement<br />
-                                        <span class="number">10298<sup>€</sup></span>
+                                        <span class="number">{{ cooperative_money }}<sup>€</sup></span>
                                     </div>
 
                                     <div class="goal-arrow"></div>
@@ -158,86 +158,6 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                             <div class="illu"><img src="static/img/illu-cooperative.png" alt="illustration copérative" /></div>
                         </div>
-                        <!--<form>-->
-                            <!--<p>-->
-                                <!--<label>prénom</label>-->
-                                <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>nom</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>courriel</label>-->
-                            <!--<input type="email" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>vérification du courriel</label>-->
-                            <!--<input type="email" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>date de naissance</label>-->
-                            <!--<input type="date" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>nationalité</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>numéro de carte d'identité</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>langue</label>-->
-                            <!--<select>-->
-                                <!--<option value="f">F</option>-->
-                                <!--<option value="m">M</option>-->
-                            <!--</select>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>rue</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>numéro</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>boîte</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>commune</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>code postal</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>pays</label>-->
-                            <!--<select>-->
-                                <!--<option value="be">Belgique</option>-->
-                                <!--<option value="fr">France</option>-->
-                                <!--<option value="uk">Grande-Bretagne</option>-->
-                            <!--</select>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>téléphone</label>-->
-                            <!--<input type="phone" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>nombre de parts</label>-->
-                            <!--<select>-->
-                                <!--<option value="1">1 (€ 20)</option>-->
-                                <!--<option value="2">2 (€ 40)</option>-->
-                                <!--<option value="3">3 (€ 60)</option>-->
-                            <!--</select>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                                <!--<input type="submit" value="suivant" >-->
-                            <!--</p>-->
-                        <!--</form>-->
                     </div>
 
                     <div id="donating" class="fund">
@@ -255,7 +175,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                                 <div class="goal-middle">
                                     <div>
                                         actuellement<br />
-                                        <span class="number">10298<sup>€</sup></span>
+                                        <span class="number">0<sup>€</sup></span>
                                     </div>
 
                                     <div class="goal-arrow"></div>
@@ -716,7 +636,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 </div>
             </div>
 
-                        <div id="panels">
+            <div id="panels">
                 <div id="panel-descriptions">
                     <div id="subscribing" class="fund">
                         <div class="fund-top">
@@ -725,11 +645,8 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                     <span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>
                                 </span>
                             </a>
-
-
                         </div>
                     </div>
-
 
                     <div id="cooperating" class="fund">
                         <div class="fund-top">
@@ -738,91 +655,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                     <span class="inner">je prends<br />une part à<br /><span class="price">20<sup>€</sup></span></span>
                                 </span>
                             </a>
-
-
-
-
                         </div>
-                        <!--<form>-->
-                            <!--<p>-->
-                                <!--<label>prénom</label>-->
-                                <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>nom</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>courriel</label>-->
-                            <!--<input type="email" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>vérification du courriel</label>-->
-                            <!--<input type="email" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>date de naissance</label>-->
-                            <!--<input type="date" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>nationalité</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>numéro de carte d'identité</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>langue</label>-->
-                            <!--<select>-->
-                                <!--<option value="f">F</option>-->
-                                <!--<option value="m">M</option>-->
-                            <!--</select>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>rue</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>numéro</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>boîte</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>commune</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>code postal</label>-->
-                            <!--<input type="text" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>pays</label>-->
-                            <!--<select>-->
-                                <!--<option value="be">Belgique</option>-->
-                                <!--<option value="fr">France</option>-->
-                                <!--<option value="uk">Grande-Bretagne</option>-->
-                            <!--</select>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>téléphone</label>-->
-                            <!--<input type="phone" value="" >-->
-                            <!--</p>-->
-                            <!--<p>-->
-                            <!--<label>nombre de parts</label>-->
-                            <!--<select>-->
-                                <!--<option value="1">1 (€ 20)</option>-->
-                                <!--<option value="2">2 (€ 40)</option>-->
-                                <!--<option value="3">3 (€ 60)</option>-->
-                            <!--</select>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                                <!--<input type="submit" value="suivant" >-->
-                            <!--</p>-->
-                        <!--</form>-->
                     </div>
 
                     <div id="donating" class="fund">
@@ -832,20 +665,10 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                     <span class="inner">je fais<br />un don de<br /><span class="price">5<sup>€</sup></span></span>
                                 </span>
                             </a>
-
-
                         </div>
                     </div>
-
-                <!--<div id="panel-acting">-->
-                    <!--<a href="todo.html">-->
-                        <!--<span class="arrow-money">-->
-                            <!--<span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>-->
-                        <!--</span>-->
-                    <!--</a>-->
-                <!--</div>-->
+                </div>
             </div>
-        </div>
 
             <!--<img src="static/img/palette.png" alt="palette"/>-->
 
