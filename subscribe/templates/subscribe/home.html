@@ -18,9 +18,6 @@
 
 
         <div id="bar">
-            <figure id="cover-content" class="cover">
-                <img src="static/img/medor-objet-contenu.png" alt="contenu d'un numéro"/>
-            </figure>
 
             <figure id="cover-detail" class="cover">
                 <img src="static/img/medor-objet-mag.png" alt="premier numéro" />
@@ -36,14 +33,17 @@
         </div>
     </div>
 
-    <div id="outer-wrapper" data-waypoint-target="#none">
+    <div id="outer-wrapper">
         <header >
             <img src="static/img/medor-anim.gif" class="anim"/>
 
-            <div id="main-header" class="wrap" data-waypoint-target="#cover-content">
+            <div id="main-header" class="wrap">
             <h2 data-shortname="Médor"><img style="margin-left:80px;" alt="Médor" id="logo" src="static/img/medor.svg" /></h2>
 
                 <div id="main-intro">
+                <figure id="cover-content" class="cover">
+                    <img src="static/img/medor-objet-contenu.png" alt="contenu d'un numéro"/>
+                </figure>
                     <p class="chapeau">
                         médor, ce n’est pas un chien. c’est&nbsp;un magazine.
                         Médor, ce sera un <strong>trimestriel</strong>
@@ -191,7 +191,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                                     <div class="goal-arrow"></div>
                                     <div class="goal">
                                         objectif<br />
-                                        <span class="number">24206<sup>€</sup></span>
+                                        <span class="number">10000<sup>€</sup></span>
                                     </div>
 
                                 </div>
@@ -227,7 +227,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
 
 
-            <div id="magazine" data-waypoint-target="#cover-detail">
+            <div id="magazine">
 
                     <h2 class="tranche" data-shortname="quoi  ?"><span>Médor,<br/>c'est un  magazine</span></h2>
 
@@ -282,7 +282,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
 
 
-            <div id="collaborative-experience" data-waypoint-target="#cover-coop">
+            <div id="collaborative-experience">
                 <h2 class="tranche" data-shortname="comment  ?"><span>Médor,<br/>c'est une  expérience<br/>collaborative</span></h2>
 
                 <div class="wrap">
@@ -340,7 +340,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                 </div>
             </div>
 
-            <div id="accounting" data-waypoint-target="#cover-budget">
+            <div id="accounting">
                 <h2 class="tranche" data-shortname="combien  ?"><span style="color:white;">Médor,<br/>c'est 3800  abonnés<br/>et 226&#8239;452 €</span></h2>
 
                 <div class="wrap">
@@ -457,7 +457,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 </div>
             </div>
 
-            <div id="status" data-waypoint-target="#non">
+            <div id="status">
                 <h2 class="tranche" data-shortname="qui ?"><span>Médor,<br/>c'est déjà</span></h2>
                 <div class="wrap">
                     <h3>Des partenaires et soutiens</h3>
@@ -473,7 +473,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                     <h3>Une équipe</h3>
                     <p id="equipe">
-                    Aujourd'hui, Médor est constitué de 17 journalistes,  photographes, et illustrateurs indépendants, de professionnels de la communication issus du spectacle vivant et de la presse ainsi que de graphistes et de développeurs. Dès l'origine, Médor a décidé de ne pas  brader le coût de sa production. Nous ne pouvons pas encore vous le montrer dans Médor, mais nous pouvons vous montrer <a href="../docs/media/medor.portfolio.pdf">ce que chacun d'entre nous a déjà fait</a>.
+                    Aujourd'hui, Médor est constitué de 17 journalistes,  photographes, et illustrateurs indépendants, de professionnels de la  communication issus du spectacle vivant et de la presse ainsi que de  graphistes et de développeurs. Dès l'origine, Médor a décidé de ne pas  brader le coût de sa production (lien avec une FAQ – « Pourquoi Médor ne  nous montre-il pas un échantillon de son savoir&nbsp;?&nbsp;»).  Nous ne pouvons pas encore vous le montrer dans Médor, mais nous  pouvons vous montrer <a href="https://medor.coop/media/medor.portfolio.pdf">ce que chacun d'entre nous a déjà fait</a>.
                     </p>
                 </div>
 
@@ -666,8 +666,8 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                 <div class="wrap">
                 
-                <h3>Abonnez-vous à notre liste d'information&#8239;:</h3>
-                            <form target="_blank" id="newsletter" method="post" action="http://list.medor.coop/process.php" name="signup">
+                <h3>Abonnez-vous à notre liste d'information&#8239;</h3>
+                            <form target="_blank" id="newsletter" method="post" action="http://list.medor.coop/process.php" name="signup" style="padding: 0 60px;">
                                 <input type="text" name="Email" id="email" maxlength="120" VALUE="Votre adresse e-mail" />
                                 <!--*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.-->
                                 <input type="hidden" name="pommo_signup" value="true" />
@@ -754,9 +754,10 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
     <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
-    <script src="{{ STATIC_URL }}components/jquery-waypoints/waypoints.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.tocify.min.js"></script>
+    <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
+    <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
     <script src="{{ STATIC_URL }}js/longform.js"></script>
 </body>
 </html>

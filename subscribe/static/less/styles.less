@@ -90,7 +90,7 @@ body {
 }
 
 #foo {
-    z-index: -1;
+    z-index: 10;
     position: fixed;
     top: 50px;
     left: 50px;
@@ -133,17 +133,16 @@ body {
 
 .cover {
     position: absolute;
-    z-index: 1;
-    .transition(left, 1000ms, ease-out, 0s);
-    left: -2000px;
+    left: -500px;
     top: 0px;
     text-align: center;
     width: 33.333%;
     padding-right: 20px;
 }
-
-.cover.active {
-    left: 0;
+#cover-content {
+    position: absolute;
+    top: 350px;
+    left: 0 !important;
 }
 
 .cover img {
@@ -646,7 +645,8 @@ content: "";
     /*margin: 10px 0 0 25px;*/
     width: 400px;
     background: @color-D3;
-    height: 30px;
+    height: 26px;
+    display: inline;
 }
 
 #newsletter input[type="text"]:hover {
@@ -666,7 +666,7 @@ content: "";
     padding: 0px;
     font-size: 19px;
     border: 2px solid black;
-    background: #0054A2;
+    /*background: #0054A2;*/
     background-image: initial;
     background-position-x: initial;
     background-position-y: initial;
@@ -676,12 +676,12 @@ content: "";
     background-attachment: initial;
     background-origin: initial;
     background-clip: initial;
-    background-color: @color-C4;
+    background-color: @color-C3;
 }
 
 #newsletter input[type="submit"]:hover {
     border: 2px solid black;
-    background: @color-D3;
+    background: @color-A1;
     color: white;
 }
 /* }}} */
