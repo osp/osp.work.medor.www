@@ -1,6 +1,6 @@
 {{ data.title|yesno:"Monsieur,Madame" }} {{ data.first_name }} {{ data.last_name }},
 
-Via notre site web, vous vous êtes abonné.
+Via notre site web, vous vous êtes {{ data.title|yesno:"abonné,abonnée" }}.
 
 Nous vous prions de transférer aujourd'hui {{ amount }} euros sur le compte
 BE 96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée {{ communication }}.
