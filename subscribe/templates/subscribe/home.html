@@ -6,7 +6,9 @@
 
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
     <link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}less/styles.less">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/jquery-deets/jquery.ui.deets.css">
+    <link rel="icon"
+      type="image/png"
+      href="static/img/favicon-medor_16-16.png">
 
     <script src="static/js/modernizr.custom.08508.js" ></script>
 </head>
@@ -49,7 +51,7 @@
                     <p class="chapeau">
                         Médor, ce n’est pas un chien. C’est&nbsp;un magazine.
                         Médor, ce sera un <strong>trimestriel</strong>
-                        coopératif, un magazine belge d'enquêtes </br>et de récits.
+                        coopératif, un magazine belge d'enquêtes et de récits.
                     </p>
                     <p class="chapeauindent">
                         Au programme, 128&nbsp;pages en quadrichromie,
@@ -320,7 +322,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                     <p>Médor construit une plateforme de  publication permettant aux journalistes de montrer les avancées  rédactionnelles, d'appeler à l'aide pour la recherche d'un contact,  d'une info, pour une relecture provisoire, une question déontologique.  Cette plateforme est développée sous licence libre et proposée à tous les médias qui, comme Médor, basculent leurs pratiques et écosystèmes. Partage, on vous dit.
                     </p>
 
-                    <h3 id="post-gutemberg">Un graphisme post Gutemberg</h3>
+                    <h3 id="post-gutemberg">Un graphisme post-Gutemberg</h3>
                     <p>Tous les logiciels utilisés pour le  graphisme de Médor sont libres, la typographie l'est autant et puise  une partie de ses sources dans la culture graphique belge. Médor se plonge avec enthousiasme dans le bouillon typographique et graphique en cours. Mais aussi, par cette décision singulière, Médor donnera des outils concrets aux graphistes et journalistes pour avancer  ensemble dans la production de contenu et proposer une information où  texte et visuel peuvent se compléter de façon inédite. Cette émulation  entre visuel et texte, notamment sur la plateforme de publication  partagée, tracte Médor vers des pratiques d'édition et de mise en page  résolument neuves.
                     </p>
                     <details>
@@ -682,7 +684,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                     <h3>Approfondissements et échanges</h3>
 
-                    <p>La coopérative à finalité sociale Médor a  été créée à Namur le 30 juin 2014. Téléchargez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts  (en pdf)</a>.</p>
+                    <p>La coopérative à finalité sociale Médor a  été créée à Namur le 30 juin 2014. Téléchargez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts (en pdf)</a> et consultez notre <a href="#accounting">plan financier</a>.</p>
 
                     <p>Vous l'avez compris, l'élaboration de Médor  est en cours. Nous sommes très impatients d'échanger avec vous à propos  de notre projet.</p>
 
@@ -704,7 +706,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                         </li>
 
                         <li>
-                            Suivez-nous sur <a  href="https://www.facebook.com/medormag">Facebook</a> (à  consommer avec sagesse), sur <a  href="https://twitter.com/Medor_mag">Twitter</a> et sur la  route des étoiles.
+                            Suivez-nous sur <a  href="https://www.facebook.com/medormag">Facebook</a> (à  consommer avec sagesse) et sur <a  href="https://twitter.com/Medor_mag">Twitter</a>.
                         </li>
                     </ul>
 
@@ -712,9 +714,6 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                 </div>
             </div>
-                    <div class="footer">
-Consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="#accounting">plan financier</a> et notre&nbsp;<a href="{% url 'faq-page' %}" target="_blank">FAQ</a>.
-					</div>
 
             <div id="panels">
                 <div id="panel-descriptions">
@@ -775,6 +774,25 @@ Consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
     <script src="{{ STATIC_URL }}js/longform.js"></script>
+
+
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.stdin.fr/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 13]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="http://stats.stdin.fr/piwik.php?idsite=13" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
 </body>
 </html>
 
