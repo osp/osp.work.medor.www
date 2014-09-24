@@ -787,19 +787,20 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
 
 <!-- Piwik -->
-<!--<script type="text/javascript">-->
-  <!--var _paq = _paq || [];-->
-  <!--_paq.push(['trackPageView']);-->
-  <!--_paq.push(['enableLinkTracking']);-->
-  <!--(function() {-->
-    <!--var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.stdin.fr/";-->
-    <!--_paq.push(['setTrackerUrl', u+'piwik.php']);-->
-    <!--_paq.push(['setSiteId', 13]);-->
-    <!--var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';-->
-    <!--g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);-->
-  <!--})();-->
-<!--</script>-->
-<!--<noscript><p><img src="http://stats.stdin.fr/piwik.php?idsite=13" style="border:0;" alt="" /></p></noscript>-->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    //var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.stdin.fr/";
+    var u="http://stats.stdin.fr/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 13]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="http://stats.stdin.fr/piwik.php?idsite=13" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
 </body>
