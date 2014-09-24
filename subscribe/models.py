@@ -43,6 +43,7 @@ class TransactionBase(models.Model):
         _max = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).aggregate(Max('invoice_reference'))
         _max = _max['invoice_reference__max']
         if _max:
+            _max = _max + 1
             _max = _max % 10000
         else:
             _max = 1
