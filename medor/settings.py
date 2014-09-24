@@ -23,6 +23,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'compressor',
+
     'subscribe',
 )
 
@@ -61,6 +63,22 @@ USE_TZ = True
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "medor/static"),
 )
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+# Django Compressor setup
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lessc {infile} {outfile}'),
+)
+# This is so the {% if debug %} works,
+# cf http://stackoverflow.com/questions/11020663/
+INTERNAL_IPS = ('127.0.0.1',)
 
 
 try:
