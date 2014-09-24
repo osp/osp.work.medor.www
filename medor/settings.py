@@ -74,7 +74,7 @@ STATICFILES_FINDERS = (
 
 # Django Compressor setup
 COMPRESS_PRECOMPILERS = (
-   ('text/less', 'lessc {infile} {outfile}'),
+   ('text/less', 'lessc {infile} > {outfile}'),
 )
 # This is so the {% if debug %} works,
 # cf http://stackoverflow.com/questions/11020663/
