@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
     <link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}less/styles.less">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/jquery-deets/jquery.ui.deets.css">
 
     <script src="static/js/modernizr.custom.08508.js" ></script>
 </head>
@@ -325,15 +326,15 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                     <details>
 
                         <summary>Colophon de cette première page</summary>
-                        <p>Cette page web a été générée à partir  d'une page de l'outil MediaWiki  du projet, écrite à plusieurs mains, les éléments qui l'habitent sont dessinés sur 
-                        Inkscape, 
-                        Gimp, 
+                        <p>Cette page web a été générée à partir  d'une page de l'outil MediaWiki  du projet, écrite à plusieurs mains, les éléments qui l'habitent sont dessinés sur
+                        Inkscape,
+                        Gimp,
                         ImageMagick.
                         La navigation et la mise en page sont structurées et rendue active via HTML5, Less/CSS,
-                        Jquery, 
-                        Etherpad Lite, 
+                        Jquery,
+                        Etherpad Lite,
                         Curl, Git, GNU/Linux. Le texte est typographié avec les fontes
-                        <a target="_blank" href="http://ospublish.constantvzw.org/foundry/alfphabet/">Alfphabet</a>, 
+                        <a target="_blank" href="http://ospublish.constantvzw.org/foundry/alfphabet/">Alfphabet</a>,
                         <a href="https://github.com/Antoine-Gelgon/CareerFont">Career</a>,
                         <a target="_blank" href="http://levien.com/type/myfonts/ofl.html">Century Catalogue</a>,
                         <a target="_blank" href="http://git.ghostscript.com/?p=ghostpdl.git;a=tree;f=urwfonts;hb=HEAD">URWGroteskT-Bold.</a></p>
@@ -669,7 +670,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 <h2 class="tranche" data-shortname="maintenant?"><span>Et maintenant?</span></h2>
 
                 <div class="wrap">
-                
+
                 <h3>Abonnez-vous à notre liste d'information&#8239;</h3>
                             <form target="_blank" id="newsletter" method="post" action="http://list.medor.coop/process.php" name="signup" style="padding: 0 60px;">
                                 <input type="text" name="Email" id="email" maxlength="120" VALUE="Votre adresse e-mail" />
@@ -701,12 +702,12 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                 <!--</div>-->
                             <!--</div>-->
                         </li>
-                        
+
                         <li>
                             Suivez-nous sur <a  href="https://www.facebook.com/medormag">Facebook</a> (à  consommer avec sagesse), sur <a  href="https://twitter.com/Medor_mag">Twitter</a> et sur la  route des étoiles.
                         </li>
                     </ul>
-                                
+
 
 
                 </div>
@@ -714,7 +715,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                     <div class="footer">
 Consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="#accounting">plan financier</a> et notre&nbsp;<a href="{% url 'faq-page' %}" target="_blank">FAQ</a>.
 					</div>
-					
+
             <div id="panels">
                 <div id="panel-descriptions">
                     <div id="subscribing" class="fund">
@@ -750,7 +751,7 @@ Consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/
                     </div>
                 </div>
             </div>
-            
+
 
 
             <!--<img src="static/img/palette.png" alt="palette"/>-->
@@ -761,14 +762,15 @@ Consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/
                     — <a target="_blank" href="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">Bernard  Stiegler</a>
                 <g/p>
             </blockquote>
-                       
+
         </main>
     </div>
 
     <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="{{ STATIC_URL }}components/details-tag/jquery.details.js" ></script>
+    <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.tocify.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>

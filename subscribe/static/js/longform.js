@@ -22,11 +22,10 @@ $(function() {
         //console.log('support not ok');
         //// script to run if local storage is not supported
     //}
-    //Modernizr.load({
-        //test: Modernizr.details,
-        //yep : 'geo.js',
-        //nope: 'geo-polyfill.js'
-    //});
+    Modernizr.load({
+        test: Modernizr.details,
+        yep : '/static/components/details-tag/jquery.details.js',
+    });
 
     //$('a[href^="#"]').click(function(){
         //var the_id = $(this).attr("href");

@@ -1,0 +1,29 @@
+A polyfill for <details> tag.
+Unfortunately, a seamless integration was unsuccessful.
+To manipulate <details> tags from Javascript, use our API:
+
+Know if a tag is open or no:
+	$('details').details()
+
+Open a tag
+	$('details').details('open')
+
+Close a tag
+	$('details').details('close')
+
+Event handlers:
+	$('details').on('open', function(){
+		console.log('Opened ', $(this));
+	});
+	$('details').on('close', function(){});
+
+Initialize polyfill on some new elements:
+	myDetailsTag.details('init')
+
+To make a tag animated
+	<detail class=animated>
+
+To control animation speeds
+	<detail class=animated data-animation-speed="slow/fast/1000">
+
+This will also manipulate native implemenations.
