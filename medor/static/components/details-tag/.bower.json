@@ -1,0 +1,14 @@
+{
+  "name": "details-tag",
+  "homepage": "https://github.com/denis-sokolov/details-tag",
+  "_release": "8753cdda36",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8753cdda36e71f66dd8838aaa51772014fea30f3"
+  },
+  "_source": "git://github.com/denis-sokolov/details-tag.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/denis-sokolov/details-tag.git",
+  "_direct": true
+}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from datetime import datetime
+from django.db.models import Max
 
 
 class TransactionBase(models.Model):
@@ -39,8 +40,14 @@ class TransactionBase(models.Model):
 
     def save(self, *args, **kwargs):
         now = datetime.now()
-        count = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).count() + 1
-        invoice_reference = u"{}{}{:04d}".format(now.strftime("%y%m"), self.__class__.transaction_type, count)
+        _max = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).aggregate(Max('invoice_reference'))
+        _max = _max['invoice_reference__max']
+        if _max:
+            _max = _max % 10000
+        else:
+            _max = 1
+
+        invoice_reference = u"{}{}{:04d}".format(now.strftime("%y%m"), self.__class__.transaction_type, _max)
         self.invoice_reference = int(invoice_reference)
         super(TransactionBase, self).save(*args, **kwargs)
 
