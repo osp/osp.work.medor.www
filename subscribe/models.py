@@ -55,7 +55,7 @@ class TransactionBase(models.Model):
     def structured_communication(self):
         ref = self.invoice_reference
         nbr = "{}{:02d}".format(ref, ref % 97)
-        return "+++{}/{}/{}+++".format(nbr[:3], nbr[3:6], nbr[6:])
+        return "+++{}/{}/{}+++".format(nbr[:3], nbr[3:7], nbr[7:])
 
 
 class Subscription(TransactionBase):
