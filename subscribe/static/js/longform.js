@@ -38,9 +38,8 @@ $(function() {
         //return false;
     //});
 
-    /*
     $.ajax({
-        url: 'http://www.kisskissbankbank.com/fr/projects/the-french-fromage/widget',
+        url: 'http://www.kisskissbankbank.com/fr/projects/medor-le-trimestriel-cooperatif-belge-d-enquetes-et-de-recits/widget',
         type: 'GET',
         success: function(res) {
             var html = $(res.responseText);
@@ -52,19 +51,21 @@ $(function() {
                 bankers: html.find('.bankers').text()
             }
 
-            var $elt = $('<dl>');
+            $('#kkbb').text(parseInt(data['collected']));
 
-            for (var prop in obj) {
-                $el.append($('<dt>').text(prop));
-                $el.append($('<dd>').text(obj[prop]));
-            }
+            //var $elt = $('<dl>');
 
-            console.log($elt);
+            //for (var prop in data) {
+                //$elt.append($('<dt>').text(prop));
+                //$elt.append($('<dd>').text(data[prop]));
+            //}
 
-            $('header').append($elt);
+            //console.log($elt);
+
+            //$('header').append($elt);
         }
     });
-    */
+
     $('.jcarousel').jcarousel({
         //wrap: 'circular'
     });
