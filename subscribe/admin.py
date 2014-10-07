@@ -3,12 +3,12 @@ from subscribe.models import Subscription, Cooperation
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'invoice_reference', 'structured_communication')
+    list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication')
     list_filter = ('status',)
 
 
 class CooperationAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'invoice_reference', 'structured_communication')
+    list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication')
     list_filter = ('status',)
 
 
