@@ -106,7 +106,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['subscriber_count'] = Subscription.objects.count()
-        context['cooperative_money'] = Cooperation.objects.aggregate(Sum('share_number'))['share_number__count'] * 20
+        context['cooperative_money'] = Cooperation.objects.aggregate(total=Sum('share_number'))['total'] * 20
         return context
 
 
