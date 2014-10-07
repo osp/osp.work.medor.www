@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib.formtools.wizard.views import CookieWizardView
 from django.core.mail import send_mail
-from django.db.models import Count
+from django.db.models import Sum
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.views.generic.base import TemplateView
@@ -106,7 +106,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['subscriber_count'] = Subscription.objects.count()
-        context['cooperative_money'] = Cooperation.objects.aggregate(Count('share_number'))['share_number__count'] * 20
+        context['cooperative_money'] = Cooperation.objects.aggregate(Sum('share_number'))['share_number__count'] * 20
         return context
 
 
