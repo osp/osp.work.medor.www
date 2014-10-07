@@ -90,7 +90,8 @@ class Cooperation(TransactionBase):
         (17, u'17 (€ 340)'),
         (18, u'18 (€ 360)'),
         (19, u'19 (€ 380)'),
-        (20, u'20 (€ 400)')
+        (20, u'20 (€ 400)'),
+        (50, u'50 (€ 1000)')
     )
 
     share_number = models.PositiveSmallIntegerField('nombre de parts', choices=SHARE_CHOICES, default="1")
