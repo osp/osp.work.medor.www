@@ -38,6 +38,9 @@ class TransactionBase(models.Model):
     class Meta:
         abstract = True
 
+    def __unicode__(self):
+        return u"{} {} {}".format(self.get_title_display(), self.first_name, self.last_name)
+
     def save(self, *args, **kwargs):
         now = datetime.now()
         _max = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).aggregate(Max('invoice_reference'))
