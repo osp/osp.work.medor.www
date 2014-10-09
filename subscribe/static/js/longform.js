@@ -51,7 +51,7 @@ $(function() {
                 bankers: html.find('.bankers').text()
             }
 
-            $('#kkbb').text(parseInt(data['collected']));
+            $('#kkbb').text(data['collected'].replace(/ €/, "").replace(" ", "") );
 
             //var $elt = $('<dl>');
 
