@@ -43,17 +43,19 @@ class TransactionBase(models.Model):
         return u"{} {} {}".format(self.get_title_display(), self.first_name, self.last_name)
 
     def save(self, *args, **kwargs):
-        now = datetime.now()
-        _max = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).aggregate(Max('invoice_reference'))
-        _max = _max['invoice_reference__max']
-        if _max:
-            _max = _max + 1
-            _max = _max % 10000
-        else:
-            _max = 1
+        if not self.invoice_reference:
+            now = datetime.now()
+            _max = self.__class__.objects.filter(creation_date__year=now.year, creation_date__month=now.month).aggregate(Max('invoice_reference'))
+            _max = _max['invoice_reference__max']
+            if _max:
+                _max = _max + 1
+                _max = _max % 10000
+            else:
+                _max = 1
 
-        invoice_reference = u"{}{}{:04d}".format(now.strftime("%y%m"), self.__class__.transaction_type, _max)
-        self.invoice_reference = int(invoice_reference)
+            invoice_reference = u"{}{}{:04d}".format(now.strftime("%y%m"), self.__class__.transaction_type, _max)
+            self.invoice_reference = int(invoice_reference)
+
         super(TransactionBase, self).save(*args, **kwargs)
 
     def structured_communication(self):
