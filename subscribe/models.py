@@ -7,7 +7,8 @@ from django.db.models import Max
 class TransactionBase(models.Model):
     STATUS_CHOICES = (
         (0, u'en cours'),
-        (1, u'confirmé')
+        (1, u'confirmé'),
+        (2, u'annulé')
     )
 
     COUNTRY_CHOICES = (
