@@ -40,7 +40,7 @@ class TransactionBase(models.Model):
         abstract = True
 
     def __unicode__(self):
-        return u"{} {} {}".format(self.get_title_display(), self.first_name, self.last_name)
+        return u"{} {}, {}".format(self.last_name, self.first_name, self.get_title_display())
 
     def save(self, *args, **kwargs):
         if not self.invoice_reference:
@@ -57,6 +57,11 @@ class TransactionBase(models.Model):
             self.invoice_reference = int(invoice_reference)
 
         super(TransactionBase, self).save(*args, **kwargs)
+
+    def simple_communication(self):
+        ref = self.invoice_reference
+        nbr = "{}{:02d}".format(ref, ref % 97)
+        return "{} {} {}".format(nbr[:3], nbr[3:7], nbr[7:])
 
     def structured_communication(self):
         ref = self.invoice_reference
@@ -98,3 +103,6 @@ class Cooperation(TransactionBase):
     )
 
     share_number = models.PositiveSmallIntegerField('nombre de parts', choices=SHARE_CHOICES, default="1")
+
+    def amount(self):
+        return self.share_number * 20

@@ -1,11 +1,14 @@
-{{ data.title|yesno:"Monsieur,Madame" }} {{ data.first_name }} {{ data.last_name }},
+Vous venez de vous abonner à Médor. Excellente idée! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.
 
-Via notre site web, vous vous êtes {{ data.title|yesno:"abonné,abonnée" }}.
+Nous vous invitons à régler dès aujourd’hui 60 euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée :
 
-Nous vous prions de transférer aujourd'hui {{ amount }} euros sur le compte
-BE 96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée {{ communication }}.
+{{ obj.structured_communication }}
 
-Votre abonnement sera comptabilisé au moment du paiement.
+Si votre système bancaire ne permet pas de faire une communication structurée mais uniquement des chiffres, entrez {{ obj.simple_communication }}. Pour toute question ou difficulté relative à ce paiement, contactez-nous par retour de mail.
 
-Avec nos remerciements,
-L'équipe Médor
+Si 3799 personnes font comme vous, nous aurons réussi ensemble à créer Médor. D’ici-là, parlez-en autour de vous, offrez des abonnements, diffusez l’info !
+
+Merci pour votre soutien !
+
+L’équipe de Médor.
+http://www.medor.coop — http://www.facebook.com/medormag

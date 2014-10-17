@@ -49,22 +49,15 @@ class CooperationWizardView(CookieWizardView):
 
     def done(self, form_list, form_dict, **kwargs):
         form_list[0].save()
+        obj = form_list[0].instance
 
         subject = "Médor SCRL FS. Détails de votre paiement"
-        message = render_to_string('subscribe/cooperation-email.txt', {
-                'data': form_list[0].cleaned_data,
-                'amount': form_list[0].cleaned_data['share_number'] * 20,
-                'communication': form_list[0].instance.structured_communication(),
-            })
-        sender = "medor@medor.coop"
-        recipients = [form_list[0].cleaned_data['email']]
+        message = render_to_string('subscribe/cooperation-email.txt', {'obj': obj})
+        sender = "lesyeuxouverts@medor.coop"
+        recipients = [obj.email]
         send_mail(subject, message, sender, recipients)
 
-        return render(self.request, 'subscribe/cooperation-done.html', {
-            'communication': form_list[0].instance.structured_communication(),
-            'form_data': [form.cleaned_data for form in form_list],
-            'amount': form_list[0].cleaned_data['share_number'] * 20,
-        })
+        return render(self.request, 'subscribe/cooperation-done.html', {'obj': obj})
 
 
 class SubscriptionWizardView(CookieWizardView):
@@ -83,21 +76,15 @@ class SubscriptionWizardView(CookieWizardView):
 
     def done(self, form_list, form_dict, **kwargs):
         form_list[0].save()
+        obj = form_list[0].instance
 
         subject = "Médor SCRL FS. Détails de votre paiement"
-        message = render_to_string('subscribe/subscription-email.txt', {
-                'data': form_list[0].cleaned_data,
-                'amount': 60,
-                'communication': form_list[0].instance.structured_communication(),
-            })
-        sender = "medor@medor.coop"
-        recipients = [form_list[0].cleaned_data['email']]
+        message = render_to_string('subscribe/subscription-email.txt', {'obj': obj})
+        sender = "lesyeuxouverts@medor.coop"
+        recipients = [obj.email]
         send_mail(subject, message, sender, recipients)
 
-        return render(self.request, 'subscribe/subscription-done.html', {
-            'communication': form_list[0].instance.structured_communication(),
-            'form_data': [form.cleaned_data for form in form_list],
-        })
+        return render(self.request, 'subscribe/subscription-done.html', {'obj': obj})
 
 
 class HomePageView(TemplateView):
