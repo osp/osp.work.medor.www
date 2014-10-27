@@ -58,14 +58,28 @@ class TransactionBase(models.Model):
 
         super(TransactionBase, self).save(*args, **kwargs)
 
-    def simple_communication(self):
+    def old_simple_communication(self):
         ref = self.invoice_reference
         nbr = "{}{:02d}".format(ref, ref % 97)
         return "{} {} {}".format(nbr[:3], nbr[3:7], nbr[7:])
 
-    def structured_communication(self):
+    def simple_communication(self):
+        ref = self.invoice_reference
+        modulo = ref % 97
+        modulo = modulo if modulo != 0 else 97
+        nbr = "{}{:02d}".format(ref, modulo)
+        return "{} {} {}".format(nbr[:3], nbr[3:7], nbr[7:])
+
+    def old_structured_communication(self):
         ref = self.invoice_reference
         nbr = "{}{:02d}".format(ref, ref % 97)
+        return "+++{}/{}/{}+++".format(nbr[:3], nbr[3:7], nbr[7:])
+
+    def structured_communication(self):
+        ref = self.invoice_reference
+        modulo = ref % 97
+        modulo = modulo if modulo != 0 else 97
+        nbr = "{}{:02d}".format(ref, modulo)
         return "+++{}/{}/{}+++".format(nbr[:3], nbr[3:7], nbr[7:])
 
 
