@@ -14,18 +14,21 @@
 
 
     <div id="done">
-        <p>
-        Pour terminer l’abonnement,
-        nous vous prions de transférer aujourd’hui <strong>60&nbsp;euros</strong> sur le compte 
-        BE&nbsp;96&nbsp;5230&nbsp;8068&nbsp;7305 (BIC:&nbsp;TRIOBEBB). 
-        </p>
-        <p>
-        Pour faciliter le travail administratif,
-        prière d’utiliser seulement la communication structurée <strong>{{ communication }}</strong>.
-        </p>
-        <p>Merci !</p>
+        <p>Vous venez de vous abonner à Médor. Excellente idée&thinsp;! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.</p>
+
+        <p>Nous vous invitons à régler dès aujourd’hui <strong>60 euros</strong> par virement sur le compte Triodos <strong>BE96&nbsp;5230&nbsp;8068&nbsp;7305</strong> (BIC&thinsp;:&nbsp;TRIOBEBB) avec la communication structurée&thinsp;:</p>
+
+        <p><strong>{{ obj.structured_communication }}</strong></p>
+
+        <p>Si votre système bancaire ne permet pas de faire une communication structurée mais uniquement des chiffres, entrez <strong>{{ obj.simple_communication }}</strong>. Pour toute question ou difficulté relative à ce paiement, contactez-nous à l'adresse <a href="mailto:lesyeuxouverts@medor.coop">lesyeuxouverts@medor.coop</a>.</p>
+
+        <p>Si 3799 personnes font comme vous, nous aurons réussi ensemble à créer Médor. D’ici-là, parlez-en autour de vous, offrez des abonnements, diffusez l’info&thinsp;!</p>
+
+        <p>Merci pour votre soutien&thinsp;!</p>
+
+        <p>L’équipe de Médor<br />
+        <a href="https://medor.coop>">www.medor.coop</a> — <a
+           href="http://www.facebook.com/medormag">www.facebook.com/medormag</a></p>
+
     </div>
-
-
-
 {% endblock %}

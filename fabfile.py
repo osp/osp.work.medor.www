@@ -20,3 +20,11 @@ def deploy():
             run('python manage.py collectstatic --noinput')
 
     run('touch %s' % path_wsgi)
+
+
+def download():
+    """synchronizes the local db and media files from the remote ones"""
+    foo = '/srv/data_rocamadour/www/coop.medor/'
+    local('scp -P 2222 medor@medor.coop:%sdb/medor.db .' % foo)
+    local("rsync -e 'ssh -p 2222' -avz --progress --stats medor@medor.coop:%sdocs/media ." % foo)
+

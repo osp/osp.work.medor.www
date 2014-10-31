@@ -10,10 +10,9 @@ $(function() {
     remy($("main"));
 
     $("#menu").tocify({
-        "selectors": "h2",
+        "selectors": "h3",
         "hashGenerator": "pretty",
         "highlightOffset": 10,
-        "extendPage": false,
     });
     
     //if (Modernizr.details) {
@@ -22,10 +21,11 @@ $(function() {
         //console.log('support not ok');
         //// script to run if local storage is not supported
     //}
-    Modernizr.load({
-        test: Modernizr.details,
-        yep : '/static/components/details-tag/jquery.details.js',
-    });
+    //Modernizr.load({
+        //test: Modernizr.details,
+        //yep : 'geo.js',
+        //nope: 'geo-polyfill.js'
+    //});
 
     //$('a[href^="#"]').click(function(){
         //var the_id = $(this).attr("href");
@@ -38,8 +38,9 @@ $(function() {
         //return false;
     //});
 
+    /*
     $.ajax({
-        url: 'http://www.kisskissbankbank.com/fr/projects/medor-le-trimestriel-cooperatif-belge-d-enquetes-et-de-recits/widget',
+        url: 'http://www.kisskissbankbank.com/fr/projects/the-french-fromage/widget',
         type: 'GET',
         success: function(res) {
             var html = $(res.responseText);
@@ -51,21 +52,19 @@ $(function() {
                 bankers: html.find('.bankers').text()
             }
 
-            $('#kkbb').text(data['collected'].replace(/ €/, "").replace(" ", "") );
+            var $elt = $('<dl>');
 
-            //var $elt = $('<dl>');
+            for (var prop in obj) {
+                $el.append($('<dt>').text(prop));
+                $el.append($('<dd>').text(obj[prop]));
+            }
 
-            //for (var prop in data) {
-                //$elt.append($('<dt>').text(prop));
-                //$elt.append($('<dd>').text(data[prop]));
-            //}
+            console.log($elt);
 
-            //console.log($elt);
-
-            //$('header').append($elt);
+            $('header').append($elt);
         }
     });
-
+    */
     $('.jcarousel').jcarousel({
         //wrap: 'circular'
     });
@@ -84,16 +83,16 @@ $(function() {
     // SCROLL MAGIC !
     var controller = new ScrollMagic();
 
-    var contentIn = TweenMax.to("#cover-content", 0.000001, {left: "0px", autoAlpha: 1});
-    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-500px", autoAlpha: 0});
-    var detailIn = TweenMax.to("#cover-detail", 0.000001, {left: "0px", autoAlpha: 1});
-    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-500px", autoAlpha: 0});
-    var coopIn = TweenMax.to("#cover-coop", 0.000001, {left: "0px", autoAlpha: 1});
-    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-500px", autoAlpha: 0});
-    var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px", autoAlpha: 1});
-    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-500px", autoAlpha: 0});
+    var contentIn = TweenMax.to("#cover-content", 0.000001, {left: "0px"});
+    var contentOut = TweenMax.to("#cover-content", 0.000001, {left: "-500px"});
+    var detailIn = TweenMax.to("#cover-detail", 0.000001, {left: "0px"});
+    var detailOut = TweenMax.to("#cover-detail", 0.000001, {left: "-500px"});
+    var coopIn = TweenMax.to("#cover-coop", 0.000001, {left: "0px"});
+    var coopOut = TweenMax.to("#cover-coop", 0.000001, {left: "-500px"});
+    var budgetIn = TweenMax.to("#cover-budget", 0.000001, {left: "0px"});
+    var budgetOut = TweenMax.to("#cover-budget", 0.000001, {left: "-500px"});
 
-    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: -100})
+    new ScrollScene({triggerElement: "#magazine", duration: 1200, offset: 0})
         .setTween(detailIn)
         .addTo(controller)
 
@@ -101,7 +100,7 @@ $(function() {
         .setTween(detailOut)
         .addTo(controller)
 
-    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: -100})
+    new ScrollScene({triggerElement: "#collaborative-experience", duration: 1200, offset: 0})
         .setTween(coopIn)
         .addTo(controller)
 
@@ -109,7 +108,7 @@ $(function() {
         .setTween(coopOut)
         .addTo(controller)
 
-    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: -100})
+    new ScrollScene({triggerElement: "#accounting", duration: 1200, offset: 0})
         .setTween(budgetIn)
         .addTo(controller)
 

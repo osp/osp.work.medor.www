@@ -1,11 +1,15 @@
-{{ data.title|yesno:"Monsieur,Madame" }} {{ data.first_name }} {{ data.last_name }},
+Félicitations ! Vous venez de prendre {{ obj.share_number }} part{{ obj.share_number|pluralize }} dans la coopérative à finalité sociale (SCRL-FS) Médor. Vous êtes à deux doigts de devenir le copropriétaire d’un titre de presse belge, indépendant et digne.
 
-Via notre site web, vous vous êtes inscrit comme coopérateur.
+Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte Triodos BE65 5230 8066 7396 (BIC: TRIOBEBB) avec la communication structurée :
 
-Nous vous prions de transférer aujourd'hui {{ amount }} euros sur le compte
-BE 65 5230 8066 7396 (BIC: TRIOBEBB) avec la communication structurée {{ communication }}.
+{{ obj.structured_communication }}
 
-Votre statut de coopérateur prendra cours après bonne réception du paiement.
+Si votre système bancaire ne permet pas de faire une communication structurée, entrez simplement {{ obj.simple_communication }}. Pour toute question ou difficulté relative à ce paiement, contactez-nous par retour de mail.
 
-Avec nos remerciements,
-L'équipe Médor
+Garant de notre philosophie, vous serez régulièrement tenu informé de l’avancée de notre projet et serez convoqué à notre prochaine assemblée générale. Consultez notre plan financier, nos statuts et notre foire aux questions sur https://www.medor.coop.
+
+Parlez-en autour de vous et, si ce n’est déjà fait, offrez-vous un abonnement.
+
+Merci pour votre soutien !
+
+L’équipe de Médor — https://www.medor.coop

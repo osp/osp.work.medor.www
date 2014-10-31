@@ -1,11 +1,25 @@
 <!doctype html>
+{% load compress %}
 <html>
 <head>
     <meta charset="utf-8">
     <title>Médor</title>
 
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
-    <link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}less/styles.less">
+
+    {% if debug %}
+    <!-- This is the client-side way to compile less and an ok choice for local dev -->
+    <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/styles.less" />
+    {% else %}
+    {% compress css %}
+    <!-- This is the nifty django-compressor way to compile your less files in css -->
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/styles.less" charset="utf-8">
+    {% endcompress %}
+    {% endif %}
+
+    <link rel="icon"
+      type="image/png"
+      href="static/img/favicon-medor_16-16.png">
 
     <script src="static/js/modernizr.custom.08508.js" ></script>
 </head>
@@ -37,17 +51,16 @@
         <header >
             <img src="static/img/medor-anim.gif" class="anim"/>
 
+                <figure id="cover-content" class="cover">
+                    <img src="static/img/medor-objet-contenu.png" alt="contenu d'un numéro"/>
+                </figure>
+
             <div id="main-header" class="wrap">
             <h2 data-shortname="Médor"><img style="margin-left:80px;" alt="Médor" id="logo" src="static/img/medor.svg" /></h2>
 
                 <div id="main-intro">
-                <figure id="cover-content" class="cover">
-                    <img src="static/img/medor-objet-contenu.png" alt="contenu d'un numéro"/>
-                </figure>
                     <p class="chapeau">
-                        médor, ce n’est pas un chien. c’est&nbsp;un magazine.
-                        Médor, ce sera un <strong>trimestriel</strong>
-                        coopératif, un magazine belge d'enquêtes </br>et de récits.
+                        Médor n’est pas un chien. Ce sera un magazine <strong>trimestriel</strong> belge et coopératif d'enquêtes et de récits.
                     </p>
                     <p class="chapeauindent">
                         Au programme, 128&nbsp;pages en quadrichromie,
@@ -60,7 +73,7 @@
                         Médor, c’est un <strong>nouveau processus</strong> pour
                         construire l’information. C’est&nbsp;créer des
                         conditions de travail pour vous offrir un
-                        <strong><em>deepjournalism</em> de terrain indépendant,
+                        <strong><em>deep&nbsp;journalism</em> de terrain indépendant,
                         exigeant et amusant</strong>. Carrément.
                     </p>
                     <p class="chapeauindent">
@@ -68,7 +81,7 @@
                     aujourd’hui, c’est une invitation à&nbsp;<strong>soutenir cette
                         manière de penser</strong> le journalisme. Médor est le projet de <a
                     href="#equipe">17&nbsp;initiateurs</a>.
-Et peut-être <a href="#subscribing">le vôtre</a>.
+Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                     </p>
                 </div>
             </div>
@@ -130,7 +143,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                         <div class="fund-top">
                             <a href="{% url 'cooperate-wizard' %}">
                                 <span class="arrow-money">
-                                    <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup></span></span>
+                                    <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
                                 </span>
                             </a>
 
@@ -152,7 +165,8 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                             </div>
 
                             <div class="fund-text">
-                                <p>Prenez une ou plusieurs parts de 20&nbsp;euros dans la coopérative à finalité sociale Médor et devenez copropriétaire d'un titre de presse. Participez aux assemblées générales et soyez garant(e) de la philosophie de Médor. Remplissez le <a href="{% url 'cooperate-wizard' %}">formulaire</a> puis acquittez-vous du montant engagé. Avant, consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="#accounting">plan financier</a> et notre&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.
+                                <p>Prenez une ou plusieurs parts de 20&nbsp;euros dans la coopérative à finalité sociale Médor et devenez copropriétaire d'un titre de presse. Participez aux assemblées générales et soyez garant(e) de la philosophie de Médor. Remplissez le <a href="{% url 'cooperate-wizard' %}">formulaire</a> puis acquittez-vous du montant engagé. Avant, consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="/media/plan-financier.pdf">plan financier</a> et notre&nbsp;<a href="{% url 'faq-page' %}" target="_blank">FAQ</a>.
+
                                 </p>
                             </div>
 
@@ -173,7 +187,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                     <div id="donating" class="fund">
                         <div class="fund-top">
-                            <a href="http://www.halles.be/fr/europerefresh/62/M%C3%A9dor-magazine-belge-denqu%C3%AAtes-et-de-r%C3%A9cits">
+                            <a href="http://www.kisskissbankbank.com/medor-le-trimestriel-cooperatif-belge-enquetes-et-recits">
                                 <span class="arrow-money">
                                     <span class="inner">je fais<br />un don de<br />
                                         <span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>
@@ -185,7 +199,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                                 <div class="goal-middle">
                                     <div>
                                         actuellement<br />
-                                        <span class="number">0<sup>€</sup></span>
+                                        <span class="number"><span id="kkbb">0</span><sup>€</sup></span>
                                     </div>
 
                                     <div class="goal-arrow"></div>
@@ -206,7 +220,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                                 <ul>
                                 <li>Parce que vous pouvez choisir  le montant que vous donnez. (Pour plus de 2000 euros, contactez-nous.  Vite.) </li>
                                 <li>Parce que vous recevez une contrepartie  <select><option>gaie</option><option>stylée</option><option>délicieuse</option><option>fort  à propos</option><option>bien dans le  ton</option></select>. </li>
-                                <li>Et aussi parce qu'il faut bien démarrer quelque part. <a href="todo.html">Là par  exemple</a>.</li>
+                                <li>Et aussi parce qu'il faut bien démarrer quelque part. <a href="https://www.kisskissbankbank.com/medor-le-trimestriel-cooperatif-belge-enquetes-et-recits">Là par  exemple</a>.</li>
                                 </p>
                             </details>
 
@@ -243,7 +257,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                         <div id="bien-profond">
                             <h3>Spéléologue</h3>
-                            <p>Médor explore, enquête et insiste.  22 jours pour une enquête, deux parrains pour accompagner l’auteur, un  collaborateur visuel directement adjoint au projet, une plate-forme  d’échanges pour suivre le projet. Nous créons des conditions de travail  qui permettent d'aller au fond des choses. On préfère le <em>deep  journalism</em> au <em>slow journalism</em>. Ce qui  compte, c’est d’aller plus loin.
+                            <p>Médor explore, enquête et insiste.  22 jours pour une enquête, deux parrains pour accompagner l’auteur, un collaborateur visuel directement adjoint au projet, une plate-forme  d’échanges pour suivre le projet. Nous créons des conditions de travail  qui permettent d'aller au fond des choses. On préfère le <em>deep  journalism</em> au <em>slow journalism</em>. Ce qui  compte, c’est d’aller plus loin.
                             </p>
                         </div>
 
@@ -273,7 +287,7 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                         <div id="digne" >
                             <h3>Digne</h3>
-                            <p><a href="#equipe">Les  personnes</a> qui ont pensé Médor sont des producteurs de sens  (journalistes, graphistes, etc.). Ils aiment leur boulot mais ont un peu  mal à leur clavier, parce que le métier s'abîme, parce que l'urgence  ronge le sens. Aujourd'hui, un pigiste belge gagne en moyenne moins  qu'un laveur de vitres (voir <a href="http://www.pigistepaspigeon.be/" target="_blank">l'étude de  l'AJP</a>). Nous voulons un média digne sur toute la ligne.  Augmentons les journalistes et les laveurs de vitre. Ils aident à  y&nbsp;voir&nbsp;clair.
+                            <p><a href="#equipe">Les  personnes</a> qui ont pensé Médor sont des producteurs de sens  (journalistes, graphistes, etc.). Ils aiment leur boulot mais ont un peu  mal à leur clavier, parce que le métier s'abîme, parce que l'urgence  ronge le sens. Aujourd'hui, un pigiste belge gagne en moyenne moins qu'un laveur de vitres (voir <a href="http://www.pigistepaspigeon.be/" target="_blank">l'étude de  l'AJP</a>). Nous voulons un média digne sur toute la ligne.  Augmentons les journalistes et les laveurs de vitres. Ils aident à  y&nbsp;voir&nbsp;clair.
                             </p>
                         </div>
                     </div>
@@ -317,25 +331,25 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
                     <p>Médor construit une plateforme de  publication permettant aux journalistes de montrer les avancées  rédactionnelles, d'appeler à l'aide pour la recherche d'un contact,  d'une info, pour une relecture provisoire, une question déontologique.  Cette plateforme est développée sous licence libre et proposée à tous les médias qui, comme Médor, basculent leurs pratiques et écosystèmes. Partage, on vous dit.
                     </p>
 
-                    <h3 id="post-gutemberg">Un graphisme post Gutemberg</h3>
-                    <p>Tous les logiciels utilisés pour le  graphisme de Médor sont libres, la typographie l'est autant et puise  une partie de ses sources dans la culture graphique belge. Médor se plonge avec enthousiasme dans le bouillon typographique et graphique en cours. Mais aussi, par cette décision singulière, Médor donnera des outils concrets aux graphistes et journalistes pour avancer  ensemble dans la production de contenu et proposer une information où  texte et visuel peuvent se compléter de façon inédite. Cette émulation  entre visuel et texte, notamment sur la plateforme de publication  partagée, tracte Médor vers des pratiques d'édition et de mise en page  résolument neuves.
+                    <h3 id="post-gutemberg">Un graphisme post-Gutemberg</h3>
+                    <p>Tous les logiciels utilisés pour le  graphisme de Médor sont libres, la typographie l'est tout autant et puise une partie de ses sources dans la culture graphique belge. Médor se plonge avec enthousiasme dans le bouillon typographique et graphique en cours. Mais aussi, par cette décision singulière, Médor donnera des outils concrets aux graphistes et journalistes pour avancer  ensemble dans la production de contenu et proposer une information où  texte et visuel peuvent se compléter de façon inédite. Cette émulation  entre visuel et texte, notamment sur la plateforme de publication  partagée, tracte Médor vers des pratiques d'édition et de mise en page  résolument neuves.
                     </p>
                     <details>
-                        <summary>Voir le colophon de cette première page</summary>
-                        <p>Cette page web a été générée à partir  de l'une des pages de l'outil wiki  du projet (MediaWiki), écrite à plusieurs mains, les éléments qui l'habitent sont dessinés sur 
-                        <a target="_blank" href="http://www.inkscape.org/fr/">Inkscape</a>, 
-                        <a target="_blank" href="http://www.gimp.org/">Gimp</a>, 
-                        <a target="_blank" href="http://www.imagemagick.org/">ImageMagick</a>.
-                        La navigation et la mise en page est structurée et rendue active via HTML5, Less/CSS,
-                        Jquery, 
-                        <a target="_blank" href="https://github.com/ether/etherpad-lite">Etherpad Lite</a>, 
-                        <a href="http://curl.haxx.se/">Curl</a>, Git, GNU/Linux. Le texte est typographié avec les fontes
-                        <a target="_blank" href="http://ospublish.constantvzw.org/foundry/alfphabet/">Alfphabet</a>, 
+
+                        <summary>Colophon de cette première page</summary>
+                        <p>Cette page web a été générée à partir  d'une page de l'outil MediaWiki  du projet, écrite à plusieurs mains, les éléments qui l'habitent sont dessinés sur
+                        Inkscape,
+                        Gimp,
+                        ImageMagick.
+                        La navigation et la mise en page sont structurées et rendue active via HTML5, Less/CSS,
+                        Jquery,
+                        Etherpad Lite,
+                        Curl, Git, GNU/Linux. Le texte est typographié avec les fontes
+                        <a target="_blank" href="http://ospublish.constantvzw.org/foundry/alfphabet/">Alfphabet</a>,
                         <a href="https://github.com/Antoine-Gelgon/CareerFont">Career</a>,
                         <a target="_blank" href="http://levien.com/type/myfonts/ofl.html">Century Catalogue</a>,
                         <a target="_blank" href="http://git.ghostscript.com/?p=ghostpdl.git;a=tree;f=urwfonts;hb=HEAD">URWGroteskT-Bold.</a></p>
-                        Les trois chemins de financement de Médor sont  illustrés par <a target="_blank" href="http://vimeo.com/fongnicolas">Nicolas  Fong</a>, les animations de même, et les équipes plurielles du  projet dessinées par Louis Theillier. Louis qui est aussi l'auteur des  photos, sauf celle en noir et blanc, qui est de Colin Delfosse. Le graphisme et le  développement de cette page sont conçus par Ludi Loiseau, Sarah Magnan, Stéphanie Vilayphiou, Alexandre Leray et Pierre Huyghebaert d'
-                        <a target="_blank" href="http://osp.constantvzw.org/"> OSP </a>. Le texte est largement collégial, avec un effort particulier de synthèse par Olivier Bailly, Chloé Andries et Quentin Noirfalisse.
+                        Les trois chemins de financement de Médor sont illustrés par <a target="_blank" href="http://vimeo.com/fongnicolas">Nicolas  Fong</a>, les animations de même, et les équipes plurielles du  projet dessinées par <a href="http://louistheillier.blogspot.be/" target="_blank">Louis Theillier</a>. Louis qui est aussi l'auteur des  photos, sauf celle en noir et blanc, qui est de <a href="http://colindelfosse.blogspot.be/" target="_blank">Colin Delfosse</a>. Le graphisme et le  développement de cette page sont conçus par Ludi Loiseau, Sarah Magnan, Stéphanie Vilayphiou, Colm O’Neill, Alexandre Leray et Pierre Huyghebaert d’<a target="_blank" href="http://osp.constantvzw.org/">OSP</a>. Le texte est largement collégial, avec un effort particulier de synthèse par Olivier Bailly, Chloé Andries et Quentin Noirfalisse.
                     </details>
                 </div>
             </div>
@@ -347,12 +361,12 @@ Et peut-être <a href="#subscribing">le vôtre</a>.
 
                 <div class="wrap">
                     <div id="3800_abonn.C3.A9s">
-                        <h3>3&#8239;800 abonnés</h3>
-                        <p>226&#8239; 452 euros, c'est notre  coût vérité à l'année. Celui qui nous permet un équilibre (nous ne  cherchons pas de bénéfice). Celui qui valorise le travail des  producteurs de sens à sa juste valeur. Celui qui refuse de sacrifier à  l'urgence et aux payements au lance-pierre. Ces 226&#8239; 452 euros  couvrent les frais pour quatre numéros par an. Pour y parvenir, nous  avons choisi de convaincre 3 800 abonnés et de publier <a
+                        <h3>3<span style="font-size: 0.7em"> </span>800 abonnés</h3>
+                        <p>226 452 euros, c'est notre  coût vérité à l'année. Celui qui nous permet un équilibre (nous ne  cherchons pas de bénéfice). Celui qui valorise le travail des  producteurs de sens à sa juste valeur. Celui qui refuse de sacrifier à  l'urgence et aux payements au lance-pierre. Ces 226 452 euros  couvrent les frais pour quatre numéros par an. Pour y parvenir, nous  avons choisi de convaincre 3 800 abonnés et de publier <a
 href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                         <details>
-                            <summary>Voir le détail</summary>
+                            <summary>Plus de détails</summary>
 
                             <table id="abonnes">
                                 <colgroup>
@@ -393,11 +407,11 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                     <div class="cols2">
                         <div id="Le_co.C3.BBt_d.27une_enqu.C3.AAte">
                             <h3>Le coût d'une enquête</h3>
-                            <p>Chaque numéro mettra en avant deux grandes enquêtes de 18 pages chacune. 18 pages, c'est 36&#8239;000  signes selon le format de Médor. Nous avons décidé de payer ces enquêtes 3&#8239;000 euros.</p>
+                            <p>Chaque numéro mettra en avant deux grandes enquêtes de 18&nbsp;pages chacune. 18&nbsp;pages, c'est 36&#8239;000  signes selon le format de Médor. Nous avons décidé de payer ces enquêtes 3&#8239;000 euros brut.</p>
                             <details>
-                                <summary>voir le détail</summary>
+                                <summary>Plus de détails</summary>
                                 <ul>
-                                    <li>3&#8239;000 € = 1 mois  de salaire, soit 22 jours de travail, 17 jours de recherche et 5 jours  d'écriture.</li>
+                                    <li>3&#8239;000 € = 1 mois  de salaire, soit 22&nbsp;jours de travail, 17 jours de recherche et 5 jours  d'écriture.</li>
                                     <li>Payement au signe&#8239;: 0,083 €/signe.</li>
                                     <li>En Belgique, les tarifs au  signe sont gelés depuis plusieurs années, fragilisant le revenu et, par  conséquent, le travail des journalistes. L'association des journalistes  professionnels <a href="todo.html">conseille un  payement</a> de 0,035 € par signe pour les articles de fond dans  les publications tirant à moins de 50&#8239;000  exemplaires.</li>
                                 </ul>
@@ -406,10 +420,10 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                         <div id="Les_frais_de_lancement">
                             <h3>Les frais de lancement</h3>
-                            <p>Médor a besoin d'un squelette,  arc-bouté sur ses éléments récurrents. En langage comptable, on appelle  cela un plan de financement (hors TVA) pour démarrage. Le nôtre est  modeste, mais essentiel. Notre assise de base se créera avec  24&#8239;206&nbsp;euros. Pour les avoir, outre le <a  target="_blank"  href="http://www.halles.be/fr/europerefresh/62/M%C3%A9dor-magazine-belge-denqu%C3%AAtes-et-de-r%C3%A9cits">crowdfunding</a>,  nous cherchons des coopérateurs prêts à rejoindre <a  href="#equipe">les 17&nbsp;fondateurs</a> et à devenir les «&#8239;patron de presse&#8239;» du futur</p>
+                            <p>Médor a besoin d'un squelette,  arc-bouté sur ses éléments récurrents. En langage comptable, on appelle  cela un plan de financement (hors TVA) pour démarrage. Le nôtre est  modeste, mais essentiel. Notre assise de base se créera avec  24&#8239;206&nbsp;euros. Pour les avoir, outre le <a  target="_blank"  href="http://www.halles.be/fr/europerefresh/62/M%C3%A9dor-magazine-belge-denqu%C3%AAtes-et-de-r%C3%A9cits">crowdfunding</a>,  nous cherchons des coopérateurs prêts à rejoindre <a  href="#equipe">les 17&nbsp;fondateurs</a> et à devenir les «&#8239;patrons de presse&#8239;» du futur</p>
 
                             <details>
-                                <summary>voir le détail</summary>
+                                <summary>Plus de détails</summary>
 
                                 <table id="frais">
                                     <tr>
@@ -600,7 +614,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                         <p class="name"><a  href="/index.php?title=Ludi" title="Ludi">Ludivine  Loiseau</a></p>
                                     </figcaption>
                                 </figure>
-                                <p class="bio">Fondue à  l’encre de l’<a href="http://www.ecole-estienne.paris/">école  Estienne</a> (Paris), Ludi a tout réappris à Bruxelles, par une  immersion au centre de spécialités graphiques <a  href="http://www.speculoos.com/">Speculoos</a> dès 2006 et par  une rencontre avec le collectif <a  href="http://osp.constantvzw.org/">OSP</a>, à bord d’un van en  2008. Ludi interroge le rôle de la typographie contemporaine et tente un  écho de sa pratique à l’<a  href="http://www.erg.be/">ERG</a> où elle est conférencière en  typographie et culture numérique.</p>
+                                <p class="bio">Fondue à  l’encre de l’<a href="http://www.ecole-estienne.paris/">école  Estienne</a>, Ludi a tout réappris à Bruxelles, par une  immersion au centre de spécialités graphiques <a  href="http://www.speculoos.com/">Speculoos</a> dès 2006 et par  une rencontre avec le collectif <a  href="http://osp.constantvzw.org/">OSP</a>, à bord d’un van en  2008. Ludi interroge le rôle de la typographie contemporaine et tente un  écho de sa pratique à l’<a  href="http://www.erg.be/">ERG</a> où elle est conférencière en  typographie et culture numérique.</p>
                             </div>
 
                             <div class="jcarousel-item">
@@ -620,7 +634,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                         <p class="name"><a  href="/index.php?title=Quentin" title="Quentin">Quentin  Noirfalisse</a></p>
                                     </figcaption>
                                 </figure>
-                                <p class="bio">Né sur les  flancs de l'ancienne cité lainière de Verviers, Quentin est accroc aux  courbes historiques, sociales et économiques du Congo, à sa rumba et aux  tours et détours d'Internet. Gratte-clavier indépendant pour la presse  belge, documentariste et scribe chez <a  href="http://www.dancingdog.be/">Dancing Dog Productions</a>,  il se penche actuellement sur le Ministre des poubelles de Kinshasa et  prépare un webdocumentaire sur les visages et les données de  Bruxelles.</p>
+                                <p class="bio">Né sur les  flancs de l'ancienne cité lainière de Verviers, Quentin est accro aux  courbes historiques, sociales et économiques du Congo, à sa rumba et aux  tours et détours d'Internet. Gratte-clavier indépendant pour la presse  belge, documentariste et scribe chez <a  href="http://www.dancingdog.be/">Dancing Dog Productions</a>,  il se penche actuellement sur le Ministre des poubelles de Kinshasa et  prépare un webdocumentaire sur les visages et les données de  Bruxelles.</p>
                             </div>
 
                             <div class="jcarousel-item">
@@ -667,10 +681,11 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 <h2 class="tranche" data-shortname="maintenant?"><span>Et maintenant?</span></h2>
 
                 <div class="wrap">
-                
+
                 <h3>Abonnez-vous à notre liste d'information&#8239;</h3>
-                            <form target="_blank" id="newsletter" method="post" action="http://list.medor.coop/process.php" name="signup" style="padding: 0 60px;">
+                            <form target="_blank" id="newsletter" method="post" action="https://medor.coop/liste/process.php" name="signup" style="padding: 0 60px;">
                                 <input type="text" name="Email" id="email" maxlength="120" VALUE="Votre adresse e-mail" />
+                                <input type="hidden" name="d[10]" value="on" />
                                 <!--*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.-->
                                 <input type="hidden" name="pommo_signup" value="true" />
                                 <input class="button" type="submit" value="Je m'abonne" />
@@ -679,12 +694,12 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                     <h3>Approfondissements et échanges</h3>
 
-                    <p>La coopérative à finalité sociale Médor a  été créée à Namur le 30 juin 2014. Téléchargez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts  (en pdf)</a>.</p>
+                    <p>La coopérative à finalité sociale Médor a  été créée à Namur le 30 juin 2014. Téléchargez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts (en pdf)</a> et consultez notre <a href="https://medor.coop/media/plan-financier.pdf">plan financier</a>.</p>
 
                     <p>Vous l'avez compris, l'élaboration de Médor  est en cours. Nous sommes très impatients d'échanger avec vous à propos  de notre projet.</p>
 
                     <ul>
-                        <li>Lisez notre <a  href="http://tunakutafuta.be/index.php?title=Foire_aux_questions"  target="_blank">foire aux questions</a>.</li>
+                        <li>Lisez notre <a  href="{% url 'faq-page' %}"  target="_blank">foire aux questions</a>.</li>
                         <li>Contactez-nous par <a  href="javascript:location='mailto:\u006d\u0065\u0064\u006f\u0072\u0040\u006d\u0065\u0064\u006f\u0072\u002e\u0063\u006f\u006f\u0070';void  0">courriel</a>.
                             <!--<div class="vcard indent">-->
                                 <!--<div class="org">Médor « coopérative à finalité sociale »</div>-->
@@ -699,11 +714,14 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                 <!--</div>-->
                             <!--</div>-->
                         </li>
-                        
+
                         <li>
-                            Suivez-nous sur <a  href="https://www.facebook.com/medormag">Facebook</a> (à  consommer avec sagesse), sur <a  href="https://twitter.com/Medor_mag">Twitter</a> et sur la  route des étoiles.
+                            Suivez-nous sur <a  href="https://www.facebook.com/medormag">Facebook</a> (à  consommer avec sagesse) et sur <a  href="https://twitter.com/Medor_mag">Twitter</a>.
                         </li>
                     </ul>
+
+
+
                 </div>
             </div>
 
@@ -711,7 +729,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 <div id="panel-descriptions">
                     <div id="subscribing" class="fund">
                         <div class="fund-top">
-                            <a href="todo.html">
+                            <a href="{% url 'subscribe-wizard' %}">
                                 <span class="arrow-money">
                                     <span class="inner">je  m'abonne,<br />j'avance<br /><span  class="price">60<sup>€</sup></span></span>
                                 </span>
@@ -721,9 +739,9 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                     <div id="cooperating" class="fund">
                         <div class="fund-top">
-                            <a href="todo.html">
+                            <a href="{% url 'cooperate-wizard' %}">
                                 <span class="arrow-money">
-                                    <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup></span></span>
+                                    <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
                                 </span>
                             </a>
                         </div>
@@ -731,15 +749,19 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                     <div id="donating" class="fund">
                         <div class="fund-top">
-                            <a href="todo.html">
+                            <a href="http://www.kisskissbankbank.com/medor-le-trimestriel-cooperatif-belge-enquetes-et-recits">
                                 <span class="arrow-money">
-                                    <span class="inner">je  fais<br />un don de<br /><span  class="price">5<sup>€</sup></span></span>
+                                    <span class="inner">je fais<br />un don de<br />
+                                        <span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>
+                                    </span>
                                 </span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+
+
 
             <!--<img src="static/img/palette.png" alt="palette"/>-->
 
@@ -755,12 +777,30 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
     <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="{{ STATIC_URL }}components/details-tag/jquery.details.js" ></script>
+    <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.tocify.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
-    <script src="{{ STATIC_URL }}js/longform.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.xdomainajax.js"></script>
+    <script src="{{ STATIC_URL }}js/longform.js?kkbb2"></script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//medor.coop/stats/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+    <noscript><p><img src="//medor.coop/stats/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
 </body>
 </html>
 
