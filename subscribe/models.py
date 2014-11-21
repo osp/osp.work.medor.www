@@ -87,6 +87,10 @@ class Subscription(TransactionBase):
     """ Describes a cooperation"""
     transaction_type = '01'
 
+    class Meta:
+        verbose_name = "abonnement"
+        verbose_name_plural = "abonnements"
+
 
 class Cooperation(TransactionBase):
     """ Describes a cooperation"""
@@ -117,6 +121,10 @@ class Cooperation(TransactionBase):
     )
 
     share_number = models.PositiveSmallIntegerField('nombre de parts', choices=SHARE_CHOICES, default="1")
+
+    class Meta:
+        verbose_name = "part coopérative"
+        verbose_name_plural = "parts coopérative"
 
     def amount(self):
         return self.share_number * 20
