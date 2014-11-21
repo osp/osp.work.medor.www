@@ -36,16 +36,16 @@ cooperation_reminder_first.short_description = "Envoyer un premier rappel coopé
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication', 'old_structured_communication')
-    list_filter = ('status',)
+    list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
+    list_filter = ('status', 'country')
     list_editable = ('status',)
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
     actions = [subscription_reminder_first]
 
 
 class CooperationAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'email', 'share_number', 'invoice_reference', 'structured_communication', 'old_structured_communication')
-    list_filter = ('status',)
+    list_display = ('__unicode__', 'status', 'email', 'share_number', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
+    list_filter = ('status', 'country')
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
