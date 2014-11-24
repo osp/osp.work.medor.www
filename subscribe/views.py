@@ -9,6 +9,11 @@ from django.views.generic.base import TemplateView
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
 from subscribe.models import Subscription, Cooperation
 
+import unicodecsv
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
+
 
 COOPERATION_FORMS = [
     CooperationForm,
@@ -99,3 +104,18 @@ class HomePageView(TemplateView):
 
 class FAQPageView(TemplateView):
     template_name = "subscribe/FAQ.html"
+
+
+@login_required
+def subscribers_as_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="subscribers.csv"'
+
+    writer = unicodecsv.writer(response, encoding='utf-8')
+    #writer.writerow(['First row', 'Foo', 'Bar', 'Baz'])
+
+    for s in Subscription.objects.all():
+        writer.writerow([s.title, s.first_name, s.last_name, s.email, s.street, s.number, s.letterbox, s.city, s.zip_code, s.country, s.creation_date, s.status, s.invoice_reference])
+
+    return response
