@@ -13,8 +13,8 @@ class TransactionBase(models.Model):
 
     COUNTRY_CHOICES = (
         ('BE', u'Belgique'),
-        ('FR', u'France'),
-        ('LU', u'Luxembourg')
+        #('FR', u'France'),
+        #('LU', u'Luxembourg')
     )
 
     TITLE_CHOICES = (
