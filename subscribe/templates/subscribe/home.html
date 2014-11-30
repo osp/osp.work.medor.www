@@ -19,44 +19,38 @@
 
     <link rel="icon"
       type="image/png"
-      href="static/img/favicon-medor_16-16.png">
+      href="{{ STATIC_URL }}img/favicon-medor_16-16.png">
 
-    <script src="static/js/modernizr.custom.08508.js" ></script>
+    <script src="{{ STATIC_URL }}js/modernizr.custom.08508.js" ></script>
 </head>
 
 <body>
-
-
-
     <div id="foo">
-
-
         <div id="bar">
-
             <figure id="cover-detail" class="cover">
-                <img src="static/img/medor-objet-mag.png" alt="premier numéro" />
+                <img src="{{ STATIC_URL }}img/medor-objet-mag.png" alt="premier numéro" />
             </figure>
 
             <figure id="cover-coop" class="cover">
-                <img src="static/img/medor-objet-coop.png" alt="organisation de Médor" />
+                <img src="{{ STATIC_URL }}img/medor-objet-coop.png" alt="organisation de Médor" />
             </figure>
 
             <figure id="cover-budget" class="cover">
-                <img src="static/img/medor-objet-budget.png" alt="répartition du budget"/>
+                <img src="{{ STATIC_URL }}img/medor-objet-budget.png" alt="répartition du budget"/>
             </figure>
         </div>
     </div>
 
     <div id="outer-wrapper">
         <header >
-            <img src="static/img/medor-anim.gif" class="anim"/>
+            <img src="{{ STATIC_URL }}img/medor-anim.gif" class="anim"/>
 
                 <figure id="cover-content" class="cover">
-                    <img src="static/img/medor-objet-contenu.png" alt="contenu d'un numéro"/>
+                    <img src="{{ STATIC_URL }}img/medor-objet-contenu.png" alt="contenu d'un numéro"/>
                 </figure>
 
             <div id="main-header" class="wrap">
-            <h2 data-shortname="Médor"><img style="margin-left:80px;" alt="Médor" id="logo" src="static/img/medor.svg" /></h2>
+            <h2 data-shortname="Médor"><img style="margin-left:80px;" alt="Médor" id="logo" src="{{ STATIC_URL }}img/medor.svg" /></h2>
 
                 <div id="main-intro">
                     <p class="chapeau">
@@ -134,7 +128,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
 
                             </details>
 
-                            <div class="illu"><img src="static/img/souscription-abonnement.png" alt="illustration abonnement" /></div>
+                            <div class="illu"><img src="{{ STATIC_URL }}img/souscription-abonnement.png" alt="illustration abonnement" /></div>
                         </div>
                     </div>
 
@@ -181,7 +175,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                                 </ul>
                             </details>
 
-                            <div class="illu"><img  src="static/img/souscription-don.png" alt="illustration copérative"  /></div>
+                            <div class="illu"><img  src="{{ STATIC_URL }}img/souscription-don.png" alt="illustration copérative"  /></div>
                         </div>
                     </div>
 
@@ -224,7 +218,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                                 </p>
                             </details>
 
-                            <div class="illu"><img  src="static/img/souscription-part.png" alt="illustration copérative"  /></div>
+                            <div class="illu"><img  src="{{ STATIC_URL }}img/souscription-part.png" alt="illustration copérative"  /></div>
                         </div>
                     </div>
                 </div>
@@ -325,7 +319,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                     <h3>Des équipes plurielles</h3>
                     <p>Chaque article est entamé, écrit, développé  et bouclé par un duo&#8239;: journaliste et auteur visuel, que ce  soit un photographe, un illustrateur et/ou un graphiste. Tout tableau de données, plan, cartographie, schéma, ou autre trace visuelle est mis en forme en même temps que le texte et vient le compléter ou en remplacer une partie.
                     </p>
-                    <figure class="louis-image"><img  src="static/img/medor-extrait.png" alt="Médor au travail"  /></figure>
+                    <figure class="louis-image"><img  src="{{ STATIC_URL }}img/medor-extrait.png" alt="Médor au travail"  /></figure>
 
                     <h3>Des outils partagés</h3>
                     <p>Médor construit une plateforme de  publication permettant aux journalistes de montrer les avancées  rédactionnelles, d'appeler à l'aide pour la recherche d'un contact,  d'une info, pour une relecture provisoire, une question déontologique.  Cette plateforme est développée sous licence libre et proposée à tous les médias qui, comme Médor, basculent leurs pratiques et écosystèmes. Partage, on vous dit.
@@ -458,7 +452,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
 
 <!-- <figure id="maquette">
-                        <img alt="maquette" src="static/img/longform-meta.png" />
+                        <img alt="maquette" src="{{ STATIC_URL }}img/longform-meta.png" />
                         <figcaption>Voir un détail de la maquette</figcaption>
                     </figure>
 -->
@@ -559,7 +553,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                         <div class="jcarousel-inner">
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Chloe.png" height="225"  src="static/img/portraits/Portrait-Chloé-color.png" />
+                                    <img width="160"  alt="Portrait-Chloe.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Chloé-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Chlo%C3%A9" title="Chloé">Chloé  Andries</a></p>
                                     </figcaption>
@@ -569,7 +563,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img class="portrait" width="160"  alt="Portrait-Olivier.png" height="225"  src="static/img/portraits/Portrait-Olivier-color.png" />
+                                    <img class="portrait" width="160"  alt="Portrait-Olivier.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Olivier-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Oli_B" title="Oli B">Olivier  Bailly</a></p>
                                     </figcaption>
@@ -579,7 +573,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Jean-Pierre.png" height="225"  src="static/img/portraits/Portrait-Jean-Pierre-color.png" />
+                                    <img width="160"  alt="Portrait-Jean-Pierre.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Jean-Pierre-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Jean-Pierre" title="Jean-Pierre">Jean-Pierre  Borloo</a></p>
                                     </figcaption>
@@ -589,7 +583,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-CelineD.png" height="225"  src="static/img/portraits/Portrait-CelineD-color.png" />
+                                    <img width="160"  alt="Portrait-CelineD.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-CelineD-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=C%C3%A9line_Decamp&amp;action=edit&amp;redlink=1"  class="new" title="Céline Decamp (page inexistante)">Céline Decamp</a></p>
                                     </figcaption>
@@ -599,7 +593,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Colin.png" height="225"  src="static/img/portraits/Portrait-Colin-color.png" />
+                                    <img width="160"  alt="Portrait-Colin.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Colin-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Colin_Delfosse&amp;action=edit&amp;redlink=1"  class="new" title="Colin Delfosse (page inexistante)">Colin  Delfosse</a></p>
                                     </figcaption>
@@ -609,7 +603,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-CelineG.png" height="225"  src="static/img/portraits/Portrait-CelineG-color.png" />
+                                    <img width="160"  alt="Portrait-CelineG.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-CelineG-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=C%C3%A9line" title="Céline">Céline  Gautier</a></p>
                                     </figcaption>
@@ -619,7 +613,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Geo.png" height="225"  src="static/img/portraits/Portrait-Geo-color.png" />
+                                    <img width="160"  alt="Portrait-Geo.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Geo-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Geoffroy_Gits&amp;action=edit&amp;redlink=1"  class="new" title="Geoffroy Gits (page inexistante)">Geoffroy  Gits</a></p>
                                     </figcaption>
@@ -629,7 +623,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Pierre.png" height="225"  src="static/img/portraits/Portrait-Pierre-color.png" />
+                                    <img width="160"  alt="Portrait-Pierre.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Pierre-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Pierre" title="Pierre">Pierre Huyghebaert</a></p>
                                     </figcaption>
@@ -639,7 +633,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Tiffany.png" height="225"  src="static/img/portraits/Portrait-Tiffany-color.png" />
+                                    <img width="160"  alt="Portrait-Tiffany.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Tiffany-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Tiffany_Lasserre&amp;action=edit&amp;redlink=1"  class="new" title="Tiffany Lasserre (page inexistante)">Tiffany  Lasserre</a></p>
                                     </figcaption>
@@ -649,7 +643,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-David.png" height="225"  src="static/img/portraits/Portrait-David-color.png" />
+                                    <img width="160"  alt="Portrait-David.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-David-color.png" />
                                     <figcaption>
                                         <p class="name">David Leloup</p>
                                     </figcaption>
@@ -659,7 +653,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Alex.png" height="225"  src="static/img/portraits/Portrait-Alex-color.png" />
+                                    <img width="160"  alt="Portrait-Alex.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Alex-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Alexandre" title="Alexandre">Alexandre  Leray</a></p>
                                     </figcaption>
@@ -669,7 +663,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Ludi.png" height="225"  src="static/img/portraits/Portrait-Ludi-color.png" />
+                                    <img width="160"  alt="Portrait-Ludi.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Ludi-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Ludi" title="Ludi">Ludivine  Loiseau</a></p>
                                     </figcaption>
@@ -679,7 +673,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Benjamin.png" height="225"  src="static/img/portraits/Portrait-Benjamin-color.png" />
+                                    <img width="160"  alt="Portrait-Benjamin.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Benjamin-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Benjamin" title="Benjamin">Benjamin  Moriame</a></p>
                                     </figcaption>
@@ -689,7 +683,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Quentin.png" height="225"  src="static/img/portraits/Portrait-Quentin-color.png" />
+                                    <img width="160"  alt="Portrait-Quentin.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Quentin-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Quentin" title="Quentin">Quentin  Noirfalisse</a></p>
                                     </figcaption>
@@ -699,7 +693,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Louis.png" height="225"  src="static/img/portraits/Portrait-Louis-color.png" />
+                                    <img width="160"  alt="Portrait-Louis.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Louis-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Louis_Theillier&amp;action=edit&amp;redlink=1"  class="new" title="Louis Theillier (page inexistante)">Louis  Theillier</a></p>
                                     </figcaption>
@@ -709,7 +703,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Anouchka.png" height="225"  src="static/img/portraits/Portrait-Anouchka-color.png" />
+                                    <img width="160"  alt="Portrait-Anouchka.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Anouchka-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Anouchka&amp;action=edit&amp;redlink=1"  class="new" title="Anouchka (page inexistante)">Anouchka  Vilain</a></p>
                                     </figcaption>
@@ -719,7 +713,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
 
                             <div class="jcarousel-item">
                                 <figure>
-                                    <img width="160"  alt="Portrait-Sandrine.png" height="225"  src="static/img/portraits/Portrait-Sandrine-color.png" />
+                                    <img width="160"  alt="Portrait-Sandrine.png" height="225"  src="{{ STATIC_URL }}img/portraits/Portrait-Sandrine-color.png" />
                                     <figcaption>
                                         <p class="name"><a  href="/index.php?title=Sandrine" title="Sandrine">Sandrine  Warsztacki</a></p>
                                     </figcaption>
@@ -821,17 +815,12 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 </div>
             </div>
 
-
-
-            <!--<img src="static/img/palette.png" alt="palette"/>-->
-
             <blockquote id="stiegler"  cite="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">
                 <p>«&#8239;<span  class="small">[…]</span>&nbsp;une révolution est simplement  ce qui se produit quand un cycle est révolu.&#8239;»</p>
                 <p class="footer">
                     — <a target="_blank" href="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">Bernard  Stiegler</a>
                 <g/p>
             </blockquote>
-
         </main>
     </div>
 

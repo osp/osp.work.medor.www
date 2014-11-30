@@ -1,4 +1,13 @@
-Django==1.7
+Django>=1.7
 pytz==2014.7
 django-compressor==1.4
 unicodecsv==0.9.4
+
+django-cms>=3.0
+djangocms-text-ckeditor==2.4.1
+
+# Optional, recommended packages
+Pillow>=2
+django-filer==0.9.8
+cmsplugin-filer==0.10.1
+django-reversion

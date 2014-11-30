@@ -10,12 +10,42 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+SITE_ID = 1
+
+# Application definition
+
+ROOT_URLCONF = 'medor.urls'
+
+WSGI_APPLICATION = 'medor.wsgi.application'
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
+
+LANGUAGE_CODE = 'fr'
+LANGUAGES = [('fr', 'Francais'),]
+DEFAULT_LANGUAGE = 0
+
+TIME_ZONE = 'Europe/Paris'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+
 
 
 # Application definition
 
 INSTALLED_APPS = (
+    'djangocms_admin_style',  # for the admin skin. You **must** add 'djangocms_admin_style' in the list **before** 'django.contrib.admin'.
+
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,42 +56,57 @@ INSTALLED_APPS = (
     'compressor',
 
     'subscribe',
+
+    'cms',  # django CMS itself
+    'mptt',
+    'menus',  # helper for model independent hierarchical website navigation
+    'sekizai',  # for javascript and css management
+    'reversion',
+    'filer',
+    'djangocms_text_ckeditor',  # note this needs to be above the 'cms' entry
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
-ROOT_URLCONF = 'medor.urls'
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'sekizai.context_processors.sekizai',
+    'cms.context_processors.cms_settings',
+)
 
-WSGI_APPLICATION = 'medor.wsgi.application'
+TEMPLATE_DIRS = (
+    # The docs say it should be absolute path: BASE_DIR is precisely one.
+    # Life is wonderful!
+    os.path.join(BASE_DIR, "medor", "templates"),
+)
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
-
-LANGUAGE_CODE = 'fr-be'
-LANGUAGES = [('fr', 'Francais'),]
-DEFAULT_LANGUAGE = 0
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
+STATIC_URL = '/static/'
+MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "medor/static"),
+    os.path.join(BASE_DIR, "medor", "static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -79,6 +124,16 @@ COMPRESS_PRECOMPILERS = (
 # This is so the {% if debug %} works,
 # cf http://stackoverflow.com/questions/11020663/
 INTERNAL_IPS = ('127.0.0.1',)
+
+CMS_TEMPLATES = (
+    ('template_1.html', 'Template One'),
+)
+
+MIGRATION_MODULES = {
+    'cms': 'cms.migrations_django',
+    'menus': 'menus.migrations_django',
+    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django'
+}
 
 
 try:
