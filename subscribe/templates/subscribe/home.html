@@ -1,5 +1,5 @@
 <!doctype html>
-{% load compress %}
+{% load compress cms_tags sekizai_tags subscribe_tags %}
 <html>
 <head>
     <meta charset="utf-8">
@@ -21,10 +21,12 @@
       type="image/png"
       href="{{ STATIC_URL }}img/favicon-medor_16-16.png">
 
+    {% render_block "css" %}
     <script src="{{ STATIC_URL }}js/modernizr.custom.08508.js" ></script>
 </head>
 
 <body>
+    {% cms_toolbar %}
     <div id="foo">
         <div id="bar">
             <figure id="cover-detail" class="cover">
@@ -101,6 +103,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
 
                                     <div>
                                         actuellement<br />
+                                        {% get_subscriber_count as subscriber_count %}
                                         <span class="number">{{ subscriber_count }}</span>
                                     </div>
 
@@ -145,7 +148,8 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                                 <div class="goal-middle">
                                     <div>
                                         actuellement<br />
-                                        <span class="number">{{ cooperative_money }}<sup>€</sup></span>
+                                        {% get_capital_amount as capital_amount %}
+                                        <span class="number">{{ capital_amount }}<sup>€</sup></span>
                                     </div>
 
                                     <div class="goal-arrow"></div>
@@ -850,6 +854,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
     </script>
     <noscript><p><img src="//medor.coop/stats/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
     <!-- End Piwik Code -->
+    {% render_block "js" %}
 </body>
 </html>
 

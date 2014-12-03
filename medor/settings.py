@@ -130,6 +130,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 CMS_TEMPLATES = (
     ('template_1.html', 'Template One'),
+    ('subscribe/home.html', 'Appel'),
 )
 
 MIGRATION_MODULES = {
