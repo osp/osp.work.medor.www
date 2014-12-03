@@ -105,6 +105,9 @@ TEMPLATE_DIRS = (
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
 
+STATIC_URL = '/static/'
+MEDIA_URL = "/media/"
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "medor", "static"),
 )
