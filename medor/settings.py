@@ -65,6 +65,13 @@ INSTALLED_APPS = (
     'filer',
     'easy_thumbnails',
     'djangocms_text_ckeditor',  # note this needs to be above the 'cms' entry
+
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_link',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_video',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -140,6 +147,11 @@ MIGRATION_MODULES = {
     'menus': 'menus.migrations_django',
     'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
     'filer': 'filer.migrations_django',
+    'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
+    'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
+    'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
+    'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
+    'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
 }
 
 THUMBNAIL_PROCESSORS = (
@@ -156,6 +168,8 @@ CKEDITOR_SETTINGS = {
     'skin': 'moono',
     'stylesSet': 'medor:/static/djangocms_text_ckeditor/ckeditor/styles.js'
 }
+
+TEXT_SAVE_IMAGE_FUNCTION='cmsplugin_filer_image.integrations.ckeditor.create_image_plugin'
 
 
 try:
