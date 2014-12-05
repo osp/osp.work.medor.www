@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'sekizai',  # for javascript and css management
     'reversion',
     'filer',
+    'easy_thumbnails',
     'djangocms_text_ckeditor',  # note this needs to be above the 'cms' entry
 )
 
@@ -131,12 +132,29 @@ INTERNAL_IPS = ('127.0.0.1',)
 CMS_TEMPLATES = (
     ('template_1.html', 'Template One'),
     ('subscribe/home.html', 'Appel'),
+    ('subscribe/FAQ.html', 'FAQ'),
 )
 
 MIGRATION_MODULES = {
     'cms': 'cms.migrations_django',
     'menus': 'menus.migrations_django',
-    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django'
+    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
+    'filer': 'filer.migrations_django',
+}
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+
+CKEDITOR_SETTINGS = {
+    'language': '{{ language }}',
+    'toolbar': 'CMS',
+    'skin': 'moono',
+    'stylesSet': 'medor:/static/djangocms_text_ckeditor/ckeditor/styles.js'
 }
 
 
