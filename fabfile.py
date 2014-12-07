@@ -8,17 +8,29 @@ env.port = 2222
 env.path = '/srv/data_rocamadour/www/coop.medor/app'
 
 
-def deploy():
+def deploy(branch='master'):
     """deploys to previously setup environment"""
     path_activate = '/srv/data_rocamadour/www/coop.medor/venv/bin/activate'
     path_wsgi = '/srv/data_rocamadour/www/coop.medor/app/medor/wsgi.py'
 
     with cd(env.path):
-        run('git pull origin master')
+        run('git pull origin %s' % branch)
 
         with prefix('source %s' % path_activate):
             run('pip install -r requirements.txt')
             run('python manage.py collectstatic --noinput')
+
+    run('touch %s' % path_wsgi)
+
+
+def migrate():
+    """deploys to previously setup environment"""
+    path_activate = '/srv/data_rocamadour/www/coop.medor/venv/bin/activate'
+    path_wsgi = '/srv/data_rocamadour/www/coop.medor/app/medor/wsgi.py'
+
+    with cd(env.path):
+        with prefix('source %s' % path_activate):
+            run('python manage.py migrate')
 
     run('touch %s' % path_wsgi)
 
