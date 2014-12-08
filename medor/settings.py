@@ -137,7 +137,7 @@ COMPRESS_PRECOMPILERS = (
 INTERNAL_IPS = ('127.0.0.1',)
 
 CMS_TEMPLATES = (
-    ('template_1.html', 'Template One'),
+    ('generic.html', 'Generic'),
     ('subscribe/home.html', 'Appel'),
     ('subscribe/FAQ.html', 'FAQ'),
 )
