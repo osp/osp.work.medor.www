@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib.formtools.wizard.views import CookieWizardView
 from django.core.mail import send_mail
-from django.db.models import Sum
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.views.generic.base import TemplateView
 
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
-from subscribe.models import Subscription, Cooperation
+from subscribe.models import Subscription
 
 import unicodecsv
 from django.http import HttpResponse
@@ -90,20 +88,6 @@ class SubscriptionWizardView(CookieWizardView):
         send_mail(subject, message, sender, recipients)
 
         return render(self.request, 'subscribe/subscription-done.html', {'obj': obj})
-
-
-class HomePageView(TemplateView):
-    template_name = "subscribe/home.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(HomePageView, self).get_context_data(**kwargs)
-        context['subscriber_count'] = Subscription.objects.count()
-        context['cooperative_money'] = Cooperation.objects.exclude(status=2).aggregate(total=Sum('share_number'))['total'] * 20
-        return context
-
-
-class FAQPageView(TemplateView):
-    template_name = "subscribe/FAQ.html"
 
 
 @login_required
