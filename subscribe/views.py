@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
-from subscribe.models import Subscription
+from subscribe.models import Subscription, Cooperation
 
 import unicodecsv
 from django.http import HttpResponse
@@ -97,9 +97,104 @@ def subscribers_as_csv(request):
     response['Content-Disposition'] = 'attachment; filename="subscribers.csv"'
 
     writer = unicodecsv.writer(response, encoding='utf-8')
-    #writer.writerow(['First row', 'Foo', 'Bar', 'Baz'])
+    writer.writerow([
+        "email",
+        "last name",
+        "first name",
+        "phone number",
+        "address",
+        "letter box",
+        "city",
+        "zip code",
+        "country",
+        "founder",
+        "newsletter",
+        "subscriber",
+        "cooperator",
+        "author",
+        "function",
+        "organisation",
+        "encoder",
+        "creation date",
+        "comment",
+    ])
 
     for s in Subscription.objects.all():
-        writer.writerow([s.title, s.first_name, s.last_name, s.email, s.street, s.number, s.letterbox, s.city, s.zip_code, s.country, s.creation_date, s.status, s.invoice_reference])
+        writer.writerow([
+            s.email,
+            s.last_name,
+            s.first_name,
+            "",
+            u"{}, {}".format(s.street, s.number),
+            s.letterbox,
+            s.city,
+            s.zip_code,
+            s.country,
+            "false", #fondeur
+            "false", #newsletter
+            "true", #subscriber
+            "false", #cooperator
+            "false", #author
+            "", #fonction
+            "", #organisation
+            "medor.coop", #encodeur
+            s.creation_date,
+            "", #comment
+        ])
+
+    return response
+
+
+@login_required
+def cooperators_as_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="cooperators.csv"'
+
+    writer = unicodecsv.writer(response, encoding='utf-8')
+    writer.writerow([
+        "email",
+        "last name",
+        "first name",
+        "phone number",
+        "address",
+        "letter box",
+        "city",
+        "zip code",
+        "country",
+        "founder",
+        "newsletter",
+        "subscriber",
+        "cooperator",
+        "author",
+        "function",
+        "organisation",
+        "encoder",
+        "creation date",
+        "comment",
+    ])
+
+    for s in Cooperation.objects.all():
+        writer.writerow([
+            s.email,
+            s.last_name,
+            s.first_name,
+            "",
+            u"{}, {}".format(s.street, s.number),
+            s.letterbox,
+            s.city,
+            s.zip_code,
+            s.country,
+            "false", #fondeur
+            "false", #newsletter
+            "false", #subscriber
+            "true", #cooperator
+            "false", #author
+            "", #fonction
+            "", #organisation
+            "medor.coop", #encodeur
+            s.creation_date,
+            u"{} part(s)".format(s.share_number), #comment
+        ])
 
     return response
