@@ -35,6 +35,21 @@ def subscription_reminder_second(modeladmin, request, queryset):
 subscription_reminder_second.short_description = "Envoyer un second rappel abonné par email"
 
 
+def subscription_present(modeladmin, request, queryset):
+    emails = []
+
+    for obj in queryset:
+        subject = "Médor n'est pas un chien. C'est un cadeau."
+        message = render_to_string('subscribe/subscription-present.txt', {})
+        sender = "lesyeuxouverts@medor.coop"
+        recipients = [obj.email]
+        emails.append((subject, message, sender, recipients))
+
+    send_mass_mail(emails, fail_silently=False)
+
+subscription_present.short_description = "Envoyer l'offre Noël par email"
+
+
 def cooperation_reminder_first(modeladmin, request, queryset):
     emails = []
 
@@ -65,13 +80,28 @@ def cooperation_reminder_second(modeladmin, request, queryset):
 cooperation_reminder_second.short_description = "Envoyer un second rappel coopérateur par email"
 
 
+def cooperation_present(modeladmin, request, queryset):
+    emails = []
+
+    for obj in queryset:
+        subject = "Médor n'est pas un chien. C'est un cadeau."
+        message = render_to_string('subscribe/cooperation-present.txt', {'obj': obj})
+        sender = "lesyeuxouverts@medor.coop"
+        recipients = [obj.email]
+        emails.append((subject, message, sender, recipients))
+
+    send_mass_mail(emails, fail_silently=False)
+
+cooperation_present.short_description = "Envoyer l'offre Noël par email"
+
+
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
     list_filter = ('status', 'country')
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
-    actions = [subscription_reminder_first, subscription_reminder_second]
+    actions = [subscription_reminder_first, subscription_reminder_second, subscription_present]
 
 
 class CooperationAdmin(admin.ModelAdmin):
@@ -80,7 +110,7 @@ class CooperationAdmin(admin.ModelAdmin):
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
-    actions = [cooperation_reminder_first, cooperation_reminder_second]
+    actions = [cooperation_reminder_first, cooperation_reminder_second, cooperation_present]
 
 
 admin.site.register(Subscription, SubscriptionAdmin)
