@@ -46,6 +46,22 @@ class SubscriptionForm(forms.ModelForm):
         kwargs.setdefault('label_suffix', '')
         super(SubscriptionForm, self).__init__(*args, **kwargs)
 
+    def clean_recipient_first_name(self):
+        cleaned_data = super(SubscriptionForm, self).clean()
+        is_gift = cleaned_data.get("is_gift")
+        recipient_first_name = cleaned_data.get("recipient_first_name")
+
+        if is_gift and not recipient_first_name:
+            raise forms.ValidationError("Ce champ est obligatoire.")
+
+    def clean_recipient_last_name(self):
+        cleaned_data = super(SubscriptionForm, self).clean()
+        is_gift = cleaned_data.get("is_gift")
+        recipient_last_name = cleaned_data.get("recipient_last_name")
+
+        if is_gift and not recipient_last_name:
+            raise forms.ValidationError("Ce champ est obligatoire.")
+
     class Meta:
         model = Subscription
         exclude = ('status', 'invoice_reference')

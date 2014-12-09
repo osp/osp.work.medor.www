@@ -97,3 +97,27 @@
         </div>
     </form>
 {% endblock %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
+<script>
+$(function() {
+    var $is_gift = $('#id_0-is_gift');
+    var $additional = $('.additional');
+
+    $is_gift.on('change', function(event) {
+        if ($(this).prop("checked")) {
+            $additional.show();  
+        } else {
+            $additional.hide();  
+        };
+    });
+
+    if ($is_gift.prop("checked")) {
+        $additional.show();  
+    } else {
+        $additional.hide();  
+    };
+});
+</script>
+{% endblock %}
