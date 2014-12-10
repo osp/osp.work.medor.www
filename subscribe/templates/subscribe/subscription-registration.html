@@ -4,16 +4,21 @@
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
+{% block id %}subscribing{% endblock %}
 
 {% block content %}
-    <h2>Je m’abonne</h2>
+    <div id="foo">
+<span class="arrow-money">
+                                    <span class="inner">je m'abonne,<br>j'avance<br><span class="price">60<sup>€</sup></span></span>
+                                </span>
 
-    <div id="steps">
-        <div class="active">Enregistrement</div>
-        <p>Si 3779 personnes font comme vous, vous recevrez votre premier
-        Médor en&nbsp;septembre&nbsp;2015. Si ce n'est pas le cas, Médor vous
-        remboursera les 60&nbsp;euros.</p>
-    </div>
+        <div id="steps">
+            <div class="active">Enregistrement</div>
+            <p>Si 3779 personnes font comme vous, vous recevrez votre premier
+            Médor en&nbsp;septembre&nbsp;2015. Si ce n'est pas le cas, Médor vous
+            remboursera les 60&nbsp;euros.</p>
+        </div>
+
 
     <form id="souscription" action="" method="post" class="step-{{ wizard.steps.step1 }}">
         {% csrf_token %}
@@ -28,72 +33,161 @@
         {% else %}
             {{ form.non_field_errors }} 
 
-        <div class="box">
-            <div class="required">
-                {{ form.title.errors }}
-                {{ form.title.label_tag }}
-                {{ form.title }}
+            <div class="form-wrapper">
+                <div class="form-chunk">
+                    <div class="box table">
+                        <div class="table-row required">
+                            {{ form.title.label_tag }}
+                            <div class="table-cell">
+                            {{ form.title }}
+                            {{ form.title.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.first_name.label_tag }}
+                            <div class="table-cell">
+                            {{ form.first_name }}
+                            {{ form.first_name.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.last_name.label_tag }}
+                            <div class="table-cell">
+                            {{ form.last_name }}
+                            {{ form.last_name.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.email.label_tag }}
+                            <div class="table-cell">
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                            </div>
+                        </div>
+                    </div>
+                    <p style="visibility: hidden;">.</p>
+                </div>
+                <div class="form-chunk">
+                        <p id="address-header">Adresse de livraison&thinsp;:</p>
+                    <div class="box table">
+                        <div class="required table-row">
+                            {{ form.is_gift.label_tag }}
+                            <div class="table-cell">
+                            {{ form.is_gift }}
+                            {{ form.is_gift.errors }}
+                            </div>
+                        </div>
+                        <div class="required additional table-row">
+                            <label for="id_0-recipient_title_0">Civilité</label>
+                            <div class="table-cell">
+                            {{ form.recipient_title }}
+                            {{ form.recipient_title.errors }}
+                            </div>
+                        </div>
+                        <div class="required additional table-row">
+                            <label for="id_0-recipient_first_name">Prénom</label>
+                            <div class="table-cell">
+                            {{ form.recipient_first_name }}
+                            {{ form.recipient_first_name.errors }}
+                            </div>
+                        </div>
+                        <div class="required additional table-row">
+                            <label for="id_0-recipient_last_name">Nom</label>
+                            <div class="table-cell">
+                            {{ form.recipient_last_name }}
+                            {{ form.recipient_last_name.errors }}
+                            </div>
+                        </div>
+                        <div class="additional table-row">
+                            <label for="id_0-recipient_email">Courriel</label>
+                            <div class="table-cell">
+                            {{ form.recipient_email }}
+                            {{ form.recipient_email.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.street.label_tag }}
+                            <div class="table-cell">
+                            {{ form.street }}
+                            {{ form.street.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.number.label_tag }}
+                            <div class="table-cell">
+                            {{ form.number }}
+                            {{ form.number.errors }}
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            {{ form.letterbox.label_tag }}
+                            <div class="table-cell">
+                            {{ form.letterbox }}
+                            {{ form.letterbox.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.city.label_tag }}
+                            <div class="table-cell">
+                            {{ form.city }}
+                            {{ form.city.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.zip_code.label_tag }}
+                            <div class="table-cell">
+                            {{ form.zip_code }}
+                            {{ form.zip_code.errors }}
+                            </div>
+                        </div>
+                        <div class="required table-row">
+                            {{ form.country.label_tag }}
+                            <div class="table-cell">
+                            {{ form.country }}
+                            {{ form.country.errors }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="required">
-                {{ form.first_name.errors }}
-                {{ form.first_name.label_tag }}
-                {{ form.first_name }}
-            </div>
-            <div class="required">
-                {{ form.last_name.errors }}
-                {{ form.last_name.label_tag }}
-                {{ form.last_name }}
-            </div>
-            <div class="required">
-                {{ form.email.errors }}
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </div>
-        </div>
-        <div class="box">
-            <h3>Adresse de livraison :</h3>
-            <div class="required">
-                {{ form.street.errors }}
-                {{ form.street.label_tag }}
-                {{ form.street }}
-            </div>
-            <div class="required">
-                {{ form.number.errors }}
-                {{ form.number.label_tag }}
-                {{ form.number }}
-            </div>
-            <div>
-                {{ form.letterbox.errors }}
-                {{ form.letterbox.label_tag }}
-                {{ form.letterbox }}
-            </div>
-            <div class="required">
-                {{ form.city.errors }}
-                {{ form.city.label_tag }}
-                {{ form.city }}
-            </div>
-            <div class="required">
-                {{ form.zip_code.errors }}
-                {{ form.zip_code.label_tag }}
-                {{ form.zip_code }}
-            </div>
-            <div class="required">
-                {{ form.country.errors }}
-                {{ form.country.label_tag }}
-                {{ form.country }}
-            </div>
-        </div>
         {% endif %}
 
-
-        {% if wizard.steps.prev %}
-        <div id="nav">
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
-        </div>
-        {% endif %}
 
         <div id="confirm">
+            {% if wizard.steps.prev %}
+            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
+            {% endif %}
             <input id="prendre-part" type="submit" value="S’abonner"/>
         </div>
     </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
+<script>
+$(function() {
+    var $is_gift = $('#id_0-is_gift');
+    var $additional = $('.additional');
+    var $header = $('#address-header');
+
+    $is_gift.on('change', function(event) {
+        if ($(this).prop("checked")) {
+            $additional.show();  
+            $header.text('Coordonnées du bénéficiaire :')
+        } else {
+            $additional.hide();  
+            $header.text('Adresse de livraison :')
+        };
+    });
+
+    if ($is_gift.prop("checked")) {
+        $additional.show();  
+        $header.text('Coordonnées du bénéficiaire :')
+    } else {
+        $additional.hide();  
+        $header.text('Adresse de livraison :')
+    };
+});
+</script>
 {% endblock %}

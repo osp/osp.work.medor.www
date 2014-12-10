@@ -9,14 +9,15 @@
     {% block head %}{% endblock %}
 
 </head>
-<body>
-    <div id="main-header">
+<body id="{% block id %}{% endblock %}">
+    <div id="outer-wrapper">
         <h1><img src="{{ STATIC_URL }}img/medor-centre.svg" alt="Médor" /></h1>
-    </div>
 
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
 
 
     <script src="{{ STATIC_URL }}components/less/dist/less-1.7.5.min.js"></script>
+    {% block js %}{% endblock %}
 </body>
 </html>

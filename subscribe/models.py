@@ -4,6 +4,12 @@ from datetime import datetime
 from django.db.models import Max
 
 
+TITLE_CHOICES = (
+    (False, u'Madame'),
+    (True, u'Monsieur')
+)
+
+
 class TransactionBase(models.Model):
     STATUS_CHOICES = (
         (0, u'en cours'),
@@ -17,14 +23,9 @@ class TransactionBase(models.Model):
         #('LU', u'Luxembourg')
     )
 
-    TITLE_CHOICES = (
-        (False, u'Madame'),
-        (True, u'Monsieur')
-    )
-
     title = models.BooleanField('civilité', default=False, choices=TITLE_CHOICES)
     first_name = models.CharField('prénom', max_length=30)
-    last_name = models.CharField('nom de famille', max_length=30)
+    last_name = models.CharField('nom', max_length=30)
     email = models.EmailField('courriel')
     street = models.CharField('rue', max_length=30)
     number = models.CharField('numéro', max_length=10) # 27 bis
@@ -86,6 +87,11 @@ class TransactionBase(models.Model):
 class Subscription(TransactionBase):
     """ Describes a cooperation"""
     transaction_type = '01'
+    is_gift = models.BooleanField('ceci est un cadeau?', default=False)
+    recipient_title = models.BooleanField('civilité du destinataire', default=False, choices=TITLE_CHOICES)
+    recipient_first_name = models.CharField('prénom du destinataire', max_length=30, blank=True)
+    recipient_last_name = models.CharField('nom de famille du destinataire', max_length=30, blank=True)
+    recipient_email = models.CharField('courriel du destinataire', max_length=30, blank=True)
 
     class Meta:
         verbose_name = "abonnement"
