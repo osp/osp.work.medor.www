@@ -4,16 +4,21 @@
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
+{% block id %}subscribing{% endblock %}
 
 {% block content %}
-    <h2>Je m’abonne</h2>
+    <div id="foo">
+<span class="arrow-money">
+                                    <span class="inner">je m'abonne,<br>j'avance<br><span class="price">60<sup>€</sup></span></span>
+                                </span>
 
-    <div id="steps">
-        <div class="active">Enregistrement</div>
-        <p>Si 3779 personnes font comme vous, vous recevrez votre premier
-        Médor en&nbsp;septembre&nbsp;2015. Si ce n'est pas le cas, Médor vous
-        remboursera les 60&nbsp;euros.</p>
-    </div>
+        <div id="steps">
+            <div class="active">Enregistrement</div>
+            <p>Si 3779 personnes font comme vous, vous recevrez votre premier
+            Médor en&nbsp;septembre&nbsp;2015. Si ce n'est pas le cas, Médor vous
+            remboursera les 60&nbsp;euros.</p>
+        </div>
+
 
     <form id="souscription" action="" method="post" class="step-{{ wizard.steps.step1 }}">
         {% csrf_token %}
@@ -57,19 +62,26 @@
                             <div class="table-cell">
                             {{ form.email }}
                             {{ form.email.errors }}
-                                lkjdslsdkj dsmlkdsj mdslkj dsmlkdsj mldskj dsmlkjds mldskj dsmlkjds mlkdsj 
                             </div>
                         </div>
                     </div>
+                    <p style="visibility: hidden;">.</p>
                 </div>
                 <div class="form-chunk">
+                        <p id="address-header">Adresse de livraison&thinsp;:</p>
                     <div class="box table">
-                        <h3>Adresse de livraison :</h3>
                         <div class="required table-row">
                             {{ form.is_gift.label_tag }}
                             <div class="table-cell">
                             {{ form.is_gift }}
                             {{ form.is_gift.errors }}
+                            </div>
+                        </div>
+                        <div class="required additional table-row">
+                            <label for="id_0-recipient_title_0">Civilité</label>
+                            <div class="table-cell">
+                            {{ form.recipient_title }}
+                            {{ form.recipient_title.errors }}
                             </div>
                         </div>
                         <div class="required additional table-row">
@@ -133,7 +145,6 @@
                             <div class="table-cell">
                             {{ form.country }}
                             {{ form.country.errors }}
-                                lkjdslsdkj dsmlkdsj mdslkj dsmlkdsj mldskj dsmlkjds mldskj dsmlkjds mlkdsj 
                             </div>
                         </div>
                     </div>
@@ -142,16 +153,14 @@
         {% endif %}
 
 
-        {% if wizard.steps.prev %}
-        <div id="nav">
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
-        </div>
-        {% endif %}
-
         <div id="confirm">
+            {% if wizard.steps.prev %}
+            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
+            {% endif %}
             <input id="prendre-part" type="submit" value="S’abonner"/>
         </div>
     </form>
+    </div>
 {% endblock %}
 
 {% block js %}
@@ -160,19 +169,24 @@
 $(function() {
     var $is_gift = $('#id_0-is_gift');
     var $additional = $('.additional');
+    var $header = $('#address-header');
 
     $is_gift.on('change', function(event) {
         if ($(this).prop("checked")) {
             $additional.show();  
+            $header.text('Coordonnées du bénéficiaire :')
         } else {
             $additional.hide();  
+            $header.text('Adresse de livraison :')
         };
     });
 
     if ($is_gift.prop("checked")) {
         $additional.show();  
+        $header.text('Coordonnées du bénéficiaire :')
     } else {
         $additional.hide();  
+        $header.text('Adresse de livraison :')
     };
 });
 </script>

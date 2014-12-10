@@ -4,28 +4,46 @@
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
+{% block id %}subscribing{% endblock %}
 
 {% block content %}
-    <h2>Je m’abonne</h2>
+    <div id="foo">
+<span class="arrow-money">
+                                    <span class="inner">je m'abonne,<br>j'avance<br><span class="price">60<sup>€</sup></span></span>
+                                </span>
 
     <div id="steps">
             <div class="active">Confirmation</div>
     </div>
 
 
-    <h3>Adresse de livraison :</h3>
-    <p>{{ infos.title|yesno:"Monsieur,Madame" }} {{ infos.first_name }} {{ infos.last_name }}</p>
-    <p>{{ infos.street }}, {{ infos.number }}</p>
-    {% if infos.letterbox %}<p>{{ infos.letterbox }}</p>{% endif %}
-    <p>{{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}</p>
-    <p>{{ infos.email }}</p>
-
-
-    <form id="souscription" action="" method="post" class="step-{{ wizard.steps.step1 }}">
+    <form id="souscription" action="" method="post" class="step-{{ wizard.steps.step1 }}" style="line-height: inherit">
         {% csrf_token %}
         {{ wizard.management_form }}
+        <div class="form-wrapper">
+            <div style="display: inline-block">
+            <h3>Coordonnées :</h3>
+            <p>{{ infos.title|yesno:"Monsieur,Madame" }} {{ infos.first_name }} {{ infos.last_name }}<br/>
+            {{ infos.email }}</p>
+            <br />
+            {% if infos.is_gift %}
+            <h3>Coordonnées du bénéficiaire :</h3>
+            <p>{{ infos.recipient_title|yesno:"Monsieur,Madame" }} {{ infos.recipient_first_name }} {{ infos.recipient_last_name }}<br />
+            {{ infos.street }}, {{ infos.number }}<br />
+                {% if infos.letterbox %}{{ infos.letterbox }}<br />{% endif %}
+                {{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}<br />
+                {% if infos.recipient_email %}{{ infos.recipient_email }}<br />{% endif %}
+            {% else %}
+            <p>{{ infos.street }}, {{ infos.number }}<br />
+            {% if infos.letterbox %}{{ infos.letterbox }}<br />{% endif %}
+                {{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}</p>
+            {% endif %}
+            </div>
 
 
+
+
+        <div style="display: inline-block">
         <div id="confirm-box" class="required">
             {% if wizard.form.forms %}
                 {{ wizard.form.management_form }}
@@ -36,19 +54,18 @@
                 {{ wizard.form.as_p }}
             {% endif %}
         </div>
-        <ul class="declaration">
-            <li>Je déclare ces informations conformes et m'engage à m'abonner <br />pour <strong>quatre numéros</strong> pour un montant de <strong>60 euros</strong>.</li>
-        </ul>
-
-
-        {% if wizard.steps.prev %}
-        <div id="nav">
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
+        <p>Je déclare ces informations conformes et m'engage à m'abonner pour <strong>quatre numéros</strong> pour un montant de <strong>60 euros</strong>.</p>
         </div>
-        {% endif %}
+        </div>
+
 
         <div id="confirm">
+            {% if wizard.steps.prev %}
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
+            {% endif %}
+
             <input id="prendre-part" type="submit" value="S’abonner"/>
         </div>
     </form>
+    </div>
 {% endblock %}

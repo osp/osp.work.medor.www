@@ -4,26 +4,20 @@
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
+{% block id %}cooperating{% endblock %}
 
 {% block content %}
-    <h2>Je coopère</h2>
+    <div id="foo">
 
+<span class="arrow-money">
+                                    <span class="inner">je  prends<br>une part à<br><span class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
+                                </span>
     <div id="steps">
         <div class="active">Ça y est !</div>
     </div>
 
-    <div id="done">
-        <!--<p>-->
-        <!--Pour terminer l’enregistrement,-->
-        <!--nous vous prions de transférer aujourd’hui <strong>{{ amount }}&nbsp;euros</strong> sur le compte -->
-        <!--BE65&nbsp;5230&nbsp;8066&nbsp;7396  (BIC:&nbsp;TRIOBEBB). -->
-        <!--</p>-->
-        <!--<p>-->
-        <!--Pour faciliter le travail administratif,-->
-        <!--prière d’utiliser seulement la communication structurée <strong>{{ communication }}</strong>.-->
-        <!--</p>-->
-        <!--<p>Merci !</p>-->
-
+    <div id="done" class="form-wrapper">
+            <div style="display: inline-block">
         <p>Félicitations&thinsp;! Vous venez de prendre {{ obj.share_number }} part{{ obj.share_number|pluralize }} dans la
         coopérative à finalité sociale (SCRL-FS) Médor. Vous êtes à deux doigts
         de devenir le copropriétaire d’un titre de presse belge, indépendant et
@@ -39,14 +33,16 @@
         structurée, entrez simplement {{ obj.simple_communication }}. Pour toute question ou
         difficulté relative à ce paiement, contactez-nous à l'adresse <a
             href="mailto:lesyeuxouverts@medor.coop">lesyeuxouverts@medor.coop</a>.</p>
+            </div>
 
+            <div style="display: inline-block">
         <p>Garant de notre philosophie, vous serez régulièrement tenu informé
         de l’avancée de notre projet et serez convoqué à notre prochaine
         assemblée générale. Consultez notre plan financier, nos <a
             href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf"
             target="_blank">statuts</a>, notre <a
             href="/media/plan-financier.pdf">plan financier</a> et notre <a
-            target="_blank" href="/FAQ/">foire aux questions</a>.
+            target="_blank" href="/faq/">foire aux questions</a>.
 
         <p>Parlez-en autour de vous et, si ce n’est déjà fait, offrez-vous un
         abonnement.</p>
@@ -56,6 +52,8 @@
         <p>L’équipe de Médor<br />
         <a href="https://medor.coop>">www.medor.coop</a> — <a
            href="http://www.facebook.com/medormag">www.facebook.com/medormag</a></p>
+            </div>
+    </div>
     </div>
 
 

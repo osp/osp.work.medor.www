@@ -54,6 +54,8 @@ class SubscriptionForm(forms.ModelForm):
         if is_gift and not recipient_first_name:
             raise forms.ValidationError("Ce champ est obligatoire.")
 
+        return recipient_first_name
+
     def clean_recipient_last_name(self):
         cleaned_data = super(SubscriptionForm, self).clean()
         is_gift = cleaned_data.get("is_gift")
@@ -61,6 +63,8 @@ class SubscriptionForm(forms.ModelForm):
 
         if is_gift and not recipient_last_name:
             raise forms.ValidationError("Ce champ est obligatoire.")
+
+        return recipient_last_name
 
     class Meta:
         model = Subscription
@@ -70,4 +74,5 @@ class SubscriptionForm(forms.ModelForm):
             'country': forms.RadioSelect(),
             'letterbox': forms.TextInput(),
             'zip_code': forms.TextInput(),
+            'recipient_title': forms.RadioSelect(),
         }

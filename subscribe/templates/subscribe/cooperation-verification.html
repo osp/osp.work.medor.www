@@ -4,53 +4,62 @@
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
+{% block id %}cooperating{% endblock %}
 
 {% block content %}
-    <h2>Je coopère</h2>
+    <div id="foo">
 
+<span class="arrow-money">
+                                    <span class="inner">je  prends<br>une part à<br><span class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
+                                </span>
     <div id="steps">
             <div class="active">Confirmation</div>
     </div>
 
 
-    <p>{{ infos.title|yesno:"Monsieur,Madame" }} {{ infos.first_name }} {{ infos.last_name }}</p>
-    <p>{{ infos.street }}, {{ infos.number }}</p>
-    {% if infos.letterbox %}<p>{{ infos.letterbox }}</p>{% endif %}
-    <p>{{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}</p>
-    <p>{{ infos.email }}</p>
-
-    <form id="cooperation" action="" method="post" class="step-{{ wizard.steps.step1 }}">
+    <form id="cooperation" action="" method="post" class="step-{{ wizard.steps.step1 }}" style="line-height: inherit;">
         {% csrf_token %}
         {{ wizard.management_form }}
 
 
-        <div id="confirm-box" class="required">
-            {% if wizard.form.forms %}
-                {{ wizard.form.management_form }}
-                {% for form in wizard.form.forms %}
-                    {{ form }}
-                {% endfor %}
-            {% else %}
-                {{ wizard.form.as_p }}
-            {% endif %}
+        <div class="form-wrapper">
+            <div class="form-chunk">
+                <p>{{ infos.title|yesno:"Monsieur,Madame" }} {{ infos.first_name }} {{ infos.last_name }}<br />
+                {{ infos.street }}, {{ infos.number }}<br />
+                {% if infos.letterbox %}{{ infos.letterbox }}</br />{% endif %}
+                {{ infos.zip_code }} {{ infos.city }}, {{ infos.country }}<br />
+                {{ infos.email }}</p>
+            </div>
+
+            <div class="form-chunk">
+                <div id="confirm-box" class="required">
+                    {% if wizard.form.forms %}
+                        {{ wizard.form.management_form }}
+                        {% for form in wizard.form.forms %}
+                            {{ form }}
+                        {% endfor %}
+                    {% else %}
+                        {{ wizard.form.as_p }}
+                    {% endif %}
+                </div>
+
+                <ul class="declaration">
+                    <li>Je déclare ces informations conformes. </li>
+                    <!--<li>J'ai bien pris connaissance des <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, du <a target="_blank" href="todo.html">plan financier</a> et de la&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.</li>-->
+                    <li>Je m’engage à prendre <strong>{{ infos.share_number }} part{{ infos.share_number|pluralize }}</strong> pour un montant de <strong>{{ amount }} euros</strong>. </li>
+                </ul>
+            </div>
         </div>
 
-        <ul class="declaration">
-           <li>Je déclare ces informations conformes. </li>
-           <!--<li>J'ai bien pris connaissance des <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, du <a target="_blank" href="todo.html">plan financier</a> et de la&nbsp;<a href="http://tunakutafuta.be/index.php?title=Foire_aux_questions" target="_blank">FAQ</a>.</li>-->
-           <li>Je m’engage à prendre <strong>{{ infos.share_number }} part{{ infos.share_number|pluralize }}</strong> pour un montant de <strong>{{ amount }} euros</strong>. </li>
-        </ul>
 
-
-        {% if wizard.steps.prev %}
-        <div id="nav">
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
-        </div>
-        {% endif %}
 
         <div id="confirm">
+        {% if wizard.steps.prev %}
+            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
+        {% endif %}
             <input id="prendre-part" type="submit" value="Prendre part"/>
         </div>
     </form>
+    </div>
 
 {% endblock %}

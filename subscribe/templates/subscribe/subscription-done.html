@@ -4,21 +4,28 @@
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
+{% block id %}subscribing{% endblock %}
 
 {% block content %}
-    <h2>Je m’abonne</h2>
+    <div id="foo">
+<span class="arrow-money">
+                                    <span class="inner">je m'abonne,<br>j'avance<br><span class="price">60<sup>€</sup></span></span>
+                                </span>
 
     <div id="steps">
             <div class="active">Ça y est !</div>
     </div>
 
 
-    <div id="done">
+    <div id="done" class="form-wrapper">
+            <div style="display: inline-block">
         <p>Vous venez de vous abonner à Médor. Excellente idée&thinsp;! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.</p>
 
-        <p>Nous vous invitons à régler dès aujourd’hui <strong>60 euros</strong> par virement sur le compte Triodos <strong>BE96&nbsp;5230&nbsp;8068&nbsp;7305</strong> (BIC&thinsp;:&nbsp;TRIOBEBB) avec la communication structurée&thinsp;:</p>
+        <p>Nous vous invitons à régler dès aujourd’hui <strong>60&nbsp;euros</strong> par virement sur le compte Triodos <strong>BE96&nbsp;5230&nbsp;8068&nbsp;7305</strong> (BIC&thinsp;:&nbsp;TRIOBEBB) avec la communication structurée&thinsp;:</p>
 
         <p><strong>{{ obj.structured_communication }}</strong></p>
+        </div>
+            <div style="display: inline-block">
 
         <p>Si votre système bancaire ne permet pas de faire une communication structurée mais uniquement des chiffres, entrez <strong>{{ obj.simple_communication }}</strong>. Pour toute question ou difficulté relative à ce paiement, contactez-nous à l'adresse <a href="mailto:lesyeuxouverts@medor.coop">lesyeuxouverts@medor.coop</a>.</p>
 
@@ -29,6 +36,8 @@
         <p>L’équipe de Médor<br />
         <a href="https://medor.coop>">www.medor.coop</a> — <a
            href="http://www.facebook.com/medormag">www.facebook.com/medormag</a></p>
+        </div>
 
+    </div>
     </div>
 {% endblock %}

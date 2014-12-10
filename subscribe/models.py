@@ -4,6 +4,12 @@ from datetime import datetime
 from django.db.models import Max
 
 
+TITLE_CHOICES = (
+    (False, u'Madame'),
+    (True, u'Monsieur')
+)
+
+
 class TransactionBase(models.Model):
     STATUS_CHOICES = (
         (0, u'en cours'),
@@ -15,11 +21,6 @@ class TransactionBase(models.Model):
         ('BE', u'Belgique'),
         #('FR', u'France'),
         #('LU', u'Luxembourg')
-    )
-
-    TITLE_CHOICES = (
-        (False, u'Madame'),
-        (True, u'Monsieur')
     )
 
     title = models.BooleanField('civilité', default=False, choices=TITLE_CHOICES)
@@ -87,6 +88,7 @@ class Subscription(TransactionBase):
     """ Describes a cooperation"""
     transaction_type = '01'
     is_gift = models.BooleanField('ceci est un cadeau?', default=False)
+    recipient_title = models.BooleanField('civilité du destinataire', default=False, choices=TITLE_CHOICES)
     recipient_first_name = models.CharField('prénom du destinataire', max_length=30, blank=True)
     recipient_last_name = models.CharField('nom de famille du destinataire', max_length=30, blank=True)
     recipient_email = models.CharField('courriel du destinataire', max_length=30, blank=True)
