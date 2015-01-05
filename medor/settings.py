@@ -72,6 +72,19 @@ INSTALLED_APPS = (
     'cmsplugin_filer_image',
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
+
+    ## Django CMS Blog
+    #'filer',
+    #'easy_thumbnails',
+    #'cmsplugin_filer_image',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'django_select2',
+    'meta',
+    'meta_mixin',
+    'admin_enhancer',
+    'djangocms_blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -171,6 +184,14 @@ CKEDITOR_SETTINGS = {
 }
 
 TEXT_SAVE_IMAGE_FUNCTION='cmsplugin_filer_image.integrations.ckeditor.create_image_plugin'
+
+META_USE_SITES = True
+
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'fr',},
+    ),
+}
 
 
 try:
