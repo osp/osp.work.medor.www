@@ -11,3 +11,6 @@ Pillow>=2
 django-filer==0.9.8
 cmsplugin-filer==0.10.1
 django-reversion
+
+# Django CMS Blog
+djangocms-blog

@@ -117,6 +117,9 @@ def subscribers_as_csv(request):
         "encoder",
         "creation date",
         "comment",
+        "invoice reference",
+        "structured communication",
+        "status",
     ])
 
     for s in Subscription.objects.all():
@@ -140,6 +143,9 @@ def subscribers_as_csv(request):
             "medor.coop", #encodeur
             s.creation_date,
             "", #comment
+            s.invoice_reference,
+            s.structured_communication(),
+            s.get_status_display(),
         ])
 
     return response
@@ -172,6 +178,10 @@ def cooperators_as_csv(request):
         "encoder",
         "creation date",
         "comment",
+        "invoice reference",
+        "structured communication",
+        "status",
+        "share number"
     ])
 
     for s in Cooperation.objects.all():
@@ -195,6 +205,10 @@ def cooperators_as_csv(request):
             "medor.coop", #encodeur
             s.creation_date,
             u"{} part(s)".format(s.share_number), #comment
+            s.invoice_reference,
+            s.structured_communication(),
+            s.get_status_display(),
+            u"{}".format(s.share_number),
         ])
 
     return response

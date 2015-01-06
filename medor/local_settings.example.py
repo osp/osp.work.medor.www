@@ -40,6 +40,8 @@ DATABASES = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ''
 
+META_SITE_PROTOCOL = 'http'
+
 
 if DEBUG:
     # Show emails in the console during developement.
