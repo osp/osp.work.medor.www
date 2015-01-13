@@ -13,5 +13,6 @@ urlpatterns = i18n_patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^subscribe/', include('subscribe.urls')),
+    url(r'^collaborate/', include('collaborate.urls')),
     url(r'^', include('cms.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

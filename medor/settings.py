@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'compressor',
 
     'subscribe',
+    'collaborate',
 
     'cms',  # django CMS itself
     'mptt',
