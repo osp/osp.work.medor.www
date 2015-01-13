@@ -110,31 +110,23 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
 
                     <div id="subscribing" class="fund">
                         <div class="fund-top">
-                            <a href="{% url 'subscribe-wizard' %}">
-                                <span class="arrow-money">
-                                    <span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>
-                                </span>
-                            </a>
 
-                            <div class="goal-outer">
-                                <div class="goal-middle">
+                            <div class="arrow-outer">
+                                <a href="{% url 'subscribe-wizard' %}">
+                                    <span class="arrow-money">
+                                        <span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>
+                                    </span>
+                                </a>
 
-                                    <div>
-                                        actuellement<br />
-                                        {% get_subscriber_count as subscriber_count %}
-                                        <span class="number">{{ subscriber_count }}</span>
-                                    </div>
-
-                                    <div class="goal-arrow"></div>
-
-                                    <div class="goal">
-                                        objectif<br />
-                                        <span class="number">3800</span><br />
+                                <div class="goal-outer">
+                                    {% get_subscriber_count as subscriber_count %}
+                                    {{ subscriber_count }}&thinsp;/&thinsp;<span class="goal">
+                                        3800<br />
                                         abonnés
-                                    </div>
-
+                                    </span>
                                 </div>
                             </div>
+
                             <div class="fund-text">
                                 <p>Pour 60 euros vous êtes abonné à Médor pendant un an et recevez quatre numéros. Si 3&#8239;799 autres personnes posent ce même engagement, Médor sortira. Vous aurez alors créé un magazine et en recevrez le premier numéro en septembre 2015. Sinon, vous récupérez votre mise.</p>
                             </div>
@@ -156,19 +148,15 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
 
                     <div id="cooperating" class="fund">
                         <div class="fund-top">
-                            <a href="{% url 'cooperate-wizard' %}">
-                                <span class="arrow-money">
-                                    <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
-                                </span>
-                            </a>
-
-                            <div class="goal-outer">
-                                <div class="goal-middle">
-                                    <div>
-                                        actuellement<br />
-                                        {% get_capital_amount as capital_amount %}
-                                        <span class="number">{{ capital_amount }}<sup>€</sup></span>
-                                    </div>
+                            <div class="arrow-outer">
+                                <a href="{% url 'cooperate-wizard' %}">
+                                    <span class="arrow-money">
+                                        <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
+                                    </span>
+                                </a>
+                                <div class="goal-outer">
+                                    {% get_capital_amount as capital_amount %}
+                                    <span class="number">{{ capital_amount }}<sup>€</sup></span>
 
                                     <!--<div class="goal-arrow"></div>-->
 
@@ -176,9 +164,9 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                                         <!--objectif<br />-->
                                         <!--<span class="number">24206<sup>€</sup></span>-->
                                     <!--</div>-->
-
                                 </div>
                             </div>
+
 
                             <div class="fund-text">
                                 <p>Prenez une ou plusieurs parts de 20&nbsp;euros dans la coopérative à finalité sociale Médor et devenez copropriétaire d'un titre de presse. Participez aux assemblées générales et soyez garant(e) de la philosophie de Médor. Remplissez le <a href="{% url 'cooperate-wizard' %}">formulaire</a> puis acquittez-vous du montant engagé. Avant, consultez nos <a target="_blank" href="http://www.ejustice.just.fgov.be/tsv_pdf/2014/07/15/14136380.pdf">statuts</a>, notre  <a href="/media/plan-financier.pdf">plan financier</a> et notre&nbsp;<a href="{% page_url "faq" %}" target="_blank">FAQ</a>.
@@ -203,11 +191,13 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
 
                     <div id="donating">
                         <div class="fund-top">
-                            <span class="arrow-money">
-                                <span class="inner">je fais<br />un don de<br />
-                                    <span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>
+                            <div class="arrow-outer">
+                                <span class="arrow-money">
+                                    <span class="inner">je fais<br />un don de<br />
+                                        <span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>
+                                    </span>
                                 </span>
-                            </span>
+                            </div>
 
                             <!--<div class="goal-outer">-->
                                 <!--<div class="goal-middle">-->
