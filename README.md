@@ -19,6 +19,7 @@ deactivate
 
 ### once you've launched the venv, you're able to get all the project dependencies/requirements through pip;
 pip install -r requirements.txt
+### do it each time you receive an error at next step!
 
 ### then, in the folder medor, copy the local_settings.example.py file onto local_settings.py
 cd medor
@@ -29,8 +30,14 @@ cp local_settings.example.py local_settings.py
 ### if pip is done installing and the SECRET_KEY is at the right place in the local_settings.py, grab the database by running
 python manage.py migrate
 
+### get everything
+fab download
+
 ### off you go then, launch the server:
 python manage.py runserver
 
 ### head over to localhost:8000 (if you've not changed the default port settings) and get to work!
 
+### Work and when happy tested → git push and
+fab deploy
+### it's backuped and online
