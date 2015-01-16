@@ -400,7 +400,6 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                         </details>
                     </div>
 
-
                     <div class="cols2">
                         <div id="Le_co.C3.BBt_d.27une_enqu.C3.AAte">
                             <h3>Le coût d'une enquête</h3>
@@ -449,10 +448,6 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                                     </tr>
                                 </table>
                             </details>
-
-
-
-
 
 <!-- <figure id="maquette">
                         <img alt="maquette" src="{{ STATIC_URL }}img/longform-meta.png" />
@@ -662,9 +657,7 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                 <div class="wrap">
                     {% placeholder supporters %}
                 </div>
-
             </div>
-
 
 
             <div id="now-what" class="tranche">
@@ -700,54 +693,56 @@ href="#Et_la_pub.2C_dans_tout_.C3.A7a.3F">6&nbsp;pages de publicité</a>.</p>
                             Suivez-nous sur <a  href="https://www.facebook.com/medormag">Facebook</a> (à  consommer avec sagesse) et sur <a  href="https://twitter.com/Medor_mag">Twitter</a>.
                         </li>
                     </ul>
-
-
-
                 </div>
             </div>
 
-            <div id="panels" style="width: 100%; float: none;">
-                <div id="panel-descriptions">
+            <div id="news"></div>
+
+            <div id="panels">
+		<!-- <h2 style="visibility: hidden; height: 0; margin: 0;">souscriptions</h2>-->
                     <div id="subscribing" class="fund">
-                        <div class="fund-top">
-                            <a href="{% url 'subscribe-wizard' %}">
-                                <span class="arrow-money">
-                                    <span class="inner">je  m'abonne,<br />j'avance<br /><span  class="price">60<sup>€</sup></span></span>
-                                </span>
-                            </a>
+                        <div class="fund-bottom">
+                            <div class="arrow-outer">
+                                <a href="{% url 'subscribe-wizard' %}">
+                                    <span class="arrow-money">
+                                        <span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>
+                                    </span>
+                                </a>
+                                <div class="goal-outer">
+                                    {% get_subscriber_count as subscriber_count %}
+                                    {{ subscriber_count }}&thinsp;/&thinsp;<span class="goal">
+                                        3800<br />
+                                        abonnés
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                     <div id="cooperating" class="fund">
-                        <div class="fund-top">
-                            <a href="{% url 'cooperate-wizard' %}">
-                                <span class="arrow-money">
-                                    <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
-                                </span>
-                            </a>
+                        <div class="fund-bottom">
+                            <div class="arrow-outer">
+                                <a href="{% url 'cooperate-wizard' %}">
+                                    <span class="arrow-money">
+                                        <span class="inner">je  prends<br />une part à<br /><span  class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
+                                    </span>
+                                </a>
+                                <div class="goal-outer">
+                                    {% get_capital_amount as capital_amount %}
+                                    <span class="number">{{ capital_amount }}<sup>€</sup></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <!--<div id="donating" class="fund" style="width: 33.333%; clear: none; background-color: transparent;">-->
-                        <!--<div class="fund-top">-->
-                            <!--<a href="http://www.kisskissbankbank.com/medor-le-trimestriel-cooperatif-belge-enquetes-et-recits">-->
-                                <!--<span class="arrow-money">-->
-                                    <!--<span class="inner">je fais<br />un don de<br />-->
-                                        <!--<span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>-->
-                                    <!--</span>-->
-                                <!--</span>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
                 </div>
             </div>
 
-            <blockquote id="stiegler"  cite="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">
+	    <blockquote id="stiegler"  cite="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">
                 <p>«&#8239;<span  class="small">[…]</span>&nbsp;une révolution est simplement  ce qui se produit quand un cycle est révolu.&#8239;»</p>
                 <p class="footer">
                     — <a target="_blank" href="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">Bernard  Stiegler</a>
                 </p>
-            </blockquote>
+	    </blockquote>
+               
         </main>
     </div>
 
