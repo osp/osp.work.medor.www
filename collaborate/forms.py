@@ -3,6 +3,9 @@ from .models import ArticleProposal
 
 
 class ArticleProposalForm(forms.ModelForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
+
     class Meta:
         model = ArticleProposal
         widgets = {
