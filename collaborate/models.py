@@ -8,9 +8,6 @@ class ArticleProposal(models.Model):
         max_length=50,
         verbose_name="nom"
     )
-    address = models.TextField(
-        verbose_name="adresse"
-    )
     email = models.EmailField(
         max_length=75,
         verbose_name="courriel"
@@ -24,6 +21,9 @@ class ArticleProposal(models.Model):
         max_length=100,
         blank=True,
         verbose_name="compte twitter"
+    )
+    address = models.TextField(
+        verbose_name="adresse"
     )
     subject_title = models.CharField(
         max_length=100,

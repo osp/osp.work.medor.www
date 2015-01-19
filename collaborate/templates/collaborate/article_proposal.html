@@ -5,148 +5,63 @@
 {% block id %}collaborating{% endblock %}
 
 {% block content %}
-<div id="foo">
     <div id="steps">
         <div class="active">Collaboration</div>
-        <p>Vous vous apprêtez à proposer un sujet d'enquête, de récit ou de portrait pour Médor ?</p>
-        <p>Quel que soit le support médiatique que vous choisissez (texte, photo, BD, roman-photo, mots croisés...), visitez notre site web www.medor.coop pour comprendre qui nous sommes et ce que nous voulons publier. Il va de soi que Médor s’engage à respecter la confidentialité de cette proposition et à n’en faire aucun usage, aucune communication sans l’autorisation de l’auteur.</p>
-        <p>La prochaine réunion de rédaction se déroulera début mars. Les propositions doivent nous parvenir avant le lundi 2 mars.</p>
+        <p class="intro-collaborate">Vous vous apprêtez à proposer un sujet d'enquête, de récit ou de portrait pour Médor ?</p>
+        <p class="intro-collaborate">Quel que soit le support médiatique que vous choisissez (texte, photo, BD, roman-photo, mots croisés...), visitez notre site web www.medor.coop pour comprendre qui nous sommes et ce que nous voulons publier. Il va de soi que Médor s’engage à respecter la confidentialité de cette proposition et à n’en faire aucun usage, aucune communication sans l’autorisation de l’auteur.</p>
+        <p class="intro-collaborate">La prochaine réunion de rédaction se déroulera début mars. Les propositions doivent nous parvenir avant le lundi 2 mars.</p>
     </div>
-
 
     <form>
         {% csrf_token %}
-        
-        <div class="form-wrapper">
-            <div class="form-chunk">
-                <div class="box table">
-                
-                       <div class="required table-row">
-                            {{ form.last_name.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_name }}
-                            {{ form.last_name.errors }}
-                            </div>
-                        </div>
-                        
+        <div class="contact-wrapper">
+            <div class="form-wrapper">
+                <div class="form-chunk">
+                    <div class="box table">
+                        {% for field in part1 %}
                         <div class="required table-row">
-                            {{ form.last_address.label_tag }}
+                            {{ field.label_tag }}
                             <div class="table-cell">
-                            {{ form.last_address }}
-                            {{ form.last_address.errors }}
+                            {{ field }}
+                            {{ field.errors }}
+                            {{ field.field.help_text }}
                             </div>
                         </div>
-                         
-                  </div>
-             </div>
-                        
-                        
-             <div class="form-chunk">
-                 <div class="box table">        
-                        
-                        <div class="table-row required">
-                            {{ form.email.label_tag }}
-                            <div class="table-cell">
-                                {{ form.email }}
-                                {{ form.email.errors }}
-                            </div>
-                        </div>
-                        
-                  </div>
-             </div>        
-             </div>
-             
-             <div>
-
-                         <div class="table-row required">
-                            {{ form.abstract.label_tag }}
-                            <div class="table-cell">
-                            {{ form.abstract }}
-                            {{ form.abstract.errors }}
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="table-row required">
-                            {{ form.media.label_tag }}
-                            <div class="table-cell">
-                            {{ form.media }}
-                            {{ form.media.errors }}
-                            </div>
-                        </div>
-                        
+                        {% endfor %}
+                    </div>
+                </div>        
+                <div class="form-chunk">
+                    <div class="box table">
+                        {% for field in part2 %}
                         <div class="required table-row">
-                            {{ form.last_partnership.label_tag }}
+                            {{ field.label_tag }}
                             <div class="table-cell">
-                            {{ form.last_partnership }}
-                            {{ form.last_partnership.errors }}
+                            {{ field }}
+                            {{ field.errors }}
+                            {{ field.field.help_text }}
                             </div>
                         </div>
-                                                
-                        <div class="table-row required">
-                            {{ form.section.label_tag }}
-                            <div class="table-cell">
-                            {{ form.section }}
-                            {{ form.section.errors }}
-                            </div>
-                        </div>
-                        
-                         <div class="required table-row">
-                            {{ form.last_sectioning.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_sectioning }}
-                            {{ form.last_sectioning.errors }}
-                            </div>
-                        </div>
-                        
-                        <div class="required table-row">
-                            {{ form.last_innovation.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_innovation }}
-                            {{ form.last_innovation.errors }}
-                            </div>
-                        </div>
-                        
-                         <div class="required table-row">
-                            {{ form.last_belgian.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_belgian }}
-                            {{ form.last_belgian.errors }}
-                            </div>
-                        </div>
-                        
-                        <div class="required table-row">
-                            {{ form.last_approach.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_approach }}
-                            {{ form.last_approach.errors }}
-                            </div>
-                        </div>
-                   
-                        <div class="required table-row">
-                            {{ form.last_approach.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_sources }}
-                            {{ form.last_sources.errors }}
-                            </div>
-                        </div>
-                        
-                        <div class="required table-row">
-                            {{ form.last_method.label_tag }}
-                            <div class="table-cell">
-                            {{ form.last_method }}
-                            {{ form.last_method.errors }}
-                            </div>
-                        </div>
-                       
+                        {% endfor %}
+                    </div>
                 </div>
-
-
-        <div id="confirm">
-            <p>Vous avez répondu aux questions ci-dessus ? Médor s’engage à vous donner une réponse à l'issue du prochain Comité de rédaction (mensuel) et vous remercie chaleureusement pour la confiance que vous nous accordez !
+            </div>   
+        </div> 
+        {% for field in part3 %}
+        <div class="required">
+            {{ field.label_tag }}
+                <div class="help-text">
+                {{ field.field.help_text }}
+                </div>
+                <div class="article-proposal-field">
+                {{ field }}
+                {{ field.errors }}
+                </div>
+        </div>
+        {% endfor %}
+        <div id="confirm" style="width:66%; margin-top:-5px">
+            <p class="intro-collaborate">Vous avez répondu aux questions ci-dessus ? Médor s’engage à vous donner une réponse à l'issue du prochain Comité de rédaction (mensuel) et vous remercie chaleureusement pour la confiance que vous nous accordez !
             Meilleures salutations</p>
-            <input type="submit" value="Envoyer" />
+            <input style="margin-top:15px" type="submit" value="Envoyer" />
         </div>
     </form>
-</div>
 {% endblock %}
