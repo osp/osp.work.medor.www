@@ -90,13 +90,19 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
 
             <div class="bla">
                 <div id="news">
-<!--                    <h3>L'actu de Médor</h3>
-                    <div id="newslist">
-                    {% placeholder news %}
-                    </div>-->
-                    
                     <h3>Les rendez-vous Médor</h3>
                     <div id="newslist">
+                    {% get_next_events as events %}
+
+                    {% for event in events %}
+                    <p class="date-evenement">{{ event.dtstart.dt|date:"l j F" }}</p>
+                    <p class="titre-evenement">{{ event.summary }}</p>
+                    <p class="infos-evenement">{{ event.dtstart.dt|date:"H:i" }} — {{ event.location }}</p>
+                    <!--{{ event.description }}-->
+                    <!--{{ event.attach }}-->
+                    <br />
+                    {% endfor %}
+
                     {% placeholder news %}
                     </div>
                     
