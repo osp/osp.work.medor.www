@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load compress cms_tags sekizai_tags subscribe_tags %}
+{% load compress cms_tags sekizai_tags subscribe_tags menu_tags %}
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,6 +27,7 @@
 
 <body>
     {% cms_toolbar %}
+    {% show_menu %}
     <div id="foo">
         <div id="bar">
             <figure id="cover-detail" class="cover">

@@ -62,7 +62,7 @@ class ArticleProposal(models.Model):
     )
     space = models.FloatField(
         verbose_name="format",
-        help_text="Quelle serait, selon vous, l'espace nécessaire à votre contribution (Une page de Médor = 16/23 ou +-2000 signes) ? (en nombre de pages)"
+        help_text="Quelle serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages? (une page de Médor = 16/23 ou +-2000 signes)"
     )
     sectioning = models.CharField(
         max_length=500,
