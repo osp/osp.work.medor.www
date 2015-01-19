@@ -29,12 +29,12 @@ class ArticleProposal(models.Model):
         max_length=100,
         blank=True,
         verbose_name="intitulé du sujet (provisoire)",
-        help_text="Titre le plus clair possible. Avec sous-titre éventuel"
+        help_text="Titre le plus clair possible. Avec sous-titre éventuel."
     )
     is_urgent = models.BooleanField(
         default=False,
         verbose_name="Urgence",
-        help_text="Votre sujet nécessite-t-il une publication rapide sur le web ou sur papier (pour préserver l'exclusivité par exemple) ? Si oui, il n'est pas nécessaire de remplir le formulaire entièrement (200 signes)"
+        help_text="Votre sujet nécessite-t-il une publication rapide sur le web ou sur papier (pour préserver l'exclusivité par exemple) ? Si oui, il n'est pas nécessaire de remplir le formulaire entièrement. (200 signes)"
     )
     abstract = models.CharField(
         max_length=750,
