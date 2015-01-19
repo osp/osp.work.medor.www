@@ -37,6 +37,7 @@ h1 { text-align: center; }
 label {
     font-family: 'alfphabetbipocatcondensed';
     color: @color-E1;
+    vertical-align: top;
 }
 .article-proposal label {
     color: black;
@@ -240,17 +241,39 @@ p.text-cadeau {
 
 
 p.intro-collaborate {
-    font-family: "urw-grotesk-t"; 
+    font-family: "centurycatalogue";
     line-height: 1.21em;
+    text-align:left;
 }
-
 
 textarea { 
     width: 100%; 
     .box-sizing;
     border: 0;
-    background-color: white;
     font-family: "centurycatalogue";
-    font-size: 24px;
+    font-size: 20px;
     padding: 0 6.25px;
+    margin-top: 5px;
+}
+textarea:focus {
+    outline:solid 3px #fffd92;
+    background: white !important;
+}
+
+.help-text {
+    font-size:0.8em;
+    line-height:1.2em;
+    width:66%;
+    margin-top:-5px;
+}
+
+.article-proposal-field textarea{
+    width:66%;
+    background-color: #fffd92;
+}
+.contact-wrapper {
+    background-color: #A9D5DE;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-bottom: double black 17px;
 }

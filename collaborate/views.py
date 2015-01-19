@@ -10,8 +10,9 @@ class ArticleProposalView(FormView):
     def get_context_data(self, **kwargs):
         context = super(ArticleProposalView, self).get_context_data(**kwargs)
         fields = list(context['form'])
-        context['part1'] = fields[:5]
-        context['part2'] = fields[5:]
+        context['part1'] = fields[:4]
+        context['part2'] = fields[4:5]
+        context['part3'] = fields[5:]
         return context
 
     def form_valid(self, form):
