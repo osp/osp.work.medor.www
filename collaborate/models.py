@@ -104,19 +104,19 @@ class ArticleProposal(models.Model):
         max_length=500,
         blank=True,
         verbose_name="difficultés",
-        help_text="Quelles difficultés (principales et particulières) prévoyez-vous de rencontrer dans la réalisation de votre enquête ou votre reportage ? Comment prévoyez-vous de pallier ces difficultés ? — 500 signes maximum."
+        help_text="Quelles difficultés (principales et particulières) prévoyez-vous de rencontrer dans la réalisation de votre enquête ou reportage ? Comment prévoyez-vous de pallier ces difficultés ? — 500 signes maximum."
     )
     term = models.CharField(
         max_length=200,
         blank=True,
         verbose_name="échéance",
-        help_text="Quand prévoyez-vous de remettre votre contribution (définitive) à Médor ? Quelle date vous conviendrait le mieux ? — 200 signes maximum."
+        help_text="Quand prévoyez-vous de remettre votre contribution (définitive) à Médor ?"
     )
     miscellaneous = models.CharField(
         max_length=500,
         blank=True,
         verbose_name="divers",
-        help_text="Avez-vous une remarque ou une demande particulière à adresser avec votre proposition ? — 500 signes maximum."
+        help_text="Avez-vous une remarque ou une demande particulière liée à votre proposition? — 500 signes maximum."
     )
 
 

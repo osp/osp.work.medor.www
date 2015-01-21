@@ -22,6 +22,6 @@ class ArticleProposalForm(forms.ModelForm):
             'sources': forms.Textarea(),
             'method': forms.Textarea(),
             'difficulties': forms.Textarea(),
-            'term': forms.Textarea(),
+            'term': forms.Textarea(attrs={'rows':3}),
             'miscellaneous': forms.Textarea(),
         }
