@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from datetime import datetime
+from datetime import datetime, date
 from django.db.models import Max
 
 
@@ -18,9 +18,64 @@ class TransactionBase(models.Model):
     )
 
     COUNTRY_CHOICES = (
-        ('BE', u'Belgique'),
-        #('FR', u'France'),
-        #('LU', u'Luxembourg')
+        ('AL', 'Albanie'),
+        ('PT-20', 'Açores'),
+        ('DE', 'Allemagne'),
+        ('AD', 'Andorre'),
+        ('AT', 'Autriche'),
+        ('BE', 'Belgique'),
+        ('BY', 'Biélorussie'),
+        ('BA', 'Bosnie-Herzégovine'),
+        ('BG', 'Bulgarie'),
+        ('IC', 'Canaries (Îles)'),
+        ('ES-CE', 'Ceuta'),
+        ('CY', 'Chypre'),
+        ('HR', 'Croatie'),
+        ('DK', 'Danemark'),
+        ('ES', 'Espagne'),
+        ('EE', 'Estonie'),
+        ('FO', 'Féroé (Îles)'),
+        ('FI', 'Finlande'),
+        ('FR', 'France (sauf DOM-TOM)'),
+        ('GE', 'Géorgie'),
+        ('GI', 'Gibraltar'),
+        ('GB', 'Grande-Bretagne'),
+        ('GR', 'Grèce'),
+        ('GL', 'Groenland'),
+        ('GG', 'Guernesey'),
+        ('HU', 'Hongrie'),
+        ('IE', 'Irlande'),
+        ('IS', 'Islande'),
+        ('IT', 'Italie'),
+        ('JE', 'Jersey'),
+        ('LV', 'Lettonie'),
+        ('LI', 'Liechtenstein'),
+        ('LT', 'Lituanie'),
+        ('LU', 'Luxembourg (Grand-Duché de)'),
+        ('MK', 'Macédoine'),
+        ('PT-30', 'Madère'),
+        ('MT', 'Malte'),
+        ('IM', 'Man (Île de)'),
+        ('Me', 'Melilla'),
+        ('MD', 'Moldavie'),
+        ('MC', 'Monaco'),
+        ('ME', 'Monténégro'),
+        ('NO', 'Norvège'),
+        ('NL', 'Pays-Bas'),
+        ('PL', 'Pologne'),
+        ('PT', 'Portugal'),
+        ('CZ', 'République tchèque'),
+        ('RO', 'Roumanie'),
+        ('RU', 'Russie'),
+        ('SM', 'Saint-Martin'),
+        ('RS', 'Serbie'),
+        ('SK', 'Slovaquie'),
+        ('SI', 'Slovénie'),
+        ('SE', 'Suède'),
+        ('CH', 'Suisse'),
+        ('TR', 'Turquie'),
+        ('UA', 'Ukraine'),
+        ('VA', 'Vatican')
     )
 
     title = models.BooleanField('civilité', default=False, choices=TITLE_CHOICES)
@@ -32,7 +87,7 @@ class TransactionBase(models.Model):
     letterbox = models.PositiveSmallIntegerField('boîte postale', max_length=30, null=True, blank=True)
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
-    country = models.CharField('pays', max_length=2, choices=COUNTRY_CHOICES, default="BE")
+    country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
     creation_date = models.DateTimeField(auto_now_add=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True)
@@ -96,6 +151,10 @@ class Subscription(TransactionBase):
     class Meta:
         verbose_name = "abonnement"
         verbose_name_plural = "abonnements"
+
+    def amount(self):
+        shipping = 20 if (self.country != "BE" and self.creation_date.date() > date(2015, 1, 20)) else 0
+        return 60 + shipping
 
 
 class Cooperation(TransactionBase):

@@ -1,6 +1,6 @@
 Vous venez de vous abonner à Médor. Excellente idée! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.
 
-Nous vous invitons à régler dès aujourd’hui 60 euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée :
+Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée :
 
 {{ obj.structured_communication }}
 

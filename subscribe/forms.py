@@ -1,5 +1,71 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from subscribe.models import Cooperation, Subscription
+
+
+SUBSCRIPTION_COUNTRY_CHOICES = (
+    ('BE', u'Belgique'),
+    ('Europe (+ 20 €)', (
+            ('AL', 'Albanie'),
+            ('PT-20', 'Açores'),
+            ('DE', 'Allemagne'),
+            ('AD', 'Andorre'),
+            ('AT', 'Autriche'),
+            ('BY', 'Biélorussie'),
+            ('BA', 'Bosnie-Herzégovine'),
+            ('BG', 'Bulgarie'),
+            ('IC', 'Canaries (Îles)'),
+            ('ES-CE', 'Ceuta'),
+            ('CY', 'Chypre'),
+            ('HR', 'Croatie'),
+            ('DK', 'Danemark'),
+            ('ES', 'Espagne'),
+            ('EE', 'Estonie'),
+            ('FO', 'Féroé (Îles)'),
+            ('FI', 'Finlande'),
+            ('FR', 'France (sauf DOM-TOM)'),
+            ('GE', 'Géorgie'),
+            ('GI', 'Gibraltar'),
+            ('GB', 'Grande-Bretagne'),
+            ('GR', 'Grèce'),
+            ('GL', 'Groenland'),
+            ('GG', 'Guernesey'),
+            ('HU', 'Hongrie'),
+            ('IE', 'Irlande'),
+            ('IS', 'Islande'),
+            ('IT', 'Italie'),
+            ('JE', 'Jersey'),
+            ('LV', 'Lettonie'),
+            ('LI', 'Liechtenstein'),
+            ('LT', 'Lituanie'),
+            ('LU', 'Luxembourg (Grand-Duché de)'),
+            ('MK', 'Macédoine'),
+            ('PT-30', 'Madère'),
+            ('MT', 'Malte'),
+            ('IM', 'Man (Île de)'),
+            ('Me', 'Melilla'),
+            ('MD', 'Moldavie'),
+            ('MC', 'Monaco'),
+            ('ME', 'Monténégro'),
+            ('NO', 'Norvège'),
+            ('NL', 'Pays-Bas'),
+            ('PL', 'Pologne'),
+            ('PT', 'Portugal'),
+            ('CZ', 'République tchèque'),
+            ('RO', 'Roumanie'),
+            ('RU', 'Russie'),
+            ('SM', 'Saint-Martin'),
+            ('RS', 'Serbie'),
+            ('SK', 'Slovaquie'),
+            ('SI', 'Slovénie'),
+            ('SE', 'Suède'),
+            ('CH', 'Suisse'),
+            ('TR', 'Turquie'),
+            ('UA', 'Ukraine'),
+            ('VA', 'Vatican')
+        )
+    )
+)
 
 
 class ConfirmForm(forms.Form):
@@ -29,7 +95,6 @@ class CooperationForm(forms.ModelForm):
         exclude = ('status', 'invoice_reference')
         widgets = {
             'title': forms.RadioSelect(),
-            'country': forms.RadioSelect(),
             'letterbox': forms.TextInput(),
             'zip_code': forms.TextInput(),
         }
@@ -45,6 +110,7 @@ class SubscriptionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(SubscriptionForm, self).__init__(*args, **kwargs)
+        self.fields['country'].choices = SUBSCRIPTION_COUNTRY_CHOICES
 
     def clean_recipient_first_name(self):
         cleaned_data = super(SubscriptionForm, self).clean()
@@ -71,7 +137,6 @@ class SubscriptionForm(forms.ModelForm):
         exclude = ('status', 'invoice_reference')
         widgets = {
             'title': forms.RadioSelect(),
-            'country': forms.RadioSelect(),
             'letterbox': forms.TextInput(),
             'zip_code': forms.TextInput(),
             'recipient_title': forms.RadioSelect(),
