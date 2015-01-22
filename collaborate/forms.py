@@ -10,6 +10,7 @@ class ArticleProposalForm(forms.ModelForm):
         model = ArticleProposal
         widgets = {
             'address': forms.Textarea(attrs={'rows':5}),
+            'subject_title': forms.Textarea(attrs={'rows':2}),
             'abstract': forms.Textarea(),
             'media': forms.Textarea(),
             'partnership': forms.Textarea(),
@@ -21,6 +22,6 @@ class ArticleProposalForm(forms.ModelForm):
             'sources': forms.Textarea(),
             'method': forms.Textarea(),
             'difficulties': forms.Textarea(),
-            'term': forms.Textarea(),
+            'term': forms.Textarea(attrs={'rows':3}),
             'miscellaneous': forms.Textarea(),
         }
