@@ -54,6 +54,7 @@ def get_next_events():
 
     now = datetime.datetime.now()
     now = now.replace(tzinfo=pytz.timezone('Europe/Brussels'))
-    events = [e for e in events if to_datetime(e.get('dtstart').dt) >= now]
+    yesterday = now - datetime.timedelta(1)
+    events = [e for e in events if to_datetime(e.get('dtstart').dt) > yesterday]
 
     return events[:3]
