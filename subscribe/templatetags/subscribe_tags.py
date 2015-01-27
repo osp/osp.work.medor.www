@@ -57,4 +57,4 @@ def get_next_events():
     yesterday = now - datetime.timedelta(1)
     events = [e for e in events if to_datetime(e.get('dtstart').dt) > yesterday]
 
-    return events[:3]
+    return events[:4]

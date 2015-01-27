@@ -97,7 +97,7 @@ Et&nbsp;peut-être <a href="#subscribing">le vôtre</a>.
                     {% for event in events %}
                     <p class="date-evenement">{{ event.dtstart.dt|date:"l j F" }}</p>
                     <p class="titre-evenement">{{ event.summary }}</p>
-                    <p class="infos-evenement">{{ event.dtstart.dt|date:"H:i" }} — {{ event.location }}</p>
+                    <p class="infos-evenement">{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>
                     <!--{{ event.description }}-->
                     <!--{{ event.attach }}-->
                     <br />
