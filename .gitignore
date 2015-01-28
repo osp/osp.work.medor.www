@@ -7,3 +7,7 @@ venv
 medor/local_settings.py
 medor.db
 
+media
+*.old
+*.bak
+*_orig
