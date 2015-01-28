@@ -15,6 +15,7 @@ class ArticleProposalForm(forms.ModelForm):
             'media': forms.Textarea(),
             'partnership': forms.Textarea(),
             'section': forms.Textarea(),
+            'space': forms.TextInput(),
             'sectioning': forms.Textarea(),
             'innovation': forms.Textarea(),
             'belgian': forms.Textarea(),

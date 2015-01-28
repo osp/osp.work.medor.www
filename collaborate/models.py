@@ -4,31 +4,33 @@ from django.db import models
 
 
 class ArticleProposal(models.Model):
+    creation_date = models.DateTimeField(
+        auto_now_add=True
+    )
     name = models.CharField(
         max_length=50,
-        verbose_name="nom"
+        verbose_name="Nom"
     )
     email = models.EmailField(
         max_length=75,
-        verbose_name="courriel"
+        verbose_name="Courriel"
     )
     phone = models.CharField(
         max_length=50,
         blank=True,
-        verbose_name="téléphone"
+        verbose_name="Téléphone"
     )
     twitter_account = models.CharField(
         max_length=100,
         blank=True,
-        verbose_name="compte twitter"
+        verbose_name="Compte Twitter"
     )
     address = models.TextField(
-        verbose_name="adresse"
+        verbose_name="Adresse"
     )
     subject_title = models.CharField(
         max_length=300,
-        blank=True,
-        verbose_name="intitulé du sujet (provisoire)",
+        verbose_name="Intitulé du sujet (provisoire)",
         help_text="Titre le plus clair possible. Avec sous-titre éventuel."
     )
     is_urgent = models.BooleanField(
@@ -38,89 +40,70 @@ class ArticleProposal(models.Model):
     )
     abstract = models.CharField(
         max_length=750,
-        blank=True,
-        verbose_name="résumé (prévisionnel)",
-        help_text="Rédigez comme s’il s’agissait d’un chapeau destiné à un média généraliste — 750 signes maximum."
+        verbose_name="Résumé (prévisionnel)",
+        help_text="Rédigez comme s’il s’agissait d’un chapeau destiné à un média généraliste."
     )
     media = models.CharField(
         max_length=200,
-        blank=True,
-        verbose_name="média",
-        help_text="Quelle(s) contribution(s) envisagez-vous? Écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez) — 200 signes maximum."
+        verbose_name="Média",
+        help_text="Quelle(s) contribution(s) envisagez-vous ? Écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez)."
     )
     partnership = models.CharField(
         max_length=200,
-        blank=True,
-        verbose_name="partenariat",
-        help_text="Quelle synergie serait possible entre votre projet et un autre correspondant de Médor : écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez) — 200 signes maximum."
+        verbose_name="Partenariat",
+        help_text="Quelle synergie serait possible entre votre projet et un autre correspondant de Médor : écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez)."
     )
     section = models.CharField(
         max_length=200,
-        blank=True,
-        verbose_name="rubrique concernée (a priori)",
-        help_text="Destinez-vous votre sujet à une rubrique précise ? Entretien, portrait, récit, enquête, brèves — 200 signes maximum."
+        verbose_name="Rubrique concernée (a priori)",
+        help_text="Destinez-vous votre sujet à une rubrique précise ? Entretien, portrait, récit, enquête, brèves."
     )
     space = models.FloatField(
-        verbose_name="format",
-        help_text="Une page Médor mesure 16x23 cm, soit environ 2000 signes. Quelle serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages?"
+        verbose_name="Format",
+        help_text="Une page Médor mesure 16 x 23 cm, soit environ 2000 signes. Quelle serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages ?"
     )
     sectioning = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="découpage",
-        help_text="Votre sujet se décline-t-il en plusieurs entrées ? Sinon, le pourrait-il ? Où va votre préférence et pourquoi ? — 500 signes maximum."
+        verbose_name="Découpage",
+        help_text="Votre sujet se décline-t-il en plusieurs entrées ? Sinon, le pourrait-il ? Où va votre préférence et pourquoi ?"
     )
     innovation = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="innovation",
-        help_text="En quoi votre sujet est-il innovant par rapport à l’offre médiatique francophone de Belgique ? — 500 signes maximum."
+        verbose_name="Innovation",
+        help_text="En quoi votre sujet est-il innovant par rapport à l’offre médiatique francophone de Belgique ?"
     )
     belgian = models.CharField(
         max_length=500,
-        blank=True,
         verbose_name="Belgique",
-        help_text="En quoi votre sujet est-il spécifiquement belge ? Que nous dit-il de la Belgique et comment, à travers lui, la Belgique nous parle-t-elle du monde ? — 500 signes maximum."
+        help_text="En quoi votre sujet est-il spécifiquement belge ? Que nous dit-il de la Belgique et comment, à travers lui, la Belgique nous parle-t-elle du monde ?"
     )
     approach = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="approche",
-        help_text="Sous quel angle (original, surprenant ou amusant) allez-vous aborder ce sujet ? — 500 signes maximum."
+        verbose_name="Approche",
+        help_text="Sous quel angle (original, surprenant ou amusant) allez-vous aborder ce sujet ?"
     )
     sources = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="sources",
-        help_text="Auprès de quelles sources ou quels types de sources (principales) pensez-vous démarrer votre recherche ? — 500 signes maximum."
+        verbose_name="Sources",
+        help_text="Auprès de quelles sources ou quels types de sources (principales) pensez-vous démarrer votre recherche ?"
     )
     method = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="méthode",
-        help_text="Comment comptez-vous obtenir vos informations et vous immerger dans votre thématique ? — 500 signes maximum."
+        verbose_name="Méthode",
+        help_text="Comment comptez-vous obtenir vos informations et vous immerger dans votre thématique ?"
     )
     difficulties = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="difficultés",
-        help_text="Quelles difficultés (principales et particulières) prévoyez-vous de rencontrer dans la réalisation de votre enquête ou reportage ? Comment prévoyez-vous de pallier ces difficultés ? — 500 signes maximum."
+        verbose_name="Difficultés",
+        help_text="Quelles difficultés (principales et particulières) prévoyez-vous de rencontrer dans la réalisation de votre enquête ou reportage ? Comment prévoyez-vous de pallier ces difficultés ?"
     )
     term = models.CharField(
         max_length=200,
-        blank=True,
-        verbose_name="échéance",
+        verbose_name="Échéance",
         help_text="Quand prévoyez-vous de remettre votre contribution (définitive) à Médor ?"
     )
     miscellaneous = models.CharField(
         max_length=500,
-        blank=True,
-        verbose_name="divers",
-        help_text="Avez-vous une remarque ou une demande particulière liée à votre proposition? — 500 signes maximum."
+        verbose_name="Divers",
+        help_text="Avez-vous une remarque ou une demande particulière liée à votre proposition ?"
     )
-
-
-
-
-
-

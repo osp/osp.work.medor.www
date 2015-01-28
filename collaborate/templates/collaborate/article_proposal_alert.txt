@@ -1,0 +1,6 @@
+{% load admin_urls %}
+
+Une nouvelle proposition de collaboration! Vous pouvez voir cette proposition à l'adresse suivante:
+{{ admin_url }}.
+
+Belle journée
