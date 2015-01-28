@@ -39,6 +39,6 @@ class ArticleProposalView(FormView):
         message = render_to_string('collaborate/article_proposal_confirmation.txt', {'obj': obj})
         sender = "jaiuntrucpourvous@medor.coop"
         recipients = [obj.email]
-        #send_mail(subject, message, sender, recipients)
+        send_mail(subject, message, sender, recipients)
 
         return super(ArticleProposalView, self).form_valid(form)
