@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Médor</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
+
+    {% if debug %}
+    <!-- This is the client-side way to compile less and an ok choice for local dev -->
+    <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/styles2.less" />
+    {% else %}
+    {% compress css %}
+    <!-- This is the nifty django-compressor way to compile your less files in css -->
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/styles2.less" charset="utf-8">
+    {% endcompress %}
+    {% endif %}
+
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}img/favicon-medor_16-16.png">
+
+    {% render_block "css" %}
+    <script src="{{ STATIC_URL }}js/modernizr.custom.08508.js" ></script>
+</head>
+
+<body>
+    {% cms_toolbar %}
+    <nav id="main-nav">
+        <ul>{% show_menu %}<ul>
+    </nav>
+
+    <div class="wrapper">
+        <h1>Médor, les yeux ouverts</h1>
+        <div id="intro" class="narrow">
+            {% placeholder intro %}
+        </div>
+
+        <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>
+        
+        <div id="news">
+            <h2>actualités</h2>
+            {% get_next_events as events %}
+
+            {% for event in events %}
+            <article>
+                <p>{{ event.dtstart.dt|date:"l j F" }}</p>
+                <h3>{{ event.summary }}</h3>
+                <p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div id="participate">
+            <div id="subscribe">
+                <h2>Abonnez-vous</h2>
+                {% include "subscribe/partials/arrow-subscribe.html" %}
+                {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
+            </div>
+            <div id="cooperate">
+                <h2>Devenez coopérateur</h2>
+                {% include "subscribe/partials/arrow-cooperate.html" %}
+                {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
+            </div>
+            <div id="donate">
+                <h2>Donnez des sous</h2>
+                {% include "subscribe/partials/arrow-donate.html" %}
+                {% placeholder donate or %}donnez des sous{% endplaceholder %}
+            </div>
+        </div>
+
+        <div id="magazine">
+            <h2>Médor, c'est un magazine</h2>
+            <div id="dna" class="narrow">
+            {% for i in '1234567'|make_list %}
+                <div class="dna-item">
+                    <h3>{% lorem 1 w random %}</h3>
+                    {% lorem 1 p random %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <div id="collaborative-experience">
+            <h2>Médor, c'est une experience collaborative</h2>
+            <div class="narrow">
+            {% for i in '12345'|make_list %}
+                <h3>{% lorem 1 w random %}</h3>
+                {% lorem 1 p random %}
+            {% endfor %}
+
+            <figure>
+                <img src="{{ STATIC_URL }}img/medor-extrait.png" alt="Médor au travail">
+            </figure>
+
+            {% for i in '67'|make_list %}
+                <h3>{% lorem 1 w random %}</h3>
+                {% lorem 1 p random %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <div id="accounting">
+            <h2>Médor, c'est une experience collaborative</h2>
+            <div class="narrow">
+            {% for i in '1234567'|make_list %}
+                <h3>{% lorem 1 w random %}</h3>
+                {% lorem 1 p random %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <div id="status">
+            <h2>Médor, c'est déja</h2>
+            <div class="narrow">
+                <h3>{% lorem 1 w random %}</h3>
+                {% lorem 1 p random %}
+            </div>
+        </div>
+    </div>
+
+    {% include "subscribe/partials/carousel.html" %}
+
+
+
+    <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
+    <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="{{ STATIC_URL }}components/details-tag/jquery.details.js" ></script>
+    <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.tocify.min.js"></script>
+    <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
+    <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.xdomainajax.js"></script>
+    <!--<script src="{{ STATIC_URL }}js/longform.js?kkbb2"></script>-->
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//medor.coop/stats/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+    <noscript><p><img src="//medor.coop/stats/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+    {% render_block "js" %}
+</body>
+</html>
+

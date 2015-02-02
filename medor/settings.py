@@ -86,6 +86,8 @@ INSTALLED_APPS = (
     'meta_mixin',
     'admin_enhancer',
     'djangocms_blog',
+
+    'django.contrib.webdesign'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -153,6 +155,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 CMS_TEMPLATES = (
     ('generic.html', 'Generic'),
     ('subscribe/home.html', 'Appel'),
+    ('subscribe/home2.html', 'Appel2'),
     ('subscribe/FAQ.html', 'FAQ'),
 )
 

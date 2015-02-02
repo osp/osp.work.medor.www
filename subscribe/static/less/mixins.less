@@ -26,6 +26,14 @@
     }
 }
 
+.column-break-inside(@column-break-inside: avoid){
+    -webkit-column-break-inside: @column-break-inside;
+       -moz-column-break-inside: @column-break-inside;
+         -o-column-break-inside: @column-break-inside;
+        -ms-column-break-inside: @column-break-inside;
+            column-break-inside: @column-break-inside;
+}
+
 .column-count(@column-count: 2){
     -webkit-column-count: @column-count;
        -moz-column-count: @column-count;
