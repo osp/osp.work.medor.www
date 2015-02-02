@@ -1,0 +1,14 @@
+{% load subscribe_tags %}
+
+
+<div class="arrow-outer">
+    <a href="{% url 'cooperate-wizard' %}">
+        <span class="arrow-money">
+            <span class="inner">je  prends<br />une part à<br /><span class="price">20<sup>€</sup><sub>ou&nbsp;+</sub></span></span>
+        </span>
+    </a>
+    <div class="goal-outer">
+        {% get_capital_amount as capital_amount %}
+        <span class="number">{{ capital_amount }}<sup>€</sup></span>
+    </div>
+</div>

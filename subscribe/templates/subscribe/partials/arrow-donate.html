@@ -1,0 +1,14 @@
+{% load subscribe_tags %}
+
+
+<div class="arrow-outer">
+    <span class="arrow-money">
+        <span class="inner">je fais<br />un don de<br />
+            <span class="price">5<sup>€</sup><sub>ou&nbsp;+</sub></span>
+        </span>
+    </span>
+    <div class="goal-outer">
+        {% get_capital_amount as capital_amount %}
+        <span class="number">{{ capital_amount }}<sup>€</sup></span>
+    </div>
+</div>

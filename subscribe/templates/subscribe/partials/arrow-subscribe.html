@@ -1,0 +1,18 @@
+{% load subscribe_tags %}
+
+
+<div class="arrow-outer">
+    <a href="{% url 'subscribe-wizard' %}">
+        <span class="arrow-money">
+            <span class="inner">je m'abonne,<br />j'avance<br /><span class="price">60<sup>€</sup></span></span>
+        </span>
+    </a>
+
+    <div class="goal-outer">
+        {% get_subscriber_count as subscriber_count %}
+        {{ subscriber_count }}&thinsp;/&thinsp;<span class="goal">
+            3800<br />
+            abonnés
+        </span>
+    </div>
+</div>
