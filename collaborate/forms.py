@@ -9,12 +9,12 @@ class ArticleProposalForm(forms.ModelForm):
     class Meta:
         model = ArticleProposal
         widgets = {
-            'address': forms.Textarea(attrs={'rows':5}),
+            'address': forms.Textarea(attrs={'rows':5, 'cols': ''}),
             'subject_title': forms.Textarea(attrs={'rows':2}),
             'abstract': forms.Textarea(),
             'media': forms.Textarea(),
             'partnership': forms.Textarea(),
-            'section': forms.Textarea(),
+            'section': forms.RadioSelect(),
             'space': forms.TextInput(),
             'sectioning': forms.Textarea(),
             'innovation': forms.Textarea(),

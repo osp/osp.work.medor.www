@@ -2,6 +2,14 @@
 from django.db import models
 
 
+SECTION_CHOICES = (
+    (0, u'Enquête'),
+    (1, u'Portrait ou récit'),
+    (2, u'Interview'),
+    (3, u'Portfolio photo'),
+    (4, u'Autre')
+)
+
 
 class ArticleProposal(models.Model):
     creation_date = models.DateTimeField(
@@ -53,12 +61,14 @@ class ArticleProposal(models.Model):
         verbose_name="Partenariat",
         help_text="Quelle synergie serait possible entre votre projet et un autre correspondant de Médor : écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez)."
     )
-    section = models.CharField(
-        max_length=200,
+    section = models.PositiveSmallIntegerField(
+        choices=SECTION_CHOICES,
+        default=0,
         verbose_name="Rubrique concernée (a priori)",
         help_text="Destinez-vous votre sujet à une rubrique précise ? Entretien, portrait, récit, enquête, brèves."
     )
-    space = models.FloatField(
+    space = models.CharField(
+        max_length=200,
         verbose_name="Format",
         help_text="Une page Médor mesure 16 x 23 cm, soit environ 2000 signes. Quelle serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages ?"
     )
@@ -100,10 +110,12 @@ class ArticleProposal(models.Model):
     term = models.CharField(
         max_length=200,
         verbose_name="Échéance",
-        help_text="Quand prévoyez-vous de remettre votre contribution (définitive) à Médor ?"
+        help_text="Une fois un feu vert de Médor, de combien de temps aurez-vous besoin avant nous remettre une version finale du projet ?"
+
     )
     miscellaneous = models.CharField(
         max_length=500,
+        blank=True,
         verbose_name="Divers",
         help_text="Avez-vous une remarque ou une demande particulière liée à votre proposition ?"
     )
