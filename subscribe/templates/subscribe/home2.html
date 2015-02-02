@@ -56,7 +56,7 @@
                 {% include "subscribe/partials/arrow-subscribe.html" %}
                 {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
                 <details>
-                    <summary>Pourquoi s'abonner ?</summary>
+                    <summary>Pourquoi s'abonner&thinsp;?</summary>
                     {% placeholder why-subscribe or %}parce que{% endplaceholder %}
                 </details>
             </div>
@@ -65,7 +65,7 @@
                 {% include "subscribe/partials/arrow-cooperate.html" %}
                 {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
                 <details>
-                    <summary>Pourquoi s'abonner ?</summary>
+                    <summary>Pourquoi devenir cooperateur&thinsp;?</summary>
                     {% placeholder why-cooperate or %}parce que{% endplaceholder %}
                 </details>
             </div>
@@ -73,10 +73,6 @@
                 <h2>Donnez des sous</h2>
                 {% include "subscribe/partials/arrow-donate.html" %}
                 {% placeholder donate or %}donnez des sous{% endplaceholder %}
-                <details>
-                    <summary>Pourquoi s'abonner ?</summary>
-                    {% placeholder why-donate or %}parce que{% endplaceholder %}
-                </details>
             </div>
         </div>
 
@@ -110,33 +106,47 @@
         <div id="collaborative-experience">
             <h2>Médor, c'est une experience collaborative</h2>
             <div class="narrow">
-                {% for i in '12345'|make_list %}
-                    <h3>{% lorem 1 w random %}</h3>
-                    {% lorem 1 p random %}
-                {% endfor %}
-
-                <figure>
-                    <img src="{{ STATIC_URL }}img/medor-extrait.png" alt="Médor au travail">
-                </figure>
-
-                {% for i in '67'|make_list %}
-                    <h3>{% lorem 1 w random %}</h3>
-                    {% lorem 1 p random %}
-                {% endfor %}
+                {% placeholder collaborative-experience or %}Médor, c'est une expérience collaborative…{% endplaceholder %}
 
                 <details>
+                    <summary>Colophon de cette première page</summary>
                     {% placeholder colophon or %}colophon{% endplaceholder %}
                 </details>
             </div>
         </div>
 
         <div id="accounting">
-            <h2>Médor, c'est une experience collaborative</h2>
+            <h2>Médor, c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
             <div class="narrow">
-            {% for i in '1234567'|make_list %}
-                <h3>{% lorem 1 w random %}</h3>
-                {% lorem 1 p random %}
-            {% endfor %}
+                {% placeholder 3800-abonnes or %}3800 abonnés{% endplaceholder %}
+                <details>
+                    <summary>Plus de détails</summary>
+                    {% placeholder 3800-abonnes-details or %}détails{% endplaceholder %}
+                </details>
+
+                <div class="col2">
+                    <div class="no-break">
+                        {% placeholder cout-details or %}Le coût d'une enquête{% endplaceholder %}
+                        <details>
+                            <summary>Plus de détails</summary>
+                            {% placeholder cout-details or %}détails{% endplaceholder %}
+                        </details>
+                    </div>
+
+                    <div class="no-break">
+                        {% placeholder frais or %}Les frais de lancement{% endplaceholder %}
+                        <details>
+                            <summary>Plus de détails</summary>
+                            {% placeholder frais-details or %}détails{% endplaceholder %}
+                        </details>
+                    </div>
+                </div>
+
+                {% placeholder pub or %}La pub{% endplaceholder %}
+                <details>
+                    <summary>Plus de détails</summary>
+                    {% placeholder pub-details or %}détails{% endplaceholder %}
+                </details>
             </div>
         </div>
 
