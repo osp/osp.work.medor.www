@@ -35,7 +35,7 @@
             {% placeholder intro %}
         </div>
 
-        <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>
+        <iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>
         
         <div id="news">
             <h2>actualités</h2>
@@ -55,47 +55,78 @@
                 <h2>Abonnez-vous</h2>
                 {% include "subscribe/partials/arrow-subscribe.html" %}
                 {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
+                <details>
+                    <summary>Pourquoi s'abonner ?</summary>
+                    {% placeholder why-subscribe or %}parce que{% endplaceholder %}
+                </details>
             </div>
             <div id="cooperate">
                 <h2>Devenez coopérateur</h2>
                 {% include "subscribe/partials/arrow-cooperate.html" %}
                 {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
+                <details>
+                    <summary>Pourquoi s'abonner ?</summary>
+                    {% placeholder why-cooperate or %}parce que{% endplaceholder %}
+                </details>
             </div>
             <div id="donate">
                 <h2>Donnez des sous</h2>
                 {% include "subscribe/partials/arrow-donate.html" %}
                 {% placeholder donate or %}donnez des sous{% endplaceholder %}
+                <details>
+                    <summary>Pourquoi s'abonner ?</summary>
+                    {% placeholder why-donate or %}parce que{% endplaceholder %}
+                </details>
             </div>
         </div>
 
         <div id="magazine">
             <h2>Médor, c'est un magazine</h2>
             <div id="dna" class="narrow">
-            {% for i in '1234567'|make_list %}
                 <div class="dna-item">
-                    <h3>{% lorem 1 w random %}</h3>
-                    {% lorem 1 p random %}
+                    {% placeholder belge or %}belge{% endplaceholder %}
                 </div>
-            {% endfor %}
+                <div class="dna-item">
+                    {% placeholder speleologue or %}spéléogue{% endplaceholder %}
+                </div>
+                <div class="dna-item">
+                    {% placeholder libre or %}libre{% endplaceholder %}
+                </div>
+                <div class="dna-item">
+                    {% placeholder enthousiasmant or %}enthousiasmant{% endplaceholder %}
+                </div>
+                <div class="dna-item">
+                    {% placeholder inventeur or %}inventeur{% endplaceholder %}
+                </div>
+                <div class="dna-item">
+                    {% placeholder imparfait or %}imparfait{% endplaceholder %}
+                </div>
+                <div class="dna-item">
+                    {% placeholder digne or %}digne{% endplaceholder %}
+                </div>
             </div>
         </div>
 
         <div id="collaborative-experience">
             <h2>Médor, c'est une experience collaborative</h2>
             <div class="narrow">
-            {% for i in '12345'|make_list %}
-                <h3>{% lorem 1 w random %}</h3>
-                {% lorem 1 p random %}
-            {% endfor %}
+                {% for i in '12345'|make_list %}
+                    <h3>{% lorem 1 w random %}</h3>
+                    {% lorem 1 p random %}
+                {% endfor %}
 
-            <figure>
-                <img src="{{ STATIC_URL }}img/medor-extrait.png" alt="Médor au travail">
-            </figure>
+                <figure>
+                    <img src="{{ STATIC_URL }}img/medor-extrait.png" alt="Médor au travail">
+                </figure>
 
-            {% for i in '67'|make_list %}
-                <h3>{% lorem 1 w random %}</h3>
-                {% lorem 1 p random %}
-            {% endfor %}
+                {% for i in '67'|make_list %}
+                    <h3>{% lorem 1 w random %}</h3>
+                    {% lorem 1 p random %}
+                {% endfor %}
+
+                <details>
+                    {% placeholder colophon or %}colophon{% endplaceholder %}
+                </details>
             </div>
         </div>
 
