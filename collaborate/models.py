@@ -70,17 +70,17 @@ class ArticleProposal(models.Model):
     space = models.CharField(
         max_length=200,
         verbose_name="Format",
-        help_text="Une page Médor mesure 16 x 23 cm, soit environ 2000 signes. Quelle serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages ?"
+        help_text="Une page Médor mesure 16 x 23 cm, soit environ 2000 signes. Quel serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages ?"
     )
     sectioning = models.CharField(
         max_length=500,
         verbose_name="Découpage",
-        help_text="Votre sujet se décline-t-il en plusieurs entrées ? Sinon, le pourrait-il ? Où va votre préférence et pourquoi ?"
+        help_text="Votre sujet se décline-t-il en plusieurs entrées ? Sinon, le pourrait-il ?"
     )
     innovation = models.CharField(
         max_length=500,
-        verbose_name="Innovation",
-        help_text="En quoi votre sujet est-il innovant par rapport à l’offre médiatique francophone de Belgique ?"
+        verbose_name="Originalité",
+        help_text="En quoi votre sujet est-il original par rapport à l’offre médiatique francophone de Belgique ?"
     )
     belgian = models.CharField(
         max_length=500,
