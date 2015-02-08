@@ -213,8 +213,6 @@ a .arrow-money:hover { color: white !important; }
 #cms_toolbar input { display: initial; }
 /*#news { outline: 1px solid blue; position: relative; z-index: 999;}*/
 
-#newsletter input[type="text"] { margin-bottom: 1.21em / 2; }
-
 p.titre-evenement {
     font-family: "urw-grotesk-t"; 
     font-size: 16px;
@@ -233,21 +231,75 @@ p.infos-evenement {
 
 .btn-fb,
 .btn-twt {
-    outline: 2px solid black;
     display: inline-block;
-    padding: 6px;
+    padding: 4px;
     vertical-align: middle;
     font-family: "urw-grotesk-t"; 
-    font-size: 0.8em;
-    margin-right: 6px;
+    font-size: 11px;
+    /*margin-right: 6px;*/
 }
 .btn-twt {
-    color: #2AA9E0;
+    color: #2AA9E0 !important;
+    background-color: white;
 }
 .btn-fb {
     background-color: #3A5795;
-    color: white;
+    color: white !important;
+}
 
+#main-nav {
+    z-index: 999;
+    background-color: @color-C3;
+    position: fixed;
+    width: auto!important;
+    top: 0; 
+    left: 0; 
+    right: 0;
+    text-align: center;
+    font-family: "alfphabetbipocatcondensed"; 
+    font-size: 16px; 
+    line-height: 1em; 
+    /*letter-spacing: .4px;*/
+    padding: 0.5em;
+}
+#main-nav ul {
+    display: inline;
+}
+#main-nav li {
+    display: inline;
+}
+#main-nav li a {
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+}
+#main-nav .child:hover a {
+    outline: 3px solid black;
+}
+#main-nav .selected a {
+    outline: 3px solid black;
+}
+#main-nav li:before {
+    content: "";
+}
+#main-nav form {
+    display: inline;
+    margin-left: 2em;
+}
+
+#main-nav input {
+    height: 23px;
+    .box-sizing;
+    padding: 4px;
+    width: auto;
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
+    outline: none;
+    background-color: white;
+}
+
+#main-nav a {
+    color: inherit;
 }
 
 
