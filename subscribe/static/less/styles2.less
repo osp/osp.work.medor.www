@@ -5,52 +5,125 @@
 
 @gutter: 20px;
 
-/* Structure */
-.wrapper {
-    margin: 0 auto;
-    max-width: 960px;
-}
-
-.narrow {
-    margin-left: 33.333%;
-}
-
-#magazine {
-    clear: left;
-}
 
 body {
-    font-family: "Century";
-    font-size: 17px;
-    line-height: 1.22;
-}
-em {
-    font-style: italic;
-}
-p + p {
-    margin-top: 1.22em;
+    font: 17px/1.22 "Century";
 }
 a {
     text-decoration: none;
-    color: @color-A2;
+    color: inherit;
 }
-a:hover {
-    text-decoration: underline;
-}
-ul li:before { 
-    content: "— "; 
+em {
+    font-size: 95%;
 }
 
+/* reset */
+h1,
 h2,
 h3 {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+figure {
+    margin: 0;
+}
+details {
+    font-family: 'alfphabetbipocatcondensed';
+    font-size: 15px;
+    margin-top: 1.21rem;
+}
+summary {
+    border-top: solid black 2px;
+    text-align: center;
+}
+
+/* main header */
+#main-header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-family: 'alfphabetbipocatcondensed';
+    background-color: gold;
+    padding: 0.5em;
+    text-align: center;
+}
+#main-header nav,
+#main-header ul,
+#main-header li,
+#main-header form {
+    display: inline;
+}
+#main-header h1 {
+    display: none;
+}
+#main-header ul {
+    margin-right: 2em;
+}
+#main-nav li a {
+    padding: 0.5em;
+}
+#main-nav .selected a,
+#main-nav .child a:hover {
+    outline: 3px solid black;
+}
+
+
+/* main content */
+#main-content {
+    margin-top: 26px + 17px + 17px;
+}
+#main-content p + p {
+    margin-top: 1.22em;
+}
+#main-content a {
+    color: @color-A2;
+}
+#main-content a:hover {
+    text-decoration: underline;
+}
+#main-content ul li:before { 
+    content: "— "; 
+}
+#main-content h2,
+#main-content h3 {
     font-family: "alfphabetbipocatcondensed";
     text-align: center;
 }
-.main-section {
-    border-top: double black 17px;
-    margin-top: 1.22rem * 2;
+
+/* intro */
+#intro {
+    font-size: 1.16667em;
 }
-h2 {
+#intro p {
+    .column-break-inside(avoid);
+}
+#intro p + p {
+    /*margin-top: 0;*/
+    /*text-indent: 2em;*/
+}
+
+
+
+.main-section {
+}
+.main-section h2 {
+    border-top: 1.22rem double black;
+    background-repeat: no-repeat;
+    margin-top: 1.22rem * 2;
     font-size: 6em;
     line-height: .85;
     letter-spacing: -3px;
@@ -58,14 +131,14 @@ h2 {
     background-size: cover;
     text-align: center;
     color: @color-B3;
-    padding: 200px 0;
+    padding: 100px 0;
 }
-h3 {
-    font-size: 1.6em;
-    margin: 1.21em;
-    margin-bottom: .2em;
-    line-height: .9em;
-    letter-spacing: -.01em;
+.main-section h3 {
+    /*font-size: 1.6em;*/
+    /*margin: 1.21em;*/
+    /*margin-bottom: .2em;*/
+    /*line-height: .9em;*/
+    /*letter-spacing: -.01em;*/
 }
 
 #news h2,
@@ -91,53 +164,13 @@ h3 {
     background-image: url("../img/medor-quoi.jpg");
 }
 
-#main-nav {
-    background-color: gold;
-    padding: 1em;
-}
-#main-nav ul {
-    text-align: center;
-}
-#main-nav li {
-    display: inline;
-}
 
-
-#intro p {
-    .column-break-inside(avoid);
-}
-#intro p + p {
-    margin-top: 0;
-    text-indent: 2em;
-}
-
-#dna {
-    font-size: 17px;
-    line-height: 1.15em;
-    margin-bottom: 42px;
-}
-#dna > div {
-    margin-bottom: 2px;
-}
-#dna h3 {
-    margin: 0;
-    font-family: "urw-grotesk-t";
-    font-size: 1.2em;
-    color: @color-A2;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-}
-.dna-item {
-    margin-bottom: .2em;
-}
-
+/* Participate */
 #participate {
     display: table;
     width: 100%;
     border-collapse: collapse;
 }
-
 #subscribe,
 #donate,
 #cooperate {
@@ -148,25 +181,102 @@ h3 {
     width: 33.333%;
     padding: 10px;
 }
-
 #subscribe {
     border-left: none;
 }
-
 #donate {
     border-right: none;
 }
-
 #cooperate {
     background-color: @color-B3;
 }
-
 #subscribe {
     background-color: @color-D1;
 }
-
 #donate {
     background-color: @color-E1;
+}
+#subscribe .arrow-outer {
+    background-color: @color-A1;
+    color: @color-A1;
+}
+#subscribe .arrow-money:hover {
+    background-color: @color-A1;
+}
+#subscribe .arrow-outer:after {
+    border-color: @color-A1 transparent;
+}
+#cooperate .arrow-outer {
+    background-color: @color-A2;
+    color: @color-A2;
+}
+#cooperate .arrow-money:hover {
+    background-color: @color-A2;
+}
+#cooperate .arrow-outer:after {
+    border-color: @color-A2 transparent;
+}
+#donate .arrow-outer {
+    background-color: @color-A4;
+    color: @color-A4;
+}
+#donate .arrow-money:after {
+    background-color: @color-A4 transparent;
+}
+#donate .arrow-outer:after {
+    border-color: @color-A4 transparent;
+}
+
+/* magazine */
+#magazine {
+    clear: left;
+}
+#dna > div {
+    /*margin-bottom: 2px;*/
+}
+#dna h3 {
+    margin: 0;
+    font-size: inherit;
+    font-family: "urw-grotesk-t";
+    font-size: 1.2em;
+    color: @color-A2;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    text-indent: 1.21em;
+}
+.dna-item {
+    margin-bottom: 1.21rem;
+}
+
+/* status */
+#portraits {
+    height: 400px;
+}
+#portraits .jcarousel-item {
+    font-family: "urw-grotesk-t";
+    font-size: 16px;
+    line-height: 1.21em;
+    width: .25%;
+    text-align: center;
+    line-height: 400px;
+}
+#portraits .jcarousel-item figure {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1.21em;
+}
+#portraits .jcarousel-item .bio {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1.21em;
+    display: none;
+}
+#portraits .jcarousel-item:hover figure {
+    display: none;
+}
+#portraits .jcarousel-item:hover .bio {
+    display: inline-block;
 }
 
 .arrow-outer {
@@ -276,36 +386,6 @@ a .arrow-money:hover {
     color: white !important;
 }
 
-#subscribe .arrow-outer {
-    background-color: @color-A1;
-    color: @color-A1;
-}
-#subscribe .arrow-money:hover {
-    background-color: @color-A1;
-}
-#subscribe .arrow-outer:after {
-    border-color: @color-A1 transparent;
-}
-#cooperate .arrow-outer {
-    background-color: @color-A2;
-    color: @color-A2;
-}
-#cooperate .arrow-money:hover {
-    background-color: @color-A2;
-}
-#cooperate .arrow-outer:after {
-    border-color: @color-A2 transparent;
-}
-#donate .arrow-outer {
-    background-color: @color-A4;
-    color: @color-A4;
-}
-#donate .arrow-money:after {
-    background-color: @color-A4 transparent;
-}
-#donate .arrow-outer:after {
-    border-color: @color-A4 transparent;
-}
 .narrow figure {
     text-align: center;
 }
@@ -362,34 +442,6 @@ a .arrow-money:hover {
     background-image: url("../img/arrow3.svg");
 }
 /* }}} */
-#portraits {
-    height: 400px;
-}
-#portraits .jcarousel-item {
-    font-family: "urw-grotesk-t";
-    font-size: 16px;
-    line-height: 1.21em;
-    width: .25%;
-    text-align: center;
-    line-height: 400px;
-}
-#portraits .jcarousel-item figure {
-    vertical-align: middle;
-    display: inline-block;
-    line-height: 1.21em;
-}
-#portraits .jcarousel-item .bio {
-    vertical-align: middle;
-    display: inline-block;
-    line-height: 1.21em;
-    display: none;
-}
-#portraits .jcarousel-item:hover figure {
-    display: none;
-}
-#portraits .jcarousel-item:hover .bio {
-    display: inline-block;
-}
 
 blockquote {
     font-family: "alfphabetbipocatcondensed";
@@ -412,6 +464,15 @@ blockquote {
 }
 
 /* Layout */
+.wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+.narrow {
+    margin-left: 33.333%;
+}
+
 .row {
     margin: 0 -10px;
 }
@@ -443,7 +504,7 @@ blockquote {
   position: relative;
 }
 
-#magazine {
-    background: url(/static/img/medor-objet-mag.png) top left no-repeat;
-    background-attachment: fixed;
+.section {
+    padding-top: 1.22em * 2;
+    padding-bottom: 1.22em * 2;
 }

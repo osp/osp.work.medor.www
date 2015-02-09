@@ -5,11 +5,12 @@
     <meta charset="utf-8">
     <title>Médor</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
 
     {% if debug %}
     <!-- This is the client-side way to compile less and an ok choice for local dev -->
     <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/styles2.less" />
+    <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/layout.less" />
     {% else %}
     {% compress css %}
     <!-- This is the nifty django-compressor way to compile your less files in css -->
@@ -26,34 +27,42 @@
 
 <body>
     {% cms_toolbar %}
-    <nav id="main-nav">
-        <ul>
-            {% show_menu %}
-        </ul>
-        <!--<form target="_blank" id="newsletter" method="post" action="https://medor.coop/liste/process.php" name="signup">-->
-            <!--<label for="Email">Newsletter</label>-->
-            <!--<input type="text" name="Email" id="email" maxlength="120" value="" />-->
-            <!--<input type="hidden" name="d[10]" value="on" />-->
-            <!--[>*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.<]-->
-            <!--<input type="hidden" name="pommo_signup" value="true" />-->
-            <!--<input class="button" type="submit" value="OK" />-->
-        <!--</form>-->
-        <!--<a href="https://twitter.com/Medor_mag" class="btn-twt">Twitter</a> <a href="https://www.facebook.com/medormag" class="btn-fb">facebook</a>-->
-    </nav>
+    <header id="main-header">
+        <h1>Médor</h1>
+        <nav id="main-nav">
+            <ul>
+                {% show_menu %}
+            </ul>
+            <form target="_blank" id="newsletter" method="post" action="https://medor.coop/liste/process.php" name="signup">
+                <label for="Email">Newsletter</label>
+                <input type="text" name="Email" id="email" maxlength="120" value="" />
+                <input type="hidden" name="d[10]" value="on" />
+                <!--*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.-->
+                <input type="hidden" name="pommo_signup" value="true" />
+                <input class="button" type="submit" value="OK" />
+            </form>
+            <a href="https://twitter.com/Medor_mag" class="btn-twt">Twitter</a> <a href="https://www.facebook.com/medormag" class="btn-fb">facebook</a>
+        </nav>
+    </header>
 
-    <div class="wrapper">
-        <h1>Médor, les yeux ouverts</h1>
+    <main id="main-content">
+        <!--<div style="background-color: rgba(57, 145, 79, 255); color: white; padding: 3em 0;">-->
+        <div id="intro" class="section">
+            <div class="wrapper">
+                <div class="row">
+                    <figure id="cover-content" class="col x1">
+                        <img src="/static/img/medor-objet-contenu.png" alt="contenu d'un numéro" style="max-width: 100%;">
+                    </figure>
 
-        <div class="row">
-            <figure id="cover-content" class="col x1">
-                <img src="/static/img/medor-objet-contenu.png" alt="contenu d'un numéro" style="max-width: 100%;">
-            </figure>
-
-            <div id="intro" class="col x2">
-                {% placeholder intro %}
+                    <div class="col x2">
+                        <!--<h1>Médor, les yeux ouverts</h1>-->
+                        <img src="/static/img/Medor-logo-baseline-fond-clair.svg" style="display: block; margin: 0 auto; width: 50%; margin-bottom: 2.42rem;">
+                        {% placeholder intro %}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <!--</div>-->
 
         <!--<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>-->
         
@@ -70,147 +79,154 @@
             <!--{% endfor %}-->
         <!--</div>-->
 
-    <div class="wrapper">
-        <div id="participate">
-            <div id="subscribe">
-                <h2>Abonnez-vous</h2>
-                {% include "subscribe/partials/arrow-subscribe.html" %}
-                {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
-                <details>
-                    <summary>Pourquoi s'abonner&thinsp;?</summary>
-                    {% placeholder why-subscribe or %}parce que{% endplaceholder %}
-                </details>
-            </div>
-            <div id="cooperate">
-                <h2>Devenez coopérateur</h2>
-                {% include "subscribe/partials/arrow-cooperate.html" %}
-                {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
-                <details>
-                    <summary>Pourquoi devenir cooperateur&thinsp;?</summary>
-                    {% placeholder why-cooperate or %}parce que{% endplaceholder %}
-                </details>
-            </div>
-            <div id="donate">
-                <h2>Donnez des sous</h2>
-                {% include "subscribe/partials/arrow-donate.html" %}
-                {% placeholder donate or %}donnez des sous{% endplaceholder %}
-            </div>
-        </div>
-
-        <div id="magazine" class="main-section">
-            <!--<figure id="cover-detail" class="cover">-->
-                <!--<img src="/static/img/medor-objet-mag.png" alt="premier numéro">-->
-            <!--</figure>-->
-
-            <h2>Médor,<br>c'est un magazine</h2>
-
-            <div id="dna" class="narrow multicol multicolx2">
-                <div class="dna-item no-break">
-                    {% placeholder belge or %}belge{% endplaceholder %}
+        <div id="participate" class="participate">
+            <div class="wrapper">
+                <div id="subscribe">
+                    <h2>Abonnez-vous</h2>
+                    {% include "subscribe/partials/arrow-subscribe.html" %}
+                    {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
+                    <details>
+                        <summary>Pourquoi s'abonner&thinsp;?</summary>
+                        {% placeholder why-subscribe or %}parce que{% endplaceholder %}
+                    </details>
                 </div>
-                <div class="dna-item no-break">
-                    {% placeholder speleologue or %}spéléogue{% endplaceholder %}
+                <div id="cooperate">
+                    <h2>Devenez coopérateur</h2>
+                    {% include "subscribe/partials/arrow-cooperate.html" %}
+                    {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
+                    <details>
+                        <summary>Pourquoi devenir cooperateur&thinsp;?</summary>
+                        {% placeholder why-cooperate or %}parce que{% endplaceholder %}
+                    </details>
                 </div>
-                <div class="dna-item no-break">
-                    {% placeholder libre or %}libre{% endplaceholder %}
-                </div>
-                <div class="dna-item no-break">
-                    {% placeholder enthousiasmant or %}enthousiasmant{% endplaceholder %}
-                </div>
-                <div class="dna-item no-break">
-                    {% placeholder inventeur or %}inventeur{% endplaceholder %}
-                </div>
-                <div class="dna-item no-break">
-                    {% placeholder imparfait or %}imparfait{% endplaceholder %}
-                </div>
-                <div class="dna-item no-break">
-                    {% placeholder digne or %}digne{% endplaceholder %}
+                <div id="donate">
+                    <h2>Donnez des sous</h2>
+                    {% include "subscribe/partials/arrow-donate.html" %}
+                    {% placeholder donate or %}donnez des sous{% endplaceholder %}
                 </div>
             </div>
         </div>
 
-        <div id="collaborative-experience" class="main-section">
-            <h2>Médor,<br>c'est une experience collaborative</h2>
-            <div class="narrow">
-                {% placeholder collaborative-experience or %}Médor, c'est une expérience collaborative…{% endplaceholder %}
+        <div id="magazine" class="main-section section">
+            <div class="wrapper">
+                <!--<figure id="cover-detail" class="cover">-->
+                    <!--<img src="/static/img/medor-objet-mag.png" alt="premier numéro">-->
+                <!--</figure>-->
 
-                <details>
-                    <summary>Colophon de cette première page</summary>
-                    {% placeholder colophon or %}colophon{% endplaceholder %}
-                </details>
-            </div>
-        </div>
+                <h2>Médor,<br>c'est un magazine</h2>
 
-        <div id="accounting" class="main-section">
-            <h2>Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
-            <div class="narrow">
-                {% placeholder 3800-abonnes or %}3800 abonnés{% endplaceholder %}
-                <details>
-                    <summary>Plus de détails</summary>
-                    {% placeholder 3800-abonnes-details or %}détails{% endplaceholder %}
-                </details>
-
-                <div class="multicol multicolx2">
-                    <div class="no-break">
-                        {% placeholder cout or %}Le coût d'une enquête{% endplaceholder %}
-                        <details>
-                            <summary>Plus de détails</summary>
-                            {% placeholder cout-details or %}détails{% endplaceholder %}
-                        </details>
+                <div id="dna" class="narrow multicol multicolx2">
+                    <div class="dna-item no-break">
+                        {% placeholder belge or %}belge{% endplaceholder %}
                     </div>
-
-                    <div class="no-break">
-                        {% placeholder frais or %}Les frais de lancement{% endplaceholder %}
-                        <details>
-                            <summary>Plus de détails</summary>
-                            {% placeholder frais-details or %}détails{% endplaceholder %}
-                        </details>
+                    <div class="dna-item no-break">
+                        {% placeholder speleologue or %}spéléogue{% endplaceholder %}
+                    </div>
+                    <div class="dna-item no-break">
+                        {% placeholder libre or %}libre{% endplaceholder %}
+                    </div>
+                    <div class="dna-item no-break">
+                        {% placeholder enthousiasmant or %}enthousiasmant{% endplaceholder %}
+                    </div>
+                    <div class="dna-item no-break">
+                        {% placeholder inventeur or %}inventeur{% endplaceholder %}
+                    </div>
+                    <div class="dna-item no-break">
+                        {% placeholder imparfait or %}imparfait{% endplaceholder %}
+                    </div>
+                    <div class="dna-item no-break">
+                        {% placeholder digne or %}digne{% endplaceholder %}
                     </div>
                 </div>
-
-                {% placeholder pub or %}La pub{% endplaceholder %}
-                <details>
-                    <summary>Plus de détails</summary>
-                    {% placeholder pub-details or %}détails{% endplaceholder %}
-                </details>
-            </div>
-        </div>
-    </div>
-
-    <div id="status">
-        <div class="wrapper main-section">
-            <h2>Médor,<br>c'est déja</h2>
-            <div class="narrow">
-                {% placeholder equipe or %}Une équipe{% endplaceholder %}
             </div>
         </div>
 
-        {% include "subscribe/partials/carousel.html" %}
+        <div id="collaborative-experience" class="main-section section">
+            <div class="wrapper">
+                <h2>Médor,<br>c'est une experience collaborative</h2>
+                <div class="narrow">
+                    {% placeholder collaborative-experience or %}Médor, c'est une expérience collaborative…{% endplaceholder %}
+
+                    <details>
+                        <summary>Colophon de cette première page</summary>
+                        {% placeholder colophon or %}colophon{% endplaceholder %}
+                    </details>
+                </div>
+            </div>
+        </div>
+
+        <div id="accounting" class="main-section section">
+            <div class="wrapper">
+                <h2>Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
+                <div class="narrow">
+                    {% placeholder 3800-abonnes or %}3800 abonnés{% endplaceholder %}
+                    <details>
+                        <summary>Plus de détails</summary>
+                        {% placeholder 3800-abonnes-details or %}détails{% endplaceholder %}
+                    </details>
+
+                    <div class="multicol multicolx2">
+                        <div class="no-break">
+                            {% placeholder cout or %}Le coût d'une enquête{% endplaceholder %}
+                            <details>
+                                <summary>Plus de détails</summary>
+                                {% placeholder cout-details or %}détails{% endplaceholder %}
+                            </details>
+                        </div>
+
+                        <div class="no-break">
+                            {% placeholder frais or %}Les frais de lancement{% endplaceholder %}
+                            <details>
+                                <summary>Plus de détails</summary>
+                                {% placeholder frais-details or %}détails{% endplaceholder %}
+                            </details>
+                        </div>
+                    </div>
+
+                    {% placeholder pub or %}La pub{% endplaceholder %}
+                    <details>
+                        <summary>Plus de détails</summary>
+                        {% placeholder pub-details or %}détails{% endplaceholder %}
+                    </details>
+                </div>
+            </div>
+        </div>
+
+        <div id="status">
+            <div class="wrapper main-section section">
+                <h2>Médor,<br>c'est déja</h2>
+                <div class="narrow">
+                    {% placeholder equipe or %}Une équipe{% endplaceholder %}
+                </div>
+            </div>
+
+            {% include "subscribe/partials/carousel.html" %}
+
+            <div class="wrapper">
+                <div class="narrow">
+                    {% placeholder partenaires-soutiens or %}Des partenaires et des soutiens{% endplaceholder %}
+                </div>
+            </div>
+        </div>
+
+        <div id="now-what" class="section">
+            <div class="wrapper main-section">
+                <h2>Et maintenant&thinsp;?</h2>
+                <div class="narrow">
+                    {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
+                </div>
+            </div>
+        </div>
 
         <div class="wrapper">
             <div class="narrow">
-                {% placeholder partenaires-soutiens or %}Des partenaires et des soutiens{% endplaceholder %}
+                <blockquote cite="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">
+                    <p>« <span class="small">[…]</span>&nbsp;une révolution est simplement  ce qui se produit quand un cycle est révolu. »</p>
+                    <footer><cite><a target="_blank" href="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">Bernard  Stiegler</a></cite></footer>
+                </blockquote>
             </div>
         </div>
-    </div>
-
-    <div id="now-what">
-        <div class="wrapper main-section">
-            <h2>Et maintenant&thinsp;?</h2>
-            <div class="narrow">
-                {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="narrow">
-            <blockquote cite="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">
-                <p>« <span class="small">[…]</span>&nbsp;une révolution est simplement  ce qui se produit quand un cycle est révolu. »</p>
-                <footer><cite><a target="_blank" href="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">Bernard  Stiegler</a></cite></footer>
-            </blockquote>
-        </div>
-    </div>
+    </main>
 
     <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
