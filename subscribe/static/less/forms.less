@@ -292,3 +292,92 @@ position: relative;
     margin-bottom: 30px;
     border-bottom: double black 17px;
 }
+
+.btn-fb,
+.btn-twt {
+    display: inline-block;
+    padding: 4px;
+    vertical-align: middle;
+    font-family: "urw-grotesk-t"; 
+    font-size: 11px;
+    /*margin-right: 6px;*/
+}
+.btn-twt {
+    color: #2AA9E0 !important;
+    background-color: white;
+}
+.btn-fb {
+    background-color: #3A5795;
+    color: white !important;
+}
+
+#main-nav {
+    z-index: 999;
+    background-color: @color-C3;
+    position: fixed;
+    width: auto!important;
+    top: 0; 
+    left: 0; 
+    right: 0;
+    text-align: center;
+    font-family: "alfphabetbipocatcondensed"; 
+    font-size: 16px; 
+    line-height: 1em; 
+    /*letter-spacing: .4px;*/
+    padding: 0.5em;
+}
+#main-nav ul {
+    display: inline;
+}
+#main-nav li {
+    display: inline;
+}
+#main-nav li a {
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+}
+#main-nav .child:hover a {
+    outline: 3px solid black;
+}
+#main-nav .selected a {
+    outline: 3px solid black;
+}
+#main-nav li:before {
+    content: "";
+}
+#main-nav form {
+    display: inline;
+    margin-left: 2em;
+    line-height: inherit !important;
+}
+
+#main-nav input {
+    height: 23px;
+    .box-sizing;
+    padding: 4px;
+    width: auto!important;
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
+    outline: none;
+    background-color: white;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+#main-nav input[type="submit"] {
+    background-color: white;
+}
+
+#main-nav label {
+    color: inherit;
+    padding: inherit;
+    font-family: inherit;
+    vertical-align: inherit;
+}
+
+#main-nav a {
+    color: inherit;
+}

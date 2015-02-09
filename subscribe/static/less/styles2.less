@@ -37,6 +37,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
+ul li:before { 
+    content: "— "; 
+}
 
 h2,
 h3 {
@@ -430,4 +433,17 @@ blockquote {
 
 .x2 {
     width: 66.666%;
+}
+
+.cover {
+  /*position: -webkit-sticky;*/
+  /*position: -moz-sticky;*/
+  /*position: -ms-sticky;*/
+  /*position: -o-sticky;*/
+  position: relative;
+}
+
+#magazine {
+    background: url(/static/img/medor-objet-mag.png) top left no-repeat;
+    background-attachment: fixed;
 }

@@ -98,6 +98,10 @@
         </div>
 
         <div id="magazine" class="main-section">
+            <!--<figure id="cover-detail" class="cover">-->
+                <!--<img src="/static/img/medor-objet-mag.png" alt="premier numéro">-->
+            <!--</figure>-->
+
             <h2>Médor,<br>c'est un magazine</h2>
 
             <div id="dna" class="narrow multicol multicolx2">
@@ -183,7 +187,11 @@
 
         {% include "subscribe/partials/carousel.html" %}
 
-        {% placeholder partenaires-soutiens or %}Des partenaires et des soutiens{% endplaceholder %}
+        <div class="wrapper">
+            <div class="narrow">
+                {% placeholder partenaires-soutiens or %}Des partenaires et des soutiens{% endplaceholder %}
+            </div>
+        </div>
     </div>
 
     <div id="now-what">
