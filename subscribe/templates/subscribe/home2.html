@@ -183,7 +183,12 @@
 
         {% include "subscribe/partials/carousel.html" %}
 
-        <div class="wrapper">
+        {% placeholder partenaires-soutiens or %}Des partenaires et des soutiens{% endplaceholder %}
+    </div>
+
+    <div id="now-what">
+        <div class="wrapper main-section">
+            <h2>Et maintenant&thinsp;?</h2>
             <div class="narrow">
                 {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
             </div>
