@@ -14,6 +14,7 @@
     {% compress css %}
     <!-- This is the nifty django-compressor way to compile your less files in css -->
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/styles2.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/layout.less" charset="utf-8">
     {% endcompress %}
     {% endif %}
 
@@ -26,30 +27,50 @@
 <body>
     {% cms_toolbar %}
     <nav id="main-nav">
-        <ul>{% show_menu %}<ul>
+        <ul>
+            {% show_menu %}
+        </ul>
+        <!--<form target="_blank" id="newsletter" method="post" action="https://medor.coop/liste/process.php" name="signup">-->
+            <!--<label for="Email">Newsletter</label>-->
+            <!--<input type="text" name="Email" id="email" maxlength="120" value="" />-->
+            <!--<input type="hidden" name="d[10]" value="on" />-->
+            <!--[>*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.<]-->
+            <!--<input type="hidden" name="pommo_signup" value="true" />-->
+            <!--<input class="button" type="submit" value="OK" />-->
+        <!--</form>-->
+        <!--<a href="https://twitter.com/Medor_mag" class="btn-twt">Twitter</a> <a href="https://www.facebook.com/medormag" class="btn-fb">facebook</a>-->
     </nav>
 
     <div class="wrapper">
         <h1>Médor, les yeux ouverts</h1>
-        <div id="intro" class="narrow">
-            {% placeholder intro %}
-        </div>
 
-        <iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>
+        <div class="row">
+            <figure id="cover-content" class="col x1">
+                <img src="/static/img/medor-objet-contenu.png" alt="contenu d'un numéro" style="max-width: 100%;">
+            </figure>
+
+            <div id="intro" class="col x2">
+                {% placeholder intro %}
+            </div>
+        </div>
+    </div>
+
+        <!--<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>-->
         
-        <div id="news">
-            <h2>actualités</h2>
-            {% get_next_events as events %}
+        <!--<div id="news">-->
+            <!--<h2>actualités</h2>-->
+            <!--{% get_next_events as events %}-->
 
-            {% for event in events %}
-            <article>
-                <p>{{ event.dtstart.dt|date:"l j F" }}</p>
-                <h3>{{ event.summary }}</h3>
-                <p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>
-            </article>
-            {% endfor %}
-        </div>
+            <!--{% for event in events %}-->
+            <!--<article>-->
+                <!--<p>{{ event.dtstart.dt|date:"l j F" }}</p>-->
+                <!--<h3>{{ event.summary }}</h3>-->
+                <!--<p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>-->
+            <!--</article>-->
+            <!--{% endfor %}-->
+        <!--</div>-->
 
+    <div class="wrapper">
         <div id="participate">
             <div id="subscribe">
                 <h2>Abonnez-vous</h2>
@@ -76,35 +97,36 @@
             </div>
         </div>
 
-        <div id="magazine">
-            <h2>Médor, c'est un magazine</h2>
-            <div id="dna" class="narrow">
-                <div class="dna-item">
+        <div id="magazine" class="main-section">
+            <h2>Médor,<br>c'est un magazine</h2>
+
+            <div id="dna" class="narrow multicol multicolx2">
+                <div class="dna-item no-break">
                     {% placeholder belge or %}belge{% endplaceholder %}
                 </div>
-                <div class="dna-item">
+                <div class="dna-item no-break">
                     {% placeholder speleologue or %}spéléogue{% endplaceholder %}
                 </div>
-                <div class="dna-item">
+                <div class="dna-item no-break">
                     {% placeholder libre or %}libre{% endplaceholder %}
                 </div>
-                <div class="dna-item">
+                <div class="dna-item no-break">
                     {% placeholder enthousiasmant or %}enthousiasmant{% endplaceholder %}
                 </div>
-                <div class="dna-item">
+                <div class="dna-item no-break">
                     {% placeholder inventeur or %}inventeur{% endplaceholder %}
                 </div>
-                <div class="dna-item">
+                <div class="dna-item no-break">
                     {% placeholder imparfait or %}imparfait{% endplaceholder %}
                 </div>
-                <div class="dna-item">
+                <div class="dna-item no-break">
                     {% placeholder digne or %}digne{% endplaceholder %}
                 </div>
             </div>
         </div>
 
-        <div id="collaborative-experience">
-            <h2>Médor, c'est une experience collaborative</h2>
+        <div id="collaborative-experience" class="main-section">
+            <h2>Médor,<br>c'est une experience collaborative</h2>
             <div class="narrow">
                 {% placeholder collaborative-experience or %}Médor, c'est une expérience collaborative…{% endplaceholder %}
 
@@ -115,8 +137,8 @@
             </div>
         </div>
 
-        <div id="accounting">
-            <h2>Médor, c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
+        <div id="accounting" class="main-section">
+            <h2>Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
             <div class="narrow">
                 {% placeholder 3800-abonnes or %}3800 abonnés{% endplaceholder %}
                 <details>
@@ -124,7 +146,7 @@
                     {% placeholder 3800-abonnes-details or %}détails{% endplaceholder %}
                 </details>
 
-                <div class="col2">
+                <div class="multicol multicolx2">
                     <div class="no-break">
                         {% placeholder cout or %}Le coût d'une enquête{% endplaceholder %}
                         <details>
@@ -149,17 +171,24 @@
                 </details>
             </div>
         </div>
+    </div>
 
-        <div id="status">
-            <h2>Médor, c'est déja</h2>
+    <div id="status">
+        <div class="wrapper main-section">
+            <h2>Médor,<br>c'est déja</h2>
             <div class="narrow">
-                <h3>{% lorem 1 w random %}</h3>
-                {% lorem 1 p random %}
+                {% placeholder equipe or %}Une équipe{% endplaceholder %}
+            </div>
+        </div>
+
+        {% include "subscribe/partials/carousel.html" %}
+
+        <div class="wrapper">
+            <div class="narrow">
+                {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
             </div>
         </div>
     </div>
-
-    {% include "subscribe/partials/carousel.html" %}
 
     <div class="wrapper">
         <div class="narrow">
@@ -170,8 +199,6 @@
         </div>
     </div>
 
-
-
     <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
@@ -181,7 +208,7 @@
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.xdomainajax.js"></script>
-    <!--<script src="{{ STATIC_URL }}js/longform.js?kkbb2"></script>-->
+    <script src="{{ STATIC_URL }}js/carousel.js"></script>
 
     <!-- Piwik -->
     <script type="text/javascript">
