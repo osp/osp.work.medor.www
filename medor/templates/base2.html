@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Médor</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
+
+    {% if debug %}
+    <!-- This is the client-side way to compile less and an ok choice for local dev -->
+    <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/styles2.less" />
+    <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/layout.less" />
+    {% else %}
+    {% compress css %}
+    <!-- This is the nifty django-compressor way to compile your less files in css -->
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/styles2.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/layout.less" charset="utf-8">
+    {% endcompress %}
+    {% endif %}
+
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}img/favicon-medor_16-16.png">
+
+    {% render_block "css" %}
+    <script src="{{ STATIC_URL }}js/modernizr.custom.08508.js" ></script>
+</head>
+
+<body>
+    {% cms_toolbar %}
+    <header id="main-header">
+        <h1>Médor</h1>
+        <nav id="main-nav">
+            <ul>
+                {% show_menu %}
+            </ul>
+            <form target="_blank" id="newsletter" method="post" action="https://medor.coop/liste/process.php" name="signup">
+                <label for="Email">Newsletter</label>
+                <input type="text" name="Email" id="email" maxlength="120" value="" />
+                <input type="hidden" name="d[10]" value="on" />
+                <!--*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.-->
+                <input type="hidden" name="pommo_signup" value="true" />
+                <input class="button" type="submit" value="OK" />
+            </form>
+            <ul>
+                <li><a href="https://twitter.com/Medor_mag" class="btn-twt">Twitter</a></li>
+                <li><a href="https://www.facebook.com/medormag" class="btn-fb">facebook</a></li>
+            <ul>
+        </nav>
+    </header>
+
+
+    {% block content %}{% endblock %}
+
+
+    <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
+    <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="{{ STATIC_URL }}components/details-tag/jquery.details.js" ></script>
+    <script src="{{ STATIC_URL }}components/jcarousel/dist/jquery.jcarousel.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.tocify.min.js"></script>
+    <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
+    <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.xdomainajax.js"></script>
+    <script src="{{ STATIC_URL }}js/carousel.js"></script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//medor.coop/stats/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+    <noscript><p><img src="//medor.coop/stats/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+    {% render_block "js" %}
+</body>
+</html>
+
