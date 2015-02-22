@@ -119,3 +119,10 @@ class ArticleProposal(models.Model):
         verbose_name="Divers",
         help_text="Avez-vous une remarque ou une demande particulière liée à votre proposition ?"
     )
+
+    class Meta:
+        verbose_name = "Proposition d'article"
+        verbose_name_plural = "Propositions d'articles"
+
+    def __unicode__(self):
+        return self.subject_title

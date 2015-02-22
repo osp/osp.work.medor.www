@@ -1,10 +1,11 @@
 from django.contrib import admin
 from models import ArticleProposal
+from forms import ArticleProposalForm
 
 
 class ArticleProposalAdmin(admin.ModelAdmin):
-    pass
-    #list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
+    form = ArticleProposalForm
+    list_display = ('__unicode__', 'creation_date')
     #list_filter = ('status', 'country')
     #list_editable = ('status',)
     #date_hierarchy = 'creation_date'
