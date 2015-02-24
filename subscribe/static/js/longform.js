@@ -38,34 +38,6 @@ $(function() {
         //return false;
     //});
 
-    $.ajax({
-        url: 'http://www.kisskissbankbank.com/fr/projects/medor-le-trimestriel-cooperatif-belge-d-enquetes-et-de-recits/widget',
-        type: 'GET',
-        success: function(res) {
-            var html = $(res.responseText);
-            var data = {
-                amount: html.find('.amount strong').text(),
-                goal: $.trim(html.find('.goal p').contents().filter(function() { return this.nodeType == 3 })[0].textContent),
-                collected: $.trim(html.find('.collected p').contents().filter(function() { return this.nodeType == 3 })[0].textContent),
-                timeLeft: html.find('.time-left').text(),
-                bankers: html.find('.bankers').text()
-            }
-
-            $('#kkbb').text(data['collected'].replace(/ €/, "").replace(" ", "") );
-
-            //var $elt = $('<dl>');
-
-            //for (var prop in data) {
-                //$elt.append($('<dt>').text(prop));
-                //$elt.append($('<dd>').text(data[prop]));
-            //}
-
-            //console.log($elt);
-
-            //$('header').append($elt);
-        }
-    });
-
     $('.jcarousel').jcarousel({
         //wrap: 'circular'
     });
