@@ -10,77 +10,90 @@
 <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/home.less" />
 {% endaddtoblock %}
 
+
 <main id="main-content">
-    <!--<div style="background-color: rgba(57, 145, 79, 255); color: white; padding: 3em 0;">-->
     <div id="intro" class="section">
         <div class="wrapper">
+            <div class="narrow">
+                <!-- FIXME: semantic and positioning -->
+                <img src="{{ STATIC_URL }}img/medor-anim.gif" alt="dessin animé">
+                <h1><img src="{{ STATIC_URL }}img/Medor-logo-baseline-fond-clair.svg" style="display: block; margin: 0 auto; width: 50%; margin-bottom: 2.42rem;" alt="Médor, les yeux ouverts" /></h1>
+            </div>
+
             <div class="row">
-                <figure id="cover-content" class="col x1">
-                    <img src="/static/img/medor-objet-contenu.png" alt="contenu d'un numéro" style="max-width: 100%;">
+                <figure id="cover-content" class="col col--x1">
+                    <img src="/static/img/medor-objet-contenu.png" alt="contenu d'un numéro">
                 </figure>
 
-                <div class="col x2">
-                    <!--<h1>Médor, les yeux ouverts</h1>-->
-                    <img src="/static/img/Medor-logo-baseline-fond-clair.svg" style="display: block; margin: 0 auto; width: 50%; margin-bottom: 2.42rem;">
+                <div class="col col--x2 multicol multicol--x2">
                     {% placeholder intro %}
                 </div>
             </div>
         </div>
     </div>
-    <!--</div>-->
 
-    <!--<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>-->
-    
-    <!--<div id="news">-->
-        <!--<h2>actualités</h2>-->
-        <!--{% get_next_events as events %}-->
+    <div class="wrapper">
+        <div id="in-action" class="table">
+            <div id="news" class="table__cell">
+                <h2>Les rendez-vous Médor</h2>
+                {% get_next_events as events %}
 
-        <!--{% for event in events %}-->
-        <!--<article>-->
-            <!--<p>{{ event.dtstart.dt|date:"l j F" }}</p>-->
-            <!--<h3>{{ event.summary }}</h3>-->
-            <!--<p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>-->
-        <!--</article>-->
-        <!--{% endfor %}-->
-    <!--</div>-->
+                {% for event in events %}
+                <article>
+                    <p>{{ event.dtstart.dt|date:"l j F" }}</p>
+                    <h1>{{ event.summary }}</h1>
+                    <p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>
+                </article>
+                {% endfor %}
 
-    <div id="participate" class="participate">
-        <div class="wrapper">
-            <div id="subscribe">
-                <h2>Abonnez-vous</h2>
-                {% include "subscribe/partials/arrow-subscribe.html" %}
-                {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
-                <details>
-                    <summary>Pourquoi s'abonner&thinsp;?</summary>
-                    {% placeholder why-subscribe or %}parce que{% endplaceholder %}
-                </details>
+                <!--<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>-->
             </div>
-            <div id="cooperate">
-                <h2>Devenez coopérateur</h2>
-                {% include "subscribe/partials/arrow-cooperate.html" %}
-                {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
-                <details>
-                    <summary>Pourquoi devenir cooperateur&thinsp;?</summary>
-                    {% placeholder why-cooperate or %}parce que{% endplaceholder %}
-                </details>
-            </div>
-            <div id="donate">
-                <h2>Donnez des sous</h2>
-                {% include "subscribe/partials/arrow-donate.html" %}
-                {% placeholder donate or %}donnez des sous{% endplaceholder %}
+
+            <div id="participate" class="table__cell">
+                <div class="table">
+                    <div id="subscribe" class="table__cell  block block--subscribe">
+                        <h2>Abonnez-vous</h2>
+                        {% include "subscribe/partials/arrow-subscribe.html" %}
+                        {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
+                        <details>
+                            <summary>Pourquoi s'abonner&thinsp;?</summary>
+                            {% placeholder why-subscribe or %}parce que{% endplaceholder %}
+                        </details>
+                    </div>
+                    <div id="cooperate" class="table__cell  block block--cooperate">
+                        <h2>Devenez coopérateur</h2>
+                        {% include "subscribe/partials/arrow-cooperate.html" %}
+                        {% placeholder cooperate or %}devenez-cooperateur{% endplaceholder %}
+                        <details>
+                            <summary>Pourquoi devenir cooperateur&thinsp;?</summary>
+                            {% placeholder why-cooperate or %}parce que{% endplaceholder %}
+                        </details>
+                    </div>
+                </div>
+                <div class="table">
+                    <div id="donate" class="table__cell  block block--donate">
+                        <h2>Donnez des sous</h2>
+                        {% include "subscribe/partials/arrow-donate.html" %}
+                        {% placeholder donate or %}donnez des sous{% endplaceholder %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="magazine" class="main-section section">
-        <div class="wrapper">
-            <!--<figure id="cover-detail" class="cover">-->
-                <!--<img src="/static/img/medor-objet-mag.png" alt="premier numéro">-->
-            <!--</figure>-->
+        <div class="cover">
+            <div class="cover__wrapper">
+                <figure id="cover-detail" class="cover__wrapper__item">
+                    <img src="{{ STATIC_URL }}img/medor-objet-mag.png" alt="premier numéro" />
+                </figure>
+            </div>
+        </div>
 
+        <div class="wrapper">
             <h2>Médor,<br>c'est un magazine</h2>
 
-            <div id="dna" class="narrow multicol multicolx2">
+            <div id="dna" class="narrow multicol multicol--x2">
                 <div class="dna-item no-break">
                     {% placeholder belge or %}belge{% endplaceholder %}
                 </div>
@@ -107,6 +120,14 @@
     </div>
 
     <div id="collaborative-experience" class="main-section section">
+        <div class="cover">
+            <div class="cover__wrapper">
+                <figure id="cover-coop" class="cover__wrapper__item">
+                    <img src="{{ STATIC_URL }}img/medor-objet-coop.png" alt="organisation de Médor" />
+                </figure>
+            </div>
+        </div>
+
         <div class="wrapper">
             <h2>Médor,<br>c'est une experience collaborative</h2>
             <div class="narrow">
@@ -121,6 +142,14 @@
     </div>
 
     <div id="accounting" class="main-section section">
+        <div class="cover">
+            <div class="cover__wrapper">
+                <figure id="cover-budget" class="cover__wrapper__item">
+                    <img src="{{ STATIC_URL }}img/medor-objet-budget.png" alt="répartition du budget"/>
+                </figure>
+            </div>
+        </div>
+
         <div class="wrapper">
             <h2>Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
             <div class="narrow">
@@ -130,7 +159,7 @@
                     {% placeholder 3800-abonnes-details or %}détails{% endplaceholder %}
                 </details>
 
-                <div class="multicol multicolx2">
+                <div class="multicol multicol--x2">
                     <div class="no-break">
                         {% placeholder cout or %}Le coût d'une enquête{% endplaceholder %}
                         <details>
@@ -167,7 +196,7 @@
 
         {% include "subscribe/partials/carousel.html" %}
 
-        <div class="wrapper">
+        <div class="wrapper main-section">
             <div class="narrow">
                 {% placeholder partenaires-soutiens or %}Des partenaires et des soutiens{% endplaceholder %}
             </div>
@@ -185,6 +214,15 @@
 
     <div class="wrapper">
         <div class="narrow">
+            <div class="table">
+                <div class="table__cell block--subscribe">
+                {% include "subscribe/partials/arrow-subscribe.html" %}
+                </div>
+                <div class="table__cell block--cooperate">
+                {% include "subscribe/partials/arrow-cooperate.html" %}
+                </div>
+            </div>
+
             <blockquote cite="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">
                 <p>« <span class="small">[…]</span>&nbsp;une révolution est simplement  ce qui se produit quand un cycle est révolu. »</p>
                 <footer><cite><a target="_blank" href="http://www.ttoarendt.com/2014/03/bernard-stiegler-le-front-national-est-un-escamoteur.html">Bernard  Stiegler</a></cite></footer>
@@ -192,4 +230,9 @@
         </div>
     </div>
 </main>
+
+{% addtoblock "js" %}
+<script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.debug.js"></script>
+<script src="{{ STATIC_URL }}js/longform2.js"></script>
+{% endaddtoblock %}
 {% endblock %}

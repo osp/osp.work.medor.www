@@ -44,7 +44,7 @@
             <ul>
                 <li><a href="https://twitter.com/Medor_mag" class="btn-twt">Twitter</a></li>
                 <li><a href="https://www.facebook.com/medormag" class="btn-fb">facebook</a></li>
-            <ul>
+            </ul>
         </nav>
     </header>
 
@@ -52,7 +52,6 @@
     {% block content %}{% endblock %}
 
 
-    <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
     <script src="{{ STATIC_URL }}components/details-tag/jquery.details.js" ></script>
@@ -60,8 +59,14 @@
     <script src="{{ STATIC_URL }}js/jquery.tocify.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.xdomainajax.js"></script>
     <script src="{{ STATIC_URL }}js/carousel.js"></script>
+
+    {% if debug %}
+    <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
+    {% endif %}
+
+
+    {% render_block "js" %}
 
     <!-- Piwik -->
     <script type="text/javascript">
