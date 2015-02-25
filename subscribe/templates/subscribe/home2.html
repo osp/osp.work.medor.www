@@ -38,8 +38,8 @@
         <div class="wrapper">
             <div class="narrow">
                 <!-- FIXME: semantic and positioning -->
-                <img src="{{ STATIC_URL }}img/medor-anim.gif" alt="dessin animé">
-                <h1><img src="{{ STATIC_URL }}img/Medor-logo-baseline-fond-clair.svg" style="display: block; margin: 0 auto; width: 50%; margin-bottom: 2.42rem;" alt="Médor, les yeux ouverts" /></h1>
+                <!--<img src="{{ STATIC_URL }}img/medor-anim.gif" alt="dessin animé">-->
+                <h1><img src="{{ STATIC_URL }}img/Medor-logo-baseline-fond-clair.svg" alt="Médor, les yeux ouverts" /></h1>
             </div>
 
             <div class="row">
@@ -104,9 +104,9 @@
     </div>
 
     <div id="magazine" class="main-section section">
-        <div class="wrapper">
-            <h2 data-shortname="quoi?">Médor,<br>c'est un magazine</h2>
+        <h2 data-shortname="quoi?"><span>Médor,<br>c'est un magazine</span></h2>
 
+        <div class="wrapper">
             <div class="cover">
                 <div class="cover__wrapper">
                     <figure id="cover-detail" class="cover__wrapper__item">
@@ -142,16 +142,17 @@
     </div>
 
     <div id="collaborative-experience" class="main-section section">
-        <div class="cover">
-            <div class="cover__wrapper">
-                <figure id="cover-coop" class="cover__wrapper__item">
-                    <img src="{{ STATIC_URL }}img/medor-objet-coop.png" alt="organisation de Médor" />
-                </figure>
-            </div>
-        </div>
+        <h2 data-shortname="comment?"><span>Médor,<br>c'est une experience<br>collaborative</span></h2>
 
         <div class="wrapper">
-            <h2 data-shortname="comment?">Médor,<br>c'est une experience collaborative</h2>
+            <div class="cover">
+                <div class="cover__wrapper">
+                    <figure id="cover-coop" class="cover__wrapper__item">
+                        <img src="{{ STATIC_URL }}img/medor-objet-coop.png" alt="organisation de Médor" />
+                    </figure>
+                </div>
+            </div>
+
             <div class="narrow">
                 {% placeholder collaborative-experience or %}Médor, c'est une expérience collaborative…{% endplaceholder %}
 
@@ -164,16 +165,17 @@
     </div>
 
     <div id="accounting" class="main-section section">
-        <div class="cover">
-            <div class="cover__wrapper">
-                <figure id="cover-budget" class="cover__wrapper__item">
-                    <img src="{{ STATIC_URL }}img/medor-objet-budget.png" alt="répartition du budget"/>
-                </figure>
-            </div>
-        </div>
+        <h2 data-shortname="combien?"><span>Médor,<br>c'est 3&thinsp;800 abonnés<br>et 226&thinsp;452&thinsp;€</span></h2>
 
         <div class="wrapper">
-            <h2 data-shortname="combien?">Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
+            <div class="cover">
+                <div class="cover__wrapper">
+                    <figure id="cover-budget" class="cover__wrapper__item">
+                        <img src="{{ STATIC_URL }}img/medor-objet-budget.png" alt="répartition du budget"/>
+                    </figure>
+                </div>
+            </div>
+
             <div class="narrow">
                 {% placeholder 3800-abonnes or %}3800 abonnés{% endplaceholder %}
                 <details>
@@ -208,9 +210,10 @@
         </div>
     </div>
 
-    <div id="status">
-        <div class="wrapper main-section section">
-            <h2 data-shortname="qui?">Médor,<br>c'est déja</h2>
+    <div id="status" class="main-section">
+        <h2 data-shortname="qui?"><span>Médor,<br>c'est déja</span></h2>
+
+        <div class="wrapper section">
             <div class="narrow" id="equipe">
                 {% placeholder equipe or %}Une équipe{% endplaceholder %}
             </div>
@@ -225,9 +228,10 @@
         </div>
     </div>
 
-    <div id="now-what" class="section">
+    <div id="now-what" class="main-section section">
+        <h2 data-shortname="maintenant?">Et maintenant&thinsp;?</h2>
+
         <div class="wrapper main-section">
-            <h2 data-shortname="maintenant?">Et maintenant&thinsp;?</h2>
             <div class="narrow">
                 {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
             </div>
