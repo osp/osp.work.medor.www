@@ -5,19 +5,20 @@
     <meta charset="utf-8">
     <title>Médor</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
 
+    {% addtoblock "css" %}
     {% if debug %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
     <!-- This is the client-side way to compile less and an ok choice for local dev -->
     <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/styles2.less" />
-    <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/layout.less" />
     {% else %}
     {% compress css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
     <!-- This is the nifty django-compressor way to compile your less files in css -->
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/styles2.less" charset="utf-8">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/layout.less" charset="utf-8">
     {% endcompress %}
     {% endif %}
+    {% endaddtoblock %}
 
     <link rel="icon" type="image/png" href="{{ STATIC_URL }}img/favicon-medor_16-16.png">
 
