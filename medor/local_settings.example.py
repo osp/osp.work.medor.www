@@ -42,6 +42,9 @@ SECRET_KEY = ''
 
 META_SITE_PROTOCOL = 'http'
 
+# Django CMS cache duration. 5 minutes here.
+CMS_CACHE_DURATIONS = 60 * 5
+
 
 if DEBUG:
     # Show emails in the console during developement.

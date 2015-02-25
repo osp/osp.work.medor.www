@@ -21,3 +21,6 @@ requests==2.5.1
 # Django compressor
 django-compressor==1.4
 cssmin==0.2.0
+
+# Caching
+python-memcached==1.53
