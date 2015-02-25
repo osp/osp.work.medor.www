@@ -42,6 +42,14 @@ SECRET_KEY = ''
 
 META_SITE_PROTOCOL = 'http'
 
+
+# Caching. Here with python-memcached.
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
 # Django CMS cache duration. 5 minutes here.
 CMS_CACHE_DURATIONS = 60 * 5
 
