@@ -148,6 +148,11 @@ STATICFILES_FINDERS = (
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} > {outfile}'),
 )
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+
 # This is so the {% if debug %} works,
 # cf http://stackoverflow.com/questions/11020663/
 INTERNAL_IPS = ('127.0.0.1',)
