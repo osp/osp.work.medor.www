@@ -20,6 +20,20 @@
 
 
 <main id="main-content">
+    <div class="cover">
+        <div class="cover__wrapper">
+            <ol id="menu">
+                <li><a href="#intro">Médor</a></li>
+                <li><a href="#participate">souscriptions</a></li>
+                <li><a href="#status">quoi&thinsp;?</a></li>
+                <li><a href="#">comment&thinsp;?</a></li>
+                <li><a href="#">combien&thinsp;?</a></li>
+                <li><a href="#">qui&thinsp;?</a></li>
+                <li><a href="#">maintenant&thinsp;?</a></li>
+            </ol>
+        </div>
+    </div>
+    
     <div id="intro" class="section">
         <div class="wrapper">
             <div class="narrow">
@@ -60,7 +74,7 @@
             <div id="participate" class="table__cell">
                 <div class="table">
                     <div id="subscribe" class="table__cell  block block--subscribe">
-                        <h2>Abonnez-vous</h2>
+                        <h2 data-shortname="souscriptions">Abonnez-vous</h2>
                         {% include "subscribe/partials/arrow-subscribe.html" %}
                         {% placeholder subscribe or %}abonnez-vous{% endplaceholder %}
                         <details>
@@ -90,16 +104,16 @@
     </div>
 
     <div id="magazine" class="main-section section">
-        <div class="cover">
-            <div class="cover__wrapper">
-                <figure id="cover-detail" class="cover__wrapper__item">
-                    <img src="{{ STATIC_URL }}img/medor-objet-mag.png" alt="premier numéro" />
-                </figure>
-            </div>
-        </div>
-
         <div class="wrapper">
-            <h2>Médor,<br>c'est un magazine</h2>
+            <h2 data-shortname="quoi?">Médor,<br>c'est un magazine</h2>
+
+            <div class="cover">
+                <div class="cover__wrapper">
+                    <figure id="cover-detail" class="cover__wrapper__item">
+                        <img src="{{ STATIC_URL }}img/medor-objet-mag.png" alt="premier numéro" />
+                    </figure>
+                </div>
+            </div>
 
             <div id="dna" class="narrow multicol multicol--x2">
                 <div class="dna-item no-break">
@@ -137,7 +151,7 @@
         </div>
 
         <div class="wrapper">
-            <h2>Médor,<br>c'est une experience collaborative</h2>
+            <h2 data-shortname="comment?">Médor,<br>c'est une experience collaborative</h2>
             <div class="narrow">
                 {% placeholder collaborative-experience or %}Médor, c'est une expérience collaborative…{% endplaceholder %}
 
@@ -159,7 +173,7 @@
         </div>
 
         <div class="wrapper">
-            <h2>Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
+            <h2 data-shortname="combien?">Médor,<br>c'est 3&thinsp;800 abonnés et 226&thinsp;452&thinsp;€</h2>
             <div class="narrow">
                 {% placeholder 3800-abonnes or %}3800 abonnés{% endplaceholder %}
                 <details>
@@ -196,7 +210,7 @@
 
     <div id="status">
         <div class="wrapper main-section section">
-            <h2>Médor,<br>c'est déja</h2>
+            <h2 data-shortname="qui?">Médor,<br>c'est déja</h2>
             <div class="narrow" id="equipe">
                 {% placeholder equipe or %}Une équipe{% endplaceholder %}
             </div>
@@ -213,7 +227,7 @@
 
     <div id="now-what" class="section">
         <div class="wrapper main-section">
-            <h2>Et maintenant&thinsp;?</h2>
+            <h2 data-shortname="maintenant?">Et maintenant&thinsp;?</h2>
             <div class="narrow">
                 {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
             </div>
