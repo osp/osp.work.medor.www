@@ -146,6 +146,12 @@ h1 > img {
 #news > article > h1 {
     font-family: "urw-grotesk-t";
 }
+#news a {
+    color: black;
+}
+#news a:before {
+    content: "→ ";
+}
 #news > article + article {
     margin-top: 1.21em;
 }
@@ -616,6 +622,7 @@ a.arrow__box:hover {
 blockquote {
     font-family: "alfphabetbipocatcondensed";
     margin-left: 2.42em;
+    margin-right: 0;
 }
 
 blockquote cite {
@@ -625,4 +632,8 @@ blockquote cite {
 .stiegler {
     margin: 1.21em * 3 0;
     text-align: center;
+}
+
+.umap {
+    margin-bottom: 1.21em;
 }

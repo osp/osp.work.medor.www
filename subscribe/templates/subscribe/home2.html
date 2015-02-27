@@ -61,15 +61,22 @@
                 <h2>Les rendez-vous Médor</h2>
                 {% get_next_events as events %}
 
+                <div class="umap">
+                    <iframe scrolling="no" seamless="seamless" width="100%" height="100px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=false&datalayersControl=false&onLoadPanel=none&captionBar=false#10/50.5806/4.5772"></iframe>
+                    <p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">Voir la carte du Médor-tour.</a></p>
+                </div>
+
                 {% for event in events %}
                 <article>
                     <p>{{ event.dtstart.dt|date:"l j F" }}</p>
                     <h1>{{ event.summary }}</h1>
-                    <p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}</p>
+                    <p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}.
+                    {% if event.attach %}
+                    <a href="{{ event.attach }}" target="_blank">Plus d'infos.</a>
+                    {% endif %}
+                    </p>
                 </article>
                 {% endfor %}
-
-                <!--<iframe width="100%" height="300px" frameBorder="0" src="https://umap.openstreetmap.fr/en/map/medor-tour_22490?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=databrowser"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/medor-tour_22490">See full screen</a></p>-->
             </div>
 
             <div id="participate" class="table__cell">
