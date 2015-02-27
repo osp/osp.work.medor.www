@@ -95,6 +95,7 @@ h1 > img {
         display: table;
         width: 100%;
         height: 100vh;
+        font-size: 4.5em;
     }
     .main-section h2 > span {
         display: table-cell;
@@ -155,16 +156,19 @@ h1 > img {
     margin-top: 20px;
 }
 @media only screen and (max-width : 800px) {
-    #subscribe,
-    #cooperate {
-        margin-top: 40px;
+    #participate > div + div {
+        margin-top: 1.21em * 3;
     }
 }
 #donate {
     position: relative;
-    min-height: 10em;
     padding: 1.21em;
-    padding-left: 12em;
+}
+@media only screen and (min-width : 800px) {
+    #donate {
+        min-height: 10em;
+        padding-left: 12em;
+    }
 }
 /* magazine */
 #dna h3 {
@@ -341,20 +345,11 @@ h1 > img {
     .table__cell:first-child { border-left: none; }
     .table__cell:last-child { border-right: none; }
 }
-.table--force {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
+@media only screen and (max-width : 800px) {
+    .table__cell + .table__cell {
+        margin-top: 1.21em * 3;
+    }
 }
-.table--force .table__cell {
-    display: table-cell;
-    vertical-align: top;
-    border-width: 0 10px;
-    border-style: solid;
-    border-color: white;
-}
-.table--force .table__cell:first-child { border-left: none; }
-.table--force .table__cell:last-child { border-right: none; }
 
 // cooperate, subscribe and donate modules
 .block { padding: 10px; }
@@ -377,26 +372,30 @@ h1 > img {
     height: 0;
     width: 0;
 }
-.arrow--down {
+.arrow {
     position: relative;
     top: -2em;
     margin: 0 auto;
 }
-.arrow--down:after {
+.arrow:after {
     left: -1.5em;
     bottom: -1em;
     border-width: 1em 5em 0 5em;
 }
-.arrow--right {
-    position: absolute;
-    top: 50%;
-    left: 1.21em;
-    margin-top: -3.25em;
-}
-.arrow--right:after {
-    top: -1.25em;
-    right: -1em;
-    border-width: 4.5em 0 4.5em 1em;
+@media only screen and (min-width : 800px) {
+    .arrow--right {
+        position: absolute;
+        top: 50%;
+        left: 1.21em;
+        margin-top: -3.25em;
+    }
+    .arrow--right:after {
+        top: -1.25em;
+        right: -1em;
+        bottom: initial;
+        left: initial;
+        border-width: 4.5em 0 4.5em 1em;
+    }
 }
 .arrow__box {
     color: inherit;
@@ -407,11 +406,14 @@ h1 > img {
     background-color: white;
     display: block;
 }
-.arrow--down .arrow__box {
+.arrow .arrow__box {
     margin-bottom: .25em;
 }
-.arrow--right .arrow__box {
-    margin-right: .25em;
+@media only screen and (min-width : 800px) {
+    .arrow--right .arrow__box {
+        margin-right: .25em;
+        margin-bottom: initial;
+    }
 }
 .arrow__box__inner {
     line-height: .85em;
@@ -494,7 +496,12 @@ a.arrow__box:hover {
     background-color: @color-A4 transparent;
 }
 .arrow--donate:after {
-    border-color: transparent @color-A4;
+    border-color: @color-A4 transparent;
+}
+@media only screen and (min-width : 800px) {
+    .arrow--donate:after {
+        border-color: transparent @color-A4;
+    }
 }
 
 // jcarousel TODO: tidy and rename
@@ -608,11 +615,14 @@ a.arrow__box:hover {
 
 blockquote {
     font-family: "alfphabetbipocatcondensed";
-    text-align: center;
+    margin-left: 2.42em;
 }
 
 blockquote cite {
     font-style: normal;
 }
 
-
+.stiegler {
+    margin: 1.21em * 3 0;
+    text-align: center;
+}
