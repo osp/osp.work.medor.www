@@ -38,8 +38,9 @@
         <div class="wrapper">
             <div class="narrow">
                 <!-- FIXME: semantic and positioning -->
-                <!--<img src="{{ STATIC_URL }}img/medor-anim.gif" alt="dessin animé">-->
-                <h1><img src="{{ STATIC_URL }}img/Medor-logo-baseline-fond-clair.svg" alt="Médor, les yeux ouverts" /></h1>
+                <img src="{{ STATIC_URL }}img/medor-anim.gif" alt="dessin animé" class="bonhomme">
+                <!--<h1><img src="{{ STATIC_URL }}img/Medor-logo-baseline-fond-clair.svg" alt="Médor, les yeux ouverts" /></h1>-->
+                <h1><img src="{{ STATIC_URL }}img/medor.svg" alt="Médor, les yeux ouverts" /></h1>
             </div>
 
             <div class="row">
@@ -229,7 +230,7 @@
     </div>
 
     <div id="now-what" class="main-section section">
-        <h2 data-shortname="maintenant?">Et maintenant&thinsp;?</h2>
+        <h2 data-shortname="maintenant?"><span>Et maintenant&thinsp;?</span></h2>
 
         <div class="wrapper main-section">
             <div class="narrow">
@@ -240,7 +241,7 @@
 
     <div class="wrapper">
         <div class="narrow">
-            <div class="table">
+            <div class="table table--force">
                 <div class="table__cell block--subscribe">
                 {% include "subscribe/partials/arrow-subscribe.html" %}
                 </div>
