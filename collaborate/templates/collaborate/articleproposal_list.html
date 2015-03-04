@@ -1,0 +1,93 @@
+{% extends "base2.html" %}
+
+
+{% load compress sekizai_tags %}
+
+
+{% block content %}
+{% addtoblock "css" %}
+{% if debug %}
+<!-- This is the client-side way to compile less and an ok choice for local dev -->
+<link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}collaborate/less/articleproposal_list.less" />
+{% else %}
+{% compress css %}
+<!-- This is the nifty django-compressor way to compile your less files in css -->
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}collaborate/less/articleproposal_list.less" charset="utf-8">
+{% endcompress %}
+{% endif %}
+{% endaddtoblock %}
+
+
+<main id="main-content" class="wrapper main-section">
+    <!--{% for obj in object_list %}-->
+    <!--<ol>-->
+        <!--<li><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></li>-->
+    <!--</ol>-->
+    <!--{% endfor %}-->
+
+    {% for obj in object_list %}
+    <article>
+        <header>
+            <h1>{{ obj.subject_title }} {% if obj.is_urgent %}(urgent){% endif %}</h1>
+            <dl>
+                <dt>Date de création</dt>
+                <dd>{{ obj.creation_date }}</dd>
+                <dt>Nom</dt>
+                <dd>{{ obj.name }}</dd>
+                <dt>Courriel</dt>
+                <dd>{{ obj.email }}</dd>
+                <dt>Téléphone</dt>
+                <dd>{{ obj.phone }}</dd>
+                <dt>Compte Twitter</dt>
+                <dd>{{ obj.twitter_account|default:"—" }}</dd>
+                <dt>Adresse</dt>
+                <dd>{{ obj.address }}</dd>
+            </dl>
+        </header>
+
+        <h2>Résumé (prévisionnel)</h2>
+        {{ obj.abstract }}
+
+        <h2>Média</h2>
+        {{ obj.media }}
+
+        <h2>Partenariat</h2>
+        {{ obj.partnership }}
+
+        <h2>Rubrique concernée (a priori)</h2>
+        {{ obj.section }}
+
+        <h2>Format</h2>
+        {{ obj.space }}
+
+        <h2>Découpage</h2>
+        {{ obj.sectioning }}
+
+        <h2>Originalité</h2>
+        {{ obj.innovation }}
+
+        <h2>Belgique</h2>
+        {{ obj.belgian }}
+
+        <h2>Approche</h2>
+        {{ obj.approach }}
+
+        <h2>Sources</h2>
+        {{ obj.sources }}
+
+        <h2>Méthodes</h2>
+        {{ obj.method }}
+
+        <h2>Difficultés</h2>
+        {{ obj.difficulties }}
+
+        <h2>Échéance</h2>
+        {{ obj.term }}
+
+        <h2>Divers</h2>
+        {{ obj.miscellaneous }}
+    </article>
+    {% endfor %}
+</main>
+
+{% endblock %}

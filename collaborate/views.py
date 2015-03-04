@@ -1,10 +1,14 @@
 from django.template.loader import render_to_string
 from django.views.generic.edit import FormView
+from django.views.generic import ListView
 from .forms import ArticleProposalForm
+from .models import ArticleProposal
 from django.core import urlresolvers
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 class ArticleProposalThanksView(TemplateView):
@@ -42,3 +46,11 @@ class ArticleProposalView(FormView):
         send_mail(subject, message, sender, recipients)
 
         return super(ArticleProposalView, self).form_valid(form)
+
+
+class ArticleProposalListView(ListView):
+    model = ArticleProposal
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ArticleProposalListView, self).dispatch(*args, **kwargs)

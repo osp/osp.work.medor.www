@@ -1,0 +1,39 @@
+@import "/static/less/colors.less";
+@import "/static/less/fonts2.less";
+@import "/static/less/mixins.less";
+
+
+body { font-size:100%; line-height:1.25; }
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:1.5em; padding:1.45833em 0; }
+h2 { font-size:1.33333em; padding:1.25em 0; }
+h3 { font-size:1.16667em; padding:1.51786em 0; }
+
+dl {
+    font-family: "alfphabetbipocatcondensed";
+}
+dt {
+  float: left;
+  width: 8em;
+}
+
+@page {
+    /* Support for `marks` is missing in every single web browser out there*/
+    size: 210mm 297mm;  // format avec cropmarks
+    margin: 15mm 20mm 30mm 20mm;
+}
+
+@media screen {
+    .wrapper {
+        margin: 0 auto;
+        width: 40em;
+        max-width: 100%;
+    }
+}
+
+@media print {
+    body { font-size: 10pt; }
+    #main-header { display: none; }
+    p { page-break-inside: avoid; }
+    article { page-break-after: always; }
+}
