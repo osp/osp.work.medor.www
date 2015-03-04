@@ -8,11 +8,11 @@
 {% addtoblock "css" %}
 {% if debug %}
 <!-- This is the client-side way to compile less and an ok choice for local dev -->
-<link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}collaborate/less/articleproposal_list.less" />
+<link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/articleproposal_list.less" />
 {% else %}
 {% compress css %}
 <!-- This is the nifty django-compressor way to compile your less files in css -->
-<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}collaborate/less/articleproposal_list.less" charset="utf-8">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/articleproposal_list.less" charset="utf-8">
 {% endcompress %}
 {% endif %}
 {% endaddtoblock %}
