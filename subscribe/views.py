@@ -9,7 +9,7 @@ from subscribe.models import Subscription, Cooperation
 
 import unicodecsv
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 
 
@@ -90,7 +90,12 @@ class SubscriptionWizardView(CookieWizardView):
         return render(self.request, 'subscribe/subscription-done.html', {'obj': obj})
 
 
-@login_required
+def can_read_csv(user):
+    """docstring for can_read_proposals"""
+    return user.groups.filter(name='Accounting').exists()
+
+
+@user_passes_test(can_read_csv)
 def subscribers_as_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
@@ -151,7 +156,7 @@ def subscribers_as_csv(request):
     return response
 
 
-@login_required
+@user_passes_test(can_read_csv)
 def cooperators_as_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')

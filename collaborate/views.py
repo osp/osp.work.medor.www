@@ -7,8 +7,8 @@ from django.core import urlresolvers
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView
-from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import user_passes_test
 
 
 class ArticleProposalThanksView(TemplateView):
@@ -48,9 +48,14 @@ class ArticleProposalView(FormView):
         return super(ArticleProposalView, self).form_valid(form)
 
 
+def can_read_proposals(user):
+    """docstring for can_read_proposals"""
+    return user.groups.filter(name='Collaboration').exists()
+
+
 class ArticleProposalListView(ListView):
     model = ArticleProposal
 
-    @method_decorator(login_required)
+    @method_decorator(user_passes_test(can_read_proposals))
     def dispatch(self, *args, **kwargs):
         return super(ArticleProposalListView, self).dispatch(*args, **kwargs)
