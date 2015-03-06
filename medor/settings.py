@@ -209,6 +209,7 @@ PARLER_LANGUAGES = {
 
 ACCOUNT_ACTIVATION_DAYS = 1 # One-day activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+DEFAULT_FROM_EMAIL = "medor@medor.coop"
 
 
 try:
