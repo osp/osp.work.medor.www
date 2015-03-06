@@ -87,7 +87,9 @@ INSTALLED_APPS = (
     'admin_enhancer',
     'djangocms_blog',
 
-    'django.contrib.webdesign'
+    'django.contrib.webdesign',
+
+    'registration'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -203,6 +205,10 @@ PARLER_LANGUAGES = {
         {'code': 'fr',},
     ),
 }
+
+
+ACCOUNT_ACTIVATION_DAYS = 1 # One-day activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
 
 try:

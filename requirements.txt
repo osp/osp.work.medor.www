@@ -24,3 +24,6 @@ cssmin==0.2.0
 
 # Caching
 python-memcached==1.53
+
+# Registration, so people can create themselves accounts
+django-registration-redux

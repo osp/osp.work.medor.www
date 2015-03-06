@@ -10,7 +10,8 @@ admin.autodiscover() # Not required for Django 1.7.x+
 
 urlpatterns = i18n_patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    #url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^subscribe/', include('subscribe.urls')),
     url(r'^', include('cms.urls')),
