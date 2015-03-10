@@ -24,7 +24,7 @@ def get_next_events():
     from icalendar import Calendar
 
 
-    request = requests.get('http://dav.medor.coop/medor/medor-evenements.ics/', auth=('medor', 'felix'))
+    request = requests.get('https://medor.coop/dav/medor/medor-evenements.ics/', auth=('medor', 'felix'))
     request.encoding = 'UTF-8'
 
     gcal = Calendar.from_ical(request.text)
