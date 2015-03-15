@@ -208,27 +208,27 @@ h1 > img {
 
 @banane: 240px;
 
-@media only screen and (min-width : (100px + (@banane * 1))) {
+@media only screen and (min-width : (100px + 240px + (@banane * 1))) {
     #portraits .jcarousel-item {
         width: 1%;
     }
 }
-@media only screen and (min-width : (100px + (@banane * 2))) {
+@media only screen and (min-width : (100px + 240px + (@banane * 2))) {
     #portraits .jcarousel-item {
         width: .5%;
     }
 }
-@media only screen and (min-width : (100px + (@banane * 3))) {
+@media only screen and (min-width : (100px + 240px + (@banane * 3))) {
     #portraits .jcarousel-item {
         width: .33333%;
     }
 }
-@media only screen and (min-width : (100px + (@banane * 4))) {
+@media only screen and (min-width : (100px + 240px + (@banane * 4))) {
     #portraits .jcarousel-item {
         width: .25%;
     }
 }
-@media only screen and (min-width : (100px + (@banane * 5))) {
+@media only screen and (min-width : (100px + 240px + (@banane * 5))) {
     #portraits .jcarousel-item {
         width: .20%;
     }
@@ -300,6 +300,12 @@ h1 > img {
 
 // Cover images that bounce trough the page
 @media only screen and (min-width : 800px) {
+    .fixed { 
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+    }
     .cover { 
         z-index: -10;
         position: fixed;
@@ -586,26 +592,32 @@ a.arrow__box:hover {
 
 @media only screen and (min-width : 800px) {
     #menu {
+        margin: 0;
+        padding: 0;
         display: block;
-        /*outline: 1px solid blue;*/
-        width: 100px;
+        width: 140px;
         position: absolute;
+        right: 0px;
         top: 26px + 17px + 17px;
-        right: -120px;
         font-family: "alfphabetbipocatcondensed";
         text-align: center;
-        z-index: 999;
+    }
+    #menu li {
+        margin: 0 20px;
+    }
+    #menu li.active,
+    #menu li:hover {
+        outline: 2px solid black;
+        background-color: white;
     }
     #menu a { 
+        display: block;
         color: black;
         padding: 0 8px;
         margin-bottom: 1px;
     }
-    #menu a.active {
-        outline: 2px solid black; background-color: white;
-    }
     #menu a:hover {
-        outline: 2px solid black;
+        text-decoration: none;
     }
 }
 

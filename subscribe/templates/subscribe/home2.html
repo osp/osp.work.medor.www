@@ -20,16 +20,16 @@
 
 
 <main id="main-content">
-    <div class="cover">
-        <div class="cover__wrapper">
+    <div class="fixed">
+        <div class="wrapper" style="outline: 1px solid orange;">
             <ol id="menu">
                 <li><a href="#intro">Médor</a></li>
                 <li><a href="#participate">souscriptions</a></li>
-                <li><a href="#status">quoi&thinsp;?</a></li>
-                <li><a href="#">comment&thinsp;?</a></li>
-                <li><a href="#">combien&thinsp;?</a></li>
-                <li><a href="#">qui&thinsp;?</a></li>
-                <li><a href="#">maintenant&thinsp;?</a></li>
+                <li><a href="#magazine">quoi&thinsp;?</a></li>
+                <li><a href="#collaborative-experience">comment&thinsp;?</a></li>
+                <li><a href="#accounting">combien&thinsp;?</a></li>
+                <li><a href="#status">qui&thinsp;?</a></li>
+                <li><a href="#now-what">maintenant&thinsp;?</a></li>
             </ol>
         </div>
     </div>
@@ -112,9 +112,9 @@
     </div>
 
     <div id="magazine" class="main-section section">
-        <h2 data-shortname="quoi?"><span>Médor,<br>c'est un magazine</span></h2>
-
         <div class="wrapper">
+            <h2><span>Médor,<br>c'est un magazine</span></h2>
+
             <div class="cover">
                 <div class="cover__wrapper">
                     <figure id="cover-detail" class="cover__wrapper__item">
@@ -150,9 +150,9 @@
     </div>
 
     <div id="collaborative-experience" class="main-section section">
-        <h2 data-shortname="comment?"><span>Médor,<br>c'est une experience<br>collaborative</span></h2>
-
         <div class="wrapper">
+            <h2><span>Médor,<br>c'est une experience<br>collaborative</span></h2>
+
             <div class="cover">
                 <div class="cover__wrapper">
                     <figure id="cover-coop" class="cover__wrapper__item">
@@ -173,9 +173,9 @@
     </div>
 
     <div id="accounting" class="main-section section">
-        <h2 data-shortname="combien?"><span>Médor,<br>c'est 3&thinsp;800 abonnés<br>et 226&thinsp;452&thinsp;€</span></h2>
-
         <div class="wrapper">
+            <h2><span>Médor,<br>c'est 3&thinsp;800 abonnés<br>et 226&thinsp;452&thinsp;€</span></h2>
+
             <div class="cover">
                 <div class="cover__wrapper">
                     <figure id="cover-budget" class="cover__wrapper__item">
@@ -210,24 +210,20 @@
                 </div>
 
                 {% placeholder pub or %}La pub{% endplaceholder %}
-                <details>
-                    <summary>Plus de détails</summary>
-                    {% placeholder pub-details or %}détails{% endplaceholder %}
-                </details>
             </div>
         </div>
     </div>
 
-    <div id="status" class="main-section">
-        <h2 data-shortname="qui?"><span>Médor,<br>c'est déja</span></h2>
-
+    <div id="status" class="main-section section">
         <div class="wrapper section">
+            <h2><span>Médor,<br>c'est déja</span></h2>
+
             <div class="narrow" id="equipe">
                 {% placeholder equipe or %}Une équipe{% endplaceholder %}
             </div>
-        </div>
 
-        {% include "subscribe/partials/carousel.html" %}
+            {% include "subscribe/partials/carousel.html" %}
+        </div>
 
         <div class="wrapper main-section">
             <div class="narrow">
@@ -237,9 +233,9 @@
     </div>
 
     <div id="now-what" class="main-section section">
-        <h2 data-shortname="maintenant?"><span>Et maintenant&thinsp;?</span></h2>
-
         <div class="wrapper main-section">
+            <h2><span>Et maintenant&thinsp;?</span></h2>
+
             <div class="narrow">
                 {% placeholder approfondissement or %}approfondissement{% endplaceholder %}
             </div>

@@ -9,38 +9,12 @@ function remy(target) {
 $(function() {
     remy($("main"));
 
-    //$("#menu").tocify({
-        //"selectors": "h2[data-shortname]",
-        //"hashGenerator": "pretty",
-        //"highlightOffset": 10,
-        //"extendPage": false,
-    //});
-    
-    //if (Modernizr.details) {
-        //console.log('support ok');
-    //} else {
-        //console.log('support not ok');
-        //// script to run if local storage is not supported
-    //}
     Modernizr.load({
         test: Modernizr.details,
         yep : '/static/components/details-tag/jquery.details.js',
     });
 
-    //$('a[href^="#"]').click(function(){
-        //var the_id = $(this).attr("href");
-        //scrollTop = $('[id="' + the_id.substring(1) + '"]').position().top - 180;
-        //console.log(scrollTop)
-        //$('#main').mCustomScrollbar("scrollTo", scrollTop);
-        ////$('#main').animate({
-        ////    scrollTop:$('[id="' + the_id.substring(1) + '"]').offset().top,
-        ////}, 1500);
-        //return false;
-    //});
-
-    $('.jcarousel').jcarousel({
-        //wrap: 'circular'
-    });
+    $('.jcarousel').jcarousel({});
 
     $('.jcarousel-control-prev')
     .jcarouselControl({
@@ -96,45 +70,32 @@ $(function() {
         //.addIndicators();
     
 
+    /* The code below is loosely based on https://github.com/renettarenula/anchorific.js 
+     * Copyright: Ren Aysha, MIT License. See <http://opensource.org/licenses/MIT>
+     * */
+    var prev;
+    var headers = $($('#menu a').map(function() {return $($(this).attr('href')).get()}));
         
     $( window ).scroll( function( e ) {
         // get all the header on top of the viewport
-        var headers = $('#intro, #participate, #status');
         current = headers.map( function( e ) {
-            if ( ( $( this ).offset().top - $( window ).scrollTop() ) < 0 ) {
+            if ( ( $( this ).offset().top - $( window ).scrollTop() ) < 1 ) {
                 return this;
             }
         });
         // get only the latest header on the viewport
         current = $( current ).eq( current.length - 1 );
 
-        console.log(current);
+        if ( current && current.length ) {
+            // get all li tag that contains href of # ( all the parents )
+            list = $( '#menu li:has(a[href="#' + current.attr( 'id' ) + '"])' );
 
-        //if ( current && current.length ) {
-            //// get all li tag that contains href of # ( all the parents )
-            //list = $( 'li:has(a[href="#' + current.attr( 'id' ) + '"])' );
+            if ( prev !== undefined ) {
+                prev.removeClass( 'active' );
+            }
 
-            //if ( prev !== undefined ) {
-                //prev.removeClass( 'active' );
-            //}
-
-            //list.addClass( 'active' );
-            //prev = list;
-        //}
+            list.addClass( 'active' );
+            prev = list;
+        }
     });
-
-    //$('#menu a').each(function() {
-        //var that = this;
-        //var href = $(this).attr('href');
-        //new ScrollScene({triggerElement: $(href)})
-            //.addTo(controller)
-            //.on("enter leave", function (e) {
-                //console.log('ok');
-                //if (e.type == "enter") {
-                    //$(that).addClass('active');
-                //} else {
-                    //$(that).removeClass('active');
-                //}
-            //});
-    //});
 });
