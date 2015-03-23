@@ -50,6 +50,21 @@ def subscription_present(modeladmin, request, queryset):
 subscription_present.short_description = "Envoyer l'offre Noël par email"
 
 
+def cooperation_ag_2015(modeladmin, request, queryset):
+    emails = []
+
+    for obj in queryset:
+        subject = "Invitation à l'Assemblée Générale Médor 2015"
+        message = render_to_string('subscribe/cooperation-ag2015.txt', {'obj': obj})
+        sender = "lesyeuxouverts@medor.coop"
+        recipients = [obj.email]
+        emails.append((subject, message, sender, recipients))
+
+    send_mass_mail(emails, fail_silently=False)
+
+cooperation_ag_2015.short_description = "Envoyer une invitation à l'AG 2015"
+
+
 def cooperation_reminder_first(modeladmin, request, queryset):
     emails = []
 
@@ -110,7 +125,12 @@ class CooperationAdmin(admin.ModelAdmin):
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
-    actions = [cooperation_reminder_first, cooperation_reminder_second, cooperation_present]
+    actions = [
+        cooperation_reminder_first,
+        cooperation_reminder_second,
+        cooperation_present,
+        cooperation_ag_2015
+    ]
 
 
 admin.site.register(Subscription, SubscriptionAdmin)
