@@ -15,11 +15,13 @@
         </h2>
     </header>
     {% endblock %}
+
     {% for post in post_list %}
     	{% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
 	{% empty %}
 	<p class="blog-empty">{% trans "No article found." %}</p>
     {% endfor %}
+
 	{% if author or archive_date or tagged_entries %}
 	<p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
 	{% endif %}
