@@ -52,6 +52,7 @@ CACHES = {
 }
 # Django CMS cache duration. 5 minutes here.
 CMS_CACHE_DURATIONS = 60 * 5
+MIDDLEWARE_CLASSES = ('django.middleware.cache.UpdateCacheMiddleware',) + MIDDLEWARE_CLASSES + ('django.middleware.cache.FetchFromCacheMiddleware',)
 
 
 if DEBUG:
