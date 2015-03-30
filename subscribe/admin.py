@@ -110,18 +110,58 @@ def cooperation_present(modeladmin, request, queryset):
 cooperation_present.short_description = "Envoyer l'offre Noël par email"
 
 
+class AlsoCooperatorListFilter(admin.SimpleListFilter):
+    title = 'also cooperator'
+    parameter_name = 'also_cooperator'
+
+    def lookups(self, request, model_admin):
+        return (
+            (1, 'oui'),
+            (0, 'non')
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == "1":
+            valid_emails = Cooperation.objects.values_list('email', flat=True).distinct()
+            return queryset.filter(email__in=valid_emails)
+
+        if self.value() == "0":
+            valid_emails = Cooperation.objects.values_list('email', flat=True).distinct()
+            return queryset.exclude(email__in=valid_emails)
+
+
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
-    list_filter = ('status', 'country')
+    list_filter = ('status', 'country', AlsoCooperatorListFilter)
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
     actions = [subscription_reminder_first, subscription_reminder_second, subscription_present]
 
 
+class AlsoSubscriberListFilter(admin.SimpleListFilter):
+    title = 'also subscriber'
+    parameter_name = 'also_subscriber'
+
+    def lookups(self, request, model_admin):
+        return (
+            (1, 'oui'),
+            (0, 'non')
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == "1":
+            valid_emails = Subscription.objects.values_list('email', flat=True).distinct()
+            return queryset.filter(email__in=valid_emails)
+
+        if self.value() == "0":
+            valid_emails = Subscription.objects.values_list('email', flat=True).distinct()
+            return queryset.exclude(email__in=valid_emails)
+
+
 class CooperationAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'status', 'email', 'share_number', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
-    list_filter = ('status', 'country')
+    list_filter = ('status', 'country', AlsoSubscriberListFilter)
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
