@@ -8,7 +8,7 @@
             <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/generic.less" />
         {% else %}
             {% compress css %}
-            <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/generic.less" />
+            <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/generic.less" charset="utf-8">
             {% endcompress %}
         {% endif %}
     {% endaddtoblock %}
