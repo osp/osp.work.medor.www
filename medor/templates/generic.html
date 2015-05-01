@@ -3,13 +3,19 @@
 {% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
 
 {% block content %}
-{% addtoblock "css" %}
-<link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/generic.less" />
-{% endaddtoblock %}
+    {% addtoblock "css" %}
+        {% if debug %}
+            <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/generic.less" />
+        {% else %}
+            {% compress css %}
+                <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/styles2.less" />
+            {% endcompress %}
+        {% endif %}
+    {% endaddtoblock %}
 
-<main id="main-content">
-    <h1>{% page_attribute page_title %}</h1>
+    <main id="main-content">
+        <h1>{% page_attribute page_title %}</h1>
 
-    {% placeholder content %}
-</main>
+        {% placeholder content %}
+    </main>
 {% endblock %}
