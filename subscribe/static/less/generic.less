@@ -37,12 +37,41 @@
   text-align: center;
 }
 
+#main-content h3 {
+    margin: 1em 0;
+
+  font-family: "alfphabetbipocatcondensed";
+  font-size: 1.21em;
+  line-height: .9em;
+  letter-spacing: -0.01em;
+}
+
+
+#main-content strong {
+    font-weight: normal;
+    color: @color-A2;
+}
+
+
 #main-content p + p {
     margin-top: 1.22em;
 }
 
-#main-content li:before {
-    content: "— ";
+
+#main-content ul > li {
+    list-style-type: circle;
+}
+/*#main-content ul > li:before {*/
+    /*content: "— ";*/
+/*}*/
+
+#main-content ul,
+#main-content ol {
+    padding-left: 3em;
+}
+
+#main-content ol > li {
+    list-style-type: decimal;
 }
 
 #main-content hr {
