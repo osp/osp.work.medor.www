@@ -6,7 +6,9 @@ Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par vire
 
 Si votre système bancaire ne permet pas de faire une communication structurée, entrez simplement {{ obj.simple_communication }}. Pour toute question ou difficulté relative à ce paiement, contactez-nous par retour de mail.
 
-Garant de notre philosophie, vous serez régulièrement tenu informé de l’avancée de notre projet et serez convoqué à notre prochaine assemblée générale. Consultez notre plan financier, nos statuts et notre foire aux questions sur https://www.medor.coop.
+Notez déja la date de notre prochaine Assemblée Générale qui se tiendra le 23 mai 2015 aux Halles de Schaerbeek, de 14h à 17h30. Vous y êtes cordialement invité(e) à condition d'être en ordre de paiement le 20 mai au plus tard. L'invitation vous parviendra par e-mail.
+
+Garant de notre philosophie, vous serez régulièrement tenu informé de l’avancée de notre projet. Consultez notre plan financier, nos statuts et notre foire aux questions sur https://www.medor.coop.
 
 Parlez-en autour de vous et, si ce n’est déjà fait, offrez-vous un abonnement.
 

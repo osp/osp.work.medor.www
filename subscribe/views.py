@@ -60,6 +60,12 @@ class CooperationWizardView(CookieWizardView):
         recipients = [obj.email]
         send_mail(subject, message, sender, recipients)
 
+        subject = "Invitation à l'Assemblée Générale Médor 2015"
+        message = render_to_string('subscribe/cooperation-ag2015-invitation.txt', {})
+        sender = "lesyeuxouverts@medor.coop"
+        recipients = [obj.email]
+        send_mail(subject, message, sender, recipients)
+
         return render(self.request, 'subscribe/cooperation-done.html', {'obj': obj})
 
 
