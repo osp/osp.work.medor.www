@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.assignment_tag
 def get_subscriber_count():
-    return Subscription.objects.count()
+    return Subscription.objects.exclude(status=2).count()
 
 
 @register.assignment_tag
