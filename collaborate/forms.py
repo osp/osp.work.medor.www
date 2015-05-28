@@ -7,40 +7,28 @@ class ArticleProposalForm(forms.ModelForm):
     error_css_class = 'error'
     required_css_class = 'required'
 
+    presentation = forms.CharField(
+        max_length=300,
+        label=u"Présentation",
+        help_text=u"Qui êtes-vous ? Présentez-vous en quelques mots (expérience, collaborations actuelles, site personnel…) ?",
+        widget=forms.Textarea()
+    )
     media = forms.CharField(
         max_length=200,
-        label=u"Média",
-        help_text=u"Quelle(s) contribution(s) envisagez-vous ? Écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez).",
+        label=u"Spécialité",
+        help_text=u"Quel(s) moyen(s) d’expression maîtrisez vous et souhaitez vous utiliser (écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres) ?",
         widget=forms.Textarea()
     )
     partnership = forms.CharField(
         max_length=200,
-        label=u"Partenariat",
-        help_text=u"Quelle synergie serait possible entre votre projet et un autre correspondant de Médor : écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres (précisez).",
-        widget=forms.Textarea()
-    )
-    space = forms.CharField(
-        max_length=200,
-        label=u"Format",
-        help_text=u"Une page Médor mesure 16 x 23 cm, soit environ 2000 signes. Quel serait, selon vous, l'espace nécessaire à votre contribution en nombre de pages ?",
-        widget=forms.TextInput()
-    )
-    sectioning = forms.CharField(
-        max_length=500,
-        label=u"Découpage",
-        help_text=u"Votre sujet se décline-t-il en plusieurs entrées ? Sinon, le pourrait-il ?",
+        label=u"Partenaire",
+        help_text=u"Médor vous suggérera de travailler avec un partenaire. Quel type de synergie s’appliquerait bien à votre sujet : écrits, photographies, dessins, peintures, infographies, vidéo, son, jeux de rôles, autres ?",
         widget=forms.Textarea()
     )
     innovation = forms.CharField(
         max_length=500,
         label=u"Originalité",
-        help_text=u"En quoi votre sujet est-il original par rapport à l’offre médiatique francophone de Belgique ?",
-        widget=forms.Textarea()
-    )
-    belgian = forms.CharField(
-        max_length=500,
-        label=u"Belgique",
-        help_text=u"En quoi votre sujet est-il spécifiquement belge ? Que nous dit-il de la Belgique et comment, à travers lui, la Belgique nous parle-t-elle du monde ?",
+        help_text=u"En quoi votre sujet est-il original ? En a-t-on déjà parlé dans les médias francophones belges ?",
         widget=forms.Textarea()
     )
     approach = forms.CharField(
@@ -49,29 +37,11 @@ class ArticleProposalForm(forms.ModelForm):
         help_text=u"Sous quel angle (original, surprenant ou amusant) allez-vous aborder ce sujet ?",
         widget=forms.Textarea()
     )
-    sources = forms.CharField(
-        max_length=500,
-        label=u"Sources",
-        help_text=u"Auprès de quelles sources ou quels types de sources (principales) pensez-vous démarrer votre recherche ?",
-        widget=forms.Textarea()
-    )
     method = forms.CharField(
         max_length=500,
         label=u"Méthode",
-        help_text=u"Comment comptez-vous obtenir vos informations et vous immerger dans votre thématique ?",
+        help_text=u"Quelles sont vos sources et vos hypothèses de travail ? Vos moyens pour obtenir les informations ? Les données dont vous disposez déjà ? Et en quoi cela concerne-t-il la Belgique ?",
         widget=forms.Textarea()
-    )
-    difficulties = forms.CharField(
-        max_length=500,
-        label=u"Difficultés",
-        help_text=u"Quelles difficultés (principales et particulières) prévoyez-vous de rencontrer dans la réalisation de votre enquête ou reportage ? Comment prévoyez-vous de pallier ces difficultés ?",
-        widget=forms.Textarea()
-    )
-    term = forms.CharField(
-        max_length=200,
-        label=u"Échéance",
-        help_text=u"Une fois un feu vert de Médor, de combien de temps aurez-vous besoin avant nous remettre une version finale du projet ?",
-        widget=forms.Textarea(attrs={'rows':3})
     )
     miscellaneous = forms.CharField(
         max_length=500,
@@ -88,22 +58,17 @@ class ArticleProposalForm(forms.ModelForm):
             'phone',
             'twitter_account',
             'address',
+            'presentation',
             'subject_title',
-            'is_urgent',
             'abstract',
             'media',
             'partnership',
             'section',
-            'space',
-            'sectioning',
             'innovation',
-            'belgian',
             'approach',
-            'sources',
             'method',
-            'difficulties',
-            'term',
-            'miscellaneous'
+            'miscellaneous',
+            'is_urgent',
         ]
 
         widgets = {
@@ -117,9 +82,8 @@ class ArticleProposalForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(ArticleProposalForm, self).clean()
 
-        fields = ["media", "partnership", "space", "sectioning", "innovation",
-                "belgian", "approach", "sources", "method", "difficulties",
-                "term", "miscellaneous"]
+        fields = ["presentation", "media", "partnership", "innovation", "approach", "method",
+                "miscellaneous"]
 
         body = []
 

@@ -41,21 +41,21 @@ class ArticleProposal(models.Model):
         verbose_name="Intitulé du sujet (provisoire)",
         help_text="Titre le plus clair possible. Avec sous-titre éventuel."
     )
-    is_urgent = models.BooleanField(
-        default=False,
-        verbose_name="Urgence",
-        help_text="Votre sujet nécessite-t-il une publication rapide sur le web ou sur papier (pour préserver l'exclusivité par exemple) ?"
-    )
     section = models.PositiveSmallIntegerField(
         choices=SECTION_CHOICES,
         default=0,
         verbose_name="Rubrique concernée (a priori)",
-        help_text="Destinez-vous votre sujet à une rubrique précise ? Entretien, portrait, récit, enquête, brèves."
+        help_text="Destinez-vous votre sujet à une rubrique précise ?"
     )
     abstract = models.CharField(
         max_length=750,
-        verbose_name="Résumé (prévisionnel)",
+        verbose_name="Résumé",
         help_text="Rédigez comme s’il s’agissait d’un chapeau destiné à un média généraliste."
+    )
+    is_urgent = models.BooleanField(
+        default=False,
+        verbose_name="Urgence",
+        help_text="Votre sujet nécessite-t-il une publication rapide sur le web ou sur papier (pour préserver l'exclusivité par exemple) ?"
     )
     body = models.TextField(
         verbose_name="Contenu",
