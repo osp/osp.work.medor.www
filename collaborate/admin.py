@@ -4,7 +4,7 @@ from forms import ArticleProposalForm
 
 
 class ArticleProposalAdmin(admin.ModelAdmin):
-    form = ArticleProposalForm
+    #form = ArticleProposalForm
     list_display = ('__unicode__', 'creation_date')
     #list_filter = ('status', 'country')
     #list_editable = ('status',)
