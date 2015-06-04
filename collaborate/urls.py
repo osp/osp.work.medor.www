@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, url
-from .views import ArticleProposalView, ArticleProposalThanksView, ArticleProposalListView
+from .views import ArticleProposalSimpleView, ArticleProposalView, ArticleProposalThanksView, ArticleProposalListView
 
 
 urlpatterns = patterns('',
     url(r'^$', ArticleProposalView.as_view(), name='article-proposal'),
+    url(r'^simple/$', ArticleProposalSimpleView.as_view(), name='article-proposal-simple'),
     url(r'^merci/$', ArticleProposalThanksView.as_view(), name='article-proposal-thanks'),
     url(r'^propositions/$', ArticleProposalListView.as_view(), name='article-proposal-list'),
 )
