@@ -37,6 +37,10 @@
         <p class="intro-collaborate">Les réunions de rédaction se déroulent
         chaque mois.</p>
 
+        <p class="intro-collaborate">Si vous avez simplement une information, une idée, une suspicion à
+        partager avec nous, en pensant que cela pourrait déboucher sur un sujet
+        pour Médor, alors <a href="{% url 'article-proposal-simple' %}">remplissez notre autre formulaire (simplifié)</a></p>
+
         {% if form.errors %}
         <p style="color: red;">Veuillez corriger les erreurs ci-dessous</p>
     {% endif %}
