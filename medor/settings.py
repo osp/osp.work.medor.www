@@ -89,7 +89,9 @@ INSTALLED_APPS = (
 
     'django.contrib.webdesign',
 
-    'registration'
+    'registration',
+
+    'django.contrib.sitemaps'
 )
 
 MIDDLEWARE_CLASSES = (
