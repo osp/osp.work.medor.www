@@ -88,7 +88,7 @@ class ArticleProposalForm(forms.ModelForm):
         body = []
 
         for f in fields:
-            data = cleaned_data.get(f)
+            data = cleaned_data.get(f, '')
 
             field = self.fields[f]
 
