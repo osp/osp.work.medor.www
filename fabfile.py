@@ -5,39 +5,37 @@ from fabric.contrib.console import confirm
 
 env.hosts = ['medor@92.243.16.55']
 env.port = 2222
-env.path = '/srv/data_rocamadour/www/coop.medor/app'
+env.path = '/srv/data_rocamadour/www/coop.medor'
+
+
+def remote_info():
+    run('uname -a')
 
 
 def deploy(branch='master'):
     """deploys to previously setup environment"""
-    path_activate = '/srv/data_rocamadour/www/coop.medor/venv/bin/activate'
-    path_wsgi = '/srv/data_rocamadour/www/coop.medor/app/medor/wsgi.py'
 
-    with cd(env.path):
+    with cd('%(path)s/app' % env):
         run('git pull origin %s' % branch)
 
-        with prefix('source %s' % path_activate):
+        with prefix('source %(path)s/venv/bin/activate' % env):
             run('pip install -r requirements.txt')
             run('python manage.py collectstatic --noinput')
 
-    run('touch %s' % path_wsgi)
+    run('touch %(path)s/app/medor/wsgi.py' % env)
 
 
 def migrate():
     """deploys to previously setup environment"""
-    path_activate = '/srv/data_rocamadour/www/coop.medor/venv/bin/activate'
-    path_wsgi = '/srv/data_rocamadour/www/coop.medor/app/medor/wsgi.py'
 
-    with cd(env.path):
-        with prefix('source %s' % path_activate):
+    with cd('%(path)s/app' % env):
+        with prefix('source %(path)s/venv/bin/activate' % env):
             run('python manage.py migrate')
 
-    run('touch %s' % path_wsgi)
+    run('touch %(path)s/app/medor/wsgi.py' % env)
 
 
 def download():
     """synchronizes the local db and media files from the remote ones"""
-    foo = '/srv/data_rocamadour/www/coop.medor/'
-    local('scp -P 2222 medor@medor.coop:%sdb/medor.db .' % foo)
-    local("rsync -e 'ssh -p 2222' -avz --progress --stats medor@medor.coop:%sdocs/media ." % foo)
-
+    local('scp -P %(port)s %(host)s:%(path)s/db/medor.db .' % env)
+    local("rsync -e 'ssh -p %(port)s' -avz --progress --stats %(host)s:%(path)s/docs/media ." % env)
