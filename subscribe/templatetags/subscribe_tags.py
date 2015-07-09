@@ -1,6 +1,7 @@
 from django import template
 from django.db.models import Sum
 from subscribe.models import Subscription, Cooperation
+from django.conf import settings
 
 
 register = template.Library()
@@ -24,7 +25,7 @@ def get_next_events():
     from icalendar import Calendar
 
 
-    request = requests.get('https://medor.coop/dav/medor/medor-evenements.ics/', auth=('medor', 'felix'))
+    request = requests.get(settings.CALENDAR_URL, auth=(settings.CALENDAR_USER, settings.CALENDAR_PASSWORD))
     request.encoding = 'UTF-8'
 
     gcal = Calendar.from_ical(request.text)

@@ -55,6 +55,13 @@ CMS_CACHE_DURATIONS = 60 * 5
 MIDDLEWARE_CLASSES = ('django.middleware.cache.UpdateCacheMiddleware',) + MIDDLEWARE_CLASSES + ('django.middleware.cache.FetchFromCacheMiddleware',)
 
 
+# Calendar infos to display the events on the home page
+# CALENDAR_URL is the URL of the ICS file. We don't use CalDAV here only HTTP
+CALENDAR_URL = "https://medor.coop/nuage/remote.php/caldav/calendars/user/calendar?export"
+CALENDAR_USER = "user"
+CALENDAR_PASSWORD = "password"
+
+
 if DEBUG:
     # Show emails in the console during developement.
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
