@@ -1,6 +1,6 @@
 from django.template.loader import render_to_string
 from django.views.generic.edit import FormView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .forms import ArticleProposalForm, ArticleProposalSimpleForm
 from .models import ArticleProposal
 from django.core import urlresolvers
@@ -69,3 +69,10 @@ class ArticleProposalListView(ListView):
     @method_decorator(user_passes_test(can_read_proposals))
     def dispatch(self, *args, **kwargs):
         return super(ArticleProposalListView, self).dispatch(*args, **kwargs)
+
+class ArticleProposalDetailView(DetailView):
+    model = ArticleProposal
+
+    @method_decorator(user_passes_test(can_read_proposals))
+    def dispatch(self, *args, **kwargs):
+        return super(ArticleProposalDetailView, self).dispatch(*args, **kwargs)

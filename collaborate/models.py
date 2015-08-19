@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+import markdown
+from markdown.extensions.toc import TocExtension
 
 
 SECTION_CHOICES = (
@@ -65,6 +67,16 @@ class ArticleProposal(models.Model):
     class Meta:
         verbose_name = "Proposition d'article"
         verbose_name_plural = "Propositions d'articles"
+        ordering = ['-creation_date']
 
     def __unicode__(self):
         return self.subject_title
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('article-proposal-detail', (), {'pk': self.pk})
+
+    @property
+    def body_as_html(self):
+        md = markdown.Markdown(output_format="html5", extensions=['extra', TocExtension(baselevel=2)])
+        return md.convert(self.body)

@@ -27,3 +27,6 @@ python-memcached==1.53
 
 # Registration, so people can create themselves accounts
 django-registration-redux
+
+# Markdown, to format article proposals
+Markdown>=2

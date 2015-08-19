@@ -1,0 +1,51 @@
+{% extends "base2.html" %}
+
+
+{% load compress sekizai_tags %}
+
+
+{% block content %}
+{% addtoblock "css" %}
+{% if debug %}
+<!-- This is the client-side way to compile less and an ok choice for local dev -->
+<link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/articleproposal_list.less" />
+{% else %}
+{% compress css %}
+<!-- This is the nifty django-compressor way to compile your less files in css -->
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/articleproposal_list.less" charset="utf-8">
+{% endcompress %}
+{% endif %}
+{% endaddtoblock %}
+
+
+<main id="main-content" class="wrapper main-section">
+    <article>
+        <header>
+            <h1>{{ object.subject_title }} {% if object.is_urgent %}(urgent){% endif %}</h1>
+            <dl>
+                <dt>Date de création</dt>
+                <dd>{{ object.creation_date }}</dd>
+                <dt>Nom</dt>
+                <dd>{{ object.name }}</dd>
+                <dt>Courriel</dt>
+                <dd>{{ object.email }}</dd>
+                <dt>Téléphone</dt>
+                <dd>{{ object.phone }}</dd>
+                <dt>Compte Twitter</dt>
+                <dd>{{ object.twitter_account|default:"—" }}</dd>
+                <dt>Adresse</dt>
+                <dd>{{ object.address }}</dd>
+            </dl>
+        </header>
+
+        <h2>Résumé (prévisionnel)</h2>
+        {{ object.abstract }}
+
+        <h2>Rubrique concernée (a priori)</h2>
+        {{ object.get_section_display }}
+
+        {{ object.body_as_html|safe }}
+    </article>
+</main>
+
+{% endblock %}
