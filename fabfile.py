@@ -3,9 +3,12 @@ from fabric.api import run, local, put, cd, sudo, env, prefix
 from fabric.contrib.console import confirm
 
 
-env.hosts = ['medor@92.243.16.55']
-env.port = 2222
-env.path = '/srv/data_rocamadour/www/coop.medor'
+#env.hosts = ['medor@92.243.16.55']
+#env.port = 2222
+#env.path = '/srv/data_rocamadour/www/coop.medor'
+env.hosts = ['medor@92.243.0.183']
+env.port = 222
+env.path = '/srv/datadisk01/www/coop.medor'
 
 
 def remote_info():
@@ -37,5 +40,5 @@ def migrate():
 
 def download():
     """synchronizes the local db and media files from the remote ones"""
-    local('scp -P %(port)s %(host)s:%(path)s/db/medor.db .' % env)
-    local("rsync -e 'ssh -p %(port)s' -avz --progress --stats %(host)s:%(path)s/docs/media ." % env)
+    local('scp -P %(port)s %(user)s@%(host)s:%(path)s/db/medor.db .' % env)
+    local("rsync -e 'ssh -p %(port)s' -avz --progress --stats %(user)s@%(host)s:%(path)s/docs/media ." % env)
