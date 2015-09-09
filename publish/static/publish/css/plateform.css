@@ -1,0 +1,70 @@
+body {
+    background-color: #fafafa;
+}
+
+
+header,
+body,
+footer {
+    max-width: 40em;
+    margin: 0 auto;
+}
+
+.editor > * {
+    position: relative;
+}
+
+.editor > *:before {
+    font-family: monospace;
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: normal;
+}  position: absolute;
+    bottom: 0;
+    top: 0;
+    padding: 4px;
+    box-sizing: border-box;
+    width: 20px;
+    left: -30px;
+    display: block;
+    background-color: rgb(239, 239, 255);
+}
+
+.editor p:before { content: "p"; }
+.editor h2:before { content: "h2"; }
+
+.editor > *:after {
+    font-family: monospace;
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: normal;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    padding: 4px;
+    box-sizing: border-box;
+    right: -10px;
+    display: block;
+    background-color: rgb(239, 239, 255);
+    content: attr(class);
+}
+
+.toolbar {
+    width: 14px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 14px;
+}
+
+.toolbar > button {
+    background: none;
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.toolbar > button:hover {
+    background-color: darkgrey;
+    color: white;
+}

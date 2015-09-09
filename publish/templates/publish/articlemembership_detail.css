@@ -1,0 +1,22 @@
+#flow-{{ object.article.slug }} {
+    -webkit-flow-into: flow-{{ object.article.slug }};
+            flow-into: flow-{{ object.article.slug }};
+}
+
+.flow-{{ object.article.slug }} {
+    -webkit-flow-from: flow-{{ object.article.slug }};
+        flow-from: flow-{{ object.article.slug }};
+}
+
+/* reset folio */
+body { counter-reset: folio {{ object.folio }} - 1; }
+{{ object.is_even }}
+
+/*footer,*/
+/*header content*/
+.header:before { content: "{{ object.article.article_type }} — {{ object.article.title }}"; }
+.footer:before { content: "{{ object.issue.title }}"; }
+
+
+
+

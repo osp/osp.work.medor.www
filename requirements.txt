@@ -30,3 +30,9 @@ django-registration-redux
 
 # Markdown, to format article proposals
 Markdown>=2
+
+# Application publish
+django-admin-sortable2
+djangorestframework
+django-filter
+django-cors-headers==1.1.0

@@ -15,6 +15,7 @@ urlpatterns = i18n_patterns('',
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^subscribe/', include('subscribe.urls')),
+    url(r'^publish/', include('publish.urls')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^', include('cms.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
