@@ -4,11 +4,8 @@
     <meta charset="utf-8">
     <title>{{ object.article.title }}</title>
 
-    <link rel="stylesheet" href="../../vendors/normalize.css/normalize.css">
-    <link rel="stylesheet" href="../../vendors/normalize-opentype.css/normalize-opentype.css">
-
     <link rel="stylesheet" href="../../css/main.less" type="text/less">
-    <link rel="stylesheet" href="css/auto.css">
+    <link rel="stylesheet" href="css/generated.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -34,9 +31,7 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="/vendors/less/dist/less.min.js"></script>
-    <script src="/vendors/jquery/dist/jquery.min.js"></script>
-
-    <script src="/js/html2print.js"></script>
+    <script src="../../vendors/less/dist/less.min.js"></script>
+    <script src="../../js/stories.js"></script>
 </body>
 </html>

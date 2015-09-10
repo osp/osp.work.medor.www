@@ -18,10 +18,10 @@ class ArticleMembershipDetailRawView(DetailView):
 class ArticleMembershipDetailCSSView(DetailView):
     model = ArticleMembership
     template_name = "publish/articlemembership_detail.css"
-    content_type = "text/css"
+    content_type = "text/css; charset=utf-8"
 
 
 class ArticleMembershipDetailTplView(DetailView):
     model = ArticleMembership
     template_name = "publish/articlemembership_detail.tpl"
-    content_type = "text/css"
+    content_type = "text/plain; charset=utf-8"

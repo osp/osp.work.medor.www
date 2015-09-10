@@ -4,6 +4,7 @@ from django.db.models import Sum
 
 class Issue(models.Model):
     """Represents an Article"""
+    creation_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=1024, blank=True)
 
     def __unicode__(self):
@@ -12,11 +13,21 @@ class Issue(models.Model):
 
 class Article(models.Model):
     """Represents an Article"""
+    STATUS_CHOICES = (
+        (0, u'proposal'),
+        (1, u'request for peer-review'),
+        (2, u'request for speelchecking'),
+        (3, u'ready')
+    )
+
+    creation_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=1024, blank=True)
     slug = models.SlugField(max_length=1024, blank=True)
     body = models.TextField(blank=True)
     article_type = models.CharField(max_length=1024, blank=True)
-
+    authors = models.CharField(max_length=1024, blank=True)
+    peer_reviewers = models.CharField(max_length=1024, blank=True)
+    status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
 
     def __unicode__(self):
         return self.title or "Sans titre"

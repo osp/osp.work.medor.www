@@ -13,8 +13,23 @@ class IssueAdmin(admin.ModelAdmin):
     inlines = [ArticleMembershipInline,]
 
 
+class InIssueListFilter(admin.SimpleListFilter):
+    title = 'issue'
+    parameter_name = 'issue'
+
+    def lookups(self, request, model_admin):
+        qs = Article.objects.filter(articlemembership__isnull=False)
+        return set(qs.values_list('articlemembership__issue__id', 'articlemembership__issue__title'))
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(articlemembership__issue__id=self.value())
+
+
 class ArticleAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {"slug": ("title",)}
+    list_display = ('__unicode__', 'status', 'authors', 'peer_reviewers')
+    list_filter = ('status', InIssueListFilter)
 
 
 admin.site.register(Issue, IssueAdmin)
