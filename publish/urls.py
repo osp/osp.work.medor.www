@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url, include
 from rest_framework import serializers, viewsets, routers
 from .views import IssueListView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
 from .models import Article, ArticleMembership, Issue
-from rest_framework import filters
+from rest_framework import filters, permissions
 
 
 # Serializers define the API representation.
@@ -32,11 +32,13 @@ class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
 class IssueViewSet(viewsets.ModelViewSet):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
+    permission_classes = (permissions.IsAdminUser,)
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    permission_classes = (permissions.IsAdminUser,)
 
 
 class ArticleMembershipViewSet(viewsets.ModelViewSet):
@@ -44,6 +46,7 @@ class ArticleMembershipViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleMembershipSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('issue', 'issue__id')
+    permission_classes = (permissions.IsAdminUser,)
 
 
 # Routers provide a way of automatically determining the URL conf.
