@@ -15,8 +15,7 @@ django-reversion
 djangocms-blog
 
 # Event list on the homepage (subscribe_tags)
-icalendar==3.8.4
-requests==2.5.1
+caldav==0.4.0
 
 # Django compressor
 django-compressor==1.4

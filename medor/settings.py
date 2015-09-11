@@ -28,7 +28,7 @@ LANGUAGE_CODE = 'fr'
 LANGUAGES = [('fr', 'Francais'),]
 DEFAULT_LANGUAGE = 0
 
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = 'Europe/Brussels'
 
 USE_I18N = True
 
@@ -135,9 +135,6 @@ TEMPLATE_DIRS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
-MEDIA_URL = "/media/"
 
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"

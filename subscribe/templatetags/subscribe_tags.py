@@ -1,3 +1,7 @@
+import caldav
+import datetime
+import pytz
+
 from django import template
 from django.db.models import Sum
 from subscribe.models import Subscription, Cooperation
@@ -17,45 +21,45 @@ def get_capital_amount():
     return Cooperation.objects.exclude(status=2).aggregate(total=Sum('share_number'))['total'] * 20
 
 
-@register.assignment_tag
-def get_next_events():
-    import datetime
-    import pytz
-    import requests
-    from icalendar import Calendar
+def _get_next_events():
 
+    def sort_key_func(x):
+        val = getattr(x.instance.vevent, 'dtstart', None)
+        if not val:
+            return None
+        val = val.value
+        if hasattr(val, 'strftime'):
+            return val.strftime('%F%H%M%S')
+            return val.strftime('%F%H%M%S')
 
-    request = requests.get(settings.CALENDAR_URL, auth=(settings.CALENDAR_USER, settings.CALENDAR_PASSWORD))
-    request.encoding = 'UTF-8'
+    url = settings.CALDAV_URL
+    client = caldav.DAVClient(url)
+    principal = client.principal()
+    cal = principal.calendar(cal_id=settings.CALDAV_CAL_ID)
 
-    gcal = Calendar.from_ical(request.text)
-
-    events = [c for c in gcal.walk() if c.name == 'VEVENT']
-
-
-    def to_datetime(dt):
-        if isinstance(dt, datetime.date):
-            return datetime.datetime.combine(dt, datetime.time(0, 0)).replace(tzinfo=pytz.timezone('Europe/Brussels'))
-        else:
-            return dt
-
-
-    def compare(item1, item2):
-        item1 = to_datetime(item1)
-        item2 = to_datetime(item2)
-
-        if item1 == item2:
-            return 0
-        elif item1 < item2:
-            return -1
-        else:
-            return 1
-
-    events.sort(key=lambda r: r.get('dtstart').dt, cmp=compare)
 
     now = datetime.datetime.now()
-    now = now.replace(tzinfo=pytz.timezone('Europe/Brussels'))
-    yesterday = now - datetime.timedelta(1)
-    events = [e for e in events if to_datetime(e.get('dtstart').dt) > yesterday]
+    now = now.replace(tzinfo=pytz.timezone(settings.TIME_ZONE))
 
-    return events[:4]
+    events = cal.date_search(now)
+    events.sort(key=sort_key_func)
+
+    #for event in events:
+        #vevent = event.instance.vevent
+        #dtstart = vevent.getChildValue('dtstart')
+        #summary = vevent.getChildValue('summary')
+        #print()
+        #print(dtstart)
+        #print(summary)
+
+    return [e.instance.vevent for e in events[:4]]
+
+
+@register.assignment_tag
+def get_next_events():
+    try:
+        events = _get_next_events()
+    except:
+        events = []
+
+    return events

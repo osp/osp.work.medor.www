@@ -70,11 +70,11 @@
 
                 {% for event in events %}
                 <article>
-                    <p>{{ event.dtstart.dt|date:"l j F" }}</p>
-                    <h1>{{ event.summary }}</h1>
-                    <p>{{ event.dtstart.dt|date:"H:i" }} — {{ event.dtend.dt|date:"H:i" }}. {{ event.location }}.
+                    <p>{{ event.dtstart.value|date:"l j F" }}</p>
+                    <h1>{{ event.summary.value }}</h1>
+                    <p>{{ event.dtstart.value|date:"H:i" }} — {{ event.dtend.value|date:"H:i" }}. {{ event.location.value }}.
                     {% if event.attach %}
-                    <a href="{{ event.attach }}" target="_blank">Plus d'infos.</a>
+                    <a href="{{ event.attach.value }}" target="_blank">Plus d'infos.</a>
                     {% endif %}
                     </p>
                 </article>

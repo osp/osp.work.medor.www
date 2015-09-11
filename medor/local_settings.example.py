@@ -56,10 +56,9 @@ MIDDLEWARE_CLASSES = ('django.middleware.cache.UpdateCacheMiddleware',) + MIDDLE
 
 
 # Calendar infos to display the events on the home page
-# CALENDAR_URL is the URL of the ICS file. We don't use CalDAV here only HTTP
-CALENDAR_URL = "https://medor.coop/nuage/remote.php/caldav/calendars/user/calendar?export"
-CALENDAR_USER = "user"
-CALENDAR_PASSWORD = "password"
+CALDAV_URL = "https://user:pass@medor.coop/nuage/remote.php/caldav/"
+CALDAV_CAL_ID = "cal_id"
+
 
 
 if DEBUG:
