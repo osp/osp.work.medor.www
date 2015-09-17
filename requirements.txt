@@ -35,3 +35,6 @@ django-admin-sortable2
 djangorestframework
 django-filter
 django-cors-headers==1.1.0
+html5lib>=0.999
+git+git://github.com/aleray/html5lib_typogrify.git
+

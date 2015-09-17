@@ -32,17 +32,44 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title or "Sans titre"
 
-   #character count
-   #nombre de mots
-   #Chaine de decision: proposition/demande de relecture/demande de correction orthographique/habille web
-   #Theme (surtout pour le site web
-   #Numero dans lequel paraitre
-   #Type d'habillage
-   #Micro bibliographie
-   #Web + -> Lien
-   # Champ Notes de bas de page
-   # Extrait (uniquement pour le web mot d'intro avant de cliquer sur le texte)
-   # Commentaires editoriaux: uniquement pour les exergues et les legendes.
+    #character count
+    #nombre de mots
+    #Chaine de decision: proposition/demande de relecture/demande de correction orthographique/habille web
+    #Theme (surtout pour le site web
+    #Numero dans lequel paraitre
+    #Type d'habillage
+    #Micro bibliographie
+    #Web + -> Lien
+    # Champ Notes de bas de page
+    # Extrait (uniquement pour le web mot d'intro avant de cliquer sur le texte)
+
+    # Commentaires editoriaux: uniquement pour les exergues et les legendes.
+
+    def save(self, *args, **kwargs):
+        if self.body:
+            self.body = self._fix_french(self.body)
+        super(Article, self).save(*args, **kwargs)
+
+    def _fix_french(self, html):
+        import html5lib
+        from html5lib_typogrify.french.filters import ellipsis, spaces, dashes, widows_orphans
+
+        dom = html5lib.parseFragment(html, treebuilder="dom")
+        walker = html5lib.getTreeWalker("dom")
+
+        stream = walker(dom)
+        stream = dashes.Filter(stream)
+        stream = ellipsis.Filter(stream)
+        stream = spaces.Filter(stream)
+        stream = widows_orphans.Filter(stream)
+
+        serializer = html5lib.serializer.HTMLSerializer(quote_attr_values=True,
+                alphabetical_attributes=True,
+                omit_optional_tags=False)
+        output = serializer.serialize(stream)
+
+        return serializer.render(stream)
+
 
 
 class ArticleMembership(models.Model):
