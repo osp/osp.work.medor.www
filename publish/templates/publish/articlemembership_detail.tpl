@@ -27,7 +27,7 @@
     </div>
 
     <div id="stories">
-        <article id="flow-{{ object.article.slug }}" data-src="//{{ request.get_host }}{% url 'article-membership-detail-html' object.id %}"></article>
+        <article id="flow-{{ object.article.slug }}" data-src="https://{{ request.get_host }}{% url 'article-membership-detail-html' object.id %}"></article>
     </div>
 
     <!-- JAVASCRIPT -->
