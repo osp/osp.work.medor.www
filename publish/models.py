@@ -1,6 +1,9 @@
 from django.db import models
 from django.db.models import Sum
 
+import markdown
+from django.contrib.webdesign.lorem_ipsum import paragraphs
+
 
 class Issue(models.Model):
     """Represents an Article"""
@@ -9,6 +12,11 @@ class Issue(models.Model):
 
     def __unicode__(self):
         return self.title or "Sans titre"
+
+
+def body_default():
+    md = markdown.Markdown(output_format="html5", extensions=['extra'])
+    return md.convert(u"\n\n".join(paragraphs(30)))
 
 
 class Article(models.Model):
@@ -23,7 +31,7 @@ class Article(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=1024, blank=True)
     slug = models.SlugField(max_length=1024, blank=True)
-    body = models.TextField(blank=True)
+    body = models.TextField(blank=True, default=body_default)
     article_type = models.CharField(max_length=1024, blank=True)
     authors = models.CharField(max_length=1024, blank=True)
     peer_reviewers = models.CharField(max_length=1024, blank=True)
