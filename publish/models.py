@@ -53,10 +53,10 @@ class Article(models.Model):
 
     # Commentaires editoriaux: uniquement pour les exergues et les legendes.
 
-    def save(self, *args, **kwargs):
-        if self.body:
-            self.body = self._fix_french(self.body)
-        super(Article, self).save(*args, **kwargs)
+    #def save(self, *args, **kwargs):
+        #if self.body:
+            #self.body = self._fix_french(self.body)
+        #super(Article, self).save(*args, **kwargs)
 
     def _fix_french(self, html):
         import html5lib
