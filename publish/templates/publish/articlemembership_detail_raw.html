@@ -1,3 +1,10 @@
-<h1>{{ object.article.title }}</h1>
+<header>
+    <h1>{{ object.article.title }}</h1>
+    {% if object.article.subtitle %}
+    <h2>{{ object.article.subtitle }}</h2>
+    {% endif %}
+    <p class="authors">par {{ object.article.authors }}</p>
+</header>
+
 {{ object.article.body|safe }}
 
