@@ -3,7 +3,7 @@
     {% if object.article.subtitle %}
     <h2>{{ object.article.subtitle }}</h2>
     {% endif %}
-    <p class="authors">par {{ object.article.authors }}</p>
+    <p class="authors">{{ object.article.authors }}</p>
 </header>
 
 {{ object.article.body|safe }}
