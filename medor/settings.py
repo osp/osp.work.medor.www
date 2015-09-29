@@ -96,7 +96,8 @@ INSTALLED_APPS = (
     'publish',
     'adminsortable2',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -226,6 +227,36 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_REGEX_WHITELIST = ('^(https?://)?(\w+\.)?localhost(:\d+)?$', )
 CORS_ALLOW_CREDENTIALS = True
+
+
+CKEDITOR_JQUERY_URL = '/static/components/jquery/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'format_tags': 'p;h2;h3',
+        'entities': False,
+        #'image2_captionedClass': '',
+        'extraAllowedContent': 'figure figcaption',
+        #'image2_prefillDimensions': False,
+        'admin_url': '/admin/',
+        'toolbar_Custom': [
+            ['Format'],
+            ['Bold', 'Italic', '-', 'Subscript', 'Superscript'],
+            ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+            ['Find', 'Replace'],
+            ['Maximize', 'Source'
+                #'Image',
+                #'Filer Image'
+            ],
+        ],
+        #'extraPlugins': ','.join([
+            #'image2',
+            #'filerimage'
+        #]),
+    }
+}
 
 
 try:

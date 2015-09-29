@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Sum
+from ckeditor.fields import RichTextField
 
 import markdown
 from django.contrib.webdesign.lorem_ipsum import paragraphs
@@ -32,7 +33,7 @@ class Article(models.Model):
     title = models.CharField(max_length=1024, blank=True)
     subtitle = models.CharField(max_length=1024, blank=True)
     slug = models.SlugField(max_length=1024, blank=True)
-    body = models.TextField(blank=True, default=body_default)
+    body = RichTextField(blank=True, default=body_default)
     article_type = models.CharField(max_length=1024, blank=True)
     authors = models.CharField(max_length=1024, blank=True)
     peer_reviewers = models.CharField(max_length=1024, blank=True)
