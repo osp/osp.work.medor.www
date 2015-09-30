@@ -235,26 +235,25 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
         'format_tags': 'p;h2;h3',
         'entities': False,
-        #'image2_captionedClass': '',
+        'image2_captionedClass': '',
         'extraAllowedContent': 'figure figcaption',
-        #'image2_prefillDimensions': False,
+        'image2_prefillDimensions': False,
         'admin_url': '/admin/',
         'toolbar_Custom': [
             ['Format'],
             ['Bold', 'Italic', '-', 'Subscript', 'Superscript'],
             ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'],
-            ['Link', 'Unlink'],
+            ['Link', 'Unlink', 'Image'],
             ['RemoveFormat', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
             ['Find', 'Replace'],
-            ['Maximize', 'Source'
-                #'Image',
+            ['Source', 'Maximize'
                 #'Filer Image'
             ],
         ],
-        #'extraPlugins': ','.join([
-            #'image2',
+        'extraPlugins': ','.join([
+            'image2',
             #'filerimage'
-        #]),
+        ]),
     }
 }
 
