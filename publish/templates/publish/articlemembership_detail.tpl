@@ -22,7 +22,7 @@
     </div>
 
     <div id="stories">
-        <article id="flow-main" data-src="../../stories/{{ object.slug }}.html"></article>
+        <article id="flow-main" data-src="../../stories/{{ object.article.slug }}.html"></article>
     </div>
 
     <!-- JAVASCRIPT -->
