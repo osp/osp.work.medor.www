@@ -6,6 +6,16 @@ import markdown
 from django.contrib.webdesign.lorem_ipsum import paragraphs
 
 
+class License(models.Model):
+    """Represents an Article"""
+    name = models.CharField(max_length=1024, blank=True)
+    short_name = models.CharField(max_length=20, blank=True)
+    url = models.URLField(blank=True)
+
+    def __unicode__(self):
+        return self.short_name or self.name or "Sans titre"
+
+
 class Issue(models.Model):
     """Represents an Article"""
     creation_date = models.DateTimeField(auto_now_add=True)
@@ -30,6 +40,7 @@ class Article(models.Model):
     )
 
     creation_date = models.DateTimeField(auto_now_add=True)
+    license = models.ForeignKey(License, null=True, blank=True)
     title = models.CharField(max_length=1024, blank=True)
     subtitle = models.CharField(max_length=1024, blank=True)
     rubric_title = models.CharField(max_length=1024, blank=True)
