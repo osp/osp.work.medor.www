@@ -1,7 +1,7 @@
 <header>
-    <h1>{{ object.article.title }}</h1>
+    <h1>{{ object.article.title|safe }}</h1>
     {% if object.article.subtitle %}
-    <h2>{{ object.article.subtitle }}</h2>
+    <h2>{{ object.article.subtitle|safe }}</h2>
     {% endif %}
     <p class="authors">{{ object.article.authors }}</p>
 </header>
