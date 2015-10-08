@@ -1,12 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="en" class="normal">
+<html lang="fr" class="normal{% if object.is_even %} facing{% endif %}">
 <head>
     <meta charset="utf-8">
     <title>{{ object.article.title }}</title>
 
     <link rel="stylesheet" href="../../css/main.less" type="text/less">
-    <link rel="stylesheet" href="css/generated.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.less" type="text/less">
 </head>
 <body>
     <!-- PAGES -->
@@ -16,18 +15,14 @@
         <!-- Page {{ i }} -->
         <div id="page-{{ i }}" class="paper">
             <div class="page">
-                <div class="header"></div>
-
-                <div class="body recipient"></div>
-
-                <div class="footer"></div>
+                <div class="body flow-main"></div>
             </div>
         </div>
         {% endfor %}
     </div>
 
     <div id="stories">
-        <article id="flow-{{ object.article.slug }}" data-src="https://{{ request.get_host }}{% url 'article-membership-detail-html' object.id %}"></article>
+        <article id="flow-main" data-src="../../stories/{{ object.slug }}.html"></article>
     </div>
 
     <!-- JAVASCRIPT -->
