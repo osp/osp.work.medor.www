@@ -1,4 +1,10 @@
 <header>
+    {% if object.article.rubric-title %}
+    <p class="rubrique-title">{{ object.article.rubric-title }}</p>
+    {% endif %}
+    {% if object.article.rubric-subtitle %}
+    <p class="rubrique-subtitle">{{ object.article.rubric-subtitle }}</p>
+    {% endif %}
     <h1>{{ object.article.title|safe }}</h1>
     {% if object.article.subtitle %}
     <h2>{{ object.article.subtitle|safe }}</h2>
