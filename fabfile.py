@@ -7,7 +7,7 @@ from fabric.contrib.console import confirm
 #env.port = 2222
 #env.path = '/srv/data_rocamadour/www/coop.medor'
 env.hosts = ['medor@92.243.0.183']
-env.port = 222
+env.port = 22
 env.path = '/srv/datadisk01/www/coop.medor'
 
 
