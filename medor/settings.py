@@ -236,7 +236,7 @@ CKEDITOR_CONFIGS = {
         'format_tags': 'p;h2;h3',
         'entities': False,
         'image2_captionedClass': '',
-        'extraAllowedContent': 'abbr figure figcaption aside; div p(chapeau,intro-medor,question); ol(footnotes)',
+        'extraAllowedContent': 'h1 abbr figure figcaption aside; div p(chapeau,intro-medor,question); ol(footnotes)',
         'image2_prefillDimensions': False,
         'admin_url': '/admin/',
         'toolbar_Custom': [
