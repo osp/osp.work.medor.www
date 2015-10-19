@@ -170,6 +170,7 @@ CMS_TEMPLATES = (
     ('subscribe/home.html', 'Appel'),
     ('subscribe/home2.html', 'Appel2'),
     ('subscribe/FAQ.html', 'FAQ'),
+    ('styleguide.html', 'Feuille de style')
 )
 
 MIGRATION_MODULES = {
