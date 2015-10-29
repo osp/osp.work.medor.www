@@ -6,9 +6,94 @@
 @import "fonts.less";
 @import "mixins.less";
 
-
-
+@unit: 2.5px;
+@line-height: 12 * @unit;
 
 body {
-  color: pink;
+    /* Ça sera bien de faire un teste pour voir à quel point ça
+       rend le rendu plus lent cf https://bocoup.com/weblog/text-rendering */
+    text-rendering: optimizeLegibility;
+    font-family: "Century Schoolbook", serif;
+    font-size: 9 * @unit;
+    line-height: @line-height;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+p { margin: 0; }
+
+em { font-style: italic; }
+
+a {
+    color: @color-A2;
+}
+
+sup {
+    top: 0;
+    padding-left: 0.125em;
+    line-height: 0;
+    font-size: 0.75em;
+    vertical-align: super;
+}
+
+figure {
+    position: relative;
+    margin: 0
+}
+
+figure img {
+    display: block;
+    position: relative;
+
+    text-align: center;
+}
+
+/* Different titres */
+
+.rubrique-title {
+    margin-top: 0;
+    margin-bottom: -2 * @unit;
+    border-bottom: 2 * @unit solid;
+    display: inline-block;
+
+    font-family: "Erbar condensed";
+    font-weight: bold;
+    font-size: 9 * @unit;
+    line-height: @line-height;
+    text-transform: uppercase;
+}
+
+html.bw .rubrique-title { border-color: transparent!important; }
+
+.rubrique-subtitle {
+    font-size: 9 * @unit;
+    font-family: "Alfphabet-Condensed";
+    padding-top:  @line-height / 5;
+    margin-bottom: 20 * @unit;
+}
+
+p.auteur {
+    text-indent: 0 !important;
+    margin-top: @line-height;
+    font-weight: normal;
+}
+
+p.fin::after {
+    content: " \E011";
+    font-size: 6.5 * @unit;
+    font-family: "Medor";
+    color: inherit !important;
+}
+
+
+@media print {
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 }
