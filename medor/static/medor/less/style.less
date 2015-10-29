@@ -68,8 +68,6 @@ figure img {
     text-transform: uppercase;
 }
 
-html.bw .rubrique-title { border-color: transparent!important; }
-
 .rubrique-subtitle {
     font-size: 9 * @unit;
     font-family: "Alfphabet-Condensed";
@@ -81,6 +79,9 @@ p.auteur {
     text-indent: 0 !important;
     margin-top: @line-height;
     font-weight: normal;
+    font-family: 'Bagnard';
+    margin-top: -1 * @unit;
+    font-size: 8.5 * @unit;
 }
 
 p.fin::after {
@@ -88,6 +89,181 @@ p.fin::after {
     font-size: 6.5 * @unit;
     font-family: "Medor";
     color: inherit !important;
+}
+
+
+header > h1,
+header > h2 {
+    font-family: "Erbar condensed";
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.interview > header > h1 {
+  text-transform: uppercase;
+  font-size: 37 * @unit;
+  font-family: Alfphabet;
+  font-weight: normal;
+  text-align: center;
+}
+
+header > h1 {
+    margin-top: @line-height * .5;
+    margin-bottom: @line-height;
+    font-size:  @line-height * 6;
+    line-height:  @line-height * 5;
+}
+
+header > h2 {
+    margin-top: @line-height / 2;
+    margin-bottom: @line-height / 2;
+    line-height:  @line-height * 2;
+    font-size: 18 * @unit;
+}
+
+.interview > header h2 {
+    margin-top: @line-height;
+
+    font-size: 18 * @unit;
+    line-height:  @line-height;
+}
+
+header > .authors {
+    font-family: "Erbar condensed";
+    font-weight: bold;
+    padding: 0;
+    font-size: 18 * @unit;
+    line-height: 18 * @unit;
+    margin-bottom: @line-height;
+}
+
+.chapeau {
+    font-family: "Bagnard";
+    line-height:  @line-height * 1.5;
+    font-weight: normal;
+    font-size: 15 * @unit;
+    padding: 0;
+    margin: 0;
+    margin-bottom: @line-height;
+}
+h2,
+h3 {
+    font-family: "Erbar condensed";
+    font-weight: bold;
+    line-height:  @line-height;
+    text-transform: uppercase;
+    font-size: @line-height;
+    position: relative;
+    top: @line-height * .5 * -1;
+    margin-bottom: 0;
+    letter-spacing: 0.02em;
+}
+
+figure + h2,
+figure + h3,
+p + h2,
+p + h3 {
+    margin-top: @line-height * 2;
+}
+
+figure + p:not(.chapeau),
+p:not(.chapeau) + p { text-indent: @line-height; }
+
+sup {
+    font-size: 7 * @unit;
+    top: 0;
+    vertical-align: super;
+    padding-left: 0.125em;
+}
+
+.making-of {
+    border-top: 4 * @unit double;
+    padding-top: @line-height - 4 * @unit;
+    margin-top: 2 * @line-height;
+    font-family: "Alfphabet";
+}
+
+.making-of h1 {
+    font-size: @line-height;
+    font-weight: normal
+}
+.making-of h1 em {
+    text-transform: uppercase;
+    font-family: "Medor";
+    font-size: 9.5 * @unit;
+    font-style: normal;
+}
+
+.footnotes {
+    font-family: 'Alfphabet-Condensed';
+    margin: 0;
+    font-size: 7.5 * @unit;
+    line-height: (@line-height / 8) * 6;
+    list-style-type: none;
+}
+
+.footnotes a[name^="sdfootnote"]:after { content: "." }
+.footnotes li { margin-bottom: (@line-height / 8) * 6; }
+
+aside.exergue > blockquote {
+    font-family: "Erbar condensed";
+    font-size: 18 * @unit;
+    font-weight: bold;
+    line-height: @line-height * 1.5;
+}
+
+aside.exergue > blockquote:first-of-type { margin: 0; }
+aside.exergue > blockquote + h2 { margin-top: @line-height; }
+aside.exergue > blockquote p + p { margin: 0; }
+aside.exergue > blockquote em { font-style: normal; }
+aside.exergue > blockquote footer {
+    font-size: 12 * @unit;
+    line-height: @line-height;
+    font-weight: normal;
+}
+aside.exergue > blockquote footer:before {
+    content: "— ";
+    color: inherit!important;
+}
+
+figure {
+    position: relative;
+    width: 100%;
+}
+
+figcaption {
+    position: absolute;
+    font-family: "Alfphabet", sans-serif;
+    font-size: 7 * @unit;
+    line-height: 9 * @unit;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+figcaption p {
+    background-color: white;
+    padding: 6 * @unit 1em;
+    position: absolute;
+    left: 0;
+    bottom: -2 * @unit;
+}
+
+figcaption footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: calc(~"100% + 9 * @unit");
+    margin: 0;
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+    -webkit-transform-origin: left bottom;
+            transform-origin: left bottom;
+}
+
+figcaption footer small {
+    font-size: 6 * @unit;
+    line-height: 6 * @unit
 }
 
 
