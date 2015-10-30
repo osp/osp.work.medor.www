@@ -1,0 +1,54 @@
+@col-number: 6;
+@col-margin: 1.3%;
+@col-width: ( 100% - (@col-number - 1) * @col-margin ) / @col-number ;
+
+/*  SECTIONS  */
+section {
+    width: 95%;
+    max-width: 1200px;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    clear: both;
+}
+
+/*  COLUMN SETUP  */
+.col {
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+
+/* width classes */
+.create-w-classes(@i:1) when(@i <= @col-number) {
+    .w@{i}{
+       width: (@col-width * @i) + (@i - 1) * @col-margin;
+       .col;
+    }
+    .create-w-classes(@i + 1);
+}
+.create-w-classes();
+
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+    .col {  margin: 1% 0 1% 0%; }
+    .w1, .w2, .w3, .w4, .w5, .w6 { width: 100%; }
+}
+
+article {
+    .w6;
+}
+article > p, article > figure, article > ol, article > h3, article > h2, article > blockquote, article > aside {
+    .w4;
+}
+
