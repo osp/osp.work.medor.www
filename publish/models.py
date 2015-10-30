@@ -7,7 +7,10 @@ from django.contrib.webdesign.lorem_ipsum import paragraphs
 
 
 class License(models.Model):
-    """Represents an Article"""
+    """
+    Represents the intellectual property License,
+    as attributed to an article or other creative work.
+    """
     name = models.CharField(max_length=1024, blank=True)
     short_name = models.CharField(max_length=20, blank=True)
     url = models.URLField(blank=True)
@@ -17,7 +20,7 @@ class License(models.Model):
 
 
 class Issue(models.Model):
-    """Represents an Article"""
+    """Represents an Issue of the Magazine"""
     creation_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=1024, blank=True)
 
