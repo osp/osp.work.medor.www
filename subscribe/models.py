@@ -91,7 +91,7 @@ class TransactionBase(models.Model):
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
-    creation_date = models.DateTimeField(auto_now_add=True)
+    creation_date = models.DateTimeField('date de création', auto_now_add=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True, blank=True)
 
