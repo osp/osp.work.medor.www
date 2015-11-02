@@ -3,7 +3,7 @@
 @col-width: ( 100% - (@col-number - 1) * @col-margin ) / @col-number ;
 
 /*  SECTIONS  */
-section {
+.section {
     width: 95%;
     max-width: 1200px;
     padding: 0px;
@@ -20,6 +20,7 @@ section {
     margin: 1% 0 1% 1.6%;
 }
 .col:first-child { margin-left: 0; }
+
 
 /*  GROUPING  */
 .group:before,
@@ -42,7 +43,9 @@ section {
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
     .col {  margin: 1% 0 1% 0%; }
-    .w1, .w2, .w3, .w4, .w5, .w6 { width: 100%; }
+    .sidebar, .content {
+        width: 100%;
+    }
 }
 
 article {
