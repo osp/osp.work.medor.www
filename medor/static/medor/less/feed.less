@@ -1,0 +1,173 @@
+/* 0.0 RESET */
+	    /* http://meyerweb.com/eric/tools/css/reset/ 
+	       v2.0 | 20110126
+	       License: none (public domain)
+	    */
+
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article, aside, details, figcaption, figure, 
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+	body {
+		line-height: 1;
+	}
+	ol, ul {
+		list-style: none;
+	}
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+
+/*-----------------------------------------
+
+/*  SECTIONS  */
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0 auto;
+    width: 97.4%;
+    
+}
+
+/*  COLUMN SETUP  */
+.col {
+	display: block;
+	float:left;
+	margin: 0.65% 0 0.65% 1.3%;
+   
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID */
+.menu {
+    clear: both;
+	padding: 0px;
+	margin: 0px;
+    position : fixed;
+	width: 100%;
+    height: 50px;
+    display: block;
+	float:left;
+	margin: 0;
+    background-color: white;
+    border: solid 2px;
+}
+
+.gros-article {
+    clear: both;
+	padding-top: 1.3%;
+	margin-top: 50px;
+	width: 100%;
+    height: 400px;
+    display: block;
+	float: left;
+	margin-bottom:0.65%;
+    background-color: green;
+}
+
+.gros-extrait {
+
+	display : block;
+	float :right;
+	color:white;
+	font-size: 17px;
+	width: 32.46%;
+	margin: 200px 16.88% 0.65% 0;
+}
+
+
+
+.mag {
+	display: block; 
+	float: left; 
+	width: 32.46%; 
+	margin: 0.65% 0 0.65% 0;
+    background-color: blue;
+	}
+	
+.content {
+	display: block; 
+	float: right; 
+	width: 66.23%; 
+	margin: 0.65% 0 0.65% 1.3%;
+    background-color: pink;
+	}
+	
+.sidebar {
+	display: block; 
+	float: left; 
+	clear: left;
+	width: 32.46%; 
+	margin: 0.65% 0 0.65% 0%;
+    background-color: blue;
+	}
+
+
+/*  GRID OF SIX  */
+.span_6_of_6 {
+	width: 100%;
+}
+
+.span_5_of_6 {
+  	width: 83.11%;
+}
+
+.span_4_of_6 {
+  	width: 66.23%;
+}
+
+.span_3_of_6 {
+  	width: 49.35%;
+}
+
+.span_2_of_6 {
+  	width: 32.46%;
+}
+
+.span_1_of_6 {
+  	width: 15.58%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+	.col {  margin: 0.65% 0 0.65% 0%; }
+	.span_1_of_9, .span_2_of_9, .span_3_of_9, .span_4_of_9, .span_5_of_9, .span_6_of_9, .span_7_of_9, .span_8_of_9, .span_9_of_9, .mag, .content, .sidebar{ width: 100%; }
+}
+
