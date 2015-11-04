@@ -12,7 +12,8 @@ cmsplugin-filer==0.10.1
 django-reversion
 
 # Django CMS Blog
-djangocms-blog
+djangocms-blog==0.4.0
+Django-Select2==4.3.1
 
 # Event list on the homepage (subscribe_tags)
 caldav==0.4.0
