@@ -22,13 +22,12 @@
 
 .menu ul {
     list-style: none;
-    
+
 }
 
 .menu li {
     display : inline-block;
     margin: auto;
-    
 }
 
 
@@ -42,7 +41,7 @@
     background-color: @color-A4;
     max-height: 450px;
     overflow: hidden;
-    max-width: 1200px;  
+    max-width: 1200px;
 }
 
 
@@ -52,20 +51,15 @@
 
 .gros-extrait {
     .w3;
-    display : block;
     float :right;
     color:black;
     margin: - 400px 2% 2% 0;
-    
-
 }
 
 .auteur-feed{
     font-size: 8 * @unit;
     font-family: 'Alfphabet-Condensed';
     line-height: (@line-height / 8) * 4;
-    
-    
 }
 
 .chapeau-feed {
@@ -73,7 +67,6 @@
     font-size: 7 * @unit;
     line-height: (@line-height / 8) * 6;
     list-style-type: none;
-    
 }
 
 .titre-article{
@@ -83,27 +76,23 @@
     margin-top: 10px;
     font-size: 20 * @unit;
     line-height: (@line-height / 8) * 17;
-    
 }
-    
+
 .petits-articles-feed {
     .w4;
-    display: block;
     float:right;
     margin: 1% 0 1% 0;
     border-bottom: solid 6px;
     float: right;
-    }
-    
-    
+}
+
 .gros-articles-feed {
-        .w4;
-        display: block;
-        float:right;
-        margin: 1% 0 1% 0;
-        background-size: cover;
-        overflow: hidden;
-        }
+    .w4;
+    float:right;
+    margin: 1% 0 1% 0;
+    background-size: cover;
+    overflow: hidden;
+}
 
 
 .thumbnail img {
@@ -112,45 +101,41 @@
     height:auto;
     margin-right: 10px;
     float: left;
-    
 }
 
 .texte-petits-articles-feed{
-    display: block;
     float: right;
     width: 74%;
-    margin-bottom:8px; 
+    margin-bottom:8px;
 }
 
 .texte-gros-articles-feed{
-    display: block;
     float: left;
-    padding:20px; 
+    padding: 20px;
     border: solid 6px;
-    
 }
 
 
 .sidebar {
     .col;
     .w2;
-    display: block;
     margin-left: 0;
     background-color: @color-D1;
-    float:left;
+    float: left;
+    clear: left;
     }
-    
+
 .sidebar img{
     max-width:100%;
     height:auto;
 }
 
 
-    @media only screen and (max-width:768px) and (min-width:481px) {
-        .gros-extrait {
-            .w6;
-        }
+@media only screen and (max-width:768px) and (min-width:481px) {
+    .gros-extrait {
+        .w6;
     }
+}
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
@@ -158,10 +143,8 @@
     .sidebar, .content {
         width: 100%;
     }
-    
+
     .gros-extrait {
         .w6;
     }
-    
-    
 }
