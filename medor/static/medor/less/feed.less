@@ -55,16 +55,22 @@
     display : block;
     float :right;
     color:black;
-    font-size: 17px;
     margin: - 400px 2% 2% 0;
     
 
 }
 
-.chapeaufeed {
+.auteur-feed{
+    font-size: 8 * @unit;
     font-family: 'Alfphabet-Condensed';
-    margin: 0;
-    font-size: 7.5 * @unit;
+    line-height: (@line-height / 8) * 4;
+    
+    
+}
+
+.chapeau-feed {
+    margin-top: 3 * @unit;;
+    font-size: 7 * @unit;
     line-height: (@line-height / 8) * 6;
     list-style-type: none;
     
@@ -80,35 +86,64 @@
     
 }
     
-.content {
+.petits-articles-feed {
     .w4;
     display: block;
     float:right;
     margin: 1% 0 1% 0;
     border-bottom: solid 6px;
+    float: right;
     }
     
+    
+.gros-articles-feed {
+        .w4;
+        display: block;
+        float:right;
+        margin: 1% 0 1% 0;
+        background-size: cover;
+        overflow: hidden;
+        }
+
 
 .thumbnail img {
-    width:100%;
+    display: block;
+    width: 24%;
     height:auto;
     margin-right: 10px;
     float: left;
+    
 }
 
-.content-{
+.texte-petits-articles-feed{
+    display: block;
+    float: right;
+    width: 74%;
+    margin-bottom:8px; 
+}
+
+.texte-gros-articles-feed{
+    display: block;
+    float: left;
+    padding:20px; 
+    border: solid 6px;
     
-    
-}    
-    
+}
+
+
 .sidebar {
     .col;
     .w2;
+    display: block;
     margin-left: 0;
-    clear: left;
-    background-color: blue;
+    background-color: @color-D1;
+    float:left;
     }
-
+    
+.sidebar img{
+    max-width:100%;
+    height:auto;
+}
 
 
     @media only screen and (max-width:768px) and (min-width:481px) {
