@@ -1,0 +1,11 @@
+{% extends "base3.html" %}
+
+{% block content %}
+{{ object }}
+
+<ol>
+{% for membership in object.articlemembership_set.all %}
+    <li><a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a></li>
+{% endfor %}
+</ol>
+{% endblock %}
