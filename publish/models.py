@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.db.models import Sum
 from ckeditor.fields import RichTextField
@@ -29,16 +31,22 @@ class Issue(models.Model):
 
 
 def body_default():
+    """
+    Generates plain text Lorem Ipsum,
+    then converts it to HTML via Markdown.
+    """
     md = markdown.Markdown(output_format="html5", extensions=['extra'])
     return md.convert(u"\n\n".join(paragraphs(30)))
 
 
 class Article(models.Model):
-    """Represents an Article"""
+    """
+    Represents an Article
+    """
     STATUS_CHOICES = (
         (0, u'proposal'),
         (1, u'request for peer-review'),
-        (2, u'request for speelchecking'),
+        (2, u'request for spell-checking'),
         (3, u'ready')
     )
 
@@ -57,19 +65,6 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title or "Sans titre"
-
-    #character count
-    #nombre de mots
-    #Chaine de decision: proposition/demande de relecture/demande de correction orthographique/habille web
-    #Theme (surtout pour le site web
-    #Numero dans lequel paraitre
-    #Type d'habillage
-    #Micro bibliographie
-    #Web + -> Lien
-    # Champ Notes de bas de page
-    # Extrait (uniquement pour le web mot d'intro avant de cliquer sur le texte)
-
-    # Commentaires editoriaux: uniquement pour les exergues et les legendes.
 
     #def save(self, *args, **kwargs):
         #if self.body:
@@ -99,7 +94,9 @@ class Article(models.Model):
 
 
 class ArticleMembership(models.Model):
-    """Registers articles in issues membership"""
+    """
+    Registers articles in issues membership
+    """
     article = models.ForeignKey(Article)
     issue = models.ForeignKey(Issue)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
@@ -114,12 +111,16 @@ class ArticleMembership(models.Model):
 
     @property
     def folio(self):
-        """Computes the first page number"""
+        """
+        Computes the page number of the first page of the article
+        """
         qs = self.issue.articlemembership_set.filter(order__lt=self.order)
         return qs.aggregate(page_count=Sum('page_number'))['page_count'] + 1
 
     @property
     def is_even(self):
-        """Computes the first page number"""
+        """
+        If true, article starts on a left-hand page (even page number)
+        """
         return self.folio % 2 == 0
 
