@@ -5,6 +5,8 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime import datetime, date
 from django.db.models import Max
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 
 TITLE_CHOICES = (
@@ -86,12 +88,13 @@ class TransactionBase(models.Model):
     last_name = models.CharField('nom', max_length=30)
     email = models.EmailField('courriel')
     street = models.CharField('rue', max_length=30)
-    number = models.CharField('numéro', max_length=10) # 27 bis
+    number = models.CharField('numéro', max_length=50) # 27 bis
     letterbox = models.PositiveSmallIntegerField('boîte postale', max_length=30, null=True, blank=True)
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
     creation_date = models.DateTimeField('date de création', auto_now_add=True)
+    confirmation_date = models.DateTimeField('date de confirmation du paiement', null=True, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True, blank=True)
 
@@ -155,6 +158,33 @@ class Subscription(TransactionBase):
         verbose_name = "abonnement"
         verbose_name_plural = "abonnements"
 
+    __original_status = None
+
+    def __init__(self, *args, **kwargs):
+        super(Subscription, self).__init__(*args, **kwargs)
+        self.__original_status = self.status
+
+    def save(self, *args, **kwargs):
+        do_send_mail = False
+
+        if self.status != self.__original_status and self.status == 1:
+            # If the status has changed and is confirmed, mark for sending a
+            # confirmation email
+            do_send_mail = True
+
+        super(Subscription, self).save(*args, **kwargs)
+        self.__original_status = self.status
+
+        # Do send the email
+        if do_send_mail:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/subscription-confirmation-email.txt', {'obj': self})
+            sender = "lesyeuxouverts@medor.coop"
+            recipients = [self.email]
+            send_mail(subject, message, sender, recipients, fail_silently=False)
+
+
+
     def amount(self):
         shipping = 20 if (self.country != "BE" and self.creation_date.date() > date(2015, 1, 20)) else 0
         return 60 + shipping
@@ -193,6 +223,32 @@ class Cooperation(TransactionBase):
     class Meta:
         verbose_name = "part coopérative"
         verbose_name_plural = "parts coopérative"
+
+    __original_status = None
+
+    def __init__(self, *args, **kwargs):
+        super(Cooperation, self).__init__(*args, **kwargs)
+        self.__original_status = self.status
+
+    def save(self, *args, **kwargs):
+        do_send_mail = False
+
+        if self.status != self.__original_status and self.status == 1:
+            # If the status has changed and is confirmed, mark for sending a
+            # confirmation email
+            do_send_mail = True
+
+        super(Cooperation, self).save(*args, **kwargs)
+        self.__original_status = self.status
+
+        # Do send the email
+        if do_send_mail:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/cooperation-confirmation-email.txt', {'obj': self})
+            sender = "lesyeuxouverts@medor.coop"
+            recipients = [self.email]
+            send_mail(subject, message, sender, recipients, fail_silently=False)
+
 
     def amount(self):
         return self.share_number * 20
