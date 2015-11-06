@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
@@ -26,6 +28,9 @@ class ArticleDetailView(DetailView):
         return super(ArticleDetailView, self).dispatch(*args, **kwargs)
 
 class ArticleMembershipDetailView(DetailView):
+    """
+    First attempt with Scribe before CKEditor
+    """
     model = ArticleMembership
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
@@ -34,6 +39,9 @@ class ArticleMembershipDetailView(DetailView):
 
 
 class ArticleMembershipDetailRawView(DetailView):
+    """
+    Produce the raw HTML for an ArticleMembership
+    """
     model = ArticleMembership
     template_name = "publish/articlemembership_detail_raw.html"
 
@@ -43,6 +51,10 @@ class ArticleMembershipDetailRawView(DetailView):
 
 
 class ArticleMembershipDetailCSSView(DetailView):
+    """
+    Creates CSS for a specific ArticleMembership to use in HTML2print—
+    used for page numbers and running titles.
+    """
     model = ArticleMembership
     template_name = "publish/articlemembership_detail.css"
     content_type = "text/css; charset=utf-8"
@@ -53,6 +65,10 @@ class ArticleMembershipDetailCSSView(DetailView):
 
 
 class ArticleMembershipDetailTplView(DetailView):
+    """
+    Creates HTML for a specific ArticleMembership to use in HTML2print—
+    it’s the shell that loads the necessary libraries and the story.
+    """
     model = ArticleMembership
     template_name = "publish/articlemembership_detail.tpl"
     content_type = "text/plain; charset=utf-8"
