@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import html5lib
+
 from django.db import models
 from django.db.models import Sum
 from ckeditor.fields import RichTextField
@@ -66,6 +68,17 @@ class Article(models.Model):
     authors = models.CharField(max_length=1024, blank=True)
     peer_reviewers = models.CharField(max_length=1024, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
+
+    def get_excerpt(self):
+        """
+        Look in the body text to find the ‘chapeau’, the lead text,
+        that can be used as a description.
+        """
+        dom = html5lib.parseFragment(self.body, treebuilder="etree", namespaceHTMLElements=False)
+        for el in dom:
+            if el.tag == "p" and el.attrib.get("class") == "chapeau":
+                return el.text
+        return u""
 
     # To add still:
     # image filer field
