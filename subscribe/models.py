@@ -88,7 +88,7 @@ class TransactionBase(models.Model):
     last_name = models.CharField('nom', max_length=30)
     email = models.EmailField('courriel')
     street = models.CharField('rue', max_length=30)
-    number = models.CharField('numéro', max_length=10) # 27 bis
+    number = models.CharField('numéro', max_length=50) # 27 bis
     letterbox = models.PositiveSmallIntegerField('boîte postale', max_length=30, null=True, blank=True)
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
