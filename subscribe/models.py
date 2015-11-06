@@ -92,6 +92,7 @@ class TransactionBase(models.Model):
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
     creation_date = models.DateTimeField('date de création', auto_now_add=True)
+    confirmation_date = models.DateTimeField('date de confirmation du paiement', null=True, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True, blank=True)
 

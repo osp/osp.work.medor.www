@@ -150,8 +150,40 @@ class SubscriptionAdmin(admin.ModelAdmin):
     list_filter = ('status', 'country', AlsoCooperatorListFilter)
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
-    readonly_fields = ('creation_date',)
+    readonly_fields = ('creation_date', 'confirmation_date')
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                ('first_name', 'last_name'),
+                'email',
+                ('status', 'creation_date', 'confirmation_date'),
+                'invoice_reference'
+            )
+        }),
+        ('Infos', {
+            'classes': ('collapse',),
+            'fields': (
+                'street',
+                'number',
+                'letterbox',
+                'city',
+                'zip_code',
+                'country'
+            )
+        }),
+        ('Destinataire', {
+            'classes': ('collapse',),
+            'fields': (
+                'is_gift',
+                'recipient_title',
+                'recipient_first_name',
+                'recipient_last_name',
+                'recipient_email'
+            )
+        }),
+    )
     actions = [subscription_reminder_first, subscription_reminder_second, subscription_present]
 
 
