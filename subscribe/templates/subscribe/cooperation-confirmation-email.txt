@@ -1,0 +1,14 @@
+Bonjour,
+
+nous avons bien reçu votre paiement. Vous êtes désormais coopérateur de Médor à
+hauteur de {{ obj.share_number }} part{{ obj.share_number|pluralize }}. Vous serez
+convié à l'assemblée générale qui fonctionne sur le principe une personne, une
+voix.
+
+En cas de changement d'adresse ou pour toute autre requête, veuillez-nous
+contacter sur <a href="mailto:medor@medor.coop">medor@medor.coop</a>.
+
+Merci pour votre soutien !
+
+L’équipe de Médor.
+http://www.medor.coop — http://www.facebook.com/medormag

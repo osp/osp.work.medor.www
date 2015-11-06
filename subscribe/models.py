@@ -5,6 +5,8 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime import datetime, date
 from django.db.models import Max
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 
 TITLE_CHOICES = (
@@ -156,6 +158,33 @@ class Subscription(TransactionBase):
         verbose_name = "abonnement"
         verbose_name_plural = "abonnements"
 
+    __original_status = None
+
+    def __init__(self, *args, **kwargs):
+        super(Subscription, self).__init__(*args, **kwargs)
+        self.__original_status = self.status
+
+    def save(self, *args, **kwargs):
+        do_send_mail = False
+
+        if self.status != self.__original_status and self.status == 1:
+            # If the status has changed and is confirmed, mark for sending a
+            # confirmation email
+            do_send_mail = True
+
+        super(Subscription, self).save(*args, **kwargs)
+        self.__original_status = self.status
+
+        # Do send the email
+        if do_send_mail:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/subscription-confirmation-email.txt', {'obj': self})
+            sender = "lesyeuxouverts@medor.coop"
+            recipients = [self.email]
+            send_mail(subject, message, sender, recipients, fail_silently=False)
+
+
+
     def amount(self):
         shipping = 20 if (self.country != "BE" and self.creation_date.date() > date(2015, 1, 20)) else 0
         return 60 + shipping
@@ -194,6 +223,32 @@ class Cooperation(TransactionBase):
     class Meta:
         verbose_name = "part coopérative"
         verbose_name_plural = "parts coopérative"
+
+    __original_status = None
+
+    def __init__(self, *args, **kwargs):
+        super(Cooperation, self).__init__(*args, **kwargs)
+        self.__original_status = self.status
+
+    def save(self, *args, **kwargs):
+        do_send_mail = False
+
+        if self.status != self.__original_status and self.status == 1:
+            # If the status has changed and is confirmed, mark for sending a
+            # confirmation email
+            do_send_mail = True
+
+        super(Cooperation, self).save(*args, **kwargs)
+        self.__original_status = self.status
+
+        # Do send the email
+        if do_send_mail:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/cooperation-confirmation-email.txt', {'obj': self})
+            sender = "lesyeuxouverts@medor.coop"
+            recipients = [self.email]
+            send_mail(subject, message, sender, recipients, fail_silently=False)
+
 
     def amount(self):
         return self.share_number * 20
