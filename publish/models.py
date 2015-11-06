@@ -22,9 +22,13 @@ class License(models.Model):
 
 
 class Issue(models.Model):
-    """Represents an Issue of the Magazine"""
+    """
+    Represents an Issue of the Magazine
+    """
     creation_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=1024, blank=True)
+    # slug = models.SlugField(max_length=1024, blank=True)
+    # publish_date = models.DateTimeField(blank=True)
 
     def __unicode__(self):
         return self.title or "Sans titre"
@@ -63,6 +67,11 @@ class Article(models.Model):
     peer_reviewers = models.CharField(max_length=1024, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
 
+    # To add still:
+    # image filer field
+    # date de mise en ligne
+    # date de modification
+
     def __unicode__(self):
         return self.title or "Sans titre"
 
@@ -72,6 +81,11 @@ class Article(models.Model):
         #super(Article, self).save(*args, **kwargs)
 
     def _fix_french(self, html):
+        """
+        To update:
+        take from the numero 1 repo, but check for things that only work for print.
+        safe to specific cached field.
+        """
         import html5lib
         from html5lib_typogrify.french.filters import ellipsis, spaces, dashes, widows_orphans
 
