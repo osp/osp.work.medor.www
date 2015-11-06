@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
 from django.db import models
 from datetime import datetime, date
 from django.db.models import Max
 
 
 TITLE_CHOICES = (
-    (False, u'Madame'),
-    (True, u'Monsieur')
+    (False, 'Madame'),
+    (True, 'Monsieur')
 )
 
 
 class TransactionBase(models.Model):
     STATUS_CHOICES = (
-        (0, u'en cours'),
-        (1, u'confirmé'),
-        (2, u'annulé')
+        (0, 'en cours'),
+        (1, 'confirmé'),
+        (2, 'annulé')
     )
 
     COUNTRY_CHOICES = (
@@ -88,7 +91,7 @@ class TransactionBase(models.Model):
     city = models.CharField('ville', max_length=30)
     zip_code = models.PositiveSmallIntegerField('code postal', max_length=5)
     country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
-    creation_date = models.DateTimeField(auto_now_add=True)
+    creation_date = models.DateTimeField('date de création', auto_now_add=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True, blank=True)
 
@@ -140,7 +143,7 @@ class TransactionBase(models.Model):
 
 
 class Subscription(TransactionBase):
-    """ Describes a cooperation"""
+    """ Describes a subscription"""
     transaction_type = '01'
     is_gift = models.BooleanField('ceci est un cadeau?', default=False)
     recipient_title = models.BooleanField('civilité du destinataire', default=False, choices=TITLE_CHOICES)
@@ -162,27 +165,27 @@ class Cooperation(TransactionBase):
     transaction_type = '02'
 
     SHARE_CHOICES = (
-        (1, u'1 (€ 20)'),
-        (2, u'2 (€ 40)'),
-        (3, u'3 (€ 60)'),
-        (4, u'4 (€ 80)'),
-        (5, u'5 (€ 100)'),
-        (6, u'6 (€ 120)'),
-        (7, u'7 (€ 140)'),
-        (8, u'8 (€ 160)'),
-        (9, u'9 (€ 180)'),
-        (10, u'10 (€ 200)'),
-        (11, u'11 (€ 220)'),
-        (12, u'12 (€ 240)'),
-        (13, u'13 (€ 260)'),
-        (14, u'14 (€ 280)'),
-        (15, u'15 (€ 300)'),
-        (16, u'16 (€ 320)'),
-        (17, u'17 (€ 340)'),
-        (18, u'18 (€ 360)'),
-        (19, u'19 (€ 380)'),
-        (20, u'20 (€ 400)'),
-        (50, u'50 (€ 1000)')
+        (1, '1 (€ 20)'),
+        (2, '2 (€ 40)'),
+        (3, '3 (€ 60)'),
+        (4, '4 (€ 80)'),
+        (5, '5 (€ 100)'),
+        (6, '6 (€ 120)'),
+        (7, '7 (€ 140)'),
+        (8, '8 (€ 160)'),
+        (9, '9 (€ 180)'),
+        (10, '10 (€ 200)'),
+        (11, '11 (€ 220)'),
+        (12, '12 (€ 240)'),
+        (13, '13 (€ 260)'),
+        (14, '14 (€ 280)'),
+        (15, '15 (€ 300)'),
+        (16, '16 (€ 320)'),
+        (17, '17 (€ 340)'),
+        (18, '18 (€ 360)'),
+        (19, '19 (€ 380)'),
+        (20, '20 (€ 400)'),
+        (50, '50 (€ 1000)')
     )
 
     share_number = models.PositiveSmallIntegerField('nombre de parts', choices=SHARE_CHOICES, default="1")

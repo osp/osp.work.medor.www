@@ -1,0 +1,173 @@
+{% extends "base3.html" %}
+{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
+{% block content %}
+
+<div class="group">
+    <div class="menu">
+        <ul>
+            {% show_menu %}
+        </ul>
+    </div>
+</div>
+
+<div class="section">
+    
+    <div class="gros-article" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://medor.coop/media/filer_public/f2/09/f209beca-1c2d-43c2-b420-a28d9ed5774e/keerbergen.jpg)">
+       
+        <div class="gros-extrait">
+            <div class="rubrique-title">
+                enquète
+            </div>	
+
+            <div class="titre-article">
+                <a href="{% url 'article-detail-site' 'quand-jetais-flamande' %}">Quand j'étais flamande</a>
+            </div>
+
+            <div class="auteur-feed">
+                Par Jean-Michel Leclercq
+            </div>
+
+            <div class="chapeau-feed">
+                Voulant gratter derrière l'histoire d'une grand­‐mère orpheline limbourgeoise adoptée à Liège dans les années 20, notre reporter a arpenté le pays d'une province à l'autre. Chemin faisant,il s'est plongé dans un certain passé belge. 
+            </div>
+
+            <div class="lire">
+                <a href="#">&rarr;</a>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+
+    <div class="sidebar">
+        <img src="http://127.0.0.1:8000/static/img/medor-objet-contenu.png">
+        <p>Le numéro 1 est disponible !
+            <a href="#">J'achète Médor</a>
+            Je découvre <a href="#">le sommaire du numéro en cours</a></p>
+	</div>
+
+
+
+    <div class="petits-articles-feed">
+        
+        <div class="thumbnail">
+            <img src="https://medor.coop/media/filer_public/ca/da/cada9114-7b4e-4080-bb36-eba3273d0697/dessin3.png">
+        </div>	
+        
+        <div class="texte-petits-articles-feed">
+            <div class="rubrique-title">
+                enquète
+            </div>	
+
+            <div class="titre-article">
+                <a href="{% url 'article-detail-site' 'le-silence-du-tram' %}">Le silence du tram</a>
+            </div>
+        
+            <div class="auteur-feed">
+                Olivier Bailly
+            </div>
+
+            <div class="chapeau-feed">
+                À Bruxelles, avec la carte Mobib, la Stib conserve le détail de tous nos déplacements pendant au moins… six mois. Et quand on lui demande ces données personnelles, elle ne nous en transmet qu’une partie. La Stib dépasse-t-elle les bornes? 
+            </div>
+        </div>
+    </div>
+    
+    <div class="petits-articles-feed">
+        
+        <div class="thumbnail">
+            <img src="https://medor.coop/media/filer_public/f6/74/f6743ba4-c0a7-4270-93ea-34951137a8c4/img_0050_copy.jpg">
+        </div>	
+        
+        <div class="texte-petits-articles-feed">
+            <div class="rubrique-title">
+                Fulguro-Point
+            </div>	
+
+            <div class="titre-article">
+                <a href="{% url 'article-detail-site' 'herrmutt-lobby' %}">À Verviers, elle germe, elle germe, la prochaine révolution musicale</a>
+            </div>
+        
+            <div class="auteur-feed">
+                Par Jean-Michel Leclercq
+            </div>
+
+            <div class="chapeau-feed">
+                À Verviers, le collectif de musiciens Herrmutt Lobby fonctionne comme une start-up américaine, fabriquant non seulement du son mais aussi des logiciels, du hardware et d’avant-gardistes applications musicales pour smartphones. 
+            </div>
+        </div>
+    </div>
+	
+    <div class="gros-articles-feed">
+        
+        <div class="texte-gros-articles-feed">
+            <div class="rubrique-title">
+                L’enquêteke
+            </div>	
+
+            <div class="titre-article">
+                <a href="{% url 'article-detail-site' 'enqueteke' %}">Les barrières du roi</a>
+            </div>
+        
+            <div class="auteur-feed">
+                par Pierre Huyghebaert
+            </div>
+
+            <div class="chapeau-feed">
+                À Bruxelles, des barrières métalliques traînent régulièrement sur les trottoirs situés entre le palais royal et le palais des Académies. Mais pourquoi donc ne les range-t-on pas? 
+            </div>
+        </div>
+    </div>
+    
+    <div class="petits-articles-feed">
+        
+        <div class="thumbnail">
+            <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Finsch_crater_AS15-M-0980.jpg">
+        </div>	
+        
+        <div class="texte-petits-articles-feed">
+            <div class="rubrique-title">
+                enquète
+            </div>	
+
+            <div class="titre-article">
+                Quand j'étais flamande
+            </div>
+        
+            <div class="auteur-feed">
+                Par Jean-Michel Leclercq
+            </div>
+
+            <div class="chapeau-feed">
+                Voulant gratter derrière l'histoire d'une grand­‐mère orpheline limbourgeoise adoptée à Liège dans les années 20, notre reporter a arpenté le pays d'une province à l'autre. Chemin faisant,il s'est plongé dans un certain passé belge. 
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+    <div class="sidebar">
+        {% include "subscribe/partials/arrow-subscribe.html" %}
+    </div>
+
+    <div class="sidebar">
+        {% include "subscribe/partials/arrow-cooperate.html" %}
+    </div>
+
+    <div class="sidebar">
+	Sidebar
+	<br />spanning 1 of 4
+	</div>
+
+    <div class="sidebar">
+	Sidebar
+	<br />spanning 1 of 4
+	</div>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,154 @@
+@import "grid.less";
+@import "colors.less";
+
+/*  SECTIONS  */
+
+
+/*  COLUMN SETUP  */
+
+
+/*  GROUPING  */
+
+
+/*  GRID */
+.menu {
+    clear: both;
+    position : fixed;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+    background-color: @color-A3;
+}
+
+.menu ul {
+    list-style: none;
+
+}
+
+.menu li {
+    display : inline-block;
+    margin: auto;
+}
+
+
+.gros-article {
+    .w6;
+    .col;
+    background-size: cover;
+    background-position: center;
+    margin-top: 70px;
+    margin-bottom:0.65%;
+    margin-left: 0%;
+    background-color: @color-A2;
+    max-height: 450px;
+    overflow: hidden;
+    max-width: 1200px;
+}
+
+
+
+.gros-article img {
+    }
+
+.gros-extrait {
+    .w3;
+    float :right;
+    color:white;
+    margin: 2% 2% 2% 0;
+}
+
+.auteur-feed{
+    font-size: 8 * @unit;
+    font-family: 'Alfphabet-Condensed';
+    line-height: (@line-height / 8) * 4;
+}
+
+.chapeau-feed {
+    margin-top: 3 * @unit;;
+    font-size: 7 * @unit;
+    line-height: (@line-height / 8) * 6;
+    list-style-type: none;
+}
+
+.titre-article{
+    font-family: "Erbar condensed";
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-size: 20 * @unit;
+    line-height: (@line-height / 8) * 17;
+}
+
+.titre-article a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.petits-articles-feed {
+    .w4;
+    float:right;
+    border-bottom: solid 4px;
+    float: right;
+}
+
+.gros-articles-feed {
+    .w4;
+    float:right;
+    margin-left: 0;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+.thumbnail img {
+    display: block;
+    width: 24%;
+    height:auto;
+    margin-right: 10px;
+    float: left;
+}
+
+.texte-petits-articles-feed{
+    float: right;
+    width: 74%;
+    margin-bottom:8px;
+}
+
+.texte-gros-articles-feed{
+    float: left;
+    padding: 20px;
+    border: solid 4px;
+}
+
+
+.sidebar {
+    .w2;
+    margin-left: 0;
+    background-color: @color-D1;
+    float: left;
+    clear: left;
+    }
+
+.sidebar img{
+    max-width:100%;
+    height:auto;
+}
+
+
+@media only screen and (max-width:768px) and (min-width:481px) {
+    .gros-extrait {
+        .w6;
+    }
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+    .col {  margin: 1% 0 1% 0%; }
+    .sidebar, .content {
+        width: 100%;
+    }
+
+    .gros-extrait {
+        .w6;
+    }
+}

@@ -150,6 +150,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
     list_filter = ('status', 'country', AlsoCooperatorListFilter)
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
+    readonly_fields = ('creation_date',)
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
     actions = [subscription_reminder_first, subscription_reminder_second, subscription_present]
 

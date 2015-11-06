@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
-from .models import Issue, ArticleMembership
+from .models import Article, Issue, ArticleMembership
 
 
 class IssueListView(ListView):
@@ -11,6 +11,19 @@ class IssueListView(ListView):
     def dispatch(self, *args, **kwargs):
         return super(IssueListView, self).dispatch(*args, **kwargs)
 
+class IssueDetailView(DetailView):
+    model = Issue
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super(IssueDetailView, self).dispatch(*args, **kwargs)
+
+class ArticleDetailView(DetailView):
+    model = Article
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super(ArticleDetailView, self).dispatch(*args, **kwargs)
 
 class ArticleMembershipDetailView(DetailView):
     model = ArticleMembership

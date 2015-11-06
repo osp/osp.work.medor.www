@@ -19,7 +19,7 @@
     {% compress css %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
     <!-- This is the nifty django-compressor way to compile your less files in css -->
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}less/styles2.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}medor/less/style.less" charset="utf-8">
     {% endcompress %}
     {% endif %}
     {% endaddtoblock %}
@@ -47,7 +47,7 @@
     <script src="{{ STATIC_URL }}js/carousel.js"></script>
 
     {% if debug %}
-    <script src="{{ STATIC_URL }}components/less/dist/less-1.7.0.min.js"></script>
+    <script src="{{ STATIC_URL }}components/less/dist/less.js"></script>
     {% endif %}
 
     {% render_block "js" %}

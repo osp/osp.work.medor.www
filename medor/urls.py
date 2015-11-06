@@ -4,7 +4,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from cms.sitemaps import CMSSitemap
-
+from django.views.generic import TemplateView
 
 admin.autodiscover() # Not required for Django 1.7.x+
 
@@ -17,5 +17,6 @@ urlpatterns = i18n_patterns('',
     url(r'^subscribe/', include('subscribe.urls')),
     url(r'^publish/', include('publish.urls')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
+    url(r'feed/$', TemplateView.as_view(template_name='feed.html')),
     url(r'^', include('cms.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
