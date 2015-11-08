@@ -110,6 +110,7 @@ def subscribers_as_csv(request):
     writer = unicodecsv.writer(response, encoding='utf-8')
     writer.writerow([
         "email",
+        "title",
         "last name",
         "first name",
         "phone number",
@@ -118,6 +119,11 @@ def subscribers_as_csv(request):
         "city",
         "zip code",
         "country",
+        "is_gift",
+        "recipient_title",
+        "recipient_first_name",
+        "recipient_last_name",
+        "recipient_email",
         "founder",
         "newsletter",
         "subscriber",
@@ -136,6 +142,7 @@ def subscribers_as_csv(request):
     for s in Subscription.objects.all():
         writer.writerow([
             s.email,
+            s.get_title_display(),
             s.last_name,
             s.first_name,
             "",
@@ -144,6 +151,11 @@ def subscribers_as_csv(request):
             s.city,
             s.zip_code,
             s.country,
+            s.is_gift,
+            s.get_recipient_title_display(),
+            s.recipient_first_name or s.first_name,
+            s.recipient_last_name or s.last_name,
+            s.recipient_email or s.email,
             "false", #fondeur
             "false", #newsletter
             "true", #subscriber
@@ -171,6 +183,7 @@ def cooperators_as_csv(request):
     writer = unicodecsv.writer(response, encoding='utf-8')
     writer.writerow([
         "email",
+        "title",
         "last name",
         "first name",
         "phone number",
@@ -198,6 +211,7 @@ def cooperators_as_csv(request):
     for s in Cooperation.objects.all():
         writer.writerow([
             s.email,
+            s.get_title_display(),
             s.last_name,
             s.first_name,
             "",
