@@ -3,9 +3,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Médor</title>
+    {# Quite some generic views provide an `object.title`, but otherwise you can always #}
+    {#	manually provide a `title` variable in the context #}
+    <title>Médor :: {% firstof object.title title %}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# og:title should be the same as the title tag, but without the ‘Médor :: ’ bit #}
+    <meta property="og:title" content="{% firstof object.title title %}" />
 
     {% block meta %}{% endblock %}
 
