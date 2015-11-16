@@ -5,7 +5,17 @@
 
 <ol>
 {% for membership in object.articlemembership_set.all %}
-    <li><a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a></li>
+	{% if membership.article.in_toc %}
+	<li>
+		<dl>
+		{% if membership.article.published_online %}
+		    <dt><a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a></dt>
+		{% else %}
+			<dt>{{ membership.article.title|safe }}</dt>
+		{% endif %}
+		</dl>
+	</li>
+	{% endif %}
 {% endfor %}
 </ol>
 {% endblock %}
