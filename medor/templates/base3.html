@@ -45,12 +45,16 @@
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/_dependent/greensock/TweenMax.min.js"></script>
     <script src="{{ STATIC_URL }}components/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
     <script src="{{ STATIC_URL }}js/carousel.js"></script>
+    <script src="{{ STATIC_URL }}medor/js/clarisse.js"></script>
+    <script src="{{ STATIC_URL }}medor/js/header.js"></script>
 
     {% if debug %}
     <script src="{{ STATIC_URL }}components/less/dist/less.js"></script>
     {% endif %}
 
     {% render_block "js" %}
+
+
 
     <!-- Piwik -->
     <script type="text/javascript">

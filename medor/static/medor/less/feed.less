@@ -23,11 +23,20 @@
     overflow: hidden;
     top: 0;
     left: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 .menu ul {
     list-style: none;
+    margin: auto;
+    text-align: center;
+    
 }
+
 
 .menu li {
     margin: auto;
@@ -49,29 +58,38 @@
 .logo {
         display: block;
         width: 100%;
+        height:75%;
         margin: 10px auto 0;
         clear: both;
         line-height: 1;
         float: left;
         text-align: center;
-        font-size: 7rem;
         color: red;
         font-weight: 400;
+
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
 }
 .logo img{
-    height:160px;
+    height:100%;
     width: auto;
 }
 
 
-.menu .smaller {
-    height: 7rem;
+.menu.smaller {
+    height: 80px;
 }
 
-.logo img .smaller {
-    height:40px;
+.smaller .logo {
+    height: 60%;
+    display: inline-block;
     width: auto;
-}
+    float: left;
+    margin-left: 8px;
+    }
 
 .gros-article {
     .w6;
@@ -86,7 +104,10 @@
     max-width: 1200px;
 }
 
-
+.menu.smaller  ul {
+    margin-top: 20px;
+    
+}
 
 .gros-article img {
     }
