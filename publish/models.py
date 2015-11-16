@@ -57,6 +57,7 @@ class Article(models.Model):
     )
 
     creation_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
     license = models.ForeignKey(License, null=True, blank=True)
     title = models.CharField(max_length=1024, blank=True)
     subtitle = models.CharField(max_length=1024, blank=True)
@@ -85,7 +86,6 @@ class Article(models.Model):
     # To add still:
     # image filer field
     # date de mise en ligne
-    # date de modification
 
     def __unicode__(self):
         return self.title or "Sans titre"
