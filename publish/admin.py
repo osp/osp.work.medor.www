@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
 from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.utils.safestring import mark_safe
@@ -56,6 +60,31 @@ class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', InIssueListFilter)
+    readonly_fields = ('description_explanation',)
+    fields = ('title', 'subtitle', 'slug', 'rubric_title', 'rubric_subtitle', 'authors', 'body', 'article_type',
+              'license', 'peer_reviewers', 'status', ('in_toc', 'published_online'),
+              'description_explanation', 'override_description')
+
+    def description_explanation(self, instance):
+        """
+        """
+        description = instance.get_excerpt()
+        t = """La description web est utilisé entre autre pour l’affichage Facebook du page article.
+Elle est aussi utilisé par Google.<br/><br/>"""
+        if description:
+            t += """La description suivante à ete récupèré de l’exergue de l’article.
+Si vous voulez c’est possible de créer une nouvelle description en utilisant le champs ci-dessous."""
+            t += """<br/><br/> <em>%s</em> <br/><br/>""" % description
+            t += """Cette description pèse pour l’instant %s caractères. """ % len(description)
+            t += """Pour les réseaux sociaux c’est le mieux de rester à moins de 300 caractères."""
+        else:
+            t += """Le CMS n’a pas pu recuperer une exergue de l’article comme base pour la description.
+Pour créer la description, utilisez le champs ci-dessous."""
+        
+        return mark_safe(t)
+
+    description_explanation.short_description = "Explication exergue"
+    description_explanation.allow_tags = True
 
 
 admin.site.register(Issue, IssueAdmin)

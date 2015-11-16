@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
+import re
+from xml.etree import ElementTree
+
+import markdown
 import html5lib
 
 from django.db import models
 from django.db.models import Sum
-from ckeditor.fields import RichTextField
-
-import markdown
 from django.contrib.webdesign.lorem_ipsum import paragraphs
 
+from ckeditor.fields import RichTextField
+
+SENTENCE_LAST_CHARACTER = re.compile('[.!?]')
 
 class License(models.Model):
     """
@@ -71,6 +77,7 @@ class Article(models.Model):
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     in_toc = models.BooleanField('montré dans le table de matière', default=True)
     published_online = models.BooleanField('publié en ligne', default=False)
+    override_description = models.TextField('exergue spécifique pour le web', blank=True)
 
     def get_excerpt(self):
         """
@@ -80,8 +87,20 @@ class Article(models.Model):
         dom = html5lib.parseFragment(self.body, treebuilder="etree", namespaceHTMLElements=False)
         for el in dom:
             if el.tag == "p" and el.attrib.get("class") == "chapeau":
-                return el.text
+                head = el.text or ""
+                # el.text does not return the entire text if you have <p>Text with <em>child</em> tags</p>
+                # cf http://stackoverflow.com/a/380717
+                return "".join([head] + [ElementTree.tostring(e) for e in el.getchildren()])
         return u""
+
+    @property
+    def description(self):
+        """
+        The text that should be used as a description in the meta-data.
+
+        The automatically deduced description can be overridden.
+        """
+        return self.override_description or self.get_excerpt()
 
     # To add still:
     # image filer field
