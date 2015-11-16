@@ -167,6 +167,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 CMS_TEMPLATES = (
     ('generic.html', 'Generic'),
+    ('page.html', 'Page (simple)'),
     ('subscribe/home.html', 'Appel'),
     ('subscribe/home2.html', 'Appel2'),
     ('subscribe/FAQ.html', 'FAQ'),
