@@ -29,8 +29,8 @@ class Issue(models.Model):
     """
     creation_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=1024, blank=True)
-    # slug = models.SlugField(max_length=1024, blank=True)
-    # publish_date = models.DateTimeField(blank=True)
+    slug = models.SlugField(max_length=1024, blank=True)
+    publish_date = models.DateTimeField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title or "Sans titre"
