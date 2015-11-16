@@ -68,6 +68,8 @@ class Article(models.Model):
     authors = models.CharField(max_length=1024, blank=True)
     peer_reviewers = models.CharField(max_length=1024, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
+    in_toc = models.BooleanField('montré dans le table de matière', default=True)
+    published_online = models.BooleanField('publié en ligne', default=False)
 
     def get_excerpt(self):
         """
