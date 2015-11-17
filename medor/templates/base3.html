@@ -40,6 +40,16 @@
 <body>
     {% cms_toolbar %}
 
+	<div class="group">
+	    <div class="menu">
+	        <div class="logo">
+	            <img src="https://medor.coop/static/img/medor-centre.svg">
+	        </div>
+	        <ul>
+	            {% show_menu %}
+	        </ul>
+	    </div>
+	</div>
 
     {% block content %}{% endblock %}
 
