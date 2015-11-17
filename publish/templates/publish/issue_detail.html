@@ -1,8 +1,6 @@
 {% extends "base3.html" %}
 
 {% block content %}
-
-<section>
 <h1>{{ object }}</h1>
 <ol>
 {% for membership in object.articlemembership_set.all %}
@@ -15,10 +13,10 @@
 			<dt>{{ membership.article.title|safe }}</dt>
 		{% endif %}
 			<dd>{{ membership.article.description|safe }}</dd>
+			<dd>{{ membership.article.article_type }}</dd>
 		</dl>
 	</li>
 	{% endif %}
 {% endfor %}
 </ol>
-</section>
 {% endblock %}

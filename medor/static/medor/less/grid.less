@@ -2,16 +2,20 @@
 @col-margin: 1.3%;
 @col-width: ( 100% - (@col-number - 1) * @col-margin ) / @col-number ;
 
-/*  SECTIONS  */
-section, .section {
+.fullwidth {
     width: 95%;
     max-width: 1200px;
     padding: 0px;
     margin: 0px;
-    margin-top: 240px;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    clear: both;
+    clear: both;  
+}
+
+/*  SECTIONS  */
+section, .section {
+    .fullwidth;
+    margin-top: 240px;
 }
 
 /*  COLUMN SETUP  */

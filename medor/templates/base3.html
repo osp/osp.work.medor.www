@@ -40,19 +40,20 @@
 <body>
     {% cms_toolbar %}
 
-	<div class="group">
-	    <div class="menu">
-	        <div class="logo">
-	            <img src="https://medor.coop/static/img/medor-centre.svg">
-	        </div>
-	        <ul>
-	            {% show_menu %}
-	        </ul>
-	    </div>
-	</div>
+	<section>
+
+    <div class="menu group">
+        <div class="logo">
+            <img src="https://medor.coop/static/img/medor-centre.svg">
+        </div>
+        <ul>
+            {% show_menu %}
+        </ul>
+    </div>
+
 
     {% block content %}{% endblock %}
-
+	</section>
 
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
