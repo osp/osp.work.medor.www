@@ -48,6 +48,20 @@
         </div>
         <ul>
             {% show_menu %}
+            
+            <form target="_blank" id="newsletter" method="post" action="https://medor.coop/liste/process.php" name="signup">
+                <label for="Email">Newsletter</label>
+                <input type="text" name="Email" id="email" maxlength="120" value="" />
+                <input type="hidden" name="d[10]" value="on" />
+                <!--*** DO NOT CHANGE  name="pommo_signup" ! *** If you'd like to change the button text change  the "value=" text.-->
+                <input type="hidden" name="pommo_signup" value="true" />
+                <input class="button" type="submit" value="OK" />
+            </form>
+            <ul>
+                <li><a href="https://twitter.com/Medor_mag" class="btn-twt">Twitter</a></li>
+                <li><a href="https://www.facebook.com/medormag" class="btn-fb">facebook</a></li>
+            </ul>
+            
         </ul>
     </div>
 
