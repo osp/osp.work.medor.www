@@ -16,7 +16,9 @@ def remote_info():
 
 
 def deploy(branch='master'):
-    """deploys to previously setup environment"""
+    """
+    deploys to previously setup environment
+    """
 
     with cd('%(path)s/app' % env):
         run('git pull origin %s' % branch)
@@ -29,7 +31,9 @@ def deploy(branch='master'):
 
 
 def migrate():
-    """deploys to previously setup environment"""
+    """
+    runs migrations on server
+    """
 
     with cd('%(path)s/app' % env):
         with prefix('source %(path)s/venv/bin/activate' % env):
@@ -39,6 +43,8 @@ def migrate():
 
 
 def download():
-    """synchronizes the local db and media files from the remote ones"""
+    """
+    synchronizes the local db and media files from the remote ones
+    """
     local('scp -P %(port)s %(user)s@%(host)s:%(path)s/db/medor.db .' % env)
     local("rsync -e 'ssh -p %(port)s' -avz --progress --stats %(user)s@%(host)s:%(path)s/docs/media ." % env)
