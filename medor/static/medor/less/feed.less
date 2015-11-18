@@ -31,15 +31,15 @@
 .menu ul {
     list-style: none;
     margin: auto;
-    text-align: center;
+    display: inline;
 }
 
+.menu li.sibling {
+    float:left;
+    margin: 10px 30px;
+}
 
 .menu li {
-    margin: auto;
-    text-align: center;
-    display: inline-block;
-    margin-left: 1rem;
     line-height: 1.5;
 }
 
@@ -48,45 +48,47 @@
     text-decoration:none;
     font-size: 20px;
     font-family: 'Alfphabet-Condensed';
-    
 }
 
+#newsletter {
+    font-family: "Alfphabet-Condensed";
+    font-size: 20px;
+}
+#newsletter input#email {
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: "Alfphabet-Condensed";
+    max-width: 100px;
+}
+#newsletter input.button {
+    background-color: none;
+    border: none;
+    font-family: "Alfphabet-Condensed";
+    font-size: 18px;
+}
 
 .logo {
-        display: block;
-        width: 100%;
-        height:75%;
-        margin: 10px auto 0;
-        clear: both;
-        line-height: 1;
-        float: left;
-        text-align: center;
-        color: red;
-        font-weight: 400;
+    display: block;
+    width: 100%;
+    height:75%;
+    margin: 10px auto 0;
+    clear: both;
+    line-height: 1;
+    float: left;
+    text-align: center;
+    color: red;
+    font-weight: 400;
 
-        -webkit-transition: all 0.2s;
-        -moz-transition: all 0.2s;
-        -ms-transition: all 0.2s;
-        -o-transition: all 0.2s;
-        transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 .logo img{
     height:100%;
     width: auto;
 }
-
-
-.menu.smaller {
-    height: 80px;
-}
-
-.smaller .logo {
-    height: 60%;
-    display: inline-block;
-    width: auto;
-    float: left;
-    margin-left: 8px;
-    }
 
 .gros-article {
     .w6;
@@ -99,11 +101,6 @@
     overflow: hidden;
 }
 
-.menu.smaller  ul {
-    margin-top: 20px;
-    
-}
-
 .gros-article img {
     }
 
@@ -114,8 +111,6 @@
     margin: 2% 2% 2% 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
-
-
 
 .auteur-feed{
     font-size: 8 * @unit;
@@ -150,8 +145,10 @@
 }
 
 .petits-articles-feed {
-
     float:right;
+}
+.petits-articles-feed.enquete{
+    margin-bottom: 1.5em;
 }
 
 .gros-articles-feed {
@@ -161,7 +158,6 @@
     background-size: cover;
     overflow: hidden;
 }
-
 
 .thumbnail img {
     display: block;
@@ -205,18 +201,35 @@
     float: left;
 }
 
-
 .sidebar p {
     margin-top: 3 * @unit;;
     font-size: 8 * @unit;
     line-height: (@line-height / 8) * 6;
     list-style-type: none;
     font-family: "Alfphabet-Condensed";
-    
-    
+}
+.sidebar .arrow {
+    margin: 40px auto;
 }
 
-
+@media only screen and (min-width: 780px) {
+    .menu.smaller {
+        height: 80px;
+    }
+    .smaller .logo {
+        height: 60%;
+        display: inline-block;
+        width: auto;
+        float: left;
+        margin-left: 8px;
+    }
+    .menu.smaller  ul {
+        margin-top: 20px;
+    }
+    .gros-article {
+        margin-top: 30px;
+    }
+}
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 780px) {
@@ -233,14 +246,30 @@
         max-width:100%;
         height:auto;
         float: left;
-        
     }
-
     .gros-extrait {
         .w6;
     }
- 
     .thumbnail{
-        dispay:none;
+        display:none;
+    }
+    .menu {
+        position: relative;
+    }
+    .menu li.sibling {
+        float:left;
+        margin: 10px 15px;
+    }
+    .logo img {
+        width: 100%;
+    }
+    section {
+        margin-top: 0;
+    }
+    .sidebar {
+        margin: 40px auto;
+    }
+    .texte-petits-articles-feed{
+        width:100%;
     }
 }
