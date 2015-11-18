@@ -43,7 +43,7 @@
     <div class="flux-articles">
 
 	{% for object in object_list|slice:"1:" %}
-    <div class="petits-articles-feed">
+    <div class="petits-articles-feed {{ object.article.article_type }}">
         
         <div class="thumbnail">
             <img src="https://medor.coop/media/filer_public/ca/da/cada9114-7b4e-4080-bb36-eba3273d0697/dessin3.png">
@@ -52,7 +52,7 @@
         <div class="texte-petits-articles-feed">
             <div class="rubrique-title">
                 {{ object.article.rubric_title }}
-            </div>	
+            </div>
 
             <div class="titre-article">
                 <a href="{% url 'article-detail-site' object.article.slug %}">{{ object.article.title }}</a>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="chapeau-feed">
-                {{ object.article.description }} 
+                {{ object.article.description|safe }} 
             </div>
         </div>
     </div>

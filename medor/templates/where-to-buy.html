@@ -1,0 +1,34 @@
+{% extends "base3.html" %}
+{% load cms_tags %}
+
+{% block content %}
+<header>
+<h1>Obtenir Médor</h1>
+</header>
+
+
+<h3>Je m’abonne</h3>
+<p>Pour 60€ vous recevez quatre Médor par la poste, tout frais compris.</p>
+
+<p>Pourquoi s’abonner ?</p>
+
+<ul>
+	<li>Je prends part à l'indépendance d'un média basé sur l'investigation et le récit dans mon pays, la Belgique.</li>
+	<li>Je prends part à un projet collaboratif qui renforce le débat démocratique et se donne les moyens de penser et de chercher en profondeur.</li>
+</ul>
+
+{% include "subscribe/partials/arrow-subscribe.html" %}
+
+<h3>J’achète Médor en librairie</h3>
+
+<div style="position: relative; padding-bottom: 60%;">
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameBorder="0" src="https://umap.openstreetmap.fr/fr/map/points-de-vente_60650?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=false&datalayersControl=false&onLoadPanel=none&captionBar=false&datalayers=137051#8/50.386/5.724"></iframe>
+</div>
+<p><a href="https://umap.openstreetmap.fr/fr/map/points-de-vente_60650">Voir en plein écran</a></p>
+
+<p>Vous pouvez aussi :</p>
+
+{% include "subscribe/partials/arrow-cooperate.html" %}
+
+{% endblock %}
+

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 """
 Django settings for medor project.
 
@@ -171,7 +174,8 @@ CMS_TEMPLATES = (
     ('subscribe/home.html', 'Appel'),
     ('subscribe/home2.html', 'Appel2'),
     ('subscribe/FAQ.html', 'FAQ'),
-    ('styleguide.html', 'Feuille de style')
+    ('styleguide.html', 'Feuille de style'),
+    ('where-to-buy.html', 'Obtenir Médor')
 )
 
 MIGRATION_MODULES = {
