@@ -175,7 +175,8 @@ CMS_TEMPLATES = (
     ('subscribe/home2.html', 'Appel2'),
     ('subscribe/FAQ.html', 'FAQ'),
     ('styleguide.html', 'Feuille de style'),
-    ('where-to-buy.html', 'Obtenir Médor')
+    ('where-to-buy.html', 'Obtenir Médor'),
+    ('magazine.html', 'Le magazine')
 )
 
 MIGRATION_MODULES = {
