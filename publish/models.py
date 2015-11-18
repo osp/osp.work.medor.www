@@ -185,6 +185,7 @@ class ArticleMembershipWeb(models.Model):
 
     class Meta:
         ordering = ("order",)
+        verbose_name = verbose_name_plural = "timeline"
 
     def __unicode__(self):
         return self.article.title
