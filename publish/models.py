@@ -10,6 +10,7 @@ import html5lib
 
 from django.db import models
 from django.db.models import Sum
+from django.utils import timezone
 from django.contrib.webdesign.lorem_ipsum import paragraphs
 
 from ckeditor.fields import RichTextField
@@ -172,3 +173,18 @@ class ArticleMembership(models.Model):
         """
         return self.folio % 2 == 0
 
+
+class ArticleMembershipWeb(models.Model):
+    """
+    Registers articles as part of the web timeline
+    """
+    article = models.ForeignKey(Article)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    visible = models.BooleanField(default=True)
+    web_publish_date = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ("order",)
+
+    def __unicode__(self):
+        return self.article.title

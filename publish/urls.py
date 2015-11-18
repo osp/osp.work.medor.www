@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url, include
 from rest_framework import serializers, viewsets, routers
-from .views import ArticleDetailView, IssueListView, IssueDetailView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
+from .views import ArticleMembershipWebListView, ArticleDetailView, IssueListView, IssueDetailView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
 from .models import Article, ArticleMembership, Issue, License
 from rest_framework import filters, permissions
 
@@ -73,7 +73,8 @@ router.register(r'article-membership', ArticleMembershipViewSet)
 
 
 urlpatterns = patterns('',
-    url(r'^$', IssueListView.as_view(), name='issue-list'),
+    url(r'^feed/$', ArticleMembershipWebListView.as_view(), name='feed'),
+    url(r'^numero/$', IssueListView.as_view(), name='issue-list'),
     url(r'^numero/(?P<slug>[-\w]+)/$', IssueDetailView.as_view(), name='issue-detail-site'),
     url(r'^article/(?P<slug>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail-site'),
     url(r'^(?P<pk>\d+)/$', ArticleMembershipDetailView.as_view(), name='article-membership-detail'),

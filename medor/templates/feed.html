@@ -1,23 +1,25 @@
 {% extends "base3.html" %}
 {% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
 {% block content %}
+
+	{% with object_list.0 as object %}
     <div class="gros-article" style="background-image: linear-gradient(rgba(42, 133, 164, 0.8), rgba(42, 133, 164, 0.8)), url(https://medor.coop/media/filer_public/f2/09/f209beca-1c2d-43c2-b420-a28d9ed5774e/keerbergen.jpg)">
        
         <div class="gros-extrait">
             <div class="rubrique-title">
-                enquète
+                {{ object.article.rubric_title }}
             </div>	
 
             <div class="titre-article">
-                <a href="{% url 'article-detail-site' 'quand-jetais-flamande' %}">Quand j'étais flamande</a>
+                <a href="{% url 'article-detail-site' object.article.slug %}">{{ object.article.title }}</a>
             </div>
 
             <div class="auteur-feed">
-                Par Jean-Michel Leclercq
+                {{ object.article.authors }}
             </div>
 
             <div class="chapeau-feed">
-                Voulant gratter derrière l'histoire d'une grand­‐mère orpheline limbourgeoise adoptée à Liège dans les années 20, notre reporter a arpenté le pays d'une province à l'autre. Chemin faisant,il s'est plongé dans un certain passé belge. 
+                {{ object.article.description }} 
             </div>
 
             <div class="lire">
@@ -27,6 +29,7 @@
         </div>
         
     </div>
+    {% endwith %}
 
 
     <div class="sidebar">

@@ -5,8 +5,8 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from adminsortable2.admin import SortableInlineAdminMixin
-from .models import ArticleMembership, Article, Issue, License
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
+from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License
 
 
 class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -34,6 +34,8 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     links.short_description = "Links"
     links.allow_tags = True
 
+class ArticleMembershipWebAdmin(SortableAdminMixin, admin.ModelAdmin):
+    pass
 
 class LicenseAdmin(admin.ModelAdmin):
     pass
@@ -88,5 +90,6 @@ Pour créer la description, utilisez le champs ci-dessous."""
 
 
 admin.site.register(Issue, IssueAdmin)
+admin.site.register(ArticleMembershipWeb, ArticleMembershipWebAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(License, LicenseAdmin)
