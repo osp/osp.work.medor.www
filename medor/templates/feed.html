@@ -42,6 +42,7 @@
 
     <div class="flux-articles">
 
+	{% for object in object_list|slice:"1:" %}
     <div class="petits-articles-feed">
         
         <div class="thumbnail">
@@ -50,94 +51,24 @@
         
         <div class="texte-petits-articles-feed">
             <div class="rubrique-title">
-                enquète
+                {{ object.article.rubric_title }}
             </div>	
 
             <div class="titre-article">
-                <a href="{% url 'article-detail-site' 'le-silence-du-tram' %}">Le silence du tram</a>
+                <a href="{% url 'article-detail-site' object.article.slug %}">{{ object.article.title }}</a>
             </div>
         
             <div class="auteur-feed">
-                Olivier Bailly
+                {{ object.article.authors }}
             </div>
 
             <div class="chapeau-feed">
-                À Bruxelles, avec la carte Mobib, la Stib conserve le détail de tous nos déplacements pendant au moins… six mois. Et quand on lui demande ces données personnelles, elle ne nous en transmet qu’une partie. La Stib dépasse-t-elle les bornes? 
+                {{ object.article.description }} 
             </div>
         </div>
     </div>
+    {% endfor %}
     
-    <div class="petits-articles-feed">
-        
-        <div class="thumbnail">
-            <img src="https://medor.coop/media/filer_public/f6/74/f6743ba4-c0a7-4270-93ea-34951137a8c4/img_0050_copy.jpg">
-        </div>	
-        
-        <div class="texte-petits-articles-feed">
-            <div class="rubrique-title">
-                Fulguro-Point
-            </div>	
-
-            <div class="titre-article">
-                <a href="{% url 'article-detail-site' 'herrmutt-lobby' %}">À Verviers, elle germe, elle germe, la prochaine révolution musicale</a>
-            </div>
-        
-            <div class="auteur-feed">
-                Par Jean-Michel Leclercq
-            </div>
-
-            <div class="chapeau-feed">
-                À Verviers, le collectif de musiciens Herrmutt Lobby fonctionne comme une start-up américaine, fabriquant non seulement du son mais aussi des logiciels, du hardware et d’avant-gardistes applications musicales pour smartphones. 
-            </div>
-        </div>
-    </div>
-	
-    <div class="gros-articles-feed">
-        
-        <div class="texte-gros-articles-feed">
-            <div class="rubrique-title">
-                L’enquêteke
-            </div>	
-
-            <div class="titre-article">
-                <a href="{% url 'article-detail-site' 'enqueteke' %}">Les barrières du roi</a>
-            </div>
-        
-            <div class="auteur-feed">
-                par Pierre Huyghebaert
-            </div>
-
-            <div class="chapeau-feed">
-                À Bruxelles, des barrières métalliques traînent régulièrement sur les trottoirs situés entre le palais royal et le palais des Académies. Mais pourquoi donc ne les range-t-on pas? 
-            </div>
-        </div>
-    </div>
-    
-    <div class="petits-articles-feed">
-        
-        <div class="thumbnail">
-            <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Finsch_crater_AS15-M-0980.jpg">
-        </div>	
-        
-        <div class="texte-petits-articles-feed">
-            <div class="rubrique-title">
-                enquète
-            </div>	
-
-            <div class="titre-article">
-                Quand j'étais flamande
-            </div>
-        
-            <div class="auteur-feed">
-                Par Jean-Michel Leclercq
-            </div>
-
-            <div class="chapeau-feed">
-                Voulant gratter derrière l'histoire d'une grand­‐mère orpheline limbourgeoise adoptée à Liège dans les années 20, notre reporter a arpenté le pays d'une province à l'autre. Chemin faisant,il s'est plongé dans un certain passé belge. 
-            </div>
-        </div>
-    </div>
-
 </div>
     
    
