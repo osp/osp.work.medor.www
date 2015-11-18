@@ -23,10 +23,6 @@ class IssueDetailView(DetailView):
     """
     model = Issue
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, *args, **kwargs):
-        return super(IssueDetailView, self).dispatch(*args, **kwargs)
-
 
 class ArticleDetailView(DetailView):
     """
