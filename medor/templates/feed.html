@@ -3,7 +3,7 @@
 {% block content %}
 
 	{% with object_list.0 as object %}
-    <div class="gros-article" style="background-image: linear-gradient(rgba(42, 133, 164, 0.8), rgba(42, 133, 164, 0.8)), url(https://medor.coop/media/filer_public/f2/09/f209beca-1c2d-43c2-b420-a28d9ed5774e/keerbergen.jpg)">
+    <div class="gros-article" style="background-image:url({{ STATIC_URL }}img/img-edito.png)">
        
         <div class="gros-extrait">
             <div class="rubrique-title">
@@ -22,9 +22,6 @@
                 {{ object.article.description }} 
             </div>
 
-            <div class="lire">
-                <a href="#">&rarr;</a>
-            </div>
             
         </div>
         
@@ -33,7 +30,7 @@
 
 
     <div class="sidebar">
-            <img src="{{ STATIC_URL }}img/medor-objet-contenu.png">
+            <img src="{{ STATIC_URL }}img/medor-numero-1.svg">
             <p>Le numéro 1 est disponible !
             <a href="#">J'achète Médor</a>
             Je découvre <a href="{% url 'issue-detail-site' '15-16-hiver' %}">le sommaire du numéro en cours</a></p>

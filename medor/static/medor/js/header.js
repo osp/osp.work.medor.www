@@ -2,7 +2,7 @@
 function init() {
     window.addEventListener('scroll', function(e){
         var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        shrinkOn = 100,
+        shrinkOn = 70,
             menu = document.querySelector(".menu");
         if (distanceY > shrinkOn) {
             classie.add(menu,"smaller");
