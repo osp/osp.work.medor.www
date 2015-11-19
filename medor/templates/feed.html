@@ -7,19 +7,19 @@
        
         <div class="gros-extrait">
             <div class="rubrique-title">
-                {{ object.article.rubric_title }}
+                {{ object.article.rubric_title|safe }}
             </div>	
 
             <div class="titre-article">
-                <a href="{% url 'article-detail-site' object.article.slug %}">{{ object.article.title }}</a>
+                <a href="{% url 'article-detail-site' object.article.slug %}">{{ object.article.title|safe }}</a>
             </div>
 
             <div class="auteur-feed">
-                {{ object.article.authors }}
+                {{ object.article.authors|safe }}
             </div>
 
             <div class="chapeau-feed">
-                {{ object.article.description }} 
+                {{ object.article.description|safe }} 
             </div>
 
             
@@ -30,7 +30,7 @@
 
 
     <div class="sidebar">
-            <img src="{{ STATIC_URL }}img/medor-numero-1.svg">
+            <a href="{% url 'issue-detail-site' '15-16-hiver' %}"><img src="{{ STATIC_URL }}img/medor-numero-1.svg"></a>
             <p>Médor n°1 sort ! Découvrez  <a href="{% url 'issue-detail-site' '15-16-hiver' %}">son sommaire</a>
             	et gardez les yeux ouverts en l’achetant en <a href="{% page_url 'acheter' %}">librairie</a> ou en prenant un <a href="{% url 'subscribe-wizard' %}">abonnement</a>.</p>
 	</div>
