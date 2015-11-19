@@ -9,7 +9,6 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('filer', '0002_auto_20151119_0855'),
         ('publish', '0015_articlemembershipweb'),
     ]
 
