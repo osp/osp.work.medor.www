@@ -16,7 +16,6 @@
     clear: both;
     position : fixed;
     min-height: 230px;
-    background-color:white;
     z-index: 10;
     overflow: hidden;
     top: 0;
@@ -32,11 +31,13 @@
     list-style: none;
     margin: auto;
     display: inline;
+    padding: 0;
 }
 
-.menu li.sibling {
-    float:left;
-    margin: 10px 30px;
+.menu li.sibling, .menu li.selected {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 0px 0px 10px;
 }
 
 .menu li {
@@ -215,6 +216,7 @@
 @media only screen and (min-width: 780px) {
     .menu.smaller {
         height: 80px;
+        background-color: white;
     }
     .smaller .logo {
         height: 60%;
