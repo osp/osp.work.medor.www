@@ -124,7 +124,9 @@ class Article(models.Model):
         Image associated with post. Right now determined automatically, but we should be able to override
         it just like with the description.
         """
-        return self.override_image.url or self.get_image()
+        if self.override_image:
+            return self.override_image.url
+        return self.get_image()
 
     # To add still:
     # image filer field
