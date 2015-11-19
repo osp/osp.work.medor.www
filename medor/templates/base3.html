@@ -8,7 +8,7 @@
     {#	manually provide a `title` variable in the context #}
     <title>Médor :: {% firstof object.title title %}</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=.6">
     <!-- og:title should be the same as the title tag, but without the ‘Médor :: ’ bit -->
     <meta property="og:title" content="{% firstof object.title title %}" />
     <!-- No need for a separate og:description as it falls back to meta[name=description]-->
