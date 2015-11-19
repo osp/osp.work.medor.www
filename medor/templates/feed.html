@@ -81,15 +81,15 @@
                 <h2>Les rendez-vous Médor</h2>
                 {% get_next_events as events %}
                 {% for event in events %}
-                <article>
+                <div class="event">
                     <p>{{ event.dtstart.value|date:"l j F" }}</p>
-                    <h1>{{ event.summary.value }}</h1>
+                    <h3>{{ event.summary.value }}</h3>
                     <p>{{ event.dtstart.value|date:"H:i" }} — {{ event.dtend.value|date:"H:i" }}. {{ event.location.value }}.
                     {% if event.attach %}
                     <a href="{{ event.attach.value }}" target="_blank">Plus d’infos.</a>
                     {% endif %}
                     </p>
-                </article>
+				</div>
                 {% endfor %}
 	</div>
 
