@@ -62,10 +62,10 @@ class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', InIssueListFilter)
-    readonly_fields = ('description_explanation',)
+    readonly_fields = ('description_explanation', 'image_explanation')
     fields = ('title', 'subtitle', 'slug', 'rubric_title', 'rubric_subtitle', 'authors', 'body', 'article_type',
               'license', 'peer_reviewers', 'status', ('in_toc', 'published_online'),
-              'description_explanation', 'override_description')
+              'description_explanation', 'override_description', 'image_explanation', 'override_image')
 
     def description_explanation(self, instance):
         """
@@ -87,6 +87,24 @@ Pour créer la description, utilisez le champs ci-dessous."""
 
     description_explanation.short_description = "Explication exergue"
     description_explanation.allow_tags = True
+
+    def image_explanation(self, instance):
+        """
+        """
+        image = instance.get_image()
+        t = """L’aperçu web est utilisé à la fois pour le site et pour l’affichage Facebook du page article."""
+        if image:
+            t += """L’image suivante a été sélectionné automatiquement:"""
+            t += """<br/><br/> <a href="%s">%s</a> <br/><br/>""" % (image, image)
+            t += """Pour en choisir une autre,""" % len(description)
+        else:
+            t += """Le CMS n’a pas pu recuperer une image,"""
+        t += """selectionnez-une dans le champs ci-dessous."""
+    
+        return mark_safe(t)
+
+    image_explanation.short_description = "Explication exergue"
+    image_explanation.allow_tags = True
 
 
 admin.site.register(Issue, IssueAdmin)

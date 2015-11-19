@@ -1,21 +1,39 @@
 {% extends "base3.html" %}
 
 {% block content %}
-<h1>{{ object }}</h1>
+<header>
+	<h1>{{ object }}</h1>
+</header>
 <ol>
 {% for membership in object.articlemembership_set.all %}
 	{% if membership.article.in_toc %}
-	<li>
-		<dl>
-		{% if membership.article.published_online %}
-		    <dt><a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a></dt>
-		{% else %}
-			<dt>{{ membership.article.title|safe }}</dt>
-		{% endif %}
-			<dd>{{ membership.article.description|safe }}</dd>
-			<dd>{{ membership.article.article_type }}</dd>
-		</dl>
-	</li>
+    <div class="gros-article" style="background-image:url({{ membership.article.image }})">
+       
+        <div class="gros-extrait">
+            <div class="rubrique-title">
+                {{ membership.article.rubric_title|safe }}
+            </div>	
+
+            <div class="titre-article">
+    			{% if membership.article.published_online %}
+                <a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a>
+                {% else %}
+                {{ membership.article.title|safe }}
+                {% endif %}
+            </div>
+
+            <div class="auteur-feed">
+                {{ membership.article.authors|safe }}
+            </div>
+
+            <div class="chapeau-feed">
+                {{ membership.article.description|safe }} 
+            </div>
+
+            
+        </div>
+        
+    </div>
 	{% endif %}
 {% endfor %}
 </ol>

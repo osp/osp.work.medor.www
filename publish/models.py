@@ -14,6 +14,7 @@ from django.utils import timezone
 from django.contrib.webdesign.lorem_ipsum import paragraphs
 
 from ckeditor.fields import RichTextField
+from filer.fields.image import FilerImageField
 
 SENTENCE_LAST_CHARACTER = re.compile('[.!?]')
 
@@ -79,6 +80,9 @@ class Article(models.Model):
     in_toc = models.BooleanField('montré dans le table de matière', default=True)
     published_online = models.BooleanField('publié en ligne', default=False)
     override_description = models.TextField('exergue spécifique pour le web', blank=True)
+    override_image = FilerImageField(verbose_name='spécifier image aperçu', blank=True, null=True,
+             on_delete=models.SET_NULL)
+
 
     def get_excerpt(self):
         """
@@ -102,6 +106,25 @@ class Article(models.Model):
         The automatically deduced description can be overridden.
         """
         return self.override_description or self.get_excerpt()
+
+    def get_image(self):
+        """
+        Look in the body text for the first image
+        """
+        dom = html5lib.parseFragment(self.body, treebuilder="etree", namespaceHTMLElements=False)
+        images = dom.findall('.//img')
+        if images:
+            return images[0].get('src')
+
+        return None
+
+    @property
+    def image(self):
+        """
+        Image associated with post. Right now determined automatically, but we should be able to override
+        it just like with the description.
+        """
+        return self.get_image()
 
     # To add still:
     # image filer field
