@@ -19,7 +19,7 @@
 {% comment %}
 **registration/login.html**
 
-It's your responsibility to provide the login form in a template called
+It’s your responsibility to provide the login form in a template called
 registration/login.html by default. This template gets passed four
 template context variables:
 
@@ -32,13 +32,13 @@ template context variables:
     query string, too.
 
 ``site``
-    The current Site, according to the SITE_ID setting. If you don't
+    The current Site, according to the SITE_ID setting. If you don’t
     have the site framework installed, this will be set to an instance
     of RequestSite, which derives the site name and domain from the
     current HttpRequest.
 
 ``site_name``
-    An alias for site.name. If you don't have the site framework
+    An alias for site.name. If you don’t have the site framework
     installed, this will be set to the value of
     request.META['SERVER_NAME']. For more on sites, see The
     "sites" framework.

@@ -86,7 +86,7 @@
                     <h1>{{ event.summary.value }}</h1>
                     <p>{{ event.dtstart.value|date:"H:i" }} — {{ event.dtend.value|date:"H:i" }}. {{ event.location.value }}.
                     {% if event.attach %}
-                    <a href="{{ event.attach.value }}" target="_blank">Plus d'infos.</a>
+                    <a href="{{ event.attach.value }}" target="_blank">Plus d’infos.</a>
                     {% endif %}
                     </p>
                 </article>
