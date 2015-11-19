@@ -3,6 +3,7 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
+from django.http import Http404
 from .models import Article, Issue, ArticleMembership, ArticleMembershipWeb
 
 
@@ -30,9 +31,16 @@ class ArticleDetailView(DetailView):
     """
     model = Article
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, *args, **kwargs):
-        return super(ArticleDetailView, self).dispatch(*args, **kwargs)
+    def get_object(self):
+        object = super(ArticleDetailView, self).get_object()
+        # object is marked as published online and/or is published on the timeline:
+        if object.published_online or object.articlemembershipweb_set.count():
+            return object
+        # superusers get to read anything
+        if self.request.user.is_superuser:
+            return object
+        # if none of the above, raise a 404
+        raise Http404
 
 
 class ArticleMembershipWebListView(ListView):
