@@ -106,7 +106,20 @@
 
     {% render_block "js" %}
 
+	<script>
+		// for some weird reason these articles stick around 
+		var toDelete = ["Proposer un article", "AG 2015", "Bug"];
+		$(".menu ul").first().find("li.sibling").each(function(i, el) {
+		    var $el = $(el);
+		    $el.find("a").each(function(i, elel) {
+		        var txt = $(elel).text();
+		        if (toDelete.indexOf(txt) !== -1) {
+		            $el.remove();
+		        };
+		    });
+		});
 
+	</script>
 
     <!-- Piwik -->
     <script type="text/javascript">
