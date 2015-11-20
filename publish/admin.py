@@ -96,7 +96,7 @@ Pour créer la description, utilisez le champs ci-dessous."""
         if image:
             t += """L’image suivante a été sélectionné automatiquement:"""
             t += """<br/><br/> <a href="%s">%s</a> <br/><br/>""" % (image, image)
-            t += """Pour en choisir une autre,""" % len(description)
+            t += """Pour en choisir une autre,"""
         else:
             t += """Le CMS n’a pas pu recuperer une image,"""
         t += """selectionnez-une dans le champs ci-dessous."""
