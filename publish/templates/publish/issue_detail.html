@@ -29,6 +29,17 @@
             <div class="chapeau-feed">
                 {{ membership.article.description|safe }} 
             </div>
+            
+            <div class="chapeau-feed">
+            	<em>
+            	{% if membership.single_page %}
+            		Dans le {{ object }} sur la pages {{ membership.first_page}}
+            	{% else %}
+            		Dans le {{ object }} sur les pages {{ membership.first_page}}–{{ membership.last_page}}
+            	{% endif %}
+            	{% if membership.article.published_online %}et également disponible <a href="{% url 'article-detail-site' membership.article.slug %}">en ligne</a>{% endif %}
+            	.</em>
+            </div>
 
             
         </div>

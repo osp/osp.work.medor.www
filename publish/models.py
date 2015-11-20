@@ -174,7 +174,7 @@ class ArticleMembership(models.Model):
     article = models.ForeignKey(Article)
     issue = models.ForeignKey(Issue)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
-    page_number = models.PositiveIntegerField(default=1, blank=False, null=False)
+    page_number = models.PositiveIntegerField("nombre de pages", default=1, blank=False, null=False)
 
 
     class Meta:
@@ -184,12 +184,29 @@ class ArticleMembership(models.Model):
         return self.article.title
 
     @property
+    def single_page(self):
+        return self.page_number == 1
+
+    @property
     def folio(self):
         """
         Computes the page number of the first page of the article
         """
+        if self.order == 1:
+            return 1
         qs = self.issue.articlemembership_set.filter(order__lt=self.order)
         return qs.aggregate(page_count=Sum('page_number'))['page_count'] + 1
+
+    @property
+    def first_page(self):
+        """
+        With a less cryptic name
+        """
+        return self.folio
+
+    @property
+    def last_page(self):
+        return self.folio + self.page_number
 
     @property
     def is_even(self):
