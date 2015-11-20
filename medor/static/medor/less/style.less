@@ -34,6 +34,9 @@ h3 {
 
 p { margin: 0; }
 
+td:first-child {
+  padding-right: 20px;
+}
 em { font-style: italic; }
 
 a {
@@ -185,7 +188,8 @@ h3 {
 figure + h2,
 figure + h3,
 p + h2,
-p + h3 {
+p + h3,
+table + h3 {
     margin-top: @line-height * 2;
 }
 
@@ -220,6 +224,7 @@ sup {
 .footnotes {
     font-family: 'Alfphabet-Condensed';
     margin: 0;
+    margin-top: @line-height;
     font-size: 7.5 * @unit;
     line-height: (@line-height / 8) * 6;
     list-style-type: none;
