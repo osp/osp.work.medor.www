@@ -1,5 +1,5 @@
 {% extends "base3.html" %}
-{% load cms_tags %}
+{% load cms_tags subscribe_tags %}
 
 {% block content %}
 <header>
@@ -7,7 +7,13 @@
 </header>
 
 
+<div class="group">
 <h3>Je m’abonne</h3>
+
+<div style="float:left">
+{% include "subscribe/partials/arrow-subscribe.html" %}
+</div>
+
 <p>Pour 60€ vous recevez quatre Médor par la poste, tout frais compris.</p>
 
 <p>Pourquoi s’abonner ?</p>
@@ -16,19 +22,34 @@
 	<li>Je prends part à l’indépendance d’un média basé sur l’investigation et le récit dans mon pays, la Belgique.</li>
 	<li>Je prends part à un projet collaboratif qui renforce le débat démocratique et se donne les moyens de penser et de chercher en profondeur.</li>
 </ul>
-
-{% include "subscribe/partials/arrow-subscribe.html" %}
+</div>
 
 <h3>J’achète Médor en librairie</h3>
 
 <div style="position: relative; padding-bottom: 60%;">
-<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameBorder="0" src="https://umap.openstreetmap.fr/fr/map/points-de-vente_60650?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=false&datalayersControl=false&onLoadPanel=none&captionBar=false&datalayers=137051#8/50.386/5.724"></iframe>
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameBorder="0" src="https://umap.openstreetmap.fr/fr/map/points-de-vente_60650?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=false&datalayersControl=false&onLoadPanel=none&captionBar=false&datalayers=137051#8/50.641111/4.668056"></iframe>
 </div>
 <p><a href="https://umap.openstreetmap.fr/fr/map/points-de-vente_60650">Voir en plein écran</a></p>
 
-<p>Vous pouvez aussi :</p>
+<dl id="libraires">
+	{% get_libraries as cities_shops %}
+	{% for city_shops in cities_shops %}
+		<dt>{{ city_shops.0 }}</dt>
+		{% for shop in city_shops.1 %}
+			<dd>{{ shop }}</dd>
+		{% endfor %}
+	{% endfor %}
+</dl>
 
+<div class="group">
+<h3>Vous pouvez aussi</h3>
+
+<div style="float:left">
 {% include "subscribe/partials/arrow-cooperate.html" %}
+</div>
 
+<p>Médor n’est pas seulement un magazine. C’est aussi <a href="{% page_url 'cooperative' %}">une coopérative</a> où chaque citoyen, de l’abonné au journaliste, peut jouer un rôle actif. Pour nous, les lecteurs ne sont pas de simples consommateurs. En prenant une ou plusieurs parts à 20 €, ils deviennent les garants de la philosophie et de la trajectoire du projet. Vous pouvez <a href="{% page_url 'cooperative' %}">lire plus sur la coopérative</a> ou <a href="{% url 'cooperate-wizard' %}">prendre un part</a>.</p>
+
+</div>
 {% endblock %}
 
