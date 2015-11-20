@@ -68,6 +68,25 @@
 
 
     {% block content %}{% endblock %}
+    <footer class="fullwidth group">
+        <ul>
+        	
+			<li class="child sibling">
+				<a href="{% page_url 'contact' %}">Contact</a>			
+			</li>
+			<li class="child sibling">
+				<a href="{% page_url 'mentions-legales' %}">Mentions légales</a>
+			</li>
+			<li class="child sibling">
+				<a href="{% page_url 'magazine' %}#equipe">Qui sommes nous&thinsp;?</a>	
+			</li>
+			<li class="child sibling">
+				<a href="{% page_url 'faq' %}">FAQ</a>				
+			</li>
+        </ul>
+    </footer>
+
+
 	</section>
 
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>

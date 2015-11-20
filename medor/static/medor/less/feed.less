@@ -27,24 +27,30 @@
     .fullwidth;
 }
 
-.menu ul {
+.menu ul, footer ul {
     list-style: none;
     margin: auto;
     display: inline;
     padding: 0;
 }
 
-.menu li.sibling, .menu li.selected {
+.menu li.sibling, .menu li.selected, footer li {
     display: inline-block;
     vertical-align: top;
     margin: 0px 0px 0px 10px;
 }
 
-.menu li {
-    line-height: 1.5;
+.menu li.sibling > a:after, .menu li.selected > a:after {
+
 }
 
-.menu li a{
+
+.menu li, footer li{
+    line-height: 1.5;
+    display: inline-block;
+}
+
+.menu li a, footer li a{
     color:@color-A2;
     text-decoration:none;
     font-size: 20px;
