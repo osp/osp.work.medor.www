@@ -7,7 +7,7 @@
 <ol>
 {% for membership in object.articlemembership_set.all %}
 	{% if membership.article.in_toc %}
-    <div class="gros-article" style="background-image:url({{ membership.article.image }})">
+    <div class="gros-article sommaire" style="background-image:url({{ membership.article.image }})">
        
         <div class="gros-extrait">
             <div class="rubrique-title">

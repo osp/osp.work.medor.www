@@ -39,6 +39,7 @@
     <div class="flux-articles">
 
 	{% for object in object_list|slice:"1:" %}
+	{% if object.visible %}
     <div class="petits-articles-feed {{ object.article.article_type }}">
         
         <div class="thumbnail">
@@ -63,6 +64,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
     
 </div>
