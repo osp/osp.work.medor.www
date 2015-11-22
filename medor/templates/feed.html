@@ -1,9 +1,9 @@
 {% extends "base3.html" %}
-{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
+{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign thumbnail %}
 {% block content %}
 
 	{% with object_list.0 as object %}
-    <div class="gros-article" style="background-image:url({{ STATIC_URL }}img/img-edito.png)">
+    <div class="gros-article" {% if object.article.image %}style="background-image:url({% thumbnail object.article.image 1200x630 crop %})"{% endif %}>
        
         <div class="gros-extrait">
             <div class="rubrique-title">
@@ -54,7 +54,9 @@
     <div class="petits-articles-feed {{ object.article.article_type }}">
         
         <div class="thumbnail">
-            <img src="https://medor.coop/media/filer_public/ca/da/cada9114-7b4e-4080-bb36-eba3273d0697/dessin3.png">
+        	{% if object.article.image %}
+            <img src="{% thumbnail object.article.image 400x400 crop %}">
+            {% endif %}
         </div>	
         
         <div class="texte-petits-articles-feed">

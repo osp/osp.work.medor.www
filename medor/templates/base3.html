@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- site created with love by http://osp.kitchen/ -->
-{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
+{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign thumbnail %}
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=.6">
     <!-- og:title should be the same as the title tag, but without the ‘Médor :: ’ bit -->
     <meta property="og:title" content="{% firstof object.title title %}" />
+    <!-- if no og:image specified, leave blank so user can select one -->
+    {% if object.image %}
+    <meta property="og:image" content="{% thumbnail object.image 1200x630 crop %}" />
+    {% endif %}
     <!-- No need for a separate og:description as it falls back to meta[name=description]-->
     <meta name="description" content="{% firstof object.description description %}" />
 

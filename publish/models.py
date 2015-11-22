@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 import re
+from urlparse import urlparse
+from os.path import basename
 from xml.etree import ElementTree
 
 import markdown
@@ -14,6 +16,7 @@ from django.contrib.webdesign.lorem_ipsum import paragraphs
 
 from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
+from filer.models.imagemodels import Image
 
 SENTENCE_LAST_CHARACTER = re.compile('[.!?]')
 
@@ -109,27 +112,28 @@ class Article(models.Model):
     def get_image(self):
         """
         Look in the body text for the first image
+
+        Try to find the associated filer object so we can make thumbnails
         """
         dom = html5lib.parseFragment(self.body, treebuilder="etree", namespaceHTMLElements=False)
         images = dom.findall('.//img')
         if images:
-            return images[0].get('src')
-
+            img = images[0].get('src')            # u'https://medor.coop/media/filer_public/cb/1b/cb1b0760-5931-4766-b062-6ea821ba33c6/gent-cropped.png'
+            img_path = urlparse(img).path         # u'/media/filer_public/cb/1b/cb1b0760-5931-4766-b062-6ea821ba33c6/gent-cropped.png'
+            img_filename = basename(img_path)     # u'gent-cropped.png'
+            for image in Image.objects.filter(original_filename__iexact=img_filename):
+                if image.url == img_path:
+                    return image
         return None
 
     @property
     def image(self):
         """
-        Image associated with post. Right now determined automatically, but we should be able to override
-        it just like with the description.
+        Image associated with post (FilerImageField).
         """
         if self.override_image:
-            return self.override_image.url
+            return self.override_image
         return self.get_image()
-
-    # To add still:
-    # image filer field
-    # date de mise en ligne
 
     def __unicode__(self):
         return self.title or "Sans titre"
