@@ -16,7 +16,7 @@
             </div>	
 
             <div class="titre-article">
-    			{% if membership.article.published_online %}
+    			{% if membership.article.published_online or user.is_superuser %}
                 <a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a>
                 {% else %}
                 {{ membership.article.title|safe }}
