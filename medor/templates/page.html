@@ -2,9 +2,10 @@
 {% load cms_tags %}
 
 {% block content %}
+	<article>
 	<header>
 		<h1>{% page_attribute page_title %}</h1>
 	</header>
-
     {% placeholder "content" or %}Ajouter ‘Texte’ ici.{% endplaceholder %}
+	</article>
 {% endblock %}
