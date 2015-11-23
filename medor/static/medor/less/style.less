@@ -345,3 +345,12 @@ figcaption footer small {
 .print-only {
   display: none;
 }
+
+@media print {
+    footer, .menu {
+        display: none;
+    }
+    section {
+        margin-top: 0;
+    }
+}
