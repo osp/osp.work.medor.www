@@ -46,7 +46,7 @@
 <body>
     {% cms_toolbar %}
 
-	<section>
+	<section class="group">
 
     <div class="menu group center">
         <div class="logo">
@@ -72,6 +72,8 @@
 
 
     {% block content %}{% endblock %}
+	</section>
+	
     <footer class="fullwidth group center">
         <ul>
         	
@@ -90,8 +92,6 @@
         </ul>
     </footer>
 
-
-	</section>
 
     <script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
