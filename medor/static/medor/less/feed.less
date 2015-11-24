@@ -37,17 +37,17 @@
 .menu li.sibling, .menu li.selected, footer li {
     display: inline-block;
     vertical-align: top;
-    margin: 0px 0px 0px 10px;
+    margin: 0px 16px 0px 16px;
 }
 
 .menu li.sibling > a:after, .menu li.selected > a:after {
 
 }
 
-
 .menu li, footer li{
     line-height: 1.5;
     display: inline-block;
+    margin: 0px 8px 0px 8px;
 }
 
 .menu li a, footer li a{
@@ -236,17 +236,29 @@ footer, footer.fullwidth {
         min-height: inherit;
         height: 80px;
         background-image: url(/static/img/white2transparentgradient.png);
+
+        .logo {
+            height: 60%;
+            display: inline-block;
+            width: auto;
+            float: left;
+            margin-left: 8px;
+        }
+ 
+        ul {
+            margin-top: 30px;
+        }
+
+        li.sibling, .menu li.selected, footer li {
+            margin: 0px 8px 0px 8px;
+        }
+    
+        li, footer li{
+            margin: 0px 4px 0px 4px;
+        }
+   
     }
-    .smaller .logo {
-        height: 60%;
-        display: inline-block;
-        width: auto;
-        float: left;
-        margin-left: 8px;
-    }
-    .menu.smaller  ul {
-        margin-top: 30px;
-    }
+
     .gros-article {
         margin-top: 30px;
     }
