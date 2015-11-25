@@ -181,7 +181,8 @@ class Subscription(TransactionBase):
             message = render_to_string('subscribe/subscription-confirmation-email.txt', {'obj': self})
             sender = "lesyeuxouverts@medor.coop"
             recipients = [self.email]
-            send_mail(subject, message, sender, recipients, fail_silently=False)
+            ## TEMPORARILLY DISABLED
+            # send_mail(subject, message, sender, recipients, fail_silently=False)
 
 
 
