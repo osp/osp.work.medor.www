@@ -2,13 +2,13 @@
 {% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign thumbnail %}
 {% block content %}
 
-	{% with object_list.0 as object %}
+    {% with object_list.0 as object %}
     <div class="gros-article" {% if object.article.image %}style="background-image:url({% thumbnail object.article.image 1200x630 crop %})"{% endif %}>
        
         <div class="gros-extrait">
             <div class="rubrique-title">
                 {{ object.article.rubric_title|safe }}
-            </div>	
+            </div>  
 
             <div class="titre-article">
                 <a href="{% url 'article-detail-site' object.article.slug %}">{{ object.article.title|safe }}</a>
@@ -32,32 +32,29 @@
     <div class="sidebar">
             <a href="{% url 'issue-detail-site' '15-16-hiver' %}"><img src="{{ STATIC_URL }}img/medor-numero-1.svg"></a>
             <p>Médor n°1 sort ! Découvrez  <a href="{% url 'issue-detail-site' '15-16-hiver' %}">son sommaire</a>
-            	et gardez les yeux ouverts en l’achetant en <a href="{% page_url 'acheter' %}">librairie</a> ou en prenant un <a href="{% url 'subscribe-wizard' %}">abonnement</a>.</p>
-	</div>
+                et gardez les yeux ouverts en l’achetant en <a href="{% page_url 'acheter' %}">librairie</a> ou en prenant un <a href="{% url 'subscribe-wizard' %}">abonnement</a>.</p>
+    </div>
 
 
     <div class="flux-articles">
 
-	<div class="petits-articles-feed {{ object.article.article_type }}">
-		<div style="background-color: #fffd73; padding: 27px; margin-bottom: 27px;">
-		<h2 style="font-size: 40px; margin-bottom: 14px;">«Médor» censuré</h2>
-		
-		<h2 style="text-indent: 0px; text-align: left; font-size: 21px; text-transform: none;">Par une ordonnance rendue mercredi 18 novembre 2015 par le président du tribunal de 1<sup>e</sup> instance de Namur suite à une requête unilatérale de Mithra Pharmaceuticals S.A., Médor s'est vu interdire la publication et la diffusion d'un article sous peine de 12 000 euros par infraction constatée et par jour de retard. Médor conteste formellement cette décision qui sera plaidée contradictoirement ce mardi 24 novembre à 14h.</h2>
-		→ <a href="https://medor.coop/fr/en-attendant-medor/2015/11/19/la-justice-censure-la-sortie-de-medor/">Communiqué de presse.</a>
-		
-		<p> </p>
-		</div>
-	</div>
+    <div class="petits-articles-feed {{ object.article.article_type }}">
+        <div class="notice">
+        <h2>«Médor» censuré</h2>
+        <p>Par une ordonnance rendue mercredi 18 novembre 2015 par le président du tribunal de 1<sup>e</sup> instance de Namur suite à une requête unilatérale de Mithra Pharmaceuticals S.A., Médor s'est vu interdire la publication et la diffusion d'un article sous peine de 12 000 euros par infraction constatée et par jour de retard. Médor conteste formellement cette décision qui sera plaidée contradictoirement ce mardi 24 novembre à 14h. <a href="https://medor.coop/fr/en-attendant-medor/2015/11/19/la-justice-censure-la-sortie-de-medor/">Communiqué de presse.</a>
+        </p>
+        </div>
+    </div>
 
-	{% for object in object_list|slice:"1:" %}
-	{% if object.visible %}
+    {% for object in object_list|slice:"1:" %}
+    {% if object.visible %}
     <div class="petits-articles-feed {{ object.article.article_type }}">
         
         <div class="thumbnail">
-        	{% if object.article.image %}
+            {% if object.article.image %}
             <img src="{% thumbnail object.article.image 400x400 crop %}">
             {% endif %}
-        </div>	
+        </div>  
         
         <div class="texte-petits-articles-feed">
             <div class="rubrique-title">
@@ -104,9 +101,9 @@
                     <a href="{{ event.attach.value }}" target="_blank">Plus d’infos.</a>
                     {% endif %}
                     </p>
-				</div>
+                </div>
                 {% endfor %}
-	</div>
+    </div>
 
 </div>
 
