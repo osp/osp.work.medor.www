@@ -73,7 +73,7 @@ router.register(r'article-membership', ArticleMembershipViewSet)
 
 
 urlpatterns = patterns('',
-    url(r'^feed/$', ArticleMembershipWebListView.as_view(), name='feed'),
+    url(r'^$', ArticleMembershipWebListView.as_view(), name='feed'),
     url(r'^numero/$', IssueListView.as_view(), name='issue-list'),
     url(r'^numero/(?P<slug>[-\w]+)/$', IssueDetailView.as_view(), name='issue-detail-site'),
     url(r'^article/(?P<slug>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail-site'),
