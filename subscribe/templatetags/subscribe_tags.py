@@ -299,7 +299,7 @@ def get_libraries():
         ["Librairie Masses Diarbois", "4.4716878", "50.4512181", "Rue Masses-Diarbois  93-9 6043 Ransart (Charleroi) Belgique", "Ransart (Charleroi)"],
         ["Le Chat Botté", "4.5303937", "50.7121647", "Rue Du Monastère 4 1330 Rixensart Belgique", "Rixensart"],
         ["Oxfam Magasins du Monde, Rixensart", "4.5305369", "50.7124894", "Rue A.Collin 1 1330 Rixensart Belgique", "Rixensart"],
-        ["Librairie Point Barre", "5.2211139", "50.1619125", "Rue De Behogne 63 5580 Rochefor Belgique", "Rochefor"],
+        ["Librairie Point Barre", "5.2211139", "50.1619125", "Rue De Behogne 63 5580 Rochefort Belgique", "Rochefort"],
         ["Lib Du Pont De Pierre", "5.2222715", "50.1615621", "Rue De Behogne 81 5580 Rochefort Belgique", "Rochefort"],
         ["Cooperative Ardente", "5.5309653", "50.6404853", "Rue Aux Cailloux 110 4420 Saint-Nicolas Belgique", "Saint-Nicolas"],
         ["Au Jour Le Jour Falisolle ", "4.6413234", "50.422963", "Rue De Fosses  23 5060 Sambreville Belgique", "Sambreville"],
