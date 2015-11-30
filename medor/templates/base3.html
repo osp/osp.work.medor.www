@@ -4,13 +4,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    {# Quite some generic views provide an `object.title`, but otherwise you can always #}
-    {#	manually provide a `title` variable in the context #}
-    <title>Médor :: {% firstof object.title title %}</title>
+    {# 1) quite some generic views provide an `object.title`, #}
+    {# 2) django cms provides a title accessible through the `page_attribute` tag #}
+    {# 3) you can manually provide a `title` variable in the context #}
+
+    {% page_attribute page_title as django_cms_title %}
+    <title>Médor :: {% firstof object.title django_cms_title title %}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=.6">
     <!-- og:title should be the same as the title tag, but without the ‘Médor :: ’ bit -->
-    <meta property="og:title" content="{% firstof object.title title %}" />
+    <meta property="og:title" content="{% firstof object.title django_cms_title title %}" />
     <!-- if no og:image specified, leave blank so user can select one -->
     {% if object.image %}
     <meta property="og:image" content="{% thumbnail object.image 1200x630 crop %}" />
