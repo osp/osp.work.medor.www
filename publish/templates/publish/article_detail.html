@@ -4,9 +4,9 @@
 <article>
     <header>
         <p class="rubrique-title">{{ object.rubric_title|safe }}</p>
-        <p class="rubrique-subtitle">{{ object.rubric_subtitle|safe }}</p>
+        {% if object.rubric_subtitle %}<p class="rubrique-subtitle">{{ object.rubric_subtitle|safe }}</p>{% endif %}
         <h1>{{ object.title|safe }}</h1>
-        <h2>{{ object.subtitle|safe }}</h2>
+        {% if object.subtitle %}<h2>{{ object.subtitle|safe }}</h2>{% endif %}
         <p class=authors>{{ object.authors|safe }}</p>
     </header>
     {{ object.body|safe }}
