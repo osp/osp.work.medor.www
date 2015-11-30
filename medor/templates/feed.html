@@ -31,7 +31,7 @@
 
     <div class="sidebar">
             <a href="{% url 'issue-detail-site' '15-16-hiver' %}"><img src="{{ STATIC_URL }}img/medor-numero-1.svg"></a>
-            <p>Médor n°1 sort ! Découvrez  <a href="{% url 'issue-detail-site' '15-16-hiver' %}">son sommaire</a>
+            <p>Médor N<sup>0</sup>1 sort! Découvrez <a href="{% url 'issue-detail-site' '15-16-hiver' %}">son sommaire</a>
                 et gardez les yeux ouverts en l’achetant en <a href="{% page_url 'acheter' %}">librairie</a> ou en prenant un <a href="{% url 'subscribe-wizard' %}">abonnement</a>.</p>
     </div>
 
@@ -41,8 +41,15 @@
     <div class="petits-articles-feed {{ object.article.article_type }}">
         <div class="notice">
         <h2>«Médor» censuré</h2>
-        <p>Par une ordonnance rendue mercredi 18 novembre 2015 par le président du tribunal de 1<sup>e</sup> instance de Namur suite à une requête unilatérale de Mithra Pharmaceuticals S.A., Médor s'est vu interdire la publication et la diffusion d'un article sous peine de 12 000 euros par infraction constatée et par jour de retard. Médor conteste formellement cette décision qui sera plaidée contradictoirement ce mardi 24 novembre à 14h. <a href="https://medor.coop/fr/en-attendant-medor/2015/11/19/la-justice-censure-la-sortie-de-medor/">Communiqué de presse.</a>
-        </p>
+        <p>Par une ordonnance rendue mercredi 18 novembre 2015 par le président
+        du tribunal de 1<sup>ere</sup> instance de Namur suite à une requête
+        unilatérale de Mithra Pharmaceuticals S.A., Médor s’est vu interdire la
+        publication et la diffusion d'un article sous peine de 12.000 euros par
+        infraction constatée et par jour de retard. Médor conteste formellement
+        cette décision qui sera plaidée contradictoirement ce mardi 24 novembre
+        à 14h. <a
+        href="https://medor.coop/fr/en-attendant-medor/2015/11/19/la-justice-censure-la-sortie-de-medor/">Communiqué
+    de presse</a>.</p>
         </div>
     </div>
 
