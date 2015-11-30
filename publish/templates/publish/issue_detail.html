@@ -5,7 +5,6 @@
 <header>
 	<h1>{{ object }}</h1>
 </header>
-<ol>
 {% for membership in object.articlemembership_set.all %}
 	{% if membership.article.in_toc %}
     <div class="gros-article sommaire" {% if membership.article.image %}style="background-image:url({% thumbnail membership.article.image 1200x630 crop %})"{% endif %}>
@@ -48,5 +47,4 @@
     </div>
 	{% endif %}
 {% endfor %}
-</ol>
 {% endblock %}
