@@ -170,9 +170,9 @@ h2,
 h3 {
     font-family: "Erbar condensed";
     font-weight: bold;
-    line-height:  @line-height;
+    line-height:  @line-height * 2;
     text-transform: uppercase;
-    font-size: @line-height;
+    font-size: 18 * @unit;
     top: @line-height * .5 * -1;
     margin-bottom: 0;
     letter-spacing: 0.02em;
@@ -180,6 +180,8 @@ h3 {
 
 
 h3 {
+    font-size: @line-height;
+    line-height:  @line-height;
     margin-top:  @line-height;
     font-weight: normal;
     text-transform: uppercase;
