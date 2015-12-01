@@ -68,8 +68,8 @@ def get_next_events():
     return events
 
 @register.assignment_tag
-def get_libraries():
-    libraries = [
+def get_bookshops():
+    bookshops = [
         ["Riga James Lib", "5.2896569", "50.5395031", "Rue De La Gare  6A 4540 Ampsin (Amay) Belgique", "Ampsin (Amay)"],
         ["Librairie Du Piétonnier", "5.8154941", "49.6831234", "Grand Rue 58 6700 Arlon Belgique", "Arlon"],
         ["Lettre Ecarlate", "5.815487", "49.6835173", "Rue Du Marché Au Beurre, 17 6700 Arlon Belgique", "Arlon"],
@@ -248,7 +248,9 @@ def get_libraries():
         ["Livre Aux Trésors", "5.5680981536", "50.64296235", "Place Xavier-Neujean, 27A 4000 Liège Belgique", "Liège"],
         ["Varia", "5.5768192097", "50.64609115", "Rue Des Mineurs 8 4000 Liège Belgique", "Liège"],
         ["Wattitude", "5.5750747", "50.643816", "Rue Du Souverain 4 4000 Liège Belgique", "Liège"],
-        ["PointCulture Liège", "5.5628874", "50.6350757", "rue de l'Official  1à5 4000 Liège Belgique", "Liège"],
+#        ["PointCulture Liège", "5.5628874", "50.6350757", "rue de l'Official  1à5 4000 Liège Belgique", "Liège"],
+        ["Librairie Pax", "5.5758511", "50.6417013", "Place Cockerill 4 4000 Liège Belgique", "Liège"], # new
+        ["La Diode ", "5.5752585", "50.6415588", "Place Cockerill 12 4000 Liège Belgique", "Liège"], # new
         ["Oxfam Magasins du Monde, Liège Centre", "5.5717067542", "50.6413594", "Rue de la Cathédrale 114 4000 Liège Belgique", "Liège"],
         ["La Carotte", "5.5885333613", "50.6443152", "Boulevard De La Constitution 73 4020 Liège Belgique", "Liège"],
         ["Aurore Lierneux", "5.7944310988", "50.285678", "Rue Chienrue 23 4990 Lierneux Belgique", "Lierneux"],
@@ -351,11 +353,13 @@ def get_libraries():
         ["Grignard", "5.9682365", "50.6597517", "Rue De L'Eglise 3 4840 Welkenraedt Belgique", "Welkenraedt"],
         ["Franlu Sprl", "4.8792483", "50.3979623", "Chaussee De Dinant 874 5100 Wepion Belgique", "Wepion"],
     ]
-    cities_with_libraries = {}
-    for library in libraries:
+    d = {}
+    for bookshop in bookshops:
         try:
-            cities_with_libraries[library[4]].append(library[0])
+            d[bookshop[4]].append(bookshop[0])
         except KeyError:
-            cities_with_libraries[library[4]] = [library[0]]
-    return sorted(cities_with_libraries.items())
+            d[bookshop[4]] = [bookshop[0]]
+    for key in d.keys():
+        d[key].sort()
+    return sorted(d.items())
 

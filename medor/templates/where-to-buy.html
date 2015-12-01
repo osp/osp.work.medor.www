@@ -32,7 +32,7 @@
 <p><a href="https://umap.openstreetmap.fr/fr/map/points-de-vente_60650">Voir en plein écran</a></p>
 
 <dl id="libraires">
-	{% get_libraries as cities_shops %}
+	{% get_bookshops as cities_shops %}
 	{% for city_shops in cities_shops %}
 		<dt>{{ city_shops.0 }}</dt>
 		{% for shop in city_shops.1 %}
