@@ -38,21 +38,6 @@
 
     <div class="flux-articles">
 
-    <div class="petits-articles-feed {{ object.article.article_type }}">
-        <div class="notice">
-        <h2>«Médor» censuré</h2>
-        <p>Par une ordonnance rendue mercredi 18 novembre 2015 par le président
-        du tribunal de 1<sup>ere</sup> instance de Namur suite à une requête
-        unilatérale de Mithra Pharmaceuticals S.A., Médor s’est vu interdire la
-        publication et la diffusion d'un article sous peine de 12.000 euros par
-        infraction constatée et par jour de retard. Médor conteste formellement
-        cette décision qui sera plaidée contradictoirement ce mardi 24 novembre
-        à 14h. <a
-        href="https://medor.coop/fr/en-attendant-medor/2015/11/19/la-justice-censure-la-sortie-de-medor/">Communiqué
-    de presse</a>.</p>
-        </div>
-    </div>
-
     {% for object in object_list|slice:"1:" %}
     {% if object.visible %}
     <div class="petits-articles-feed {{ object.article.article_type }}">
