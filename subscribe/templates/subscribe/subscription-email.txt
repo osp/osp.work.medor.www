@@ -1,14 +1,16 @@
 Vous venez de vous abonner à Médor. Excellente idée! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.
 
-Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée :
+*ATTENTION!* Votre abonnement débute à partir du numéro 2 (et donc jusqu’au numéro 5). Le numéro 1 est disponible dans 350 points de vente (liste consultable ici: https://medor.coop/fr/magazine/acheter/). Si vous préférez que votre abonnement débute du numéro 1 jusqu’au numéro 4, veuillez nous le signaler à medor@medor.coop.
+
+Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée:
 
 {{ obj.structured_communication }}
 
 Si votre système bancaire ne permet pas de faire une communication structurée mais uniquement des chiffres, entrez {{ obj.simple_communication }}. Pour toute question ou difficulté relative à ce paiement, contactez-nous par retour de mail.
 
-Si 3799 personnes font comme vous, nous aurons réussi ensemble à créer Médor. D’ici-là, parlez-en autour de vous, offrez des abonnements, diffusez l’info !
 
-Merci pour votre soutien !
+Merci pour votre soutien!
+
 
 L’équipe de Médor.
 http://www.medor.coop — http://www.facebook.com/medormag
