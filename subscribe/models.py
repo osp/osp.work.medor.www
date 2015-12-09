@@ -174,6 +174,10 @@ class Subscription(TransactionBase):
         self.__original_status = self.status
 
     def save(self, *args, **kwargs):
+        # From now on until March, subscriptions starts at the second issue
+        if not self.from_issue:
+            self.from_issue = 2
+
         do_send_mail = False
 
         if self.status != self.__original_status and self.status == 1:
