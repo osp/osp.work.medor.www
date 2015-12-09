@@ -42,9 +42,12 @@ def migrate():
     run('touch %(path)s/app/medor/wsgi.py' % env)
 
 
-def download():
+def download_db():
     """
     synchronizes the local db and media files from the remote ones
     """
     local('scp -P %(port)s %(user)s@%(host)s:%(path)s/db/medor.db .' % env)
+
+
+def download_media():
     local("rsync -e 'ssh -p %(port)s' -avz --progress --stats %(user)s@%(host)s:%(path)s/docs/media ." % env)
