@@ -185,6 +185,10 @@ class Subscription(TransactionBase):
             # confirmation email
             do_send_mail = True
 
+            # Also sets the confirmation date to now
+            self.confirmation_date = datetime.now()
+
+
         super(Subscription, self).save(*args, **kwargs)
         self.__original_status = self.status
 
@@ -251,6 +255,9 @@ class Cooperation(TransactionBase):
             # If the status has changed and is confirmed, mark for sending a
             # confirmation email
             do_send_mail = True
+
+            # Also sets the confirmation date to now
+            self.confirmation_date = datetime.now()
 
         super(Cooperation, self).save(*args, **kwargs)
         self.__original_status = self.status
