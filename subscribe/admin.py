@@ -146,11 +146,11 @@ class AlsoCooperatorListFilter(admin.SimpleListFilter):
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'email', 'invoice_reference', 'structured_communication', 'old_structured_communication', 'country')
-    list_filter = ('status', 'country', AlsoCooperatorListFilter)
-    list_editable = ('status',)
+    list_display = ('__unicode__', 'status', 'from_issue', 'email', 'invoice_reference', 'structured_communication', 'country', 'creation_date')
+    list_filter = ('status', 'from_issue', AlsoCooperatorListFilter, 'country')
+    list_editable = ('status', 'from_issue')
     date_hierarchy = 'creation_date'
-    readonly_fields = ('creation_date', 'confirmation_date')
+    readonly_fields = ('creation_date',)
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
     fieldsets = (
         (None, {
@@ -158,7 +158,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
                 'title',
                 ('first_name', 'last_name'),
                 'email',
-                ('status', 'creation_date', 'confirmation_date'),
+                ('status', 'from_issue', 'creation_date', 'confirmation_date'),
                 'invoice_reference'
             )
         }),

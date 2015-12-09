@@ -147,7 +147,16 @@ class TransactionBase(models.Model):
 
 class Subscription(TransactionBase):
     """ Describes a subscription"""
+    ISSUE_CHOICES = (
+        (None, '---'),
+        (1, 'du 1 au 4'),
+        (2, 'du 2 au 5'),
+        (3, 'du 3 au 6'),
+        (4, 'du 4 au 7')
+    )
+
     transaction_type = '01'
+    from_issue = models.PositiveSmallIntegerField('à partir du numéro', choices=ISSUE_CHOICES, blank=True, null=True)
     is_gift = models.BooleanField('ceci est un cadeau?', default=False)
     recipient_title = models.BooleanField('civilité du destinataire', default=False, choices=TITLE_CHOICES)
     recipient_first_name = models.CharField('prénom du destinataire', max_length=30, blank=True)
