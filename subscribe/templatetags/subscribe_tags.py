@@ -143,6 +143,7 @@ def get_bookshops():
         ["Ozfair", "4.3428988", "50.8323564", "Avenue Jean Volders 9 1060 Bruxelles Belgique", "Bruxelles"],
         ["Les Yeux Gourmands", "4.3440967", "50.8310642", "Avenue Jean Volders, 64a 1060 Saint-Gilles Belgique", "Bruxelles"],
         ["Joli Mai", "4.3448027507", "50.82575975", "Avenue Paul Dejaer 29 1060 Saint-Gilles Belgique", "Bruxelles"],
+        ["FNAC Bruxelles City II", "4,35852527618408", "50,8542719913061", "City 2 - Rue Neuve 1000 Bruxelles", "Bruxelles"],
         ["Hors Format", "4.3427898", "50.8224546", "ChausséE D’Alsemberg 142 1060 Saint-Gilles Belgique", "Bruxelles"],
         ["Tipi Bookshop", "4.3451068", "50.8272572", "Rue Hôtel Des Monnaies 186 1060 Bruxelles Belgique", "Bruxelles"],
         ["Librairie-Presse Volders", "4.343585", "50.8318131", "Avenue Jean Volders 40 1060 Saint-Gilles Belgique", "Bruxelles"],
@@ -362,4 +363,3 @@ def get_bookshops():
     for key in d.keys():
         d[key].sort()
     return sorted(d.items())
-
