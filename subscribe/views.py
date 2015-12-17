@@ -127,6 +127,7 @@ def subscribers_as_csv(request):
         "organisation",
         "encoder",
         "creation date",
+        "confirmation_date",
         "comment",
         "invoice reference",
         "structured communication",
@@ -159,6 +160,7 @@ def subscribers_as_csv(request):
             "", #organisation
             "medor.coop", #encodeur
             s.creation_date,
+            s.confirmation_date,
             "", #comment
             s.invoice_reference,
             s.structured_communication(),
@@ -195,6 +197,7 @@ def cooperators_as_csv(request):
         "organisation",
         "encoder",
         "creation date",
+        "confirmation date",
         "comment",
         "invoice reference",
         "structured communication",
@@ -223,6 +226,7 @@ def cooperators_as_csv(request):
             "", #organisation
             "medor.coop", #encodeur
             s.creation_date,
+            s.confirmation_date,
             u"{} part(s)".format(s.share_number), #comment
             s.invoice_reference,
             s.structured_communication(),
