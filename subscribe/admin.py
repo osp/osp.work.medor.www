@@ -146,7 +146,7 @@ class AlsoCooperatorListFilter(admin.SimpleListFilter):
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'from_issue', 'email', 'invoice_reference', 'structured_communication', 'country', 'creation_date')
+    list_display = ('__unicode__', 'status', 'from_issue', 'email', 'invoice_reference', 'structured_communication', 'country', 'creation_date', 'confirmation_date')
     list_filter = ('status', 'from_issue', AlsoCooperatorListFilter, 'country')
     list_editable = ('status', 'from_issue')
     date_hierarchy = 'creation_date'
