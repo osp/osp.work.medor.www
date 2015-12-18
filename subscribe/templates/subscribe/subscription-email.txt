@@ -1,6 +1,6 @@
 Vous venez de vous abonner à Médor. Excellente idée! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.
 
-*ATTENTION!* Votre abonnement débute à partir du numéro 2 (et donc jusqu’au numéro 5). Le numéro 1 est disponible dans 350 points de vente (liste consultable ici: https://medor.coop/fr/magazine/acheter/).
+*ATTENTION!* Votre abonnement débute à partir du numéro 2 (et donc jusqu’au numéro 5). Le numéro 1 est disponible dans plus de 300 points de vente (liste consultable ici: https://medor.coop/fr/magazine/acheter/).
 
 Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée:
 

@@ -194,12 +194,11 @@ class Subscription(TransactionBase):
 
         # Do send the email
         if do_send_mail:
-            subject = "Médor SCRL FS. Détails de votre paiement"
+            subject = "Médor SCRL FS. Confirmation d'abonnement"
             message = render_to_string('subscribe/subscription-confirmation-email.txt', {'obj': self})
             sender = "lesyeuxouverts@medor.coop"
             recipients = [self.email]
-            ## TEMPORARILLY DISABLED
-            # send_mail(subject, message, sender, recipients, fail_silently=False)
+            send_mail(subject, message, sender, recipients, fail_silently=False)
 
 
 
