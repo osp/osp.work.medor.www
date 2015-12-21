@@ -132,6 +132,7 @@ def subscribers_as_csv(request):
         "invoice reference",
         "structured communication",
         "status",
+        "from issue",
     ])
 
     for s in Subscription.objects.all():
@@ -165,6 +166,7 @@ def subscribers_as_csv(request):
             s.invoice_reference,
             s.structured_communication(),
             s.get_status_display(),
+            s.get_from_issue_display(),
         ])
 
     return response
