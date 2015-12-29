@@ -159,7 +159,8 @@ class SubscriptionAdmin(admin.ModelAdmin):
                 ('first_name', 'last_name'),
                 'email',
                 ('status', 'from_issue', 'creation_date', 'confirmation_date'),
-                'invoice_reference'
+                'invoice_reference',
+                'comment'
             )
         }),
         ('Infos', {

@@ -97,6 +97,7 @@ class TransactionBase(models.Model):
     confirmation_date = models.DateTimeField('date de confirmation du paiement', null=True, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     invoice_reference = models.PositiveIntegerField('référence facture', max_length=10, unique=True, blank=True)
+    comment = models.TextField('commentaire', blank=True)
 
     class Meta:
         abstract = True
