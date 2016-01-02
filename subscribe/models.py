@@ -153,7 +153,9 @@ class Subscription(TransactionBase):
         (1, 'du 1 au 4'),
         (2, 'du 2 au 5'),
         (3, 'du 3 au 6'),
-        (4, 'du 4 au 7')
+        (4, 'du 4 au 7'),
+        (5, 'du 5 au 8'),
+        (6, 'du 6 au 9')
     )
 
     transaction_type = '01'
