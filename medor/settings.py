@@ -101,6 +101,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     'ckeditor',
+
+    'reversion_compare', # https://github.com/jedie/django-reversion-compare
 )
 
 MIDDLEWARE_CLASSES = (
@@ -263,6 +265,9 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+# Add reversion models to admin interface:
+ADD_REVERSION_ADMIN=True
 
 
 try:

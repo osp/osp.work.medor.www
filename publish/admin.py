@@ -8,6 +8,9 @@ from django.utils.safestring import mark_safe
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License
 
+from reversion.admin import VersionAdmin
+from reversion_compare.admin import CompareVersionAdmin
+
 
 class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     model = ArticleMembership
@@ -58,7 +61,7 @@ class InIssueListFilter(admin.SimpleListFilter):
             return queryset.filter(articlemembership__issue__id=self.value())
 
 
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(CompareVersionAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', InIssueListFilter)

@@ -26,10 +26,12 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Article
+        exclude = ('override_image',)
 
 
 class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
+    article = ArticleSerializer()
 
     class Meta:
         model = ArticleMembership
