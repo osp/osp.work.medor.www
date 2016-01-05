@@ -242,7 +242,8 @@ CKEDITOR_JQUERY_URL = '/static/components/jquery/jquery.min.js'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
-        'format_tags': 'p;h2;h3',
+        'format_tags': 'p;chapeau;h2;h3',
+        'format_chapeau': {'element': 'p', 'name' : 'Chapeau', 'attributes' : {'class' : 'chapeau'}},
         'entities': False,
         'image2_captionedClass': '',
         'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; aside(exergue,making-of); div p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only)',
