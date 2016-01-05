@@ -246,7 +246,7 @@ CKEDITOR_CONFIGS = {
         'format_chapeau': {'element': 'p', 'name' : 'Chapeau', 'attributes' : {'class' : 'chapeau'}},
         'entities': False,
         'image2_captionedClass': '',
-        'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; aside(exergue,making-of); div p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only)',
+        'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; aside(exergue,making-of); div p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only); iframe[src,width,height,frameborder,webkitallowfullscreen,mozallowfullscreen,allowfullscreen]',
         'image2_prefillDimensions': False,
         'admin_url': '/admin/',
         'contentsCss':'https://medor.coop/static/CACHE/css/f3b96be794f8.css',
