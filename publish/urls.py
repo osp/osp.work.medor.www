@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, url, include
+from django.views.generic.base import RedirectView
+
 from rest_framework import serializers, viewsets, routers
 from .views import ArticleMembershipWebListView, ArticleDetailView, IssueListView, IssueDetailView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
 from .models import Article, ArticleMembership, Issue, License
@@ -83,6 +85,11 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+).html$', ArticleMembershipDetailRawView.as_view(), name='article-membership-detail-html'),
     url(r'^(?P<pk>\d+).css$', ArticleMembershipDetailCSSView.as_view(), name='article-membership-detail-css'),
     url(r'^(?P<pk>\d+).tpl$', ArticleMembershipDetailTplView.as_view(), name='article-membership-detail-tpl'),
+
+    # legacy urls
+    url(r'^en-attendant-medor/2015/06/09/instruction-judiciaire-francois-fornieri-mithra/$', RedirectView.as_view(url='/article/instruction-judiciaire-ouverte-contre-francois-fornieri-et-mithra/', permanent=True)),
+    url(r'^en-attendant-medor/2015/11/17/vie-privee-stib/$', RedirectView.as_view(url='/article/le-silence-du-tram/', permanent=True)),
+    url(r'^en-attendant-medor/\d\d\d\d/\d\d/\d\d/(?P<slug>[-\w]+)/$', RedirectView.as_view(pattern_name='article-detail-site', permanent=True)),
 
     # Wire up our API using automatic URL routing.
     # Additionally, we include login URLs for the browsable API.
