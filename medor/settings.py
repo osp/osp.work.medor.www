@@ -248,6 +248,7 @@ CKEDITOR_CONFIGS = {
         'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; aside(exergue,making-of); div p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only)',
         'image2_prefillDimensions': False,
         'admin_url': '/admin/',
+        'contentsCss':'https://medor.coop/static/CACHE/css/f3b96be794f8.css',
         'toolbar_Custom': [
             ['Format'],
             ['Bold', 'Italic', '-', 'Subscript', 'Superscript'],
