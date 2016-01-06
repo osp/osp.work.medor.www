@@ -7,7 +7,7 @@
        
         <div class="gros-extrait">
             <div class="rubrique-title">
-                {{ object.article.rubric_title|safe }}
+                {{ object.article.rubric.title|safe }}
             </div>  
 
             <div class="titre-article">
@@ -40,7 +40,7 @@
 
     {% for object in object_list|slice:"1:" %}
     {% if object.visible %}
-    <div class="petits-articles-feed {{ object.article.article_type }}">
+    <div class="petits-articles-feed {{ object.article.rubric.type }}">
         
         <div class="thumbnail">
             {% if object.article.image %}
@@ -50,7 +50,7 @@
         
         <div class="texte-petits-articles-feed">
             <div class="rubrique-title">
-                {{ object.article.rubric_title }}
+                {{ object.article.rubric.title }}
             </div>
 
             <div class="titre-article">

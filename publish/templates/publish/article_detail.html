@@ -3,8 +3,8 @@
 {% block content %}
 <article>
     <header>
-        <p class="rubrique-title">{{ object.rubric_title|safe }}</p>
-        {% if object.rubric_subtitle %}<p class="rubrique-subtitle">{{ object.rubric_subtitle|safe }}</p>{% endif %}
+        <p class="rubrique-title">{{ object.rubric.title|safe }}</p>
+        {% if object.rubric.subtitle %}<p class="rubrique-subtitle">{{ object.rubric.subtitle|safe }}</p>{% endif %}
         <h1>{{ object.title|safe }}</h1>
         {% if object.subtitle %}<h2>{{ object.subtitle|safe }}</h2>{% endif %}
         <p class=authors>{{ object.authors|safe }}</p>

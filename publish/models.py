@@ -21,6 +21,22 @@ from filer.models.imagemodels import Image
 SENTENCE_LAST_CHARACTER = re.compile('[.!?]')
 
 
+class Rubric(models.Model):
+    """
+    Represents a type of article and the optional rubric title andsubtitle that
+    goes along.
+    """
+    title = models.CharField('titre de la rubrique', max_length=1024, blank=True)
+    subtitle = models.CharField('sous-titre de la rubrique', max_length=1024, blank=True)
+    type = models.CharField("type d'article", max_length=1024, blank=True)
+
+    class Meta:
+        verbose_name = "Rubrique"
+
+    def __unicode__(self):
+        return self.title or self.type or "Sans titre"
+
+
 class License(models.Model):
     """
     Represents the intellectual property License,
@@ -78,11 +94,9 @@ class Article(models.Model):
     license = models.ForeignKey(License, null=True, blank=True, verbose_name="licence")
     title = models.CharField('titre', max_length=1024, blank=True)
     subtitle = models.CharField('sous-titre', max_length=1024, blank=True)
-    rubric_title = models.CharField('titre de la rubrique', max_length=1024, blank=True)
-    rubric_subtitle = models.CharField('sous-titre de la rubrique', max_length=1024, blank=True)
+    rubric = models.ForeignKey(Rubric, blank=True, null=True, verbose_name="rubrique")
     slug = models.SlugField(max_length=1024, blank=True)
     body = RichTextField('article', blank=True, default=body_default)
-    article_type = models.CharField("type d'article", max_length=1024, blank=True)
     authors = models.CharField("auteurs", max_length=1024, blank=True)
     peer_reviewers = models.CharField("parrains ou marraines", max_length=1024, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)

@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
-from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License
+from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License, Rubric
 
 from reversion.admin import VersionAdmin
 from reversion_compare.admin import CompareVersionAdmin
@@ -37,8 +37,14 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     links.short_description = "Links"
     links.allow_tags = True
 
+
 class ArticleMembershipWebAdmin(SortableAdminMixin, admin.ModelAdmin):
     pass
+
+
+class RubricAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'title', 'subtitle', 'type')
+
 
 class LicenseAdmin(admin.ModelAdmin):
     pass
@@ -63,7 +69,7 @@ class InIssueListFilter(admin.SimpleListFilter):
 
 class ArticleAdmin(CompareVersionAdmin):
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ('__unicode__', 'status', 'authors', 'peer_reviewers')
+    list_display = ('__unicode__', 'rubric', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', InIssueListFilter)
     readonly_fields = ('description_explanation', 'image_explanation')
     fieldsets = (
@@ -72,9 +78,7 @@ class ArticleAdmin(CompareVersionAdmin):
                 'title',
                 'subtitle',
                 'slug',
-                'rubric_title',
-                'rubric_subtitle',
-                'article_type',
+                'rubric',
                 ('status', 'license'),
                 ('authors', 'peer_reviewers'),
                 ('in_toc', 'published_online'),
@@ -107,7 +111,7 @@ Si vous voulez c’est possible de créer une nouvelle description en utilisant 
         else:
             t += """Le CMS n’a pas pu recuperer une exergue de l’article comme base pour la description.
 Pour créer la description, utilisez le champs ci-dessous."""
-        
+
         return mark_safe(t)
 
     description_explanation.short_description = "Explication exergue"
@@ -125,13 +129,14 @@ Pour créer la description, utilisez le champs ci-dessous."""
         else:
             t += """Le CMS n’a pas pu recuperer une image,"""
         t += """selectionnez-une dans le champs ci-dessous."""
-    
+
         return mark_safe(t)
 
     image_explanation.short_description = "Explication exergue"
     image_explanation.allow_tags = True
 
 
+admin.site.register(Rubric, RubricAdmin)
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(ArticleMembershipWeb, ArticleMembershipWebAdmin)
 admin.site.register(Article, ArticleAdmin)

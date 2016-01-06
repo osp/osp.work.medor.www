@@ -3,19 +3,19 @@
 
 {% block content %}
 <header>
-	<h1>{{ object }}</h1>
+    <h1>{{ object }}</h1>
 </header>
 {% for membership in object.articlemembership_set.all %}
-	{% if membership.article.in_toc %}
+    {% if membership.article.in_toc %}
     <div class="gros-article sommaire" {% if membership.article.image %}style="background-image:url({% thumbnail membership.article.image 1200x630 crop %})"{% endif %}>
        
         <div class="gros-extrait">
             <div class="rubrique-title">
-                {{ membership.article.rubric_title|safe }}
-            </div>	
+                {{ membership.article.rubric.title|safe }}
+            </div>  
 
             <div class="titre-article">
-    			{% if membership.article.published_online or user.is_superuser %}
+                {% if membership.article.published_online or user.is_superuser %}
                 <a href="{% url 'article-detail-site' membership.article.slug %}">{{ membership.article.title|safe }}</a>
                 {% else %}
                 {{ membership.article.title|safe }}
@@ -31,20 +31,20 @@
             </div>
             
             <div class="chapeau-feed">
-            	<em>
-            	{% if membership.single_page %}
-            		Dans le {{ object }} sur la page {{ membership.first_page}}
-            	{% else %}
-            		Dans le {{ object }} sur les pages {{ membership.first_page}}–{{ membership.last_page}}
-            	{% endif %}
-            	{% if membership.article.published_online %}et également disponible <a href="{% url 'article-detail-site' membership.article.slug %}">en ligne</a>{% endif %}
-            	.</em>
+                <em>
+                {% if membership.single_page %}
+                    Dans le {{ object }} sur la page {{ membership.first_page}}
+                {% else %}
+                    Dans le {{ object }} sur les pages {{ membership.first_page}}–{{ membership.last_page}}
+                {% endif %}
+                {% if membership.article.published_online %}et également disponible <a href="{% url 'article-detail-site' membership.article.slug %}">en ligne</a>{% endif %}
+                .</em>
             </div>
 
             
         </div>
         
     </div>
-	{% endif %}
+    {% endif %}
 {% endfor %}
 {% endblock %}

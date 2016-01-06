@@ -1,9 +1,9 @@
 <header>
-    {% if object.article.rubric_title %}
-    <p class="rubrique-title">{{ object.article.rubric_title|safe }}</p>
+    {% if object.article.rubric.title %}
+    <p class="rubrique-title">{{ object.article.rubric.title|safe }}</p>
     {% endif %}
-    {% if object.article.rubric_subtitle %}
-    <p class="rubrique-subtitle">{{ object.article.rubric_subtitle|safe }}</p>
+    {% if object.article.rubric.subtitle %}
+    <p class="rubrique-subtitle">{{ object.article.rubric.subtitle|safe }}</p>
     {% endif %}
     <h1>{{ object.article.title|safe }}</h1>
     {% if object.article.subtitle %}
