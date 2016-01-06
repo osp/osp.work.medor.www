@@ -20,14 +20,18 @@ from filer.models.imagemodels import Image
 
 SENTENCE_LAST_CHARACTER = re.compile('[.!?]')
 
+
 class License(models.Model):
     """
     Represents the intellectual property License,
     as attributed to an article or other creative work.
     """
-    name = models.CharField(max_length=1024, blank=True)
-    short_name = models.CharField(max_length=20, blank=True)
-    url = models.URLField(blank=True)
+    name = models.CharField("Nom", max_length=1024, blank=True, help_text="par exemple Creative Commons Attribution-ShareAlike 4.0 International")
+    short_name = models.CharField("Nom abbrégé", max_length=20, blank=True, help_text="par exemple CC BY-SA 4.0")
+    url = models.URLField("URL", blank=True, help_text="l'adresse à laquelle le texte de la licence est consultable")
+
+    class Meta:
+        verbose_name = "Licence"
 
     def __unicode__(self):
         return self.short_name or self.name or "Sans titre"
@@ -37,10 +41,13 @@ class Issue(models.Model):
     """
     Represents an Issue of the Magazine
     """
-    creation_date = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=1024, blank=True)
-    slug = models.SlugField(max_length=1024, blank=True)
-    publish_date = models.DateTimeField(blank=True, null=True)
+    creation_date = models.DateTimeField("Date de création", auto_now_add=True)
+    title = models.CharField("Titre", max_length=1024, blank=True)
+    slug = models.SlugField("Slug", max_length=1024, blank=True, help_text="le texte utilisé pour construire les URLs")
+    publish_date = models.DateTimeField("Date de publication", blank=True, null=True, help_text="la date de sortie du numéro")
+
+    class Meta:
+        verbose_name = "Numéro"
 
     def __unicode__(self):
         return self.title or "Sans titre"
@@ -60,24 +67,24 @@ class Article(models.Model):
     Represents an Article
     """
     STATUS_CHOICES = (
-        (0, u'proposal'),
-        (1, u'request for peer-review'),
-        (2, u'request for spell-checking'),
-        (3, u'ready')
+        (0, u'proposition'),
+        (1, u'demande d\'évalutation par les pairs'),
+        (2, u'demande de relecture'),
+        (3, u'prêt')
     )
 
-    creation_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
-    license = models.ForeignKey(License, null=True, blank=True)
-    title = models.CharField(max_length=1024, blank=True)
-    subtitle = models.CharField(max_length=1024, blank=True)
-    rubric_title = models.CharField(max_length=1024, blank=True)
-    rubric_subtitle = models.CharField(max_length=1024, blank=True)
+    creation_date = models.DateTimeField('date de création', auto_now_add=True)
+    modified_date = models.DateTimeField('date de modification', auto_now=True)
+    license = models.ForeignKey(License, null=True, blank=True, verbose_name="licence")
+    title = models.CharField('titre', max_length=1024, blank=True)
+    subtitle = models.CharField('sous-titre', max_length=1024, blank=True)
+    rubric_title = models.CharField('titre de la rubrique', max_length=1024, blank=True)
+    rubric_subtitle = models.CharField('sous-titre de la rubrique', max_length=1024, blank=True)
     slug = models.SlugField(max_length=1024, blank=True)
-    body = RichTextField(blank=True, default=body_default)
-    article_type = models.CharField(max_length=1024, blank=True)
-    authors = models.CharField(max_length=1024, blank=True)
-    peer_reviewers = models.CharField(max_length=1024, blank=True)
+    body = RichTextField('article', blank=True, default=body_default)
+    article_type = models.CharField("type d'article", max_length=1024, blank=True)
+    authors = models.CharField("auteurs", max_length=1024, blank=True)
+    peer_reviewers = models.CharField("parrains ou marraines", max_length=1024, blank=True)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     in_toc = models.BooleanField('montré dans le table de matière', default=True)
     published_online = models.BooleanField('publié en ligne', default=False)

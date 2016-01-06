@@ -66,9 +66,31 @@ class ArticleAdmin(CompareVersionAdmin):
     list_display = ('__unicode__', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', InIssueListFilter)
     readonly_fields = ('description_explanation', 'image_explanation')
-    fields = ('title', 'subtitle', 'slug', 'rubric_title', 'rubric_subtitle', 'authors', 'body', 'article_type',
-              'license', 'peer_reviewers', 'status', ('in_toc', 'published_online'),
-              'description_explanation', 'override_description', 'image_explanation', 'override_image')
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                'subtitle',
+                'slug',
+                'rubric_title',
+                'rubric_subtitle',
+                'article_type',
+                ('status', 'license'),
+                ('authors', 'peer_reviewers'),
+                ('in_toc', 'published_online'),
+                'body',
+            )
+        }),
+        ("Meta", {
+            'classes': ('collapse',),
+            'fields': (
+                'description_explanation',
+                'override_description',
+                'image_explanation',
+                'override_image'
+            )
+        }),
+    )
 
     def description_explanation(self, instance):
         """
