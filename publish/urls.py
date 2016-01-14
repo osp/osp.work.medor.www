@@ -3,8 +3,16 @@ from django.views.generic.base import RedirectView
 
 from rest_framework import serializers, viewsets, routers
 from .views import ArticleMembershipWebListView, ArticleDetailView, IssueListView, IssueDetailView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
-from .models import Article, ArticleMembership, Issue, License
+from .models import Article, ArticleMembership, Issue, License, Rubric
 from rest_framework import filters, permissions
+
+
+# Serializers define the API representation.
+class RubricSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
+    class Meta:
+        model = Rubric
 
 
 # Serializers define the API representation.
@@ -41,6 +49,13 @@ class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # ViewSets define the view behavior.
+class RubricViewSet(viewsets.ModelViewSet):
+    queryset = Rubric.objects.all()
+    serializer_class = RubricSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+# ViewSets define the view behavior.
 class LicenseViewSet(viewsets.ModelViewSet):
     queryset = License.objects.all()
     serializer_class = LicenseSerializer
@@ -70,6 +85,7 @@ class ArticleMembershipViewSet(viewsets.ModelViewSet):
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+router.register(r'rubric', RubricViewSet)
 router.register(r'license', LicenseViewSet)
 router.register(r'issue', IssueViewSet)
 router.register(r'article', ArticleViewSet)

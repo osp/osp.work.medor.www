@@ -245,9 +245,9 @@ class ArticleMembershipWeb(models.Model):
     Registers articles as part of the web timeline
     """
     article = models.ForeignKey(Article)
-    order = models.PositiveIntegerField(default=0, blank=False, null=False)
-    visible = models.BooleanField(default=True)
-    web_publish_date = models.DateTimeField(default=timezone.now)
+    order = models.PositiveIntegerField("ordre", default=0, blank=False, null=False)
+    visible = models.BooleanField("publié en ligne", default=True)
+    web_publish_date = models.DateTimeField("date de publication sur le web", default=timezone.now)
 
     class Meta:
         ordering = ("order",)
