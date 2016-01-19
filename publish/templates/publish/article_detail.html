@@ -10,6 +10,20 @@
         <p class=authors>{{ object.authors|safe }}</p>
     </header>
     {{ object.body|safe }}
+        <p class="publication-date">{% if object.articlemembership_set.first %}
+        {% with object.articlemembership_set.first as print_publication %}
+	        Apparu dans le {{ print_publication.issue }} le {{ print_publication.issue.publish_date|date:"d/m/Y" }}
+	        {% if print_publication.single_page %}
+	            sur la page {{ print_publication.first_page}}.
+	        {% else %}
+	            sur les pages {{ print_publication.first_page}}–{{ print_publication.last_page}}.
+	        {% endif %}<br/>
+        {% endwith %}
+        {% endif %}
+        {% if object.articlemembershipweb_set.first %}
+        	Publication en ligne: {{ object.articlemembershipweb_set.first.web_publish_date|date:"d/m/Y" }}.
+        {% endif %}</p>
+
 </article>
 {% endblock %}
 
