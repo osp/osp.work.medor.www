@@ -258,25 +258,22 @@ CKEDITOR_CONFIGS = {
         'contentsCss':'https://medor.coop/static/CACHE/css/f3b96be794f8.css',
         'toolbar_Custom': [
             ['Format'],
+            ['Citation', 'Emphasis'],
             ['Bold', 'Italic', '-', 'Subscript', 'Superscript'],
-            ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'],
+            ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', ''],
             ['Link', 'Unlink', 'Image'],
             ['RemoveFormat', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
             ['Find', 'Replace'],
             ['Source', 'Maximize'
-                # ,'Timestamp'
-                # ,'Simplebox'
-                ,'Citation'
-                ,'Footnotes'
+                # ,'Footnotes'
                 #'Filer Image'
             ],
         ],
         'extraPlugins': ','.join([
             'image2',
-            # 'timestamp',
-            # 'simplebox',
             'citation',
-            'footnotes'
+            'emphasis',
+            # 'footnotes'
             #'filerimage'
         ]),
     }
