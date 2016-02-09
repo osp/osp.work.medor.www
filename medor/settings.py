@@ -242,8 +242,14 @@ CKEDITOR_JQUERY_URL = '/static/components/jquery/jquery.min.js'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
-        'format_tags': 'p;chapeau;h2;h3',
+        'format_tags': 'p;intertitre;surtitre;chapeau;fin;auteur;question;lettrine',
+        'format_intertitre': {'element': 'h2', 'name' : 'Intertitre'},
+        'format_surtitre': {'element': 'h3', 'name' : 'Surtitre'},
         'format_chapeau': {'element': 'p', 'name' : 'Chapeau', 'attributes' : {'class' : 'chapeau'}},
+        'format_lettrine': {'element': 'span', 'name' : 'Lettrine', 'attributes' : {'class' : 'lettrine'}},
+        'format_auteur': {'element': 'p', 'name' : 'auteur', 'attributes' : {'class' : 'auteur'}},
+        'format_fin': {'element': 'p', 'name' : 'Para final', 'attributes' : {'class' : 'fin'}},
+        'format_question': {'element': 'p', 'name' : 'Question', 'attributes' : {'class' : 'question'}},
         'entities': False,
         'image2_captionedClass': '',
         'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; aside(exergue,making-of); div p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only); iframe[src,width,height,frameborder,webkitallowfullscreen,mozallowfullscreen,allowfullscreen]',
@@ -258,11 +264,19 @@ CKEDITOR_CONFIGS = {
             ['RemoveFormat', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
             ['Find', 'Replace'],
             ['Source', 'Maximize'
+                # ,'Timestamp'
+                # ,'Simplebox'
+                ,'Citation'
+                ,'Footnotes'
                 #'Filer Image'
             ],
         ],
         'extraPlugins': ','.join([
             'image2',
+            # 'timestamp',
+            # 'simplebox',
+            'citation',
+            'footnotes'
             #'filerimage'
         ]),
     }
