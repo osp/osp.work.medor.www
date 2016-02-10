@@ -38,7 +38,7 @@ CKEDITOR.plugins.add( 'emphasis', {
                     // Define content allowed in this nested editable. Its content will be
                     // filtered accordingly and the toolbar will be adjusted when this editable
                     // is focused.
-                    allowedContent: 'em'
+                    allowedContent: 'em sub sup'
                 },
             },
 

@@ -38,11 +38,11 @@ CKEDITOR.plugins.add( 'citation', {
                     // Define content allowed in this nested editable. Its content will be
                     // filtered accordingly and the toolbar will be adjusted when this editable
                     // is focused.
-                    allowedContent: 'em'
+                    allowedContent: 'em sub sup'
                 },
                 signature: {
                     selector: 'footer',
-                    allowedContent: 'em'
+                    allowedContent: 'em sup sub'
                 }
             },
 
