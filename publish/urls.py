@@ -33,6 +33,7 @@ class IssueSerializer(serializers.HyperlinkedModelSerializer):
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
+    rubric = RubricSerializer()
 
     class Meta:
         model = Article
