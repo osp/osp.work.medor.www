@@ -177,9 +177,11 @@ class Subscription(TransactionBase):
         self.__original_status = self.status
 
     def save(self, *args, **kwargs):
-        # From now on until March, subscriptions starts at the second issue
         if not self.from_issue:
-            self.from_issue = 2
+            if datetime.now() >= datetime(2016, 3, 11):
+                self.from_issue = 3
+            else:
+                self.from_issue = 2
 
         do_send_mail = False
 
@@ -198,7 +200,10 @@ class Subscription(TransactionBase):
         # Do send the email
         if do_send_mail:
             subject = "Médor SCRL FS. Confirmation d'abonnement"
-            message = render_to_string('subscribe/subscription-confirmation-email.txt', {'obj': self})
+            if self.from_issue == 3:
+                message = render_to_string('subscribe/subscription-confirmation-email-3-6.txt', {'obj': self})
+            else:
+                message = render_to_string('subscribe/subscription-confirmation-email-2-5.txt', {'obj': self})
             sender = "lesyeuxouverts@medor.coop"
             recipients = [self.email]
             send_mail(subject, message, sender, recipients, fail_silently=False)
