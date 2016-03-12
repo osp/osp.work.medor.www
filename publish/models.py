@@ -230,7 +230,7 @@ class ArticleMembership(models.Model):
 
     @property
     def last_page(self):
-        return self.folio + self.page_number
+        return self.folio + self.page_number - 1
 
     @property
     def is_even(self):
