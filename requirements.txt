@@ -1,17 +1,37 @@
-Django<1.8
-pytz==2014.7
-unicodecsv==0.9.4
+Django<1.9
+pytz
 
-django-cms<3.1
-djangocms-text-ckeditor<2.5
+
+# Django CMS
+django-cms<3.3
+django-treebeard>=2.0
+
+djangocms-admin-style>=1.0.6
+
+django-classy-tags>=0.3.4.1
+html5lib>=0.999
+django-sekizai>=0.7
 
 # Optional, recommended packages
-Pillow>=2
-django-filer<1.0
-django-polymorphic<0.8
-cmsplugin-filer<0.11
-django-reversion<1.9
+djangocms-text-ckeditor>=2.8.1
+
+djangocms-column
+djangocms-googlemap
+djangocms-inherit
+djangocms-link
+djangocms-style
+
+django-reversion>=1.8.7,<1.9
 django-reversion-compare<0.6
+
+easy_thumbnails
+django-filer>=0.9.12
+cmsplugin-filer>=0.10.2
+Pillow>=2.3
+
+
+# Exporting data to csv with unicode support
+unicodecsv==0.9.4
 
 # Event list on the homepage (subscribe_tags)
 caldav==0.4.0
@@ -34,6 +54,8 @@ django-admin-sortable2
 djangorestframework
 django-filter==0.11.0
 django-cors-headers==1.1.0
-html5lib>=0.999
 git+git://github.com/aleray/html5lib_typogrify.git
 django-ckeditor==5.0.2
+
+# upgrade to dj 1.8 needs this
+django-formtools

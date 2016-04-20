@@ -62,7 +62,7 @@ INSTALLED_APPS = (
     'collaborate',
 
     'cms',  # django CMS itself
-    'mptt',
+    'treebeard',
     'menus',  # helper for model independent hierarchical website navigation
     'sekizai',  # for javascript and css management
     'reversion',
@@ -103,6 +103,8 @@ INSTALLED_APPS = (
     'ckeditor',
 
     'reversion_compare', # https://github.com/jedie/django-reversion-compare
+
+    'formtools'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,7 +113,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.doc.XViewMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -121,23 +123,36 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.language.LanguageCookieMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'sekizai.context_processors.sekizai',
-    'cms.context_processors.cms_settings',
-)
 
-TEMPLATE_DIRS = (
-    # The docs say it should be absolute path: BASE_DIR is precisely one.
-    # Life is wonderful!
-    os.path.join(BASE_DIR, "medor", "templates"),
-)
+TEMPLATES = [
+    {
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'APP_DIRS': True,
+    'DIRS': (os.path.join(BASE_DIR, "medor", "templates"),),
+    'OPTIONS': {
+        'context_processors':
+        (
+        'django.contrib.auth.context_processors.auth',
+        'django.template.context_processors.debug',
+        'django.template.context_processors.i18n',
+        'django.template.context_processors.media',
+        'django.template.context_processors.static',
+        'django.template.context_processors.tz',
+        'django.template.context_processors.csrf',
+        'django.template.context_processors.request',
+        'django.contrib.messages.context_processors.messages',
+        'sekizai.context_processors.sekizai',
+        'cms.context_processors.cms_settings',
+        ),
+    }
+    },
+]
+
+# TEMPLATE_DIRS = (
+    # # The docs say it should be absolute path: BASE_DIR is precisely one.
+    # # Life is wonderful!
+    # os.path.join(BASE_DIR, "medor", "templates"),
+# )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -182,9 +197,9 @@ CMS_TEMPLATES = (
 )
 
 MIGRATION_MODULES = {
-    'cms': 'cms.migrations_django',
-    'menus': 'menus.migrations_django',
-    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
+    # 'cms': 'cms.migrations_django',
+    # 'menus': 'menus.migrations_django',
+    # 'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
     # 'filer': 'filer.migrations_django',
     'cmsplugin_filer_link': 'cmsplugin_filer_link.migrations_django',
     'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',

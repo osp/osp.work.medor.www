@@ -12,7 +12,7 @@ import html5lib
 from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
-from django.contrib.webdesign.lorem_ipsum import paragraphs
+# from django.contrib.webdesign.lorem_ipsum import paragraphs
 
 from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
@@ -75,7 +75,8 @@ def body_default():
     then converts it to HTML via Markdown.
     """
     md = markdown.Markdown(output_format="html5", extensions=['extra'])
-    return md.convert(u"\n\n".join(paragraphs(30)))
+    return "foo"
+    # return md.convert(u"\n\n".join(paragraphs(30)))
 
 
 class Article(models.Model):
