@@ -12,7 +12,7 @@
     {{ object.body|safe }}
         <p class="publication-date">{% if object.articlemembership_set.first %}
         {% with object.articlemembership_set.first as print_publication %}
-	        Publié dans {{ print_publication.issue }} le {{ print_publication.issue.publish_date|date:"d/m/Y" }},
+        Publié dans {{ print_publication.issue }}<!-- {{ print_publication.issue.publish_date|date:"d/m/Y" }}-->,
 	        {% if print_publication.single_page %}
 	            page {{ print_publication.first_page}}.
 	        {% else %}
