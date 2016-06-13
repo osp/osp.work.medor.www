@@ -2,7 +2,7 @@ Vous venez de vous abonner à Médor. Excellente idée! C’est la meilleure man
 
 *ATTENTION!* Votre abonnement débute à partir du numéro publié après réception de votre payement. Les abonnements payés avant le 11 mars couvrent les numéros 2 à 5. Les abonnements payés après le 11 mars couvrent les numéros 3 à 6. Les numéros précédents sont disponibles dans plus de 350 points de vente (liste consultable ici: https://medor.coop/fr/magazine/acheter/).
 
-Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée:
+Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte ING BE85 3631 6228 7306 (BIC: BBRUBEBB) avec la communication structurée:
 
 {{ obj.structured_communication }}
 

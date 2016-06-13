@@ -1,6 +1,6 @@
 Bonjour,
 
-Vous vous êtes abonné à Médor il y a quelque temps. Excellente idée ! Mais nous sommes inquiets : malgré notre premier rappel, nous n'avons toujours pas reçu votre paiement. Merci de nous faire parvenir au plus vite ces {{ obj.amount }} euros, par virement sur le compte Triodos BE96 5230 8068 7305 (BIC: TRIOBEBB) avec la communication structurée :
+Vous vous êtes abonné à Médor il y a quelque temps. Excellente idée ! Mais nous sommes inquiets : malgré notre premier rappel, nous n'avons toujours pas reçu votre paiement. Merci de nous faire parvenir au plus vite ces {{ obj.amount }} euros, par virement sur le compte ING BE85 3631 6228 7306 (BIC: BBRUBEBB) avec la communication structurée :
 
 {{ obj.structured_communication }}
 
