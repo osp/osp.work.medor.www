@@ -1,5 +1,5 @@
 {% extends "base3.html" %}
-{% load cms_tags subscribe_tags %}
+{% load cms_tags subscribe_tags buy_tags %}
 
 {% block content %}
 <header>
@@ -19,8 +19,8 @@
 <p>Pourquoi s’abonner ?</p>
 
 <ul>
-	<li>Je prends part à l’indépendance d’un média basé sur l’investigation et le récit dans mon pays, la Belgique.</li>
-	<li>Je prends part à un projet collaboratif qui renforce le débat démocratique et se donne les moyens de penser et de chercher en profondeur.</li>
+    <li>Je prends part à l’indépendance d’un média basé sur l’investigation et le récit dans mon pays, la Belgique.</li>
+    <li>Je prends part à un projet collaboratif qui renforce le débat démocratique et se donne les moyens de penser et de chercher en profondeur.</li>
 </ul>
 </div>
 
@@ -31,15 +31,18 @@
 </div>
 <p><a href="https://umap.openstreetmap.fr/fr/map/points-de-vente-au-numero-3_90421">Voir en plein écran</a></p>
 
+<!--
 <dl id="libraires">
-	{% get_bookshops as cities_shops %}
-	{% for city_shops in cities_shops %}
-		<dt>{{ city_shops.0 }}</dt>
-		{% for shop in city_shops.1 %}
-			<dd>{{ shop }}</dd>
-		{% endfor %}
-	{% endfor %}
+    {% get_retail_outlet_list as retail_outlet_list %}
+    {% regroup retail_outlet_list by city as city_list %}
+    {% for city in city_list %}
+        <dt>{{ city.grouper }}</dt>
+        {% for shop in city.list %}
+            <dd>{{ shop.name }}</dd>
+        {% endfor %}
+    {% endfor %}
 </dl>
+-->
 
 <div class="group">
 <h2>Je souhaite vendre Médor</h2>
