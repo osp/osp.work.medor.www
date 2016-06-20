@@ -104,7 +104,9 @@ INSTALLED_APPS = (
 
     'reversion_compare', # https://github.com/jedie/django-reversion-compare
 
-    'formtools'
+    'formtools',
+
+    'buy'
 )
 
 MIDDLEWARE_CLASSES = (
