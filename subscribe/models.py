@@ -178,7 +178,10 @@ class Subscription(TransactionBase):
 
     def save(self, *args, **kwargs):
         if not self.from_issue:
-            if datetime.now() >= datetime(2016, 3, 11):
+            now = datetime.now()
+            if now >= datetime(2016, 6, 20):
+                self.from_issue = 4
+            if now >= datetime(2016, 3, 11):
                 self.from_issue = 3
             else:
                 self.from_issue = 2
