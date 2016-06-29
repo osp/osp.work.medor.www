@@ -181,7 +181,7 @@ class Subscription(TransactionBase):
             now = datetime.now()
             if now >= datetime(2016, 6, 20):
                 self.from_issue = 4
-            if now >= datetime(2016, 3, 11):
+            elif now >= datetime(2016, 3, 11):
                 self.from_issue = 3
             else:
                 self.from_issue = 2
