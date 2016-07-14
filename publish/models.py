@@ -14,6 +14,9 @@ from django.db.models import Sum
 from django.utils import timezone
 # from django.contrib.webdesign.lorem_ipsum import paragraphs
 
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
+from django.contrib.contenttypes.models import ContentType
+
 from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
 from filer.models.imagemodels import Image
@@ -53,20 +56,38 @@ class License(models.Model):
         return self.short_name or self.name or "Sans titre"
 
 
-class Issue(models.Model):
+class Contributor(models.Model):
     """
-    Represents an Issue of the Magazine
+    Represents a contributor, like a journalist or an illustrator.
     """
-    creation_date = models.DateTimeField("Date de création", auto_now_add=True)
-    title = models.CharField("Titre", max_length=1024, blank=True)
-    slug = models.SlugField("Slug", max_length=1024, blank=True, help_text="le texte utilisé pour construire les URLs")
-    publish_date = models.DateTimeField("Date de publication", blank=True, null=True, help_text="la date de sortie du numéro")
-
-    class Meta:
-        verbose_name = "Numéro"
+    name = models.CharField('nom', max_length=1024, blank=True)
 
     def __unicode__(self):
-        return self.title or "Sans titre"
+        return self.name
+
+
+class Role(models.Model):
+    """
+    Represents the role of a contributor, like "journalist" or an "illustrator".
+    """
+    name = models.CharField('nom', max_length=1024, blank=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Contribution(models.Model):
+    """
+    Represents a contribution
+    """
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    contributor = models.ForeignKey(Contributor)
+    role = models.ForeignKey(Role)
+
+    def __unicode__(self):
+        return self.contributor.__unicode__()
 
 
 def body_default():
@@ -100,6 +121,7 @@ class Article(models.Model):
     body = RichTextField('article', blank=True, default=body_default)
     authors = models.CharField("auteurs", max_length=1024, blank=True)
     peer_reviewers = models.CharField("parrains ou marraines", max_length=1024, blank=True)
+    contributions = GenericRelation(Contribution)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
     in_toc = models.BooleanField('montré dans le table de matière', default=True)
     published_online = models.BooleanField('publié en ligne', default=False)
@@ -190,6 +212,22 @@ class Article(models.Model):
 
         return serializer.render(stream)
 
+
+class Issue(models.Model):
+    """
+    Represents an Issue of the Magazine
+    """
+    creation_date = models.DateTimeField("Date de création", auto_now_add=True)
+    title = models.CharField("Titre", max_length=1024, blank=True)
+    slug = models.SlugField("Slug", max_length=1024, blank=True, help_text="le texte utilisé pour construire les URLs")
+    publish_date = models.DateTimeField("Date de publication", blank=True, null=True, help_text="la date de sortie du numéro")
+    contributions = GenericRelation(Contribution)
+
+    class Meta:
+        verbose_name = "Numéro"
+
+    def __unicode__(self):
+        return self.title or "Sans titre"
 
 
 class ArticleMembership(models.Model):

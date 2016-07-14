@@ -4,12 +4,25 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
 from django.utils.safestring import mark_safe
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
-from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License, Rubric
+from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License, Rubric, Contribution, Contributor, Role
 
 from reversion.admin import VersionAdmin
 from reversion_compare.admin import CompareVersionAdmin
+
+
+
+class ContributorAdmin(admin.ModelAdmin):
+    pass
+
+class RoleAdmin(admin.ModelAdmin):
+    pass
+
+
+class ContributionInline(GenericTabularInline):
+    model = Contribution
 
 
 class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -51,7 +64,7 @@ class LicenseAdmin(admin.ModelAdmin):
 
 
 class IssueAdmin(admin.ModelAdmin):
-    inlines = [ArticleMembershipInline,]
+    inlines = (ContributionInline, ArticleMembershipInline)
 
 
 class InIssueListFilter(admin.SimpleListFilter):
@@ -68,6 +81,7 @@ class InIssueListFilter(admin.SimpleListFilter):
 
 
 class ArticleAdmin(CompareVersionAdmin):
+    inlines = (ContributionInline,)
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'rubric', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', InIssueListFilter)
@@ -136,6 +150,8 @@ Pour créer la description, utilisez le champs ci-dessous."""
     image_explanation.allow_tags = True
 
 
+admin.site.register(Contributor, ContributorAdmin)
+admin.site.register(Role, RoleAdmin)
 admin.site.register(Rubric, RubricAdmin)
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(ArticleMembershipWeb, ArticleMembershipWebAdmin)
