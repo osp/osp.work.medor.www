@@ -96,6 +96,7 @@ class ArticleAdmin(CompareVersionAdmin):
                 ('status', 'license'),
                 ('authors', 'peer_reviewers'),
                 ('in_toc', 'published_online'),
+                'lead',
                 'body',
             )
         }),

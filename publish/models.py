@@ -118,6 +118,7 @@ class Article(models.Model):
     subtitle = models.CharField('sous-titre', max_length=1024, blank=True)
     rubric = models.ForeignKey(Rubric, blank=True, null=True, verbose_name="rubrique")
     slug = models.SlugField(max_length=1024, blank=True)
+    lead = RichTextField('chapo', blank=True)
     body = RichTextField('article', blank=True, default=body_default)
     authors = models.CharField("auteurs", max_length=1024, blank=True)
     peer_reviewers = models.CharField("parrains ou marraines", max_length=1024, blank=True)
@@ -135,9 +136,9 @@ class Article(models.Model):
         Look in the body text to find the ‘chapeau’, the lead text,
         that can be used as a description.
         """
-        dom = html5lib.parseFragment(self.body, treebuilder="etree", namespaceHTMLElements=False)
+        dom = html5lib.parseFragment(self.lead, treebuilder="etree", namespaceHTMLElements=False)
         for el in dom:
-            if el.tag == "p" and el.attrib.get("class") == "chapeau":
+            if el.tag == "p":
                 head = el.text or ""
                 # el.text does not return the entire text if you have <p>Text with <em>child</em> tags</p>
                 # cf http://stackoverflow.com/a/380717
