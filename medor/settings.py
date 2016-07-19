@@ -188,28 +188,11 @@ COMPRESS_CSS_FILTERS = [
 INTERNAL_IPS = ('127.0.0.1',)
 
 CMS_TEMPLATES = (
-    ('generic.html', 'Generic'),
     ('page.html', 'Page (simple)'),
-    ('subscribe/home.html', 'Appel'),
-    ('subscribe/home2.html', 'Appel2'),
-    ('subscribe/FAQ.html', 'FAQ'),
     ('styleguide.html', 'Feuille de style'),
     ('where-to-buy.html', 'Obtenir Médor'),
     ('magazine.html', 'Le magazine')
 )
-
-MIGRATION_MODULES = {
-    # 'cms': 'cms.migrations_django',
-    # 'menus': 'menus.migrations_django',
-    # 'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
-    # 'filer': 'filer.migrations_django',
-    'cmsplugin_filer_link': 'cmsplugin_filer_link.migrations_django',
-    'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
-    'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
-    'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
-    'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
-    'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
-}
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',

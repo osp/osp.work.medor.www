@@ -1,63 +1,203 @@
-{% extends "base3.html" %}
-{% load compress cms_tags sekizai_tags subscribe_tags menu_tags webdesign %}
-
-
-{% block content %}
+{% extends "base3.html" %} {% load compress cms_tags sekizai_tags subscribe_tags
+menu_tags webdesign %} {% block content %}
 <section>
-<article>
-    <header>
-        <p class="rubrique-title">En commun</p>
-        <p class="rubrique-subtitle">Des articles repris d’autres médias grace à leur license libre</p>
-        <h1>Bassel Khartabil</h1>
-        <h2>Le prisonnier syrien qui vit et risque de mourir pour Internet</h2>
-        <p class=authors>Stéphanie Vidal</p>
-    </header>
-    <p class="caption">
-        Défenseur mondialement connu de l'Internet libre et de la culture open source, il est emprisonné depuis trois ans et demi par le régime de Bachar el-Assad et vient d'être transféré de la prison d'Adra vers une destination inconnue.
-    </p>
-    <p>Bassel Khartabil, 34 ans, fervent défenseur d’un Internet libre et promoteur de la culture open source<a href=#sdfootnote1sym name=sdfootnote1anc><sup>1</sup></a>, est retenu prisonnier depuis le 15 mars 2012 dans les geôles du pouvoir syrien de Bachar el-Assad. D’après l’avis rendu par le Groupe de travail sur la détention arbitraire durant sa 72<sup>e</sup> session, qui s'est tenue à Genève en avril 2015<a href=#sdfootnote2sym name=sdfootnote2anc><sup>2</sup></a>, il serait détenu arbitrairement pour avoir <em>«exercé paisiblement son droit à la liberté d’expression»</em> et avoir <em>«prôné une utilisation non-restreinte d’Internet»</em>. Transféré le 3 octobre 2015 depuis la prison d’<a href="https://en.wikipedia.org/wiki/Adra_Prison">Adra</a>, située dans la banlieue nord-est de Damas, où il était incarcéré depuis décembre 2012, <a href="http://freebassel.org">il a été conduit dans un endroit inconnu</a>, possiblement pour être jugé. Inculpé sans qu’aucune preuve n’ait jamais été présentée contre lui, il est plus que jamais en danger.</p>
-    <figure><img src="http://www.slate.fr/sites/default/files/imagecache/1090x500/basselkhartabilphone.jpg">
-    <figcaption><a href="https://www.flickr.com/photos/christopheradams/">Christopher Adams</a> via Flickr, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a></figcaption>
-    </figure>
-    <p>Développeur reconnu mondialement pour ses contributions à des projets open source tels que Mozilla Firefox, Wikipédia ou Creative Commons, Bassel Khartabil était également engagé dans une action locale, fondant à Damas le Aiki Lab, lieu dédié aux pratiques artistiques numériques et à l’enseignement des technologies collaboratives. Pour l’ensemble de ses travaux, il a été distingué par le site Foreign Policy <a href="http://www.slate.fr/source/foreign-policy">(partenaire de Slate),</a> qui l’a placé en 19<sup>e</sup> position de son prestigieux classement des <a href="http://foreignpolicy.com/2012/11/26/the-fp-top-100-global-thinkers/">Global Thinkers 2012</a>, et a remporté en 2013 le <a href="https://www.indexoncensorship.org/2013/03/winners-index-awards-2013/">Digital Freedom Award de l’Index on Censorship</a>, une organisation internationale qui, depuis 1972, promeut et défend la liberté d’expression.</p>
-    <p>Son emprisonnement et son récent transfert affectent et inquiètent très profondément la communauté du libre et les activistes militant pour les droits de l'homme et la liberté fondamentale qu’est la libre communication des pensées et des opinions. A l'annonce de la nouvelle, Jillian C. York, directrice de l’Electronic Frontier Foundation (EFF), organisation défendant les libertés civiles dans le monde numérique<a href=#sdfootnote3sym name=sdfootnote3anc><sup>3</sup></a>, <a href="https://twitter.com/jilliancyork/status/650380722465730560">a posté sur son compte Twitter</a> le message suivant:</p>
-    <blockquote>
-    <p><em>«Nous savons que les pétitions ne vont pas convaincre la Syrie (ou quiconque) mais c’est le seul moyen que nous avons. Aidez-nous à faire passer le mot pour que Bassel puisse rester en sécurité.»</em></p>
-    </blockquote>
-    <p>En moins de 140 caractères, Jillian C. York est parvenue à évoquer deux réalités: le mutisme effrayant du gouvernement syrien face aux actions engagées pour la libération de Bassel Khartabil et la force de protection qui réside dans l’attention portée par les internautes au sort des prisonniers. Sur le premier point, Inès Osman, coordinatrice du service juridique de la fondation Alkarama, ONG faisant le lien entre les victimes de violations des droits de l'homme dans le monde arabe et les mécanismes des Nations unies, confirme l’impassibilité des autorités syriennes:</p>
-    <blockquote>
-        <p>«Nous avons engagé des actions auprès de l'ONU deux fois, en 2012 et 2014, et jamais les autorités syriennes n'ont donné suite aux requêtes onusiennes. Au mois d'avril dernier, <a href="https://fr.wikipedia.org/wiki/Groupe_de_travail_sur_la_d%C3%A9tention_arbitraire">le Groupe de travail sur la détention arbitraire</a> a appelé à la libération de Bassel, appel qui est encore une fois resté ignoré. Il est essentiel que la communauté internationale appelle à la mise en oeuvre de ces décisions, qui constatent clairement que ses droits les plus fondamentaux n'ont pas été respectés: il a été arrêté, détenu au secret, torturé puis déféré devant un juge militaire pour de fausses accusations.</p>
-        <p>Quand nous avons appris samedi que Bassel avait été transféré de la prison d'Adra vers une destination inconnue et que personne ne sait où il se trouve actuellement, nous avons immédiatement saisi le Groupe de travail sur les disparitions forcées. Nous espérons que cette fois, les autorités syriennes répondront.»</p>
-    </blockquote>
-    <p>Quand les droits ne sont plus respectés, les appels ne peuvent se conclure que sur une espérance. Ce qui nous amène au second point: plus celle-ci sera partagée, et donc présente dans le web conversationnel, plus elle pourra se concrétiser. Si l’engagement de Bassel Khartabil pour un Internet libre semble l’avoir mené en prison, l’attention que nous, internautes, accordons à son cas peut, dans une certaine mesure, le sortir de l’ombre. S’intéresser à sa vie est une des façons de parvenir à une prise de conscience douloureuse: en Syrie, on peut risquer de mourir parce que l’on utilise un smartphone ou que l’on comprend comment fonctionne Internet.</p>
-    <h3>Survivre à Adra, même sous les bombes</h3>
-    <p>Raconter, sur les cinq dernières années, l’histoire de Bassel Khartabil, c’est aussi tenter de dépeindre en filigrane le portrait d’une Syrie ravagée, du début de la révolution syrienne entre les 15 mars (premiers appels au soulèvement, dans la foulée de la révolution égyptienne) et 18 mars 2011 (premières manifestations «du vendredi», très violemment réprimées) jusqu’à sa lente transformation en conflit armé inextricable qui a fait plus de 240.000 morts et des millions de déplacés.</p>
-    
-    <figure>
-        <img src="http://www.slate.fr/sites/default/files/photos/4670781482_d072301ef0_b.jpg" />
-        <figcaption>Bassel Khartabil, le 5 juin 2010. <a href="https://www.flickr.com/photos/joi/4670781482" target="_blank">Joi Ito</a> License: <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY</a>.</figcaption>
-    </figure>
-    
-    <p>Bassel Khartabil, contraint de rester par la force, fait lui partie de ces prisonniers que l’on peine à décompter: on parle de 8.000 détenus, dont 600 femmes, dans la seule prison d’Adra, soit trois fois plus que sa capacité escomptée. <a href="http://www.dailystar.com.lb/News/Middle-East/2014/Dec-29/282494-damascus-adra-prison-massively-overcrowded.ashx">Adra rassemble le tout-venant du motif de détention</a>: sont agglutinés là-bas trafiquants de drogue et consommateurs, meurtriers et voleurs, mais aussi des prisonniers dont le nom est connu hors des frontières syriennes pour leur engagement en faveur de la liberté d’expression. <a href="https://fr.rsf.org/syrie-mazen-darwich-enfin-libre-10-08-2015,48210.html">Mazen Darwish</a>, par exemple: le président du Centre syrien pour les médias et la liberté d’expression, arrêté en février 2012, presque un mois jour pour jour avant Bassel Khartabil, en a été libéré provisoirement le 10 août 2015 avant d’être acquitté, le 31 du même mois, des charges de «publication d’informations sur des actes terroristes».</p>
-    
-    <p>Inculpé pour d’autres charges, Bassel Khartabil fait l’objet d’accusations devant les tribunaux militaires et a de ce fait été exclu de <a href="http://fr.rsf.org/syrie-nouvelle-traduction-free-peaceful-21-07-2014,46665.html">l’amnistie politique générale de juin 2014</a> qui, bien que manquant de transparence, a effacé rétroactivement des accusations portées contre certains militants pacifiques. Il se trouvait donc encore à Adra lorsque la prison à été prise d’assaut par le groupe armé rebelle Jaysh al-Islam, qui est parvenu à prendre le contrôle de deux de ses bâtiments le 12 septembre dernier, date qui semble symbolique puisque il s’agissait du lendemain du cinquantième anniversaire de Bachar el-Assad. Les prisonniers se sont ensuite retrouvés en proie aux bombardements qui faisaient rage entre l’armée régulière défendant la prison et les rebelles comptant la libérer. Bassel Khartabil a survécu à ce tonnerre de feu mais il semblerait qu’<a href="http://www.dailystar.com.lb/News/Middle-East/2015/Sep-12/314959-11-dead-in-rebel-shelling-on-damascus-activists.ashx">une dizaine</a>, voire une vingtaine, de prisonniers y aient laissé la vie et que plusieurs dizaines, voire une centaine, aient été blessés.</p>
+    <article>
+        <header>
+            <p class="rubrique-title">En commun</p>
+            <p class="rubrique-subtitle">Des articles repris d’autres médias grace à leur license libre</p>
+            <h1>Bassel Khartabil</h1>
+            <h2>Le prisonnier syrien qui vit et risque de mourir pour Internet</h2>
+            <p class=authors>Stéphanie Vidal</p>
+        </header>
+        <p class="caption">
+            Défenseur mondialement connu de l'Internet libre et de la culture open source,
+            il est emprisonné depuis trois ans et demi par le régime de Bachar
+            el-Assad et vient d'être transféré de la prison d'Adra vers une destination
+            inconnue.
+        </p>
+        <p>Bassel Khartabil, 34 ans, fervent défenseur d’un Internet libre et promoteur
+            de la culture open source<a href=#sdfootnote1sym name=sdfootnote1anc><sup>1</sup></a>,
+            est retenu prisonnier depuis le 15 mars 2012 dans les geôles du pouvoir
+            syrien de Bachar el-Assad. D’après l’avis rendu par le Groupe de travail
+            sur la détention arbitraire durant sa 72<sup>e</sup> session, qui s'est
+            tenue à Genève en avril 2015<a href=#sdfootnote2sym name=sdfootnote2anc><sup>2</sup></a>,
+            il serait détenu arbitrairement pour avoir <em>«exercé paisiblement son droit à la liberté d’expression»</em> et
+            avoir <em>«prôné une utilisation non-restreinte d’Internet»</em>. Transféré
+            le 3 octobre 2015 depuis la prison d’<a href="https://en.wikipedia.org/wiki/Adra_Prison">Adra</a>,
+            située dans la banlieue nord-est de Damas, où il était incarcéré depuis
+            décembre 2012, <a href="http://freebassel.org">il a été conduit dans un endroit inconnu</a>,
+            possiblement pour être jugé. Inculpé sans qu’aucune preuve n’ait jamais
+            été présentée contre lui, il est plus que jamais en danger.</p>
+        <figure>
+            <img src="http://www.slate.fr/sites/default/files/imagecache/1090x500/basselkhartabilphone.jpg">
+            <figcaption><a href="https://www.flickr.com/photos/christopheradams/">Christopher Adams</a> via
+                Flickr, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a>
+            </figcaption>
+        </figure>
+        <p>Développeur reconnu mondialement pour ses contributions à des projets open
+            source tels que Mozilla Firefox, Wikipédia ou Creative Commons, Bassel
+            Khartabil était également engagé dans une action locale, fondant à
+            Damas le Aiki Lab, lieu dédié aux pratiques artistiques numériques
+            et à l’enseignement des technologies collaboratives. Pour l’ensemble
+            de ses travaux, il a été distingué par le site Foreign Policy <a href="http://www.slate.fr/source/foreign-policy">(partenaire de Slate),</a> qui
+            l’a placé en 19<sup>e</sup> position de son prestigieux classement des
+            <a
+            href="http://foreignpolicy.com/2012/11/26/the-fp-top-100-global-thinkers/">Global Thinkers 2012</a>, et a remporté en 2013 le <a href="https://www.indexoncensorship.org/2013/03/winners-index-awards-2013/">Digital Freedom Award de l’Index on Censorship</a>,
+                une organisation internationale qui, depuis 1972, promeut et défend
+                la liberté d’expression.</p>
+        <p>Son emprisonnement et son récent transfert affectent et inquiètent très
+            profondément la communauté du libre et les activistes militant pour
+            les droits de l'homme et la liberté fondamentale qu’est la libre communication
+            des pensées et des opinions. A l'annonce de la nouvelle, Jillian C.
+            York, directrice de l’Electronic Frontier Foundation (EFF), organisation
+            défendant les libertés civiles dans le monde numérique<a href=#sdfootnote3sym
+            name=sdfootnote3anc><sup>3</sup></a>, <a href="https://twitter.com/jilliancyork/status/650380722465730560">a posté sur son compte Twitter</a> le
+            message suivant:</p>
+        <blockquote>
+            <p><em>«Nous savons que les pétitions ne vont pas convaincre la Syrie (ou quiconque) mais c’est le seul moyen que nous avons. Aidez-nous à faire passer le mot pour que Bassel puisse rester en sécurité.»</em>
+            </p>
+        </blockquote>
+        <p>En moins de 140 caractères, Jillian C. York est parvenue à évoquer deux
+            réalités: le mutisme effrayant du gouvernement syrien face aux actions
+            engagées pour la libération de Bassel Khartabil et la force de protection
+            qui réside dans l’attention portée par les internautes au sort des
+            prisonniers. Sur le premier point, Inès Osman, coordinatrice du service
+            juridique de la fondation Alkarama, ONG faisant le lien entre les victimes
+            de violations des droits de l'homme dans le monde arabe et les mécanismes
+            des Nations unies, confirme l’impassibilité des autorités syriennes:</p>
+        <blockquote>
+            <p>«Nous avons engagé des actions auprès de l'ONU deux fois, en 2012 et
+                2014, et jamais les autorités syriennes n'ont donné suite aux requêtes
+                onusiennes. Au mois d'avril dernier, <a href="https://fr.wikipedia.org/wiki/Groupe_de_travail_sur_la_d%C3%A9tention_arbitraire">le Groupe de travail sur la détention arbitraire</a> a
+                appelé à la libération de Bassel, appel qui est encore une fois
+                resté ignoré. Il est essentiel que la communauté internationale
+                appelle à la mise en oeuvre de ces décisions, qui constatent clairement
+                que ses droits les plus fondamentaux n'ont pas été respectés: il
+                a été arrêté, détenu au secret, torturé puis déféré devant un juge
+                militaire pour de fausses accusations.</p>
+            <p>Quand nous avons appris samedi que Bassel avait été transféré de la
+                prison d'Adra vers une destination inconnue et que personne ne
+                sait où il se trouve actuellement, nous avons immédiatement saisi
+                le Groupe de travail sur les disparitions forcées. Nous espérons
+                que cette fois, les autorités syriennes répondront.»</p>
+        </blockquote>
+        <p>Quand les droits ne sont plus respectés, les appels ne peuvent se conclure
+            que sur une espérance. Ce qui nous amène au second point: plus celle-ci
+            sera partagée, et donc présente dans le web conversationnel, plus elle
+            pourra se concrétiser. Si l’engagement de Bassel Khartabil pour un
+            Internet libre semble l’avoir mené en prison, l’attention que nous,
+            internautes, accordons à son cas peut, dans une certaine mesure, le
+            sortir de l’ombre. S’intéresser à sa vie est une des façons de parvenir
+            à une prise de conscience douloureuse: en Syrie, on peut risquer de
+            mourir parce que l’on utilise un smartphone ou que l’on comprend comment
+            fonctionne Internet.</p>
+        <h3>Survivre à Adra, même sous les bombes</h3>
+        <p>Raconter, sur les cinq dernières années, l’histoire de Bassel Khartabil,
+            c’est aussi tenter de dépeindre en filigrane le portrait d’une Syrie
+            ravagée, du début de la révolution syrienne entre les 15 mars (premiers
+            appels au soulèvement, dans la foulée de la révolution égyptienne)
+            et 18 mars 2011 (premières manifestations «du vendredi», très violemment
+            réprimées) jusqu’à sa lente transformation en conflit armé inextricable
+            qui a fait plus de 240.000 morts et des millions de déplacés.</p>
 
-    <aside class=exergue> <blockquote> <p>Comment raconter la journée qui suivra ? Le sentiment d’être en famille chez des gens qu’on voit pour la première fois.</p> </blockquote> </aside>
+        <figure>
+            <img src="http://www.slate.fr/sites/default/files/photos/4670781482_d072301ef0_b.jpg"
+            />
+            <figcaption>Bassel Khartabil, le 5 juin 2010. <a href="https://www.flickr.com/photos/joi/4670781482"
+                target="_blank">Joi Ito</a> License: <a href="https://creativecommons.org/licenses/by/2.0/"
+                target="_blank">CC BY</a>.</figcaption>
+        </figure>
 
-    <p>Encore une fois, quand il s’agit de la Syrie, les sources sont complexes à obtenir. Les chiffrent se couvrent d’approximations et les paroles s’étranglent dans la crainte et la lenteur des communications possiblement surveillées. Comme l’a souligné pertinemment l’avocat Benoît Huet <a href="http://www.liberation.fr/monde/2015/09/06/syrie-un-nouveau-journalisme-de-guerre_1376872">dans une tribune parue dans Libération</a>, la guerre en Syrie est aussi devenue, dans un monde connecté, une guerre de l’information, posant la question de sa disponibilité et de sa manipulation. À l'échelle internationale, cette guerre de l’information nous empêche de concevoir avec acuité la réalité factuelle d’un conflit aussi médiatiquement omniprésent que terriblement lointain du fait de son extrême complexité. Elle ne doit pas nous faire négliger l’autre guerre de l’information, qui fait rage cette fois au niveau local: au coeur même de de la Syrie, les informations personnelles et les contenus postés sur les réseaux sociaux sont employés comme des armes.</p>
+        <p>Bassel Khartabil, contraint de rester par la force, fait lui partie de
+            ces prisonniers que l’on peine à décompter: on parle de 8.000 détenus,
+            dont 600 femmes, dans la seule prison d’Adra, soit trois fois plus
+            que sa capacité escomptée. <a href="http://www.dailystar.com.lb/News/Middle-East/2014/Dec-29/282494-damascus-adra-prison-massively-overcrowded.ashx">Adra rassemble le tout-venant du motif de détention</a>:
+            sont agglutinés là-bas trafiquants de drogue et consommateurs, meurtriers
+            et voleurs, mais aussi des prisonniers dont le nom est connu hors des
+            frontières syriennes pour leur engagement en faveur de la liberté d’expression.
+            <a
+            href="https://fr.rsf.org/syrie-mazen-darwich-enfin-libre-10-08-2015,48210.html">Mazen Darwish</a>, par exemple: le président du Centre syrien pour
+                les médias et la liberté d’expression, arrêté en février 2012,
+                presque un mois jour pour jour avant Bassel Khartabil, en a été
+                libéré provisoirement le 10 août 2015 avant d’être acquitté, le
+                31 du même mois, des charges de «publication d’informations sur
+                des actes terroristes».</p>
 
-    
-    
-    
-    <ol class=footnotes>
-        <li><a href=#sdfootnote1anc name=sdfootnote1sym>1</a> En 2011, une di­rec­tive eu­ro­péenne pous­sée no­tam­ment par la France, les chan­teurs Cliff Ri­chard et Pla­ci­do Do­min­go (pré­sident de la Fé­dé­ra­tion in­ter­na­tio­nale de l’in­dus­trie pho­no­gra­phique) a fait pas­ser la du­rée de pro­tec­tion des droits des ar­tistes-in­ter­prètes mu­si­caux sur leurs œuvres de 50 à 70 ans après l’en­re­gis­tre­ment. En France, cette du­rée peut être al­lon­gée de trente ans si l’au­teur est « mort pour la pa­trie ». <em>Le Pe­tit Prince</em> de Saint-Exu­pé­ry, dis­pa­ru en 1944, est ain­si dans le do­maine pu­blic en Bel­gique, mais pas dans son propre pays !</li>
-        <li><a href=#sdfootnote2anc name=sdfootnote2sym>2</a> <em>Mein Kampf</em> a connu, ces dix der­nières an­nées, des suc­cès de vente en Inde et en Tur­quie, no­tam­ment, sans comp­ter une dif­fu­sion im­por­tante sur In­ter­net, par exemple sur Ama­zon (en ver­sion an­glaise) où il a été un best-seller.</li>
-        <li><a href=#sdfootnote3anc name=sdfootnote3sym>3</a> <a href=http://info.arte.tv/fr/que-faire-de-mein-kampf>http ://in­fo.arte.tv/fr/que-faire-de-mein-kampf</a></li>
-    </ol>
+        <p>Inculpé pour d’autres charges, Bassel Khartabil fait l’objet d’accusations
+            devant les tribunaux militaires et a de ce fait été exclu de <a href="http://fr.rsf.org/syrie-nouvelle-traduction-free-peaceful-21-07-2014,46665.html">l’amnistie politique générale de juin 2014</a> qui,
+            bien que manquant de transparence, a effacé rétroactivement des accusations
+            portées contre certains militants pacifiques. Il se trouvait donc encore
+            à Adra lorsque la prison à été prise d’assaut par le groupe armé rebelle
+            Jaysh al-Islam, qui est parvenu à prendre le contrôle de deux de ses
+            bâtiments le 12 septembre dernier, date qui semble symbolique puisque
+            il s’agissait du lendemain du cinquantième anniversaire de Bachar el-Assad.
+            Les prisonniers se sont ensuite retrouvés en proie aux bombardements
+            qui faisaient rage entre l’armée régulière défendant la prison et les
+            rebelles comptant la libérer. Bassel Khartabil a survécu à ce tonnerre
+            de feu mais il semblerait qu’<a href="http://www.dailystar.com.lb/News/Middle-East/2015/Sep-12/314959-11-dead-in-rebel-shelling-on-damascus-activists.ashx">une dizaine</a>,
+            voire une vingtaine, de prisonniers y aient laissé la vie et que plusieurs
+            dizaines, voire une centaine, aient été blessés.</p>
 
-<aside class=making-of> <h1>La cuisine de <em>Médor</em></h1> <p>Peu après ma pre­mière vi­site au vil­lage na­tal de ma grand-­mère, j’ai pro­po­sé ce su­jet à Me­dor, dont les fon­da­teurs, comme pour sa­voir quelle Bel­gique le ma­ga­zine re­pré­sen­te­rait, ve­naient de s’in­ter­ro­ger sur leurs ori­gines à tous. Je tom­bais bien. Le texte a été ré­di­gé en juillet à l’Ab­baye d’Or­val où, à l’heure d’écrire ces lignes, il se dit que son père ab­bé, Lode Van Hecke, pour­rait être élu pri­mat de Bel­gique. Lui aus­si, un Fla­mand mi­gré en Wallonie.</p> <p class=auteur>J-M. L.</p> </aside>
+        <aside class=exergue>
+            <blockquote>
+                <p>Comment raconter la journée qui suivra ? Le sentiment d’être en
+                    famille chez des gens qu’on voit pour la première fois.</p>
+            </blockquote>
+        </aside>
 
-</article>
+        <p>Encore une fois, quand il s’agit de la Syrie, les sources sont complexes
+            à obtenir. Les chiffrent se couvrent d’approximations et les paroles
+            s’étranglent dans la crainte et la lenteur des communications possiblement
+            surveillées. Comme l’a souligné pertinemment l’avocat Benoît Huet
+            <a
+            href="http://www.liberation.fr/monde/2015/09/06/syrie-un-nouveau-journalisme-de-guerre_1376872">dans une tribune parue dans Libération</a>, la guerre en Syrie est
+                aussi devenue, dans un monde connecté, une guerre de l’information,
+                posant la question de sa disponibilité et de sa manipulation. À
+                l'échelle internationale, cette guerre de l’information nous empêche
+                de concevoir avec acuité la réalité factuelle d’un conflit aussi
+                médiatiquement omniprésent que terriblement lointain du fait de
+                son extrême complexité. Elle ne doit pas nous faire négliger l’autre
+                guerre de l’information, qui fait rage cette fois au niveau local:
+                au coeur même de de la Syrie, les informations personnelles et
+                les contenus postés sur les réseaux sociaux sont employés comme
+                des armes.</p>
+
+
+
+
+        <ol class=footnotes>
+            <li><a href=#sdfootnote1anc name=sdfootnote1sym>1</a> En 2011, une di­rec­tive
+                eu­ro­péenne pous­sée no­tam­ment par la France, les chan­teurs
+                Cliff Ri­chard et Pla­ci­do Do­min­go (pré­sident de la Fé­dé­ra­tion
+                in­ter­na­tio­nale de l’in­dus­trie pho­no­gra­phique) a fait pas­ser
+                la du­rée de pro­tec­tion des droits des ar­tistes-in­ter­prètes
+                mu­si­caux sur leurs œuvres de 50 à 70 ans après l’en­re­gis­tre­ment.
+                En France, cette du­rée peut être al­lon­gée de trente ans si l’au­teur
+                est « mort pour la pa­trie ». <em>Le Pe­tit Prince</em> de Saint-Exu­pé­ry,
+                dis­pa­ru en 1944, est ain­si dans le do­maine pu­blic en Bel­gique,
+                mais pas dans son propre pays !</li>
+            <li><a href=#sdfootnote2anc name=sdfootnote2sym>2</a> <em>Mein Kampf</em> a
+                connu, ces dix der­nières an­nées, des suc­cès de vente en Inde
+                et en Tur­quie, no­tam­ment, sans comp­ter une dif­fu­sion im­por­tante
+                sur In­ter­net, par exemple sur Ama­zon (en ver­sion an­glaise)
+                où il a été un best-seller.</li>
+            <li><a href=#sdfootnote3anc name=sdfootnote3sym>3</a> <a href=http://info.arte.tv/fr/que-faire-de-mein-kampf>http ://in­fo.arte.tv/fr/que-faire-de-mein-kampf</a>
+            </li>
+        </ol>
+
+        <aside class=making-of>
+            <h1>La cuisine de <em>Médor</em></h1> 
+            <p>Peu après ma pre­mière vi­site au vil­lage na­tal de ma grand-­mère,
+                j’ai pro­po­sé ce su­jet à Me­dor, dont les fon­da­teurs, comme
+                pour sa­voir quelle Bel­gique le ma­ga­zine re­pré­sen­te­rait,
+                ve­naient de s’in­ter­ro­ger sur leurs ori­gines à tous. Je tom­bais
+                bien. Le texte a été ré­di­gé en juillet à l’Ab­baye d’Or­val où,
+                à l’heure d’écrire ces lignes, il se dit que son père ab­bé, Lode
+                Van Hecke, pour­rait être élu pri­mat de Bel­gique. Lui aus­si,
+                un Fla­mand mi­gré en Wallonie.</p>
+            <p class=auteur>J-M. L.</p>
+        </aside>
+
+    </article>
 </section>
 {% endblock %}
-

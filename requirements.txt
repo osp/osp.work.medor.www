@@ -9,11 +9,10 @@ django-treebeard>=2.0
 djangocms-admin-style>=1.0.6
 
 django-classy-tags>=0.3.4.1
-html5lib>=0.999
 django-sekizai>=0.7
 
 # Optional, recommended packages
-djangocms-text-ckeditor>=2.8.1
+djangocms-text-ckeditor>=3.0.1
 
 djangocms-column
 djangocms-googlemap
@@ -54,8 +53,10 @@ django-admin-sortable2
 djangorestframework
 django-filter==0.11.0
 django-cors-headers==1.1.0
-git+git://github.com/aleray/html5lib_typogrify.git
 django-ckeditor==5.0.2
 
-# upgrade to dj 1.8 needs this
+# Upgrade to dj 1.8 needs this
 django-formtools
+
+# Temporarilly fixes <https://github.com/divio/djangocms-text-ckeditor/pull/335>
+html5lib>=0.90,!=0.9999,!=0.99999,<0.99999999
