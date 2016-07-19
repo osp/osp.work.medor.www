@@ -1,15 +1,15 @@
 <header>
     {% if object.article.rubric.title %}
-    <p class="rubrique-title">{{ object.article.rubric.title|safe }}</p>
+    <p class="rubric-title">{{ object.article.rubric.title|safe }}</p>
     {% endif %}
     {% if object.article.rubric.subtitle %}
-    <p class="rubrique-subtitle">{{ object.article.rubric.subtitle|safe }}</p>
+    <p class="rubric-subtitle">{{ object.article.rubric.subtitle|safe }}</p>
     {% endif %}
-    <h1>{{ object.article.title|safe }}</h1>
+    <h1 class="headline">{{ object.article.title|safe }}</h1>
     {% if object.article.subtitle %}
-    <h2>{{ object.article.subtitle|safe }}</h2>
+    <h2 class="subhead">{{ object.article.subtitle|safe }}</h2>
     {% endif %}
-    <p class="authors">{{ object.article.authors|safe }}</p>
+    <p class="byline">{{ object.article.authors|safe }}</p>
 </header>
 
 {{ object.article.body|safe }}
