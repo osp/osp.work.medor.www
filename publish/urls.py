@@ -23,14 +23,6 @@ class LicenseSerializer(serializers.HyperlinkedModelSerializer):
         model = Issue
 
 
-# Serializers define the API representation.
-class IssueSerializer(serializers.HyperlinkedModelSerializer):
-    id = serializers.ReadOnlyField()
-
-    class Meta:
-        model = Issue
-
-
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
     rubric = RubricSerializer()
@@ -47,6 +39,15 @@ class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ArticleMembership
         depth = 1
+
+
+# Serializers define the API representation.
+class IssueSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+    articlemembership_set = ArticleMembershipSerializer(many=True)
+
+    class Meta:
+        model = Issue
 
 
 # ViewSets define the view behavior.
