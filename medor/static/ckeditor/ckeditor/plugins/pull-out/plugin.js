@@ -9,47 +9,43 @@
  */
 
 // Register the plugin within the editor.
-CKEDITOR.plugins.add( 'citation', {
+CKEDITOR.plugins.add( 'pull-out', {
     // This plugin requires the Widgets System defined in the 'widget' plugin.
     requires: 'widget',
 
     // Register the icon used for the toolbar button. It must be the same
     // as the name of the widget.
-    icons: 'citation',
+    icons: 'pull-out',
 
     // The plugin initialization logic goes inside this method.
     init: function( editor ) {
         // Register the citation widget.
-        editor.widgets.add( 'citation', {
+        editor.widgets.add( 'pull-out', {
             // Allow all HTML elements and classes that this widget requires.
             // Read more about the Advanced Content Filter here:
             // * http://docs.ckeditor.com/#!/guide/dev_advanced_content_filter
             // * http://docs.ckeditor.com/#!/guide/plugin_sdk_integration_with_acf
-            allowedContent: 'aside(!exergue); blockquote; p; em; footer',
+            allowedContent: 'blockquote p em footer sub sup',
 
             // Minimum HTML which is required by this widget to work.
-            requiredContent: 'aside(exergue)',
+            requiredContent: 'aside(pull-out)',
 
             // Define two nested editable areas.
             editables: {
                 quote: {
                     // Define a CSS selector used for finding the element inside the widget element.
-                    selector: 'p',
+                    selector: 'blockquote',
                     // Define content allowed in this nested editable. Its content will be
                     // filtered accordingly and the toolbar will be adjusted when this editable
                     // is focused.
-                    allowedContent: 'em sub sup'
+                    allowedContent: 'p footer em sub sup'
                 },
-                signature: {
-                    selector: 'footer',
-                    allowedContent: 'em sup sub'
-                }
             },
 
             // Define the template of a new Simple Box widget.
             // The template will be used when creating new instances of the Simple Box widget.
             template:
-                '<aside class="exergue">' +
+                '<aside class="pull-out">' +
                     '<blockquote>' +
                         '<p><em>«Ici la citation entre guillemets.»</em></p>' +
                         '<footer>Nom de l´auteur</footer>' +
@@ -63,7 +59,7 @@ CKEDITOR.plugins.add( 'citation', {
             //
             // Note: In order to be able to translate your widget you should use the
             // editor.lang.citation.* property. A string was used directly here to simplify this tutorial.
-            button: 'Citation en exergue',
+            button: 'Exergue',
 
             // Check the elements that need to be converted to widgets.
             //
@@ -73,7 +69,7 @@ CKEDITOR.plugins.add( 'citation', {
             upcast: function( element ) {
                 // Return "true" (that element needs to converted to a Simple Box widget)
                 // for all <aside> elements with a "citation" class.
-                return element.name == 'aside' && element.hasClass( 'exergue' );
+                return element.name == 'aside' && element.hasClass( 'pull-out' );
             }
         } );
     }

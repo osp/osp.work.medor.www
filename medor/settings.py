@@ -242,24 +242,21 @@ CKEDITOR_JQUERY_URL = '/static/components/jquery/jquery.min.js'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
-        'format_tags': 'chapeau;intertitre;surtitre;fin;auteur;question;normal',
+        'format_tags': 'chapeau;intertitre;surtitre;question;normal',
+        'format_chapeau': {'element': 'p', 'name' : 'Chapô', 'attributes' : {'class' : 'chapeau'}},
         'format_intertitre': {'element': 'h2', 'name' : 'Intertitre'},
         'format_surtitre': {'element': 'h3', 'name' : 'Sur- ou sous-titre'},
-        'format_chapeau': {'element': 'p', 'name' : 'Chapô', 'attributes' : {'class' : 'chapeau'}},
-        'format_lettrine': {'element': 'span', 'name' : 'Lettrine', 'attributes' : {'class' : 'lettrine'}},
-        'format_auteur': {'element': 'p', 'name' : 'Signature finale', 'attributes' : {'class' : 'auteur'}},
-        'format_fin': {'element': 'p', 'name' : 'Para final', 'attributes' : {'class' : 'fin'}},
         'format_question': {'element': 'p', 'name' : 'Question', 'attributes' : {'class' : 'question'}},
         'format_normal': {'element': 'p', 'name' : 'Texte normal'},
         'entities': False,
         'image2_captionedClass': '',
-        'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; div[class]; aside[id](exergue,making-of,encadre); p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only,auteur); iframe[src,width,height,frameborder,webkitallowfullscreen,mozallowfullscreen,allowfullscreen]',
+        'extraAllowedContent': 'h1 abbr figure figcaption footer small dl dt dd; div[class]; aside[id](exergue,making-of,encadre,pull-out,sidebar,footnotes); p(chapeau,intro-medor,question,auteur,fin,debut); ol(footnotes); img[data-*]; video[controls,src]; span(lettrine,print-only,auteur); iframe[src,width,height,frameborder,webkitallowfullscreen,mozallowfullscreen,allowfullscreen]',
         'image2_prefillDimensions': False,
         'admin_url': '/admin/',
         'contentsCss':'https://medor.coop/static/CACHE/css/f3b96be794f8.css',
         'toolbar_Custom': [
             ['Format'],
-            ['Citation', 'Emphasis'],
+            ['Pull-out', 'Sidebar', 'Footer'],
             ['Bold', 'Italic', '-', 'Subscript', 'Superscript'],
             ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', ''],
             ['Link', 'Unlink', 'Image'],
@@ -272,8 +269,9 @@ CKEDITOR_CONFIGS = {
         ],
         'extraPlugins': ','.join([
             'image2',
-            'citation',
-            'emphasis',
+            'pull-out',
+            'footer',
+            'sidebar',
             # 'footnotes'
             #'filerimage'
         ]),
