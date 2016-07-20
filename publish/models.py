@@ -209,6 +209,7 @@ class ArticleMembership(models.Model):
     issue = models.ForeignKey(Issue)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
     page_number = models.PositiveIntegerField("nombre de pages", default=1, blank=False, null=False)
+    slug = models.SlugField(max_length=1024, blank=True)
 
 
     class Meta:
