@@ -10,7 +10,10 @@
     <h2 class="subhead">{{ object.article.subtitle|safe }}</h2>
     {% endif %}
     <p class="byline">{{ object.article.authors|safe }}</p>
+
+    <div class="lead">
+    {{ object.article.body|safe }}
+    </div>
 </header>
 
 {{ object.article.body|safe }}
-
