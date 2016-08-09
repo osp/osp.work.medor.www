@@ -3,5 +3,6 @@ body { counter-reset: folio {{ object.folio|add:"-1" }}; }
 
 /*footer,*/
 /*header content*/
-.header:before { content: "{{ object.article.rubric.title }} — {{ object.article.title }}"; }
-.footer:before { content: "{{ object.issue.title }}"; }
+/* FIXME: it assumes that the article starts on a left page */
+.paper:nth-child(odd) .body:before { content: "{{ object.article.rubric.title }} — {{ object.article.title }}"; }
+/*.footer:before { content: "{{ object.issue.title }}"; }*/
