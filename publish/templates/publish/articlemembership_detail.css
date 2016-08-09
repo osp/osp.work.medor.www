@@ -1,21 +1,7 @@
-#flow-main {
-    -webkit-flow-into: flow-main;
-            flow-into: flow-main;
-}
-
-.flow-main {
-    -webkit-flow-from: flow-main;
-        flow-from: flow-main;
-}
-
 /* reset folio */
 body { counter-reset: folio {{ object.folio }} - 1; }
 
 /*footer,*/
 /*header content*/
-.header:before { content: "{{ object.article.article_type }} — {{ object.article.title }}"; }
+.header:before { content: "{{ object.article.rubric.title }} — {{ object.article.title }}"; }
 .footer:before { content: "{{ object.issue.title }}"; }
-
-
-
-
