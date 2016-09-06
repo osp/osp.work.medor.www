@@ -205,7 +205,9 @@ class Subscription(TransactionBase):
         # Do send the email
         if do_send_mail:
             subject = "Médor SCRL FS. Confirmation d'abonnement"
-            if self.from_issue == 4:
+            if self.from_issue == 5:
+                message = render_to_string('subscribe/subscription-confirmation-email-5-8.txt', {'obj': self})
+            elif self.from_issue == 4:
                 message = render_to_string('subscribe/subscription-confirmation-email-4-7.txt', {'obj': self})
             elif self.from_issue == 3:
                 message = render_to_string('subscribe/subscription-confirmation-email-3-6.txt', {'obj': self})
