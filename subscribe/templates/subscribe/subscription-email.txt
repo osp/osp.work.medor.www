@@ -1,6 +1,8 @@
 Vous venez de vous abonner à Médor. Excellente idée! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.
 
-*ATTENTION!* Votre abonnement débute à partir du numéro publié après réception de votre payement. Les payements reçus jusqu'au 10 juin couvrent les numéros 3 à 6. Les payements reçus après le 10 juin couvrent les numéros 4 à 7. Les numéros précédents sont disponibles dans plus de 350 points de vente (liste consultable ici: https://medor.coop/fr/magazine/acheter/).
+*ATTENTION!* Votre abonnement débute à partir du numéro publié après réception de votre payement. Les payements reçus jusqu'au 16 septembre couvrent les numéros 4 à 7. Les payements reçus après le 16 septembre couvrent les numéros 5 à 8. Les numéros précédents sont disponibles dans plus de 350 points de vente (liste consultable ici: https://medor.coop/fr/magazine/acheter/).
+
+**Si vous souhaitez renouveler votre abonnement qui se termine au 4e numéro, merci d'effectuer votre paiement après le 16 septembre pour recevoir les numéros 5 à 8.**
 
 Nous vous invitons à régler dès aujourd’hui {{ obj.amount }} euros par virement sur le compte ING BE85 3631 6228 7306 (BIC: BBRUBEBB) avec la communication structurée:
 
