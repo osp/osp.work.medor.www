@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.core.mail import send_mass_mail
 from django.template.loader import render_to_string
-from subscribe.models import Subscription, Cooperation
+from subscribe.models import Subscription, Cooperation, Order, Item, ItemMembership, ShippingDetails
 
 
 def subscription_reminder_first(modeladmin, request, queryset):
@@ -223,5 +223,42 @@ class CooperationAdmin(admin.ModelAdmin):
     ]
 
 
+class ItemAdmin(admin.ModelAdmin):
+    model = Item
+    list_display = ('__unicode__', 'is_published', 'transaction_type', 'price')
+    list_filter = ('is_published', 'transaction_type',)
+
+
+class ItemMembershipAdmin(admin.ModelAdmin):
+    model = ItemMembership
+    list_display = ('__unicode__', 'quantity', 'order_status', 'is_shipped', 'order')
+    list_filter = ('is_shipped', 'order__status', 'item')
+    list_editable = ('is_shipped',)
+
+
+class ItemMembershipInline(admin.TabularInline):
+    model = ItemMembership
+
+
+class ShippingDetailsAdmin(admin.ModelAdmin):
+    pass
+
+
+class OrderAdmin(admin.ModelAdmin):
+    raw_id_fields = ("shipping_details",)
+    inlines = (ItemMembershipInline,)
+    list_display = ('__unicode__', 'grand_total', 'creation_date', 'status', 'confirmation_date', 'structured_communication', 'items_as_list')
+    list_editable = ('status',)
+    list_filter = ('status', 'shipping_details__country')
+    date_hierarchy = 'creation_date'
+    readonly_fields = ('creation_date', 'confirmation_date', 'invoice_reference', 'structured_communication', 'grand_total')
+    search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
+
+
 admin.site.register(Subscription, SubscriptionAdmin)
 admin.site.register(Cooperation, CooperationAdmin)
+
+admin.site.register(Item, ItemAdmin)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(ItemMembership, ItemMembershipAdmin)
+admin.site.register(ShippingDetails, ShippingDetailsAdmin)
