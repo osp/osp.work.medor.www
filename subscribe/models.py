@@ -10,6 +10,8 @@ from django.core.mail import send_mail
 
 from subscribe import settings
 
+from filer.fields.image import FilerImageField
+
 
 TITLE_CHOICES = (
     (False, 'Madame'),
@@ -381,6 +383,7 @@ class Item(models.Model):
         (2, 'À la pièce'),
     )
     is_published = models.BooleanField(default=False)
+    image = FilerImageField(null=True, blank=True)
     transaction_type = models.PositiveSmallIntegerField(choices=TRANSACTION_TYPE_CHOICES)
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -459,7 +462,9 @@ class Order(models.Model):
         # details.
         if not pk:
             # FIXME: m2m relations are not yet populated at this point
-            self.send_details_email()
+            # TODO: send the email at the form level, not here!
+            #  self.send_details_email()
+            pass
 
     def send_details_email(self):
         subject = "Médor SCRL FS. Détails de votre commande"

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from subscribe.models import Cooperation, Subscription
+from django.forms import formset_factory
+from subscribe.models import Cooperation, Subscription, Item, ShippingDetails, Order
+from subscribe.fields import CustomOrderMultipleChoiceField
 
 
 SUBSCRIPTION_COUNTRY_CHOICES = (
@@ -141,3 +143,40 @@ class SubscriptionForm(forms.ModelForm):
             'zip_code': forms.TextInput(),
             'recipient_title': forms.RadioSelect(),
         }
+
+
+#########################################
+
+
+class ItemChoiceForm(forms.Form):
+    """The form that shows the various Selectable items"""
+
+    subscriptions = CustomOrderMultipleChoiceField(queryset=Item.objects.filter(is_published=True, transaction_type=1),
+            widget=forms.CheckboxSelectMultiple(), required=False)
+    per_items = CustomOrderMultipleChoiceField(queryset=Item.objects.filter(is_published=True, transaction_type=2),
+            widget=forms.CheckboxSelectMultiple(), required=False)
+
+    def clean(self):
+        """Makes sure that there is at least one selected Item"""
+
+        cleaned_data = super(ItemChoiceForm, self).clean()
+        subscriptions = cleaned_data.get("subscriptions")
+        per_items = cleaned_data.get("per_items")
+
+        if not subscriptions and not per_items:
+            raise forms.ValidationError("Veuillez sélectionner au moins un produit")
+
+
+class DetailsForm(forms.ModelForm):
+    """The customer and shipping details"""
+
+    # TODO: check field option so it matches the model
+    order_first_name = forms.CharField(max_length=255)
+    order_last_name = forms.CharField(max_length=255)
+    order_email = forms.EmailField()
+    order_email_verification = forms.EmailField()
+    order_is_gift = forms.BooleanField()
+
+    class Meta:
+        model = ShippingDetails
+        exclude = []

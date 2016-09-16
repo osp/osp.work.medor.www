@@ -5,13 +5,12 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
-from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm
-from subscribe.models import Subscription, Cooperation
+from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm, ItemChoiceForm, DetailsForm
+from subscribe.models import Subscription, Cooperation, Order, ItemMembership
 
 import unicodecsv
 from django.http import HttpResponse
 from django.contrib.auth.decorators import user_passes_test
-
 
 
 COOPERATION_FORMS = [
@@ -238,3 +237,58 @@ def cooperators_as_csv(request):
         ])
 
     return response
+
+
+class OrderWizardView(CookieWizardView):
+    TEMPLATES = [
+        "subscribe/order-selection.html",
+        "subscribe/order-details.html",
+    ]
+
+    form_list = [
+        ItemChoiceForm,
+        DetailsForm,
+    ]
+
+    #  initial_dict = {
+    #      "0": [
+    #          {'item': 1},
+    #          {'item': 2},
+    #          {'item': 3},
+    #          {'item': 4},
+    #          {'item': 5},
+    #          {'item': 6}
+    #      ],
+    #  }
+
+    def get_template_names(self):
+        return self.TEMPLATES[int(self.steps.current)]
+
+    def done(self, form_list, form_dict, **kwargs):
+        item_choice_form = form_list[0]
+        details_form = form_list[1]
+
+        # Créer le Shippingdetails
+        details = details_form.save()
+
+        # Créer le order
+        order = Order()
+        order.shipping_details = details
+        order.first_name = details_form.cleaned_data["order_first_name"]
+        order.last_name = details_form.cleaned_data["order_last_name"]
+        order.email = details_form.cleaned_data["order_email"]
+        order.is_gift = details_form.cleaned_data["order_is_gift"]
+        order.save()
+
+        # Créer les itemmembership
+        for i in item_choice_form.cleaned_data["per_items"]:
+            im = ItemMembership(item=i, order=order, quantity=1)
+            im.save()
+
+        for i in item_choice_form.cleaned_data["subscriptions"]:
+            im = ItemMembership(item=i, order=order, quantity=1)
+            im.save()
+
+        #  send a mail
+
+        return render(self.request, 'subscribe/order-done.html', {'obj': 'obj'})

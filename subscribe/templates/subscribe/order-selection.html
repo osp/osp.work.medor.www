@@ -1,0 +1,54 @@
+{% extends "base3.html" %}
+
+{% block content %}
+<style>
+.products,
+.products ul,
+.products li {
+    margin: 0;
+    padding: 0;
+}
+
+.products li {
+    display: inline-block;
+    outline: 8px solid black;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 50px;
+    background-color: #FFFD43;
+}
+
+.products input[type="checkbox"] {
+    /* display: none; */
+}
+
+.products li label,
+.products li img {
+    display: block
+}
+
+.products ul:nth-of-type(1) li {
+    width: 49%;
+}
+
+.products ul:nth-of-type(2) li {
+    width: 24%;
+}
+</style>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ wizard.management_form }}
+
+    <ul class="products">
+        {{ form }}
+    </ul>
+
+    <div id="confirm">
+        {% if wizard.steps.prev %}
+        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
+        {% endif %}
+        <input type="submit" value="continuer"/>
+    </div>
+</form>
+{% endblock %}
+
