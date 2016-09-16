@@ -425,3 +425,81 @@ figcaption footer small {
     text-transform: none;
     font-family: inherit;
 }
+
+
+
+.flex * {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex--outline {
+  outline: 8px solid black;
+}
+
+.flex--outline .flex__item {
+  outline: 4px solid black;
+}
+
+.flex--col {
+  flex-direction: column;
+}
+
+.flex__item {
+  flex-grow: 1;
+}
+
+.flex__cell {
+    padding: 30px;
+}
+
+.jadore {
+    font-size: 9 * @unit;
+    font-family: "Alfphabet-Condensed";
+    padding-top:  @line-height / 5;
+    margin-bottom: 20 * @unit;
+}
+
+.jadore__label {
+    display: block;
+    text-align: left;
+}
+
+
+.jadore input {
+  -webkit-appearance: none;
+  outline: none;
+  background-color: white;
+  border: 8px solid #2485A4;
+  display: inline-block;
+  position: relative;
+  padding: 4px;
+  margin: 0;
+}
+
+.jadore input:checked:before {
+  background-color: #2485A4;
+}
+
+
+.jadore input:before {
+  content: " ";
+  font-size: 2em;
+  width: 1em;
+  height: 1em;
+  color: white;
+  display: block;
+}
+
+.jadore__widget {
+    text-align: center;
+	background-color: #2485A4;
+color: white;
+}
+
+

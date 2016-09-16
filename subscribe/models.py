@@ -290,7 +290,6 @@ class Cooperation(TransactionBase):
             recipients = [self.email]
             send_mail(subject, message, sender, recipients, fail_silently=False)
 
-
     def amount(self):
         return self.share_number * 20
 
@@ -360,16 +359,15 @@ class ShippingDetails(models.Model):
         ('VA', 'Vatican')
     )
 
-    first_name = models.CharField("First name", max_length=255, blank=True)
-    last_name = models.CharField("Last name", max_length=255, blank=True)
-    email = models.EmailField('courriel', blank=True)
-    # organisation
+    first_name = models.CharField("prénom", max_length=255,)
+    last_name = models.CharField("nom", max_length=255)
+    email = models.EmailField('courriel')
 
-    street = models.CharField('rue', max_length=30)
-    number = models.CharField('numéro', max_length=50) # 27 bis
-    letterbox = models.PositiveSmallIntegerField('boîte postale', null=True, blank=True)
-    zip_code = models.PositiveSmallIntegerField('code postal')
-    city = models.CharField('ville', max_length=30)
+    street = models.CharField('rue', max_length=255)
+    number = models.CharField('numéro', max_length=64) # 27 bis
+    box = models.CharField('boîte', max_length=64, blank=True)
+    postcode = models.CharField("code postal", max_length=64)
+    city = models.CharField('ville', max_length=255)
     country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
 
     def __unicode__(self):
@@ -382,11 +380,11 @@ class Item(models.Model):
         (1, 'Abonnement'),
         (2, 'À la pièce'),
     )
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField('est publié?', default=False)
     image = FilerImageField(null=True, blank=True)
-    transaction_type = models.PositiveSmallIntegerField(choices=TRANSACTION_TYPE_CHOICES)
-    name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    transaction_type = models.PositiveSmallIntegerField('type de transaction', choices=TRANSACTION_TYPE_CHOICES)
+    name = models.CharField('nom', max_length=255)
+    price = models.DecimalField('prix', max_digits=5, decimal_places=2)
 
     class Meta:
         ordering = ('name',)
@@ -403,24 +401,26 @@ class Order(models.Model):
         (2, 'annulé')
     )
 
+    # TODO: Fix the code generation
     transaction_type = '03'
 
-    first_name = models.CharField("First name", max_length=255, blank=True)
-    last_name = models.CharField("Last name", max_length=255, blank=True)
-    email = models.EmailField('courriel', blank=True)
+    first_name = models.CharField("prénom", max_length=255)
+    last_name = models.CharField("nom", max_length=255)
+    organization = models.CharField("organisation", max_length=255, blank=True)
+    email = models.EmailField('courriel')
 
-    status = models.PositiveSmallIntegerField('payment statut', choices=STATUS_CHOICES, default=0)
-    shipping_details = models.ForeignKey(ShippingDetails)
-    creation_date = models.DateTimeField('date de création', auto_now_add=True)
-    confirmation_date = models.DateTimeField('date de validation',
+    status = models.PositiveSmallIntegerField('statut du payement', choices=STATUS_CHOICES, default=0)
+    shipping_details = models.ForeignKey(ShippingDetails, verbose_name='Adresse de livraison')
+    creation_date = models.DateTimeField('date d\'encodage', auto_now_add=True)
+    confirmation_date = models.DateTimeField('date de validation du payement',
             null=True, blank=True)
     # FIXME: change value for unique and null
     invoice_reference = models.PositiveIntegerField('référence facture',
             unique=False, blank=True, null=True)
-    amount = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    is_gift = models.BooleanField(default=False)
-    promo_code = models.CharField(max_length=255, blank=True)
-    items = models.ManyToManyField(Item, through='ItemMembership')
+    amount = models.DecimalField('total', max_digits=5, decimal_places=2, blank=True, null=True)
+    is_gift = models.BooleanField('ceci est un cadeau', default=False)
+    promo_code = models.CharField('code promo', max_length=255, blank=True)
+    items = models.ManyToManyField(Item, through='ItemMembership', verbose_name="items")
 
     comment = models.TextField('commentaire', blank=True)
     # TODO: + editer les infos d'envois en ligne
@@ -566,9 +566,9 @@ class Order(models.Model):
 class ItemMembership(models.Model):
     """ Ordered item"""
 
-    order = models.ForeignKey(Order)
-    item = models.ForeignKey(Item)
-    quantity = models.PositiveSmallIntegerField(default=1)
+    order = models.ForeignKey(Order, verbose_name="commande")
+    item = models.ForeignKey(Item, verbose_name="item")
+    quantity = models.PositiveSmallIntegerField('quantité', default=1)
     is_shipped = models.BooleanField('envoyé?', default=False)
 
     @property

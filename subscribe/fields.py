@@ -8,8 +8,8 @@ class CustomOrderMultipleChoiceField(forms.ModelMultipleChoiceField):
         if obj.image:
             thumbnailer = get_thumbnailer(obj.image)
             thumbnail_options = {'crop': False}
-            thumbnail_options.update({'size': (200, 300)})
+            thumbnail_options.update({'size': (300, 400)})
             thumb = thumbnailer.get_thumbnail(thumbnail_options)
-            return mark_safe(u'{} - <img src="{}">'.format(obj.name, thumb.url))
+            return mark_safe(u'<span class="jadore__label">{}</span> - <img src="{}">'.format(obj.name, thumb.url))
         else:
             return mark_safe(u'{}'.format(obj.name))

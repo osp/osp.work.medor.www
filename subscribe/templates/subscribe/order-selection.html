@@ -1,54 +1,114 @@
-{% extends "base3.html" %}
-
-{% block content %}
+{% extends "base3.html" %} {% block content %}
 <style>
-.products,
-.products ul,
-.products li {
-    margin: 0;
-    padding: 0;
-}
-
-.products li {
-    display: inline-block;
-    outline: 8px solid black;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 50px;
-    background-color: #FFFD43;
-}
-
-.products input[type="checkbox"] {
-    /* display: none; */
-}
-
-.products li label,
-.products li img {
-    display: block
-}
-
-.products ul:nth-of-type(1) li {
-    width: 49%;
-}
-
-.products ul:nth-of-type(2) li {
-    width: 24%;
-}
+    .products,
+    .products ul,
+    .products li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .products li {
+        display: inline-block;
+        outline: 8px solid black;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 50px;
+        background-color: #FFFD43;
+    }
+    
+    .products input[type="checkbox"] {
+        /* display: none; */
+    }
+    
+    .products li label,
+    .products li img {
+        display: block
+    }
+    
+    .products ul:nth-of-type(1) li {
+        width: 49%;
+    }
+    
+    .products ul:nth-of-type(2) li {
+        width: 24%;
+    }
 </style>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ wizard.management_form }}
-
+<form method="post" action="" class="jadore">
+    {% csrf_token %} {{ wizard.management_form }} {% comment %}
     <ul class="products">
         {{ form }}
     </ul>
 
     <div id="confirm">
         {% if wizard.steps.prev %}
-        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>
-        {% endif %}
-        <input type="submit" value="continuer"/>
+        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Corriger</button>        {% endif %}
+        <input type="submit" value="continuer" />
+    </div>
+    {% endcomment %}
+    <div class="flex flex--col">
+        <div class="flex__item  flex">
+            <div class="flex__item">
+                <p>Moi aussi je veux soutenir Médor!</p>
+                <p>Mais tu es formidable ! Voici donc quatre manières de contribuer
+                    à la pérennité de ton magazine belge et de la coopérative qui
+                    le porte : raviver en toi le lecteur citoyen en t’abonnant,
+                    faire le malin en devenant «patron(ne) de presse», consacrer
+                    une partie de tes économies à un projet qui alimente le débat
+                    démocratique ou prouver aux sceptiques que la pub, ce n’est
+                    pas forcément le «Mal».</p>
+            </div>
+            <div class="flex__item" style="width: 40%">
+                <p>Merci aux milliers d'abonné(e)s, de coopérateur(trice)s, d'auteur(e)s
+                    et de lecteurs(trice)s, de Belgique et d'ailleurs qui nous
+                    soutiennent déjà.</p>
+            </div>
+        </div>
+
+        <div class="flex">
+            {% comment %}
+            <div class="flex__item  flex flex--col">
+                <div class="flex__item">1. Je m'abonne</div>
+                <div class="flex__item">1 an</div>
+                <div class="flex__item">2 ans</div>
+            </div>
+            {% endcomment %}
+
+            <div class="flex__item  flex flex--col flex--outline">
+                <div class="flex__item flex__cell">Je m’abonne</div>
+                {{ form.subscriptions }}
+            </div>
+
+            <div class="flex__item  flex flex--col flex--outline" style="width: 40%">
+                <div class="flex__item flex__cell">
+                    <p>2. Je deviens coopérateur(trice)</p>
+
+                    <p>→ À partir de 20 euros
+                        <p>
+                </div>
+                <div class="flex__item flex__cell">
+                    <p>3. Je fais un don</p>
+                    <p>→ Banque ING IBAN BE85 3631 6228 7306 BIC BBRUBEBB</p>
+                </div>
+                <div class="flex__item flex__cell">
+                    <p>4. J’achète une page de pub</p>
+                    <p>→ pub@medor.coop</p>
+                </div>
+
+                <div class="flex__item flex__cell">
+                    <p>Je peux également soutenir Médor en parlant du projet à mon
+                        entourage, mon libraire ou en collant des affiches. → tiffany@medor.coop</p>
+                </div>
+            </div>
+        </div>
+
+        {% comment %}
+        <div class="flex__item  flex">
+            <div class="flex__item">Vous avez manqué?</div>
+            <div class="flex__item">No 1</div>
+            <div class="flex__item">No 2</div>
+            <div class="flex__item">No 3</div>
+        </div>
+        {% endcomment %}
     </div>
 </form>
 {% endblock %}
-

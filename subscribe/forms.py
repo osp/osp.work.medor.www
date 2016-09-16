@@ -3,6 +3,7 @@ from django import forms
 from django.forms import formset_factory
 from subscribe.models import Cooperation, Subscription, Item, ShippingDetails, Order
 from subscribe.fields import CustomOrderMultipleChoiceField
+from subscribe.widgets import CustomCheckboxSelectMultiple
 
 
 SUBSCRIPTION_COUNTRY_CHOICES = (
@@ -151,10 +152,13 @@ class SubscriptionForm(forms.ModelForm):
 class ItemChoiceForm(forms.Form):
     """The form that shows the various Selectable items"""
 
+    error_css_class = 'error'
+    required_css_class = 'required'
+
     subscriptions = CustomOrderMultipleChoiceField(queryset=Item.objects.filter(is_published=True, transaction_type=1),
-            widget=forms.CheckboxSelectMultiple(), required=False)
+            widget=CustomCheckboxSelectMultiple(), required=False, label="Je m'abonne")
     per_items = CustomOrderMultipleChoiceField(queryset=Item.objects.filter(is_published=True, transaction_type=2),
-            widget=forms.CheckboxSelectMultiple(), required=False)
+            widget=CustomCheckboxSelectMultiple(), required=False, label="J'achète des numéros à la pièce")
 
     def clean(self):
         """Makes sure that there is at least one selected Item"""
@@ -170,13 +174,26 @@ class ItemChoiceForm(forms.Form):
 class DetailsForm(forms.ModelForm):
     """The customer and shipping details"""
 
+    error_css_class = 'error'
+    required_css_class = 'required'
+
     # TODO: check field option so it matches the model
-    order_first_name = forms.CharField(max_length=255)
-    order_last_name = forms.CharField(max_length=255)
-    order_email = forms.EmailField()
-    order_email_verification = forms.EmailField()
-    order_is_gift = forms.BooleanField()
+    order_first_name = forms.CharField(max_length=255, label="prénom")
+    order_last_name = forms.CharField(max_length=255, label="nom")
+    order_email = forms.EmailField(label="courriel")
+    order_email_verification = forms.EmailField(label="vérification du courriel")
+    order_is_gift = forms.BooleanField(label="ceci est un cadeau")
 
     class Meta:
         model = ShippingDetails
         exclude = []
+
+    def clean_order_email(self):
+        """Makes sure that the email is correct"""
+
+        cleaned_data = super(ItemChoiceForm, self).clean()
+        subscriptions = cleaned_data.get("subscriptions")
+        per_items = cleaned_data.get("per_items")
+
+        if not subscriptions and not per_items:
+            raise forms.ValidationError("Veuillez sélectionner au moins un produit")
