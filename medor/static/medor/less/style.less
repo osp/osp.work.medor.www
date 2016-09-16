@@ -428,7 +428,7 @@ figcaption footer small {
 
 
 
-.flex * {
+.jadore__widget{
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -439,11 +439,11 @@ figcaption footer small {
 }
 
 .flex--outline {
-  outline: 8px solid black;
+  outline: 8px solid #2A85A4;
 }
 
 .flex--outline .flex__item {
-  outline: 4px solid black;
+  outline: 4px solid #2A85A4;
 }
 
 .flex--col {
@@ -454,8 +454,14 @@ figcaption footer small {
   flex-grow: 1;
 }
 
+.flex__item img {
+    max-width: 100%;
+}
+
 .flex__cell {
-    padding: 30px;
+    padding: 16px;
+    position: relative;
+    padding-top: 72px;
 }
 
 .jadore {
@@ -468,10 +474,24 @@ figcaption footer small {
 .jadore__label {
     display: block;
     text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    padding: 16px;
+
+    font-size: 36px;
+    line-height: 1;
+}
+
+input[type=checkbox]:checked + .jadore__label {
+    background-color: #fffd73;
 }
 
 
-.jadore input {
+.jadore input[type=checkbox] {
   -webkit-appearance: none;
   outline: none;
   background-color: white;
@@ -480,6 +500,7 @@ figcaption footer small {
   position: relative;
   padding: 4px;
   margin: 0;
+  display: none;
 }
 
 .jadore input:checked:before {
@@ -498,8 +519,9 @@ figcaption footer small {
 
 .jadore__widget {
     text-align: center;
-	background-color: #2485A4;
-color: white;
+    margin-bottom: 2em;
+    /* background-color: #2485A4; */
+    /* color: white; */
 }
 
 
