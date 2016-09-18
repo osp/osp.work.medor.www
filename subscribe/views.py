@@ -261,6 +261,14 @@ class OrderWizardView(CookieWizardView):
     #      ],
     #  }
 
+    def get_context_data(self, form, **kwargs):
+        context = super(OrderWizardView, self).get_context_data(form=form, **kwargs)
+        if self.steps.current == '1':
+            context.update({
+                'infos': self.get_cleaned_data_for_step("0"),
+            })
+        return context
+
     def get_template_names(self):
         return self.TEMPLATES[int(self.steps.current)]
 

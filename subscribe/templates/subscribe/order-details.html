@@ -1,25 +1,120 @@
-{% extends "base3.html" %}
+{% extends "base3.html" %} {% block content %}
 
-{% block content %}
-<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+<article>
+    <header>
+        <h1>On y est presque!</h1>
+    </header>
+
+
 <form action="" method="post">{% csrf_token %}
-<table>
-{{ wizard.management_form }}
+    {{ wizard.management_form }}
+    
+    {% with wizard.form as form %}
+    {{ form.non_field_errors }}
 
-{% if wizard.form.forms %}
-    {{ wizard.form.management_form }}
-    {% for form in wizard.form.forms %}
-        {{ form }}
+    <ul>
+    {% if infos.per_items %}
+    {% for i in infos.per_items %}
+        <li>{{ i.name }} ({{ i.price }} euros)</li>
     {% endfor %}
-{% else %}
-    {{ wizard.form }}
-{% endif %}
-</table>
-{% if wizard.steps.prev %}
-<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">first step</button>
-<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">prev step</button>
-{% endif %}
-<input type="submit" value="submit"/>
-</form>
-{% endblock %}
+    {% endif %}
 
+    {% if infos.subscriptions %}
+    {% for i in infos.subscriptions %}
+        <li>{{ i.name }} ({{ i.price }} euros)</li>
+    {% endfor %}
+    {% endif %}
+    </ul>
+
+    <div class="jadore__btn_set">
+        <button class="jadore__btn" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">corriger</button>
+    </div>
+
+    <div class="flex jadore jadore--details">
+        <div class="flex__item">
+            <p class="jadore__title">Qui êtes-vous?</p>
+            <br>
+            <div class="fieldWrapper">
+                {{ form.order_first_name.errors }}
+                <label for="{{ form.order_first_name.id_for_label }}">prénom:</label>
+                {{ form.order_first_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.order_last_name.errors }}
+                <label for="{{ form.order_last_name.id_for_label }}">nom:</label>
+                {{ form.order_last_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.order_email.errors }}
+                <label for="{{ form.order_email.id_for_label }}">courriel:</label>
+                {{ form.order_email }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.order_email_verification.errors }}
+                <label for="{{ form.order_email_verification.id_for_label }}">courriel (vérification):</label>
+                {{ form.order_email_verification }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.order_is_gift.errors }}
+                <label for="{{ form.order_is_gift.id_for_label }}">ceci est un cadeau</label>
+                {{ form.order_is_gift }}
+            </div>
+        </div>
+        <div class="flex__item">
+            <p class="jadore__title">Informations de livraison</p>
+            <br>
+            <div class="fieldWrapper">
+                {{ form.first_name.errors }}
+                <label for="{{ form.first_name.id_for_label }}">prénom:</label>
+                {{ form.first_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.last_name.errors }}
+                <label for="{{ form.last_name.id_for_label }}">nom:</label>
+                {{ form.last_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.email.errors }}
+                <label for="{{ form.email.id_for_label }}">courriel:</label>
+                {{ form.email }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.street.errors }}
+                <label for="{{ form.street.id_for_label }}">rue:</label>
+                {{ form.street }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.number.errors }}
+                <label for="{{ form.number.id_for_label }}">numéro:</label>
+                {{ form.number }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.box.errors }}
+                <label for="{{ form.box.id_for_label }}">boîte</label>
+                {{ form.box }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.postcode.errors }}
+                <label for="{{ form.postcode.id_for_label }}">code postal:</label>
+                {{ form.postcode }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.city.errors }}
+                <label for="{{ form.city.id_for_label }}">ville:</label>
+                {{ form.city }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.country.errors }}
+                <label for="{{ form.country.id_for_label }}">pays:</label>
+                {{ form.country }}
+            </div>
+        </div>
+    </div>
+    {% endwith %} 
+    
+    <div class="jadore__btn_set">
+        <input class="jadore__btn" type="submit" value="continuer" />
+    </div>
+</form>
+</article>
+{% endblock %}
