@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from subscribe.views import CooperationWizardView, subscribers_as_csv, cooperators_as_csv, OrderWizardView
+from subscribe.views import CooperationWizardView, SubscriptionWizardView, subscribers_as_csv, cooperators_as_csv, OrderWizardView
 
 
 urlpatterns = patterns('',
