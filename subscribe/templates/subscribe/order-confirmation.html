@@ -1,0 +1,72 @@
+{% extends "base3.html" %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>C'est exact&thinsp;?</h1>
+    </header>
+
+
+    <form action="" method="post">{% csrf_token %} {{ wizard.management_form }}
+        {% with wizard.form as form %}
+        {{ form.non_field_errors }}
+
+        {% comment %}
+        <p>Voici le récapitulatif de votre commande&thinsp;:</p>
+
+        <ul>
+            {% if infos.per_items %}
+            {% for i in infos.per_items %}
+            <li>{{ i.name }} ({{ i.price }} euros)</li>
+            {% endfor %}
+            {% endif %}
+            
+            {% if infos.subscriptions %}
+            {% for i in infos.subscriptions %}
+            <li>{{ i.name }} ({{ i.price }} euros)</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        {% endcomment %}
+
+        <h2>Coordonnées&thinsp;:</h2>
+        <p>
+        {{ infos2.order_first_name }} {{ infos2.order_last_name }}<br>
+        {{ infos2.order_email }}<br>
+        {% comment %}
+        {% if infos2.order_is_gift %}
+            {{ infos2.order_is_gift }}
+        {% endif %}
+        {% endcomment %}
+
+        <h2>Coordonnées de livraison&thinsp;:</h2>
+        <p>
+        {{ infos2.first_name }} {{ infos2.last_name }} <br>
+        {{ infos2.email }} <br>
+        {{ infos2.street }}, {{ infos2.number }} <br>
+        {% if infos2.box %}
+            
+        {{ infos2.box }} <br>
+        {% endif %}
+        {{ infos2.postcode }} {{ infos2.city }} ({{ infos2.country }})
+        </p>
+
+        <div>
+            {% if wizard.form.forms %}
+                {{ wizard.form.management_form }}
+                {% for form in wizard.form.forms %}
+                    {{ form }}
+                {% endfor %}
+            {% else %}
+                {{ wizard.form.as_p }}
+            {% endif %}
+        </div>
+
+        <div class="jadore__btn_set">
+            <button class="jadore__btn" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">corriger</button>
+            <input class="jadore__btn" type="submit" value="confirmer" />
+        </div>
+        {% endwith %}
+    </form>
+</article>
+{% endblock %}

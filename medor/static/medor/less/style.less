@@ -526,31 +526,35 @@ input[type=checkbox]:checked + .jadore__label {
 }
 
 
-.jadore input[type=checkbox] {
-  -webkit-appearance: none;
-  outline: none;
-  background-color: white;
-  border: 8px solid #2485A4;
-  display: inline-block;
-  position: relative;
-  padding: 4px;
-  margin: 0;
-  display: none;
+.jadore__widget input[type=checkbox] {
+    display: none
 }
 
-.jadore input:checked:before {
-  background-color: #2485A4;
-}
+/* .jadore input[type=checkbox] { */
+/*   -webkit-appearance: none; */
+/*   outline: none; */
+/*   background-color: white; */
+/*   border: 8px solid #2485A4; */
+/*   display: inline-block; */
+/*   position: relative; */
+/*   padding: 4px; */
+/*   margin: 0; */
+/*   display: none; */
+/* } */
+
+/* .jadore input:checked:before { */
+/*   background-color: #2485A4; */
+/* } */
 
 
-.jadore input:before {
-  content: " ";
-  font-size: 2em;
-  width: 1em;
-  height: 1em;
-  color: white;
-  display: block;
-}
+/* .jadore input:before { */
+/*   content: " "; */
+/*   font-size: 2em; */
+/*   width: 1em; */
+/*   height: 1em; */
+/*   color: white; */
+/*   display: block; */
+/* } */
 
 .jadore__widget {
     text-align: center;
@@ -603,4 +607,8 @@ input[type=checkbox]:checked + .jadore__label {
   padding: 4px;
   margin: 0;
   margin-bottom: 16px;
+}
+
+.jadore img {
+    cursor: pointer;
 }

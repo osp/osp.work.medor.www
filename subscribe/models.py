@@ -384,7 +384,7 @@ class Item(models.Model):
     image = FilerImageField(null=True, blank=True)
     transaction_type = models.PositiveSmallIntegerField('type de transaction', choices=TRANSACTION_TYPE_CHOICES)
     name = models.CharField('nom', max_length=255)
-    price = models.DecimalField('prix', max_digits=5, decimal_places=2)
+    price = models.PositiveSmallIntegerField('prix')
 
     class Meta:
         ordering = ('name',)
@@ -451,20 +451,12 @@ class Order(models.Model):
         # 1. sets the confirmation date to now;
         # 2. sends a confirmation email.
         if self.status != self.__original_status and self.status == 1:
-            self.confirmation_date = datetime.now() # 1.
+            self.confirmation_date = datetime.now()  # 1.
             self.send_confirmation_email()  # 2.
 
         super(Order, self).save(*args, **kwargs)
 
         self.__original_status = self.status
-
-        # If the instance is beeing created, sends an email with the order
-        # details.
-        if not pk:
-            # FIXME: m2m relations are not yet populated at this point
-            # TODO: send the email at the form level, not here!
-            #  self.send_details_email()
-            pass
 
     def send_details_email(self):
         subject = "Médor SCRL FS. Détails de votre commande"
@@ -481,6 +473,7 @@ class Order(models.Model):
         send_mail(subject, message, sender, recipients, fail_silently=False)
 
     def set_invoice_reference(self):
+        import ipdb; ipdb.set_trace()
         # FIXME: changer le code type de produit en fonction du panier
         now = datetime.now()
         _max = self.__class__.objects.filter(creation_date__year=now.year,
@@ -535,9 +528,8 @@ class Order(models.Model):
         return sum([i.price for i in self.itemmembership_set.all()])
 
     @property
-    def grand_total(self):
-        """Returns the grand total of the order, including shipping costs."""
-        amount = self.price
+    def shipping_costs(self):
+        amount = 0
 
         # In case the shipping is in Belgium, do not add extra costs
         if self.shipping_details.country == "BE":
@@ -558,6 +550,11 @@ class Order(models.Model):
             amount += subscription_count * settings.SUBSCRIPTION_EUROPE_SHIPPING_COSTS
 
             return amount
+
+    @property
+    def grand_total(self):
+        """Returns the grand total of the order, including shipping costs."""
+        return self.price + self.shipping_costs
 
     def __unicode__(self):
         return self.shipping_details.__unicode__()

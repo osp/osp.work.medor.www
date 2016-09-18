@@ -182,18 +182,24 @@ class DetailsForm(forms.ModelForm):
     order_last_name = forms.CharField(max_length=255, label="nom")
     order_email = forms.EmailField(label="courriel")
     order_email_verification = forms.EmailField(label="vérification du courriel")
-    order_is_gift = forms.BooleanField(label="ceci est un cadeau")
+    order_is_gift = forms.BooleanField(label="ceci est un cadeau", required=False)
 
     class Meta:
         model = ShippingDetails
-        exclude = []
+        exclude = ["items"]
 
-    def clean_order_email(self):
+    def clean(self):
         """Makes sure that the email is correct"""
 
-        cleaned_data = super(ItemChoiceForm, self).clean()
-        subscriptions = cleaned_data.get("subscriptions")
-        per_items = cleaned_data.get("per_items")
+        cleaned_data = super(DetailsForm, self).clean()
+        email = cleaned_data.get("order_email")
+        email_verification = cleaned_data.get("order_email_verification")
 
-        if not subscriptions and not per_items:
-            raise forms.ValidationError("Veuillez sélectionner au moins un produit")
+        if email != email_verification:
+            raise forms.ValidationError("Veuillez vérifier votre courriel")
+
+        return cleaned_data
+
+
+class ConfirmForm2(forms.Form):
+    pass

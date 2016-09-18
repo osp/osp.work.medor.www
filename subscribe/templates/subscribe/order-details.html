@@ -2,7 +2,7 @@
 
 <article>
     <header>
-        <h1>On y est presque!</h1>
+        <h1>On y est presque&thinsp;!</h1>
     </header>
 
 
@@ -12,19 +12,23 @@
     {% with wizard.form as form %}
     {{ form.non_field_errors }}
 
+    <p>Voici le récapitulatif de votre commande&thinsp;:</p>
+
     <ul>
     {% if infos.per_items %}
     {% for i in infos.per_items %}
-        <li>{{ i.name }} ({{ i.price }} euros)</li>
+        <li>{{ i.name }}. {{ i.price }} €</li>
     {% endfor %}
     {% endif %}
 
     {% if infos.subscriptions %}
     {% for i in infos.subscriptions %}
-        <li>{{ i.name }} ({{ i.price }} euros)</li>
+        <li>{{ i.name }}. {{ i.price }} €</li>
     {% endfor %}
     {% endif %}
     </ul>
+
+    <p>Attention, en cas d’envoi hors Belgique, des frais supplémentaires s’appliqueront.</p>
 
     <div class="jadore__btn_set">
         <button class="jadore__btn" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">corriger</button>
@@ -32,26 +36,26 @@
 
     <div class="flex jadore jadore--details">
         <div class="flex__item">
-            <p class="jadore__title">Qui êtes-vous?</p>
+            <p class="jadore__title">Qui êtes-vous&thinsp;?</p>
             <br>
             <div class="fieldWrapper">
                 {{ form.order_first_name.errors }}
-                <label for="{{ form.order_first_name.id_for_label }}">prénom:</label>
+                <label for="{{ form.order_first_name.id_for_label }}">prénom&thinsp;:</label>
                 {{ form.order_first_name }}
             </div>
             <div class="fieldWrapper">
                 {{ form.order_last_name.errors }}
-                <label for="{{ form.order_last_name.id_for_label }}">nom:</label>
+                <label for="{{ form.order_last_name.id_for_label }}">nom&thinsp;:</label>
                 {{ form.order_last_name }}
             </div>
             <div class="fieldWrapper">
                 {{ form.order_email.errors }}
-                <label for="{{ form.order_email.id_for_label }}">courriel:</label>
+                <label for="{{ form.order_email.id_for_label }}">courriel&thinsp;:</label>
                 {{ form.order_email }}
             </div>
             <div class="fieldWrapper">
                 {{ form.order_email_verification.errors }}
-                <label for="{{ form.order_email_verification.id_for_label }}">courriel (vérification):</label>
+                <label for="{{ form.order_email_verification.id_for_label }}">courriel (vérification)&thinsp;:</label>
                 {{ form.order_email_verification }}
             </div>
             <div class="fieldWrapper">
@@ -65,27 +69,27 @@
             <br>
             <div class="fieldWrapper">
                 {{ form.first_name.errors }}
-                <label for="{{ form.first_name.id_for_label }}">prénom:</label>
+                <label for="{{ form.first_name.id_for_label }}">prénom&thinsp;:</label>
                 {{ form.first_name }}
             </div>
             <div class="fieldWrapper">
                 {{ form.last_name.errors }}
-                <label for="{{ form.last_name.id_for_label }}">nom:</label>
+                <label for="{{ form.last_name.id_for_label }}">nom&thinsp;:</label>
                 {{ form.last_name }}
             </div>
             <div class="fieldWrapper">
                 {{ form.email.errors }}
-                <label for="{{ form.email.id_for_label }}">courriel:</label>
+                <label for="{{ form.email.id_for_label }}">courriel&thinsp;:</label>
                 {{ form.email }}
             </div>
             <div class="fieldWrapper">
                 {{ form.street.errors }}
-                <label for="{{ form.street.id_for_label }}">rue:</label>
+                <label for="{{ form.street.id_for_label }}">rue&thinsp;:</label>
                 {{ form.street }}
             </div>
             <div class="fieldWrapper">
                 {{ form.number.errors }}
-                <label for="{{ form.number.id_for_label }}">numéro:</label>
+                <label for="{{ form.number.id_for_label }}">numéro&thinsp;:</label>
                 {{ form.number }}
             </div>
             <div class="fieldWrapper">
@@ -95,17 +99,17 @@
             </div>
             <div class="fieldWrapper">
                 {{ form.postcode.errors }}
-                <label for="{{ form.postcode.id_for_label }}">code postal:</label>
+                <label for="{{ form.postcode.id_for_label }}">code postal&thinsp;:</label>
                 {{ form.postcode }}
             </div>
             <div class="fieldWrapper">
                 {{ form.city.errors }}
-                <label for="{{ form.city.id_for_label }}">ville:</label>
+                <label for="{{ form.city.id_for_label }}">ville&thinsp;:</label>
                 {{ form.city }}
             </div>
             <div class="fieldWrapper">
                 {{ form.country.errors }}
-                <label for="{{ form.country.id_for_label }}">pays:</label>
+                <label for="{{ form.country.id_for_label }}">pays&thinsp;:</label>
                 {{ form.country }}
             </div>
         </div>

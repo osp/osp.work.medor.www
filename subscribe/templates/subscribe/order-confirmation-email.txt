@@ -1,0 +1,21 @@
+Bonjour,
+
+nous avons bien reçu votre paiement.
+
+voici le récapitulatif de votre commande:
+
+= = = = ={% for membership in obj.itemmembership_set.all %}
+Produit: {{ membership.item  }}
+Quantité: {{ membership.quantity }}
+{% if forloop.last %}= = = = ={% else %}- - - - -{% endif %}{% endfor %}
+{% if obj.shipping_costs %}Frais de port: {{ obj.shipping_costs }} euros
+= = = = ={% endif%}
+**Total: {{ obj.grand_total }} euros TTC**
+= = = = =
+
+En cas de changement d'adresse ou pour toute autre requête, veuillez-nous contacter sur medor@medor.coop.
+
+Bonne lecture!
+
+L’équipe de Médor.
+http://www.medor.coop — http://www.facebook.com/medormag

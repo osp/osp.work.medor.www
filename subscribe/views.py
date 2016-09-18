@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
-from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm, ItemChoiceForm, DetailsForm
+from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm, ItemChoiceForm, DetailsForm, ConfirmForm2
 from subscribe.models import Subscription, Cooperation, Order, ItemMembership
 
 import unicodecsv
@@ -243,30 +243,29 @@ class OrderWizardView(CookieWizardView):
     TEMPLATES = [
         "subscribe/order-selection.html",
         "subscribe/order-details.html",
+        "subscribe/order-confirmation.html",
     ]
 
     form_list = [
         ItemChoiceForm,
         DetailsForm,
+        ConfirmForm2,
     ]
-
-    #  initial_dict = {
-    #      "0": [
-    #          {'item': 1},
-    #          {'item': 2},
-    #          {'item': 3},
-    #          {'item': 4},
-    #          {'item': 5},
-    #          {'item': 6}
-    #      ],
-    #  }
 
     def get_context_data(self, form, **kwargs):
         context = super(OrderWizardView, self).get_context_data(form=form, **kwargs)
-        if self.steps.current == '1':
+        #  import ipdb; ipdb.set_trace()
+
+        if self.steps.current in ['1', '2']:
             context.update({
                 'infos': self.get_cleaned_data_for_step("0"),
             })
+
+        if self.steps.current == '2':
+            context.update({
+                'infos2': self.get_cleaned_data_for_step("1"),
+            })
+
         return context
 
     def get_template_names(self):
@@ -297,6 +296,7 @@ class OrderWizardView(CookieWizardView):
             im = ItemMembership(item=i, order=order, quantity=1)
             im.save()
 
-        #  send a mail
+        #  sends an email with the order details
+        order.send_details_email()
 
-        return render(self.request, 'subscribe/order-done.html', {'obj': 'obj'})
+        return render(self.request, 'subscribe/order-done.html', {'obj': order})

@@ -1,0 +1,28 @@
+Bonjour,
+
+
+Vous venez de placer une commande sur notre site. Excellente idée! C’est la meilleure manière de nous permettre de travailler en toute indépendance dans des conditions dignes.
+
+Voici le récapitulatif de votre commande:
+
+= = = = ={% for membership in obj.itemmembership_set.all %}
+Produit: {{ membership.item  }}
+Quantité: {{ membership.quantity }}
+{% if forloop.last %}= = = = ={% else %}- - - - -{% endif %}{% endfor %}
+{% if obj.shipping_costs %}Frais de port: {{ obj.shipping_costs }} euros
+= = = = ={% endif%}
+**Total: {{ obj.grand_total }} euros TTC**
+= = = = =
+
+Pour finaliser, nous vous invitons à régler dès aujourd’hui {{ obj.grand_total }} euros par virement sur le compte ING BE85 3631 6228 7306 (BIC: BBRUBEBB) avec la communication structurée:
+
+{{ obj.structured_communication }}
+
+Si votre système bancaire ne permet pas de faire une communication structurée mais uniquement des chiffres, entrez {{ obj.simple_communication }}. Pour toute question ou difficulté relative à ce paiement, contactez-nous par retour de mail.
+
+
+Merci pour votre soutien!
+
+
+L’équipe de Médor.
+http://www.medor.coop — http://www.facebook.com/medormag

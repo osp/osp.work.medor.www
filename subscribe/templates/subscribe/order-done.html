@@ -1,6 +1,48 @@
 {% extends "base3.html" %}
 
 {% block content %}
-all good!
-{% endblock %}
+<article>
+    <header>
+        <h1>Ça y est &thinsp;!</h1>
+    </header>
 
+
+    <p>Vous venez de placer une commande sur notre site. Excellente idée&thinsp;! C’est la meilleure
+        manière de nous permettre de travailler en toute indépendance dans des
+        conditions dignes.
+    <br>
+    <br>
+    Attention&thinsp;! Votre abonnement débute à partir du numéro publié après réception
+        de votre payement. Les numéros précédents sont également disponibles dans
+        plus de <a href="https://medor.coop/fr/magazine/acheter/">700 points de vente</a>.
+    <br>
+    <br>
+
+    Si cet abonnement est pour offrir, <a href="https://medor.coop/media/cadeau.pdf">téléchargez le bon-cadeau</a>.
+    <br>
+    <br>
+
+    Nous vous invitons à régler dès aujourd’hui <strong>{{ obj.grand_total }}&nbsp;euros</strong> par virement sur le compte ING <strong>BE85&nbsp;3631&nbsp;6228&nbsp;7306</strong>        (BIC&thinsp;:&nbsp;BBRUBEBB) avec la communication structurée&thinsp;:
+    <br>
+    <br>
+
+    <strong>{{ obj.structured_communication }}</strong>
+    <br>
+    <br>
+    Si votre système bancaire ne permet pas de faire une communication structurée
+        mais uniquement des chiffres, entrez <strong>{{ obj.simple_communication }}</strong>.
+        Pour toute question ou difficulté relative à ce paiement, contactez-nous
+        à l'adresse <a href="mailto:lesyeuxouverts@medor.coop">lesyeuxouverts@medor.coop</a>.
+
+    <br>
+    <br>
+
+    Merci pour votre soutien&thinsp;!
+
+    <br>
+    <br>
+
+    L’équipe de Médor<br />
+        <a href="https://medor.coop">www.medor.coop</a> — <a href="http://www.facebook.com/medormag">www.facebook.com/medormag</a></p>
+</article>
+{% endblock %}
