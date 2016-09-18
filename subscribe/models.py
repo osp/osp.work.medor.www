@@ -473,7 +473,7 @@ class Order(models.Model):
         send_mail(subject, message, sender, recipients, fail_silently=False)
 
     def set_invoice_reference(self):
-        import ipdb; ipdb.set_trace()
+        #  import ipdb; ipdb.set_trace()
         # FIXME: changer le code type de produit en fonction du panier
         now = datetime.now()
         _max = self.__class__.objects.filter(creation_date__year=now.year,
