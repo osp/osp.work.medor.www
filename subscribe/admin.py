@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
+
+import unicodecsv
+
 from django.contrib import admin
 from django.core.mail import send_mass_mail
+from django.http import HttpResponse
 from django.template.loader import render_to_string
+
 from subscribe.models import Subscription, Cooperation, Order, Item, ItemMembership, ShippingDetails
 
 
@@ -234,6 +239,67 @@ class ItemMembershipAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'quantity', 'order_status', 'is_shipped', 'order')
     list_filter = ('is_shipped', 'order__status', 'item')
     list_editable = ('is_shipped',)
+    actions = ['export_as_csv']
+
+    def export_as_csv(self, request, queryset):
+        # Create the HttpResponse object with the appropriate CSV header.
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="lignes-de-commandes.csv"'
+
+        writer = unicodecsv.writer(response, encoding='utf-8')
+        writer.writerow([
+            u"Quantité",
+            u"Description",
+            u"Nom",
+            u"Prénom",
+            u"Courriel",
+            u"Organisation",
+            u"Status",
+            u"Est un cadeau?",
+            u"Pour Nom,",
+            u"Pour Prénom",
+            u"Pour Courriel",
+            u"Adresse",
+            u"Boîte",
+            u"Code postal",
+            u"Ville",
+            u"Pays",
+            u"Date de création",
+            u"Date de confirmation",
+            u"Référence",
+            u"Communication",
+        ])
+
+        for im in queryset:
+            o = im.order
+            d = o.shipping_details
+
+            writer.writerow([
+                im.quantity,
+                im.item.name,
+                o.last_name,
+                o.first_name,
+                o.email,
+                o.organization or u"-",
+                o.get_status_display(),
+                o.is_gift,
+                d.first_name,
+                d.last_name,
+                d.email,
+                u"{}, {}".format(d.street, d.number),
+                d.box,
+                d.postcode,
+                d.city,
+                d.country,
+                o.creation_date,
+                o.confirmation_date,
+                o.invoice_reference,
+                o.structured_communication(),
+            ])
+
+        return response
+
+    export_as_csv.short_description = "Exporter en CSV"
 
 
 class ItemMembershipInline(admin.TabularInline):
@@ -253,6 +319,65 @@ class OrderAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_date'
     readonly_fields = ('creation_date', 'confirmation_date', 'invoice_reference', 'structured_communication', 'grand_total')
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
+    actions = ['export_as_csv']
+
+    def export_as_csv(self, request, queryset):
+        # Create the HttpResponse object with the appropriate CSV header.
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="commandes.csv"'
+
+        writer = unicodecsv.writer(response, encoding='utf-8')
+        writer.writerow([
+            u"Nom",
+            u"Prénom",
+            u"Courriel",
+            u"Organisation",
+            u"Status",
+            u"Est un cadeau?",
+            u"Pour Nom,",
+            u"Pour Prénom",
+            u"Pour Courriel",
+            u"Adresse",
+            u"Boîte",
+            u"Code postal",
+            u"Ville",
+            u"Pays",
+            u"Date de création",
+            u"Date de confirmation",
+            u"Référence",
+            u"Communication",
+            u"Produits",
+        ])
+
+        for o in queryset:
+            d = o.shipping_details
+            im = o.itemmembership_set.values_list('item__name', 'quantity')
+
+            writer.writerow([
+                o.last_name,
+                o.first_name,
+                o.email,
+                o.organization or u"-",
+                o.get_status_display(),
+                o.is_gift,
+                d.first_name,
+                d.last_name,
+                d.email,
+                u"{}, {}".format(d.street, d.number),
+                d.box,
+                d.postcode,
+                d.city,
+                d.country,
+                o.creation_date,
+                o.confirmation_date,
+                o.invoice_reference,
+                o.structured_communication(),
+                u" + ".join([u"{} (x{})".format(*i) for i in im])
+            ])
+
+        return response
+
+    export_as_csv.short_description = "Exporter en CSV"
 
 
 #  admin.site.register(Subscription, SubscriptionAdmin)
