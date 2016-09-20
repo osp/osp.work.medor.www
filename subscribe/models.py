@@ -370,6 +370,10 @@ class ShippingDetails(models.Model):
     city = models.CharField('ville', max_length=255)
     country = models.CharField('pays', max_length=5, choices=COUNTRY_CHOICES, default="BE")
 
+    class Meta:
+        verbose_name = u"Coordonnées de livraison"
+        verbose_name_plural = u"Coordonnées de livraison"
+
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
 
@@ -388,6 +392,8 @@ class Item(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name = u"Produit"
+        verbose_name_plural = u"Produits"
 
     def __unicode__(self):
         return self.name
@@ -567,6 +573,10 @@ class ItemMembership(models.Model):
     item = models.ForeignKey(Item, verbose_name="item")
     quantity = models.PositiveSmallIntegerField('quantité', default=1)
     is_shipped = models.BooleanField('envoyé?', default=False)
+
+    class Meta:
+        verbose_name = u"Ligne de commande"
+        verbose_name_plural = u"Lignes de commandes"
 
     @property
     def order_status(self):

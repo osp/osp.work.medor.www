@@ -254,7 +254,6 @@ class OrderWizardView(CookieWizardView):
 
     def get_context_data(self, form, **kwargs):
         context = super(OrderWizardView, self).get_context_data(form=form, **kwargs)
-        #  import ipdb; ipdb.set_trace()
 
         if self.steps.current in ['1', '2']:
             context.update({

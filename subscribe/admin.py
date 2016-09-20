@@ -255,7 +255,7 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
 
 
-admin.site.register(Subscription, SubscriptionAdmin)
+#  admin.site.register(Subscription, SubscriptionAdmin)
 admin.site.register(Cooperation, CooperationAdmin)
 
 admin.site.register(Item, ItemAdmin)
