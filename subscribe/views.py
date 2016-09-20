@@ -103,70 +103,51 @@ def subscribers_as_csv(request):
 
     writer = unicodecsv.writer(response, encoding='utf-8')
     writer.writerow([
-        "email",
-        "title",
-        "last name",
-        "first name",
-        "phone number",
-        "address",
-        "letter box",
-        "city",
-        "zip code",
-        "country",
-        "is_gift",
-        "recipient_title",
-        "recipient_first_name",
-        "recipient_last_name",
-        "recipient_email",
-        "founder",
-        "newsletter",
-        "subscriber",
-        "cooperator",
-        "author",
-        "function",
-        "organisation",
-        "encoder",
-        "creation date",
-        "confirmation_date",
-        "comment",
-        "invoice reference",
-        "structured communication",
-        "status",
-        "from issue",
+        u"Nom",
+        u"Prénom",
+        u"Courriel",
+        u"Organisation",
+        u"Status",
+        u"Est un cadeau?",
+        u"Pour Nom,",
+        u"Pour Prénom",
+        u"Pour Courriel",
+        u"Adresse",
+        u"Boîte",
+        u"Code postal",
+        u"Ville",
+        u"Pays",
+        u"Date de création",
+        u"Date de confirmation",
+        u"Référence",
+        u"Communication",
+        u"Produits",
     ])
 
-    for s in Subscription.objects.all():
+    for o in Order.objects.all():
+        d = o.shipping_details
+        im = o.itemmembership_set.values_list('item__name', 'quantity')
+
         writer.writerow([
-            s.email,
-            s.get_title_display(),
-            s.last_name,
-            s.first_name,
-            "",
-            u"{}, {}".format(s.street, s.number),
-            s.letterbox,
-            s.city,
-            s.zip_code,
-            s.country,
-            s.is_gift,
-            s.get_recipient_title_display(),
-            s.recipient_first_name or s.first_name,
-            s.recipient_last_name or s.last_name,
-            s.recipient_email or s.email,
-            "false", #fondeur
-            "false", #newsletter
-            "true", #subscriber
-            "false", #cooperator
-            "false", #author
-            "", #fonction
-            "", #organisation
-            "medor.coop", #encodeur
-            s.creation_date,
-            s.confirmation_date,
-            "", #comment
-            s.invoice_reference,
-            s.structured_communication(),
-            s.get_status_display(),
-            s.get_from_issue_display(),
+            o.last_name,
+            o.first_name,
+            o.email,
+            o.organization or u"-",
+            o.get_status_display(),
+            o.is_gift,
+            d.first_name,
+            d.last_name,
+            d.email,
+            u"{}, {}".format(d.street, d.number),
+            d.box,
+            d.postcode,
+            d.city,
+            d.country,
+            o.creation_date,
+            o.confirmation_date,
+            o.invoice_reference,
+            o.structured_communication(),
+            u" + ".join([u"{} (x{})".format(*i) for i in im])
         ])
 
     return response
@@ -219,17 +200,17 @@ def cooperators_as_csv(request):
             s.city,
             s.zip_code,
             s.country,
-            "false", #fondeur
-            "false", #newsletter
-            "false", #subscriber
-            "true", #cooperator
-            "false", #author
-            "", #fonction
-            "", #organisation
-            "medor.coop", #encodeur
+            "false",  # fondeur
+            "false",  # newsletter
+            "false",  # subscriber
+            "true",  # cooperator
+            "false",  # author
+            "",  # fonction
+            "",  # organisation
+            "medor.coop",  # encodeur
             s.creation_date,
             s.confirmation_date,
-            u"{} part(s)".format(s.share_number), #comment
+            u"{} part(s)".format(s.share_number),  # comment
             s.invoice_reference,
             s.structured_communication(),
             s.get_status_display(),
