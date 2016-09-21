@@ -316,7 +316,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'grand_total', 'creation_date', 'status', 'confirmation_date', 'structured_communication', 'items_as_list')
     list_editable = ('status',)
     list_filter = ('status', 'shipping_details__country')
-    date_hierarchy = 'creation_date'
+    date_hierarchy = 'confirmation_date'
     readonly_fields = ('creation_date', 'confirmation_date', 'invoice_reference', 'structured_communication', 'grand_total')
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
     actions = ['export_as_csv']
