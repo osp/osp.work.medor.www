@@ -12,6 +12,6 @@ class CustomOrderMultipleChoiceField(forms.ModelMultipleChoiceField):
             thumbnail_options = {'crop': False}
             thumbnail_options.update({'size': (300, 400)})
             thumb = thumbnailer.get_thumbnail(thumbnail_options)
-            return mark_safe(u'<span class="jadore__label jadore__title">{}. {} €</span> <img src="{}">'.format(obj.name, obj.price, thumb.url))
+            return mark_safe(u'<img src="{}"><span>{}. {} €</span>'.format(thumb.url, obj.name, obj.price))
         else:
             return mark_safe(u'{}. {} €'.format(obj.name, obj.price))

@@ -1,62 +1,105 @@
-{% extends "base3.html" %} {% block content %}
+{% extends "base3.html" %}
+
+
+{% block content %}
+
+<style>
+
+/*ul*/.product-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 2;
+}
+
+.product-list img {
+    height: 400px;
+}
+
+.product-list + .product-list img {
+    height: 200px;
+}
+
+.product-list li {
+    /*width: 300px;*/
+    /*height: 400px;*/
+    font-size: 10px;
+}
+
+.product-list label {
+    outline: 8px solid #2A85A4;
+    outline-offset: -4px;
+    padding: 4px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+        text-align: center;
+}
+
+.product-list span {
+    /* border-top: 8px solid #2A85A4; */
+    display: block;
+    /* background-color: white; */
+    color: black;
+    position: relative;
+    text-align: left;
+    /* padding: 8px; */
+    font-family: "Alfphabet-Condensed";
+    font-size: 24px;
+    outline: 8px solid #2a85a4;
+    line-height: 48px;
+    padding-left: 72px;
+    background-color: white;
+}
+
+.product-list input:checked + label span:before {
+    /* outline: 4px solid white; */
+    /* outline-offset: -8px; */
+    background-color: #fffd73;
+}
+.product-list span:before {
+    content: "  ";
+    display: inline-block;
+    background-color: white;
+    width: 48px;
+    height: 48px;
+    /* margin-right: 24px; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    outline: 8px solid #2A85A4;
+}
+
+.product-list input:checked + label {
+    background-color: #fffd73;
+}
+
+.product-list input {
+    display: none;
+}
+
+.product-list img {
+    padding: 30px; 
+}
+
+</style>
 
 <article>
     <header>
         <h1>Moi aussi je veux soutenir Médor!</h1>
     </header>
 
-    <p>Mais tu es formidable ! Voici donc quatre manières de contribuer à la pérennité
-        de ton magazine belge et de la coopérative qui le porte : raviver en toi
-        le lecteur citoyen en t’abonnant, faire le malin en devenant « patron(ne)
-        de presse », consacrer une partie de tes économies à un projet qui alimente
-        le débat démocratique ou prouver aux sceptiques que la pub, ce n’est pas
-        forcément le « Mal ».</p>
-
-    {% comment %}
-    <div class="flex flex--col">
-        <div class="flex__item  flex">
-            <div class="flex__item">
-                <p>Moi aussi je veux soutenir Médor!</p>
-            </div>
-            <div class="flex__item" style="width: 40%">
-                <p>Merci aux milliers d'abonné(e)s, de coopérateur(trice)s, d'auteur(e)s
-                    et de lecteurs(trice)s, de Belgique et d'ailleurs qui nous
-                    soutiennent déjà.</p>
-            </div>
-        </div>
-    </div>
-    {% endcomment %}
-
     <form method="post" action="" class="jadore" style="clear: both">
-        {% csrf_token %} {{ wizard.management_form }}
+        {% csrf_token %}
+        {{ wizard.management_form }}
+        {{ form.non_field_errors  }}
 
-        <div class="flex flex">
-            <div class="flex__item flex--col">
-                {{ form.subscriptions }} 
-                {{ form.per_items }}
-            </div>
-
-            <div class="flex__item flex flex--col flex--neg-outline" style="width: 33%;">
-                <div class="flex__item flex__cell flex__cell--neg">
-                    <p class="jadore__title"><a href="{% url 'subscribe-wizard' %}">Je deviens coopérateur·trice</a></p>
-                    <p>→ À partir de 20 euros<p>
-                </div>
-                <div class="flex__item flex__cell flex__cell--neg">
-                    <p class="jadore__title">Je fais un don</p>
-                    <p>→ Banque Triodos<br>IBAN: BE65 5230 8066 7396<br>BIC: TRIOBEBB<br>Communication : « don »</p>
-                </div>
-                <div class="flex__item flex__cell flex__cell--neg">
-                    <p class="jadore__title">J’achète une page de pub</p>
-                    <p>→ <a href="mailto:pub@medor.coop">pub@medor.coop</a></p>
-                </div>
-
-                <div class="flex__item flex__cell flex__cell--neg">
-                    <p>Je peux également soutenir Médor en parlant du projet à mon
-                    entourage, mon libraire ou en collant des affiches.</p>
-                    <p>→ <a href="mailto:tiffany@medor.coop">tiffany@medor.coop</a></p>
-                </div>
-            </div>
-        </div>
+        {{ form.subscriptions }} 
+        {{ form.per_items }}
 
         <div class="jadore__btn_set">
             <input class="jadore__btn" type="submit" value="continuer" />

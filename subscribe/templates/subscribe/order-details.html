@@ -6,6 +6,7 @@
     </header>
 
 
+
 <form action="" method="post">{% csrf_token %}
     {{ wizard.management_form }}
     
@@ -65,22 +66,24 @@
             </div>
         </div>
         <div class="flex__item">
-            <p class="jadore__title">Informations de livraison</p>
+            <p class="jadore__title shipping-title">Informations de livraison</p>
             <br>
-            <div class="fieldWrapper">
-                {{ form.first_name.errors }}
-                <label for="{{ form.first_name.id_for_label }}">prénom&thinsp;:</label>
-                {{ form.first_name }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.last_name.errors }}
-                <label for="{{ form.last_name.id_for_label }}">nom&thinsp;:</label>
-                {{ form.last_name }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.email.errors }}
-                <label for="{{ form.email.id_for_label }}">courriel&thinsp;:</label>
-                {{ form.email }}
+            <div class="additional">
+                <div class="fieldWrapper">
+                    {{ form.first_name.errors }}
+                    <label for="{{ form.first_name.id_for_label }}">prénom&thinsp;:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.last_name.errors }}
+                    <label for="{{ form.last_name.id_for_label }}">nom&thinsp;:</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.email.errors }}
+                    <label for="{{ form.email.id_for_label }}">courriel&thinsp;:</label>
+                    {{ form.email }}
+                </div>
             </div>
             <div class="fieldWrapper">
                 {{ form.street.errors }}
@@ -121,4 +124,30 @@
     </div>
 </form>
 </article>
+<script src="{{ STATIC_URL }}components/jquery/jquery.min.js"></script>
+<script>
+$(function() {
+    var $is_gift = $('#id_1-order_is_gift');
+    var $additional = $('.additional');
+    var $header = $('.shipping-title');
+
+    $is_gift.on('change', function(event) {
+        if ($(this).prop("checked")) {
+            $additional.show();  
+            $header.text('Coordonnées du bénéficiaire')
+        } else {
+            $additional.hide();  
+            $header.text('Informations de livraison')
+        };
+    });
+
+    if ($is_gift.prop("checked")) {
+        $additional.show();  
+        $header.text('Coordonnées du bénéficiaire')
+    } else {
+        $additional.hide();  
+        $header.text('Information de livraison')
+    };
+});
+</script>
 {% endblock %}

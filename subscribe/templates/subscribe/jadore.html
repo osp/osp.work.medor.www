@@ -1,0 +1,164 @@
+{% extends "base3.html" %}
+
+
+{% block content %}
+<style>
+.cell {
+    outline: 6px solid black;
+    outline-offset: -3px;
+    padding: 16px;
+}
+
+body {
+    counter-reset: mean;
+}
+
+.jadore {
+    line-height: 1.2;
+}
+.jadore a {
+   text-decoration: none;
+   color: inherit;
+}
+
+.jadore a:hover {
+   color: #4D4B82;
+   cursor: pointer;
+}
+
+.jadore__preambule {
+    background-color: #4D4B82;
+    color: white;
+    font-family: "Bagnard";
+}
+
+.jadore__main-title {
+    font-size: 48px;
+    font-family: "Alfphabet-Condensed";
+    line-height: 1;
+    font-weight: normal;
+    margin-bottom: 36px;
+}
+
+.jadore__intro,
+.jadore__merci {
+    padding: 5% 10%;
+}
+
+.jadore__merci {
+    align-self: flex-end;
+    font-family: "Alfphabet-Condensed";
+    font-size: 18px;
+}
+
+.jadore-new {
+    font-size: 18px;
+    font-family: "Alfphabet-Condensed";
+}
+
+.jadore__title {
+    font-size: 36px;
+    line-height: 1;
+}
+
+.jadore__title--big {
+    font-size: 72px;
+}
+
+.jadore__title:before {
+    counter-increment: mean;
+    content: counter(mean) ". ";
+    font-size: 24px;
+    vertical-align: top;
+}
+
+.jadore__old-issues {
+    background-color: #4D4B82;
+    color: white;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.flex-grow-1 {
+    flex-grow: 2; 
+}
+
+.flex-grow-2 {
+    flex-grow: 2; 
+}
+
+.flex__item--center {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+<style>
+<div class="jadore">
+    <div class="jadore__preambule flex cell">
+        <div class="jadore__intro flex__item">
+            <h1 class="jadore__main-title">Moi aussi je veux soutenir Médor&thinsp;!</h1>
+        
+            <p>Mais tu es formidable&thinsp;! Voici donc quatre manières de contribuer à la pérennité
+            de ton magazine belge et de la coopérative qui le porte&thinsp;: raviver en toi
+            le lecteur citoyen en t’abonnant, faire le malin en devenant «&thinsp;patron(ne)
+            de presse&thinsp;», consacrer une partie de tes économies à un projet qui alimente
+            le débat démocratique ou prouver aux sceptiques que la pub, ce n’est pas
+            forcément le «&thinsp;Mal&thinsp;».</p>
+        </div>
+
+        <p class="jadore__merci flex__item">Merci aux milliers d'abonné(e)s, de coopérateur(trice)s, d'auteur(e)s
+            et de lecteurs(trice)s, de Belgique et d'ailleurs qui nous
+            soutiennent déjà.</p>
+    </div>
+
+    <div class="jadore-new flex">
+        <div class="flex__item flex flex--col flex-grow-2" style="width: 75%; background-color: #71C9BB;">
+            <div class="flex__item cell">
+                <p class="jadore__title jadore__title--big"><a href="{% url 'order-wizard' %}">Je m’abonne</a></p>
+                <p>→ À partir de 20 euros<p>
+            </div>
+            <div class="flex__item flex">
+                <div class="flex__item flex cell flex__item--center">
+                    <div class="flex__item">
+                        <div style="font-size: 5em;line-height: 0.85;">1 an</div>
+                        <div style="font-size: 2.5em; line-height: 0.85;">4 numéros. 60 €</div>
+                    </div>
+                </div>
+                <div class="flex__item flex cell flex__item--center">
+                    <div class="flex__item">
+                        <div style="font-size: 5em; line-height: 0.85;">2 ans</div>
+                        <div style="font-size: 2.5em; line-height: 0.85;">8 numéros. 112 €</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex__item cell jadore__old-issues">
+                <p>Vous avez râté les numéros précédents&thinsp;? <a href="{% url 'order-wizard' %}">Rattrapez-vous&thinsp;!</a></p>
+            </div>
+        </div>
+
+        <div class="flex__item flex flex--col flex-grow-1">
+            <div class="flex__item cell" style="background-color: #DF2E34">
+                <p class="jadore__title"><a href="{% url 'cooperate-wizard' %}">Je deviens coopérateur·trice</a></p>
+                <p>→ À partir de 20 euros<p>
+            </div>
+            <div class="flex__item cell" style="background-color: #D59853">
+                <p class="jadore__title">Je fais un don</p>
+                <p>→ Banque Triodos<br>IBAN: BE65 5230 8066 7396<br>BIC: TRIOBEBB<br>Communication : « don »</p>
+            </div>
+            <div class="flex__item cell" style="background-color: #DF2E34">
+                <p class="jadore__title">J’achète une page de pub</p>
+                <p>→ <a href="mailto:pub@medor.coop">pub@medor.coop</a></p>
+            </div>
+            <div class="flex__item cell" style="background-color: #D59853">
+                <p>Je peux également soutenir Médor en parlant du projet à mon
+                entourage, mon libraire ou en collant des affiches.</p>
+                <p>→ <a href="mailto:tiffany@medor.coop">tiffany@medor.coop</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

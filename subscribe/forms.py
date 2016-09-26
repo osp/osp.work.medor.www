@@ -188,15 +188,37 @@ class DetailsForm(forms.ModelForm):
         model = ShippingDetails
         exclude = ["items"]
 
+    def __init__(self, *args, **kwargs):
+        # first call parent's constructor
+        super(DetailsForm, self).__init__(*args, **kwargs)
+        # there's a `fields` property now
+        self.fields['first_name'].required = False
+        self.fields['last_name'].required = False
+        self.fields['email'].required = False
+
     def clean(self):
         """Makes sure that the email is correct"""
 
         cleaned_data = super(DetailsForm, self).clean()
+
         email = cleaned_data.get("order_email")
         email_verification = cleaned_data.get("order_email_verification")
 
         if email != email_verification:
             raise forms.ValidationError("Veuillez vérifier votre courriel")
+
+        # In case this is not a gift, populate the hidden fields
+        order_is_gift = cleaned_data.get("order_is_gift")
+        print(order_is_gift)
+
+        if order_is_gift:
+            self.fields['first_name'].required = True
+            self.fields['last_name'].required = True
+            self.fields['email'].required = True
+        else:
+            cleaned_data['first_name'] = cleaned_data.get("order_first_name")
+            cleaned_data['last_name'] = cleaned_data.get("order_last_name")
+            cleaned_data['email_name'] = cleaned_data.get("order_email")
 
         return cleaned_data
 

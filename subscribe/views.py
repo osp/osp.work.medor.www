@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
+
 from formtools.wizard.views import CookieWizardView
 
 from django.core.mail import send_mail
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from django.views.generic.base import TemplateView
 
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm, ItemChoiceForm, DetailsForm, ConfirmForm2
-from subscribe.models import Subscription, Cooperation, Order, ItemMembership
+from subscribe.models import Cooperation, Order, ItemMembership
 
 import unicodecsv
 from django.http import HttpResponse
@@ -280,3 +282,7 @@ class OrderWizardView(CookieWizardView):
         order.send_details_email()
 
         return render(self.request, 'subscribe/order-done.html', {'obj': order})
+
+
+class JadoreView(TemplateView):
+    template_name = "subscribe/jadore.html"
