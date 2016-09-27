@@ -265,6 +265,7 @@ class OrderWizardView(CookieWizardView):
         order.shipping_details = details
         order.first_name = details_form.cleaned_data["order_first_name"]
         order.last_name = details_form.cleaned_data["order_last_name"]
+        order.organization = details_form.cleaned_data["order_organization"]
         order.email = details_form.cleaned_data["order_email"]
         order.is_gift = details_form.cleaned_data["order_is_gift"]
         order.save()

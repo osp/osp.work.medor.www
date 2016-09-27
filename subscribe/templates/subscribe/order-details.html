@@ -37,7 +37,7 @@
 
     <div class="flex jadore jadore--details">
         <div class="flex__item">
-            <p class="jadore__title">Qui êtes-vous&thinsp;?</p>
+            <p class="jadore__title" style="font-size: 24px; line-height: 1;">Qui êtes-vous&thinsp;?</p>
             <br>
             <div class="fieldWrapper">
                 {{ form.order_first_name.errors }}
@@ -48,6 +48,11 @@
                 {{ form.order_last_name.errors }}
                 <label for="{{ form.order_last_name.id_for_label }}">nom&thinsp;:</label>
                 {{ form.order_last_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.order_organization.errors }}
+                <label for="{{ form.order_organization.id_for_label }}">organisation (optionnel)&thinsp;:</label>
+                {{ form.order_organization }}
             </div>
             <div class="fieldWrapper">
                 {{ form.order_email.errors }}
@@ -66,7 +71,7 @@
             </div>
         </div>
         <div class="flex__item">
-            <p class="jadore__title shipping-title">Informations de livraison</p>
+            <p class="jadore__title shipping-title" style="font-size: 24px; line-height: 1;">Informations de livraison</p>
             <br>
             <div class="additional">
                 <div class="fieldWrapper">
@@ -97,7 +102,7 @@
             </div>
             <div class="fieldWrapper">
                 {{ form.box.errors }}
-                <label for="{{ form.box.id_for_label }}">boîte</label>
+                <label for="{{ form.box.id_for_label }}">boîte (optionnel)&thinsp;:</label>
                 {{ form.box }}
             </div>
             <div class="fieldWrapper">

@@ -180,6 +180,7 @@ class DetailsForm(forms.ModelForm):
     # TODO: check field option so it matches the model
     order_first_name = forms.CharField(max_length=255, label="prénom")
     order_last_name = forms.CharField(max_length=255, label="nom")
+    order_organization = forms.CharField(max_length=255, label="organisation", required=False)
     order_email = forms.EmailField(label="courriel")
     order_email_verification = forms.EmailField(label="vérification du courriel")
     order_is_gift = forms.BooleanField(label="ceci est un cadeau", required=False)
