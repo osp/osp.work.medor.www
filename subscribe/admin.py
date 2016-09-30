@@ -380,7 +380,7 @@ class OrderAdmin(admin.ModelAdmin):
     export_as_csv.short_description = "Exporter en CSV"
 
 
-admin.site.register(Subscription, SubscriptionAdmin)
+#admin.site.register(Subscription, SubscriptionAdmin)
 admin.site.register(Cooperation, CooperationAdmin)
 
 admin.site.register(Item, ItemAdmin)
