@@ -318,7 +318,7 @@ class OrderAdmin(admin.ModelAdmin):
     date_hierarchy = 'confirmation_date'
     readonly_fields = ('creation_date', 'confirmation_date', 'invoice_reference', 'structured_communication', 'grand_total')
     search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
-    actions = ['export_as_csv']
+    actions = ['export_as_csv', 'reminder_first', 'reminder_second']
 
     def export_as_csv(self, request, queryset):
         # Create the HttpResponse object with the appropriate CSV header.
@@ -377,6 +377,35 @@ class OrderAdmin(admin.ModelAdmin):
         return response
 
     export_as_csv.short_description = "Exporter en CSV"
+
+    def reminder_first(modeladmin, request, queryset):
+        emails = []
+
+        for obj in queryset:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/order-reminder-first.txt', {'obj': obj})
+            sender = "medor@medor.coop"
+            recipients = [obj.email]
+            emails.append((subject, message, sender, recipients))
+
+        send_mass_mail(emails, fail_silently=False)
+
+    reminder_first.short_description = "Envoyer un premier rappel abonné par email"
+
+    def reminder_second(modeladmin, request, queryset):
+        emails = []
+
+        for obj in queryset:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/order-reminder-second.txt', {'obj': obj})
+            sender = "medor@medor.coop"
+            recipients = [obj.email]
+            emails.append((subject, message, sender, recipients))
+
+        send_mass_mail(emails, fail_silently=False)
+
+    reminder_second.short_description = "Envoyer un second rappel abonné par email"
+
 
 
 #admin.site.register(Subscription, SubscriptionAdmin)
