@@ -311,7 +311,6 @@ class ShippingDetailsAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    raw_id_fields = ("shipping_details",)
     inlines = (ItemMembershipInline,)
     list_display = ('__unicode__', 'grand_total', 'creation_date', 'status', 'confirmation_date', 'structured_communication', 'items_as_list')
     list_editable = ('status',)
