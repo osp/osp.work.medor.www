@@ -5,15 +5,14 @@
 
 {% block content %}
     <div id="steps">
-        <div class="active" style="margin:auto 15% !important; margin-top:15px !important;">Collaboration</div>
-        <p class="intro-collaborate">Vous avez une idée de sujet à nous
-        soumettre. Vous êtes en possession d’une information qui mériterait,
-        selon vous, d’être développée, vérifiée, complétée. Vous avez visité
-        <a href="/">notre site web</a> et vous vous dites que c’est chez Médor
-        qu’il faudrait en parler. Mais vous ne vous sentez pas capable, bien
-        placé(e) ou disponible pour approfondir la question. Alors remplissez
-        le formulaire simplifié pour partager votre idée avec nous. Et nous
-        vous recontacterons. Dans la discrétion et la confidentialité.</p>
+        <div class="active" style="margin:auto 15% !important; margin-top:15px !important;">Suggérer un sujet</div>
+
+        <p class="intro-collaborate">Si vous avez une idée, une info ou une
+        piste à nous suggérer, merci de remplir ce formulaire confidentiel.
+        Expliquez-nous le plus clairement possible ce dont il s’agit et en quoi
+        le sujet vous concerne éventuellement. Nous ne pouvons malheureusement
+        pas répondre à tout le monde mais nous vous lirons avec intérêt.
+        Merci !</p>
 
         {% if form.errors %}
         <p style="color: red;">Veuillez corriger les erreurs ci-dessous</p>
@@ -27,54 +26,73 @@
             <div class="form-wrapper">
                 <div class="form-chunk">
                     <div class="box table">
-                        {% for field in part1 %}
                         <div class="required table-row">
-                            {{ field.label_tag }}
+                            {{ form.name.label_tag }}
                             <div class="table-cell">
-                            {{ field }}
-                            {{ field.errors }}
-                            {{ field.field.help_text }}
+                            {{ form.name }}
+                            {{ form.name.errors }}
+                            {{ form.name.field.help_text }}
                             </div>
                         </div>
-                        {% endfor %}
+
+                        <div class="required table-row">
+                            {{ form.email.label_tag }}
+                            <div class="table-cell">
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                            {{ form.email.field.help_text }}
+                            </div>
+                        </div>
+
+                        <div class="table-row">
+                            {{ form.phone.label_tag }}
+                            <div class="table-cell">
+                            {{ form.phone }}
+                            {{ form.phone.errors }}
+                            {{ form.phone.field.help_text }}
+                            </div>
+                        </div>
                     </div>
                 </div>        
                 <div class="form-chunk">
                     <div class="box table">
-                        {% for field in part2 %}
                         <div class="required table-row">
-                            {{ field.label_tag }}
+                            {{ form.address.label_tag }}
                             <div class="table-cell">
-                            {{ field }}
-                            {{ field.errors }}
-                            {{ field.field.help_text }}
+                            {{ form.address }}
+                            {{ form.address.errors }}
+                            {{ form.address.field.help_text }}
                             </div>
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
             </div>   
         </div> 
-        {% for field in part3 %}
-        <div class="required" style="padding:0px 30px; text-align:left;">
-            {{ field.label_tag }}
-                <div class="help-text">
-                {{ field.field.help_text }}
-                {% if field.field.widget|klass == "Textarea" %}
-                ({{ field.field.max_length }} signes maximum)
-                {% endif %}
-                </div>
-                <div class="article-proposal-field">
-                {{ field }}
-                {{ field.errors }}
-                </div>
+        <div class="required" style="padding:0 30px; text-align:left;">
+            {{ form.subject_title.label_tag }}
+            <div class="help-text">
+            {{ form.subject_title.help_text }}
+            </div>
+            <div class="article-proposal-field">
+            {{ form.subject_title }}
+            {{ form.subject_title.errors }}
+            </div>
         </div>
-        {% endfor %}
+        <div class="required" style="padding:0 30px; text-align:left;">
+            {{ form.body.label_tag }}
+            <div class="help-text">
+            Présentez ici vos idées ou votre proposition
+            </div>
+            <div class="article-proposal-field">
+            {{ form.body }}
+            {{ form.body.errors }}
+            </div>
+        </div>
         <div id="confirm">
-            <p class="submit-collaborate">Vous avez répondu aux questions
-            ci-dessus ? Médor s’engage à vous donner une réponse prochainement
-            et vous remercie chaleureusement pour la confiance que vous lui
-            accordez ! Meilleures salutations.</p>
+            <!-- <p class="submit-collaborate">Vous avez répondu aux questions -->
+            <!-- ci-dessus ? Médor s’engage à vous donner une réponse prochainement -->
+            <!-- et vous remercie chaleureusement pour la confiance que vous lui -->
+            <!-- accordez ! Meilleures salutations.</p> -->
 
             <input style="margin-top:15px" type="submit" value="Envoyer" />
         </div>

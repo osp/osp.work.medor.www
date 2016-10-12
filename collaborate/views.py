@@ -19,14 +19,6 @@ class ArticleProposalThanksView(TemplateView):
 class ArticleProposalBaseView(FormView):
     success_url = reverse_lazy('article-proposal-thanks')
 
-    def get_context_data(self, **kwargs):
-        context = super(ArticleProposalBaseView, self).get_context_data(**kwargs)
-        fields = list(context['form'])
-        context['part1'] = fields[:4]
-        context['part2'] = fields[4:5]
-        context['part3'] = fields[5:]
-        return context
-
     def form_valid(self, form):
         form.save()
         obj = form.instance

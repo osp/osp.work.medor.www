@@ -4,9 +4,9 @@ from forms import ArticleProposalForm
 
 
 class ArticleProposalAdmin(admin.ModelAdmin):
-    #form = ArticleProposalForm
-    list_display = ('__unicode__', 'name', 'creation_date', 'is_urgent', 'section')
-    list_filter = ('is_urgent', 'section')
+    list_display = ('short_title', 'name', 'creation_date', 'is_answered',)
+    list_editable = ('is_answered',)
+    list_filter = ('is_answered',)
     date_hierarchy = 'creation_date'
 
 

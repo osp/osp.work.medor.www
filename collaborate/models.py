@@ -2,6 +2,7 @@
 from django.db import models
 import markdown
 from markdown.extensions.toc import TocExtension
+from django.utils.text import Truncator
 
 
 SECTION_CHOICES = (
@@ -40,8 +41,8 @@ class ArticleProposal(models.Model):
     )
     subject_title = models.CharField(
         max_length=300,
-        verbose_name="Intitulé du sujet (provisoire)",
-        help_text="Titre le plus clair possible. Avec sous-titre éventuel."
+        verbose_name="Titre",
+        help_text="Donnez un titre à votre proposition"
     )
     section = models.PositiveSmallIntegerField(
         choices=SECTION_CHOICES,
@@ -52,7 +53,8 @@ class ArticleProposal(models.Model):
     abstract = models.CharField(
         max_length=750,
         verbose_name="Résumé",
-        help_text="Rédigez comme s’il s’agissait d’un chapeau destiné à un média généraliste."
+        help_text="Rédigez comme s’il s’agissait d’un chapeau destiné à un média généraliste.",
+        blank=True
     )
     is_urgent = models.BooleanField(
         default=False,
@@ -61,7 +63,17 @@ class ArticleProposal(models.Model):
     )
     body = models.TextField(
         verbose_name="Contenu",
-        blank=True
+        blank=True,
+        help_text="Présentez-vous et présentez-nous votre sujet : de quoi s’agit-il, où en êtes-vous dans vos recherches, quelles sont vos pistes et hypothèses, en quoi ce sujet est-il inédit, sous quelle forme l’imaginez-vous, etc. ?"
+    )
+    is_answered = models.BooleanField(
+        default=False,
+        verbose_name=u"Répondu?",
+    )
+    comment = models.TextField(
+        verbose_name=u"Commentaire",
+        blank=True,
+        help_text=u"On lui a dit quoi?"
     )
 
     class Meta:
@@ -80,3 +92,7 @@ class ArticleProposal(models.Model):
     def body_as_html(self):
         md = markdown.Markdown(output_format="html5", extensions=['extra', TocExtension(baselevel=2)])
         return md.convert(self.body)
+
+    @property
+    def short_title(self):
+        return Truncator(self.subject_title).chars(50)
