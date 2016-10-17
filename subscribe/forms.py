@@ -185,6 +185,10 @@ class DetailsForm(forms.ModelForm):
     order_email_verification = forms.EmailField(label="vérification du courriel")
     order_is_gift = forms.BooleanField(label="ceci est un cadeau", required=False)
 
+    order_is_sponsored = forms.BooleanField(label="ceci est un parrainage", required=False)
+    order_sponsor_name = forms.CharField(max_length=255, label="nom de votre marraine ou parrain", required=False)
+    order_sponsor_email = forms.EmailField(label="courriel de votre marraine ou parrain", required=False)
+
     class Meta:
         model = ShippingDetails
         exclude = ["items"]
@@ -208,9 +212,15 @@ class DetailsForm(forms.ModelForm):
         if email != email_verification:
             raise forms.ValidationError("Veuillez vérifier votre courriel")
 
+        order_is_sponsored = cleaned_data.get("order_is_sponsored")
+
+        # FIXME: doesn't seem to work
+        if order_is_sponsored:
+            self.fields['order_sponsor_name'].required = True
+            self.fields['order_sponsor_email'].required = True
+
         # In case this is not a gift, populate the hidden fields
         order_is_gift = cleaned_data.get("order_is_gift")
-        print(order_is_gift)
 
         if order_is_gift:
             self.fields['first_name'].required = True

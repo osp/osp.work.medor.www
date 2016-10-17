@@ -7,7 +7,7 @@ from django.core.mail import send_mass_mail
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 
-from subscribe.models import Subscription, Cooperation, Order, Item, ItemMembership, ShippingDetails
+from subscribe.models import Subscription, Cooperation, Order, Item, ItemMembership, ShippingDetails, Offer, Sponsorship
 
 
 def subscription_reminder_first(modeladmin, request, queryset):
@@ -407,6 +407,13 @@ class OrderAdmin(admin.ModelAdmin):
     reminder_second.short_description = "Envoyer un second rappel abonné par email"
 
 
+class OfferAdmin(admin.ModelAdmin):
+    pass
+
+
+class SponsorshipAdmin(admin.ModelAdmin):
+    pass
+
 
 #admin.site.register(Subscription, SubscriptionAdmin)
 admin.site.register(Cooperation, CooperationAdmin)
@@ -415,3 +422,5 @@ admin.site.register(Item, ItemAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ItemMembership, ItemMembershipAdmin)
 admin.site.register(ShippingDetails, ShippingDetailsAdmin)
+admin.site.register(Offer, OfferAdmin)
+admin.site.register(Sponsorship, SponsorshipAdmin)

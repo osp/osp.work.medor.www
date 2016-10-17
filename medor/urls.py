@@ -19,5 +19,4 @@ urlpatterns = i18n_patterns('',
     url(r'^', include('publish.urls')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^', include('cms.urls')),
-    url(r'^', include('publish.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

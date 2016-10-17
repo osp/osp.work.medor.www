@@ -297,6 +297,16 @@ class Cooperation(TransactionBase):
 ###############################################
 
 
+class Offer(models.Model):
+    """docstring"""
+    name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=False)
+    body = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return self.name
+
+
 class ShippingDetails(models.Model):
     COUNTRY_CHOICES = (
         ('AL', 'Albanie'),
@@ -425,7 +435,6 @@ class Order(models.Model):
             unique=False, blank=True, null=True)
     amount = models.DecimalField('total', max_digits=5, decimal_places=2, blank=True, null=True)
     is_gift = models.BooleanField('ceci est un cadeau', default=False)
-    promo_code = models.CharField('code promo', max_length=255, blank=True)
     items = models.ManyToManyField(Item, through='ItemMembership', verbose_name="items")
 
     comment = models.TextField('commentaire', blank=True)
@@ -590,3 +599,13 @@ class ItemMembership(models.Model):
 
     def __unicode__(self):
         return self.item.name
+
+
+class Sponsorship(models.Model):
+    offer = models.ForeignKey(Offer)
+    order = models.ForeignKey(Order)
+    name = models.CharField("nom", max_length=255)
+    email = models.EmailField('courriel')
+
+    def __unicode__(self):
+        return self.name

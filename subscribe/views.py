@@ -8,7 +8,7 @@ from django.template.loader import render_to_string
 from django.views.generic.base import TemplateView
 
 from subscribe.forms import CooperationForm, SubscriptionForm, ConfirmForm, ItemChoiceForm, DetailsForm, ConfirmForm2
-from subscribe.models import Cooperation, Order, ItemMembership
+from subscribe.models import Cooperation, Order, ItemMembership, Offer, Sponsorship
 
 import unicodecsv
 from django.http import HttpResponse
@@ -243,6 +243,13 @@ class OrderWizardView(CookieWizardView):
                 'infos': self.get_cleaned_data_for_step("0"),
             })
 
+        if self.steps.current == '1':
+            offers = Offer.objects.filter(is_active=True)
+            if len(offers):
+                context.update({
+                    'offer': offers.first(),
+                })
+
         if self.steps.current == '2':
             context.update({
                 'infos2': self.get_cleaned_data_for_step("1"),
@@ -269,6 +276,18 @@ class OrderWizardView(CookieWizardView):
         order.email = details_form.cleaned_data["order_email"]
         order.is_gift = details_form.cleaned_data["order_is_gift"]
         order.save()
+
+        order_is_sponsored = details_form.cleaned_data.get("order_is_sponsored")
+
+        if order_is_sponsored:
+            offers = Offer.objects.filter(is_active=True)
+            if len(offers):
+                sponsorship = Sponsorship()
+                sponsorship.offer = offers.first()
+                sponsorship.order = order
+                sponsorship.name = details_form.cleaned_data["order_sponsor_name"]
+                sponsorship.email = details_form.cleaned_data["order_sponsor_email"]
+                sponsorship.save()
 
         # Créer les itemmembership
         for i in item_choice_form.cleaned_data["per_items"]:

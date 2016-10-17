@@ -35,92 +35,123 @@
         <button class="jadore__btn" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">corriger</button>
     </div>
 
-    <div class="flex jadore jadore--details">
-        <div class="flex__item">
-            <p class="jadore__title" style="font-size: 24px; line-height: 1;">Qui êtes-vous&thinsp;?</p>
-            <br>
-            <div class="fieldWrapper">
-                {{ form.order_first_name.errors }}
-                <label for="{{ form.order_first_name.id_for_label }}">prénom&thinsp;:</label>
-                {{ form.order_first_name }}
+    <div class="jadore jadore--details">
+        <div class="group">
+            <div class="jadore__col">
+                <p class="jadore__title" style="font-size: 24px; line-height: 1;">Qui êtes-vous&thinsp;?</p>
+                <br>
+                <div class="fieldWrapper">
+                    {{ form.order_first_name.errors }}
+                    <label for="{{ form.order_first_name.id_for_label }}">prénom&thinsp;:</label>
+                    {{ form.order_first_name }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.order_last_name.errors }}
+                    <label for="{{ form.order_last_name.id_for_label }}">nom&thinsp;:</label>
+                    {{ form.order_last_name }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.order_organization.errors }}
+                    <label for="{{ form.order_organization.id_for_label }}">organisation (optionnel)&thinsp;:</label>
+                    {{ form.order_organization }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.order_email.errors }}
+                    <label for="{{ form.order_email.id_for_label }}">courriel&thinsp;:</label>
+                    {{ form.order_email }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.order_email_verification.errors }}
+                    <label for="{{ form.order_email_verification.id_for_label }}">courriel (vérification)&thinsp;:</label>
+                    {{ form.order_email_verification }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.order_is_gift.errors }}
+                    <label for="{{ form.order_is_gift.id_for_label }}">{{ form.order_is_gift }} ceci est un cadeau</label>
+                </div>
             </div>
-            <div class="fieldWrapper">
-                {{ form.order_last_name.errors }}
-                <label for="{{ form.order_last_name.id_for_label }}">nom&thinsp;:</label>
-                {{ form.order_last_name }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.order_organization.errors }}
-                <label for="{{ form.order_organization.id_for_label }}">organisation (optionnel)&thinsp;:</label>
-                {{ form.order_organization }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.order_email.errors }}
-                <label for="{{ form.order_email.id_for_label }}">courriel&thinsp;:</label>
-                {{ form.order_email }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.order_email_verification.errors }}
-                <label for="{{ form.order_email_verification.id_for_label }}">courriel (vérification)&thinsp;:</label>
-                {{ form.order_email_verification }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.order_is_gift.errors }}
-                <label for="{{ form.order_is_gift.id_for_label }}">ceci est un cadeau</label>
-                {{ form.order_is_gift }}
+            <div class="jadore__col">
+                <p class="jadore__title shipping-title" style="font-size: 24px; line-height: 1;">Informations de livraison</p>
+                <br>
+                <div class="additional">
+                    <div class="fieldWrapper">
+                        {{ form.first_name.errors }}
+                        <label for="{{ form.first_name.id_for_label }}">prénom&thinsp;:</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.last_name.errors }}
+                        <label for="{{ form.last_name.id_for_label }}">nom&thinsp;:</label>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.email.errors }}
+                        <label for="{{ form.email.id_for_label }}">courriel&thinsp;:</label>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.street.errors }}
+                    <label for="{{ form.street.id_for_label }}">rue&thinsp;:</label>
+                    {{ form.street }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.number.errors }}
+                    <label for="{{ form.number.id_for_label }}">numéro&thinsp;:</label>
+                    {{ form.number }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.box.errors }}
+                    <label for="{{ form.box.id_for_label }}">boîte (optionnel)&thinsp;:</label>
+                    {{ form.box }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.postcode.errors }}
+                    <label for="{{ form.postcode.id_for_label }}">code postal&thinsp;:</label>
+                    {{ form.postcode }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.city.errors }}
+                    <label for="{{ form.city.id_for_label }}">ville&thinsp;:</label>
+                    {{ form.city }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.country.errors }}
+                    <label for="{{ form.country.id_for_label }}">pays&thinsp;:</label>
+                    {{ form.country }}
+                </div>
             </div>
         </div>
-        <div class="flex__item">
-            <p class="jadore__title shipping-title" style="font-size: 24px; line-height: 1;">Informations de livraison</p>
-            <br>
-            <div class="additional">
+
+        {% if offer and infos.subscriptions %}
+        <div class="group" style="margin-top: 3em; outline: 4px solid white; outline-offset: 8px;">
+            <div class="jadore__col">
+                <p class="jadore__title" style="font-size: 24px; line-height: 1;">Parrainage</p>
+                <br>
+                {{ offer.body|safe }}
+            </div>
+            <div class="jadore__col" style="padding-top: 24px;">
+                <br>
                 <div class="fieldWrapper">
-                    {{ form.first_name.errors }}
-                    <label for="{{ form.first_name.id_for_label }}">prénom&thinsp;:</label>
-                    {{ form.first_name }}
+                    {{ form.order_is_sponsored.errors }}
+                    <label for="{{ form.order_is_sponsored.id_for_label }}">{{ form.order_is_sponsored }} ceci est un parrainage</label>
+                    <br>
                 </div>
-                <div class="fieldWrapper">
-                    {{ form.last_name.errors }}
-                    <label for="{{ form.last_name.id_for_label }}">nom&thinsp;:</label>
-                    {{ form.last_name }}
+                <div class="offer">
+                    <div class="fieldWrapper">
+                        {{ form.order_sponsor_name.errors }}
+                        <label for="{{ form.order_sponsor_name.id_for_label }}">nom de votre marraine ou parrain</label>
+                        {{ form.order_sponsor_name }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.order_sponsor_email.errors }}
+                        <label for="{{ form.order_sponsor_email.id_for_label }}">courriel de votre marraine ou parrain</label>
+                        {{ form.order_sponsor_email }}
+                    </div>
                 </div>
-                <div class="fieldWrapper">
-                    {{ form.email.errors }}
-                    <label for="{{ form.email.id_for_label }}">courriel&thinsp;:</label>
-                    {{ form.email }}
-                </div>
-            </div>
-            <div class="fieldWrapper">
-                {{ form.street.errors }}
-                <label for="{{ form.street.id_for_label }}">rue&thinsp;:</label>
-                {{ form.street }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.number.errors }}
-                <label for="{{ form.number.id_for_label }}">numéro&thinsp;:</label>
-                {{ form.number }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.box.errors }}
-                <label for="{{ form.box.id_for_label }}">boîte (optionnel)&thinsp;:</label>
-                {{ form.box }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.postcode.errors }}
-                <label for="{{ form.postcode.id_for_label }}">code postal&thinsp;:</label>
-                {{ form.postcode }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.city.errors }}
-                <label for="{{ form.city.id_for_label }}">ville&thinsp;:</label>
-                {{ form.city }}
-            </div>
-            <div class="fieldWrapper">
-                {{ form.country.errors }}
-                <label for="{{ form.country.id_for_label }}">pays&thinsp;:</label>
-                {{ form.country }}
             </div>
         </div>
+        {% endif %}
     </div>
     {% endwith %} 
     
@@ -152,6 +183,24 @@ $(function() {
     } else {
         $additional.hide();  
         $header.text('Information de livraison')
+    };
+});
+$(function() {
+    var $is_sponsored = $('#id_1-order_is_sponsored');
+    var $additional = $('.offer');
+
+    $is_sponsored.on('change', function(event) {
+        if ($(this).prop("checked")) {
+            $additional.show();  
+        } else {
+            $additional.hide();  
+        };
+    });
+
+    if ($is_sponsored.prop("checked")) {
+        $additional.show();  
+    } else {
+        $additional.hide();  
     };
 });
 </script>
