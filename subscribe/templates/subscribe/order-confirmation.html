@@ -51,6 +51,11 @@
         {{ infos2.postcode }} {{ infos2.city }} ({{ infos2.country }})
         </p>
 
+        {% if infos2.order_is_sponsored %}
+        <h2>Marraine ou parrain&thinsp;:</h2>
+        <p>{{ infos2.order_sponsor_name }} {{ infos2.order_sponsor_email }}</p>
+        {% endif %}
+
         <div>
             {% if wizard.form.forms %}
                 {{ wizard.form.management_form }}
