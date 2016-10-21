@@ -536,3 +536,29 @@ figcaption footer small {
   text-transform: uppercase;
 }
 
+//
+//Tiret avant le nom de l'auteur de la sitation
+.pull-out > blockquote footer:before {
+    content: '— ';
+
+    color: inherit;
+}
+
+.pull-out {
+    font-family: 'Erbarre';
+
+    /* margin: (@line-height * 2) 0 (@line-height * 2) -@col-gutter-width; */
+}
+
+.pull-out > blockquote > p {
+    font-size: 2em ;
+    font-weight: bold;
+    line-height: @line-height * 1.5;
+}
+
+.pull-out > blockquote > footer {
+    font-size: 12pt;
+    line-height: @line-height;
+
+    margin-top: 6pt;
+}
