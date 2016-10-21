@@ -130,7 +130,6 @@ class Article(models.Model):
     override_image = FilerImageField(verbose_name='spécifier image aperçu', blank=True, null=True,
              on_delete=models.SET_NULL)
 
-
     def get_excerpt(self):
         """
         Look in the body text to find the ‘chapeau’, the lead text,
@@ -182,6 +181,10 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title or "Sans titre"
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('article-detail-site', (), {'slug': self.slug})
 
 
 class Issue(models.Model):
