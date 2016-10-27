@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'publish',
     'adminsortable2',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'ckeditor',
 
@@ -230,6 +231,11 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        #  'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
 
