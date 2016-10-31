@@ -208,7 +208,7 @@ class ArticleMembership(models.Model):
     """
     Registers articles in issues membership
     """
-    article = models.ForeignKey(Article)
+    article = models.ForeignKey(Article, null=True, blank=True)
     issue = models.ForeignKey(Issue)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
     page_number = models.PositiveIntegerField("nombre de pages", default=1, blank=False, null=False)
@@ -219,7 +219,7 @@ class ArticleMembership(models.Model):
         ordering = ("order",)
 
     def __unicode__(self):
-        return self.article.title
+        return self.article.title if self.article else u"- - -"
 
     @property
     def single_page(self):
