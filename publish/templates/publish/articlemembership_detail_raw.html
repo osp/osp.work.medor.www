@@ -1,3 +1,7 @@
+{% load publish_tags %}
+
+
+{% filter typogrify %}
 <header>
     {% if object.article.rubric.title %}
     <p class="rubric-title">{{ object.article.rubric.title|safe }}</p>
@@ -12,8 +16,9 @@
     <p class="header-byline">{{ object.article.authors|safe }}</p>
 
     <div class="lead">
-    {{ object.article.lead|safe }}
+    {{ object.article.lead|typogrify|safe }}
     </div>
 </header>
 
 {{ object.article.body|safe }}
+{% endfilter %}

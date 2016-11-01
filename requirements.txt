@@ -60,3 +60,6 @@ django-formtools
 
 # Temporarilly fixes <https://github.com/divio/djangocms-text-ckeditor/pull/335>
 html5lib>=0.90,!=0.9999,!=0.99999,<0.99999999
+
+# Typographical filters
+git+git://github.com/aleray/html5lib_typogrify.git
