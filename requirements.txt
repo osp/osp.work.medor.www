@@ -28,9 +28,6 @@ django-filer>=0.9.12
 cmsplugin-filer>=0.10.2
 Pillow>=2.3
 
-# Filer plugin for CKEditor
-django-ckeditor-filebrowser-filer==0.2.0
-
 
 # Exporting data to csv with unicode support
 unicodecsv==0.9.4
