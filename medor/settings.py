@@ -77,6 +77,8 @@ INSTALLED_APPS = (
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
 
+    'ckeditor_filebrowser_filer',
+
     ## Django CMS Blog
     #'filer',
     #'easy_thumbnails',
@@ -275,22 +277,24 @@ CKEDITOR_CONFIGS = {
             ['Pull-out', 'Sidebar', 'Footer'],
             ['Bold', 'Italic', '-', 'Subscript', 'Superscript'],
             ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', ''],
-            ['Link', 'Unlink', 'Image'],
+            #  ['Link', 'Unlink', 'Image'],
+            ['Link', 'Unlink'],
             ['RemoveFormat', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
             ['Find', 'Replace'],
-            ['Source', 'Maximize'
+            ['Source', 'Maximize',
                 # ,'Footnotes'
-                #'Filer Image'
+                'FilerImage',
             ],
         ],
         'extraPlugins': ','.join([
-            'image2',
+            #  'image2',
             'pull-out',
             'footer',
             'sidebar',
             # 'footnotes'
-            #'filerimage'
+            'filerimage'
         ]),
+        'removePlugins': 'image'
     }
 }
 
