@@ -264,7 +264,7 @@ CKEDITOR_CONFIGS = {
             'ol(footnotes)',
             'img[data-*]',
             'video[controls,src]',
-            'span(lettrine,print-only,auteur)',
+            'span(lettrine,print-only,auteur,ellipsis,blank)',
             'iframe[src,width,height,frameborder,webkitallowfullscreen,mozallowfullscreen,allowfullscreen]',
         ]),
         'image2_prefillDimensions': False,
