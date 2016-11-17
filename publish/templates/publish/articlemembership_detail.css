@@ -4,5 +4,7 @@ body { counter-reset: folio {{ object.folio|add:"-1" }}; }
 /*footer,*/
 /*header content*/
 /* FIXME: it assumes that the article starts on a left page */
-.paper:nth-child(odd) .body:before { content: "{{ object.article.rubric.title|striptags|safe }} — {{ object.article.title|striptags|safe }}"; }
+{% autoescape off %}
+.paper:nth-child(odd) .body:before { content: "{{ object.article.rubric.title|striptags }} — {{ object.article.title|striptags }}"; }
+{% endautoescape %}
 /*.footer:before { content: "{{ object.issue.title }}"; }*/
