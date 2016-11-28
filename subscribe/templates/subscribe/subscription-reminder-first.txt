@@ -1,12 +1,12 @@
 Bonjour,
 
-Vous vous êtes abonné à Médor il y a quelque temps. C’était une excellente idée! Il est temps de nous faire parvenir votre paiement de {{ obj.grand_total }} euros par virement sur le compte ING BE85 3631 6228 7306 (BIC: BBRUBEBB) avec la communication structurée :
+Vous vous avez passé une commande sur le site de Médor il y a quelque temps. C’était une excellente idée! Il est temps de nous faire parvenir votre paiement de {{ obj.grand_total }} euros par virement sur le compte ING BE85 3631 6228 7306 (BIC: BBRUBEBB) avec la communication structurée :
 
 {{ obj.structured_communication }}
 
 Si votre système bancaire ne permet pas de faire une communication structurée, entrez simplement {{ obj.simple_communication }}. Pour toute question ou difficulté relative à ce paiement, contactez-nous par retour de mail.
 
-Si vous avez fait votre paiement entre-temps, pardonnez-nous et oubliez ce mail. Si vous n’avez jamais reçu de confirmation de votre abonnement, consultez vos spams et marquez l’adresse de Médor comme « autorisée » dans votre messagerie.
+Si vous avez fait votre paiement entre-temps, pardonnez-nous et oubliez ce mail. Si vous n’avez jamais reçu de confirmation de votre commande, consultez vos spams et marquez l’adresse de Médor comme « autorisée » dans votre messagerie.
 
 Dans tous les cas, continuez à parler de Médor autour de vous.
 

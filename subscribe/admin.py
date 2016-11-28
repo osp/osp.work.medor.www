@@ -245,7 +245,7 @@ class ItemMembershipAdmin(admin.ModelAdmin):
         emails = []
 
         for obj in queryset:
-            subject = "Médor SCRL FS. Détails de votre paiement"
+            subject = "Médor SCRL FS. Rappel de paiement"
             message = render_to_string('subscribe/subscription-reminder-first.txt', {'obj': obj.order})
             sender = "medor@medor.coop"
             recipients = [obj.order.email]
