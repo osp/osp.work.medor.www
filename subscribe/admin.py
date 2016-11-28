@@ -10,79 +10,79 @@ from django.template.loader import render_to_string
 from subscribe.models import Subscription, Cooperation, Order, Item, ItemMembership, ShippingDetails, Offer, Sponsorship
 
 
-def subscription_reminder_first(modeladmin, request, queryset):
-    emails = []
+#  def subscription_reminder_first(modeladmin, request, queryset):
+#      emails = []
 
-    for obj in queryset:
-        subject = "Médor SCRL FS. Détails de votre paiement"
-        message = render_to_string('subscribe/subscription-reminder-first.txt', {'obj': obj})
-        sender = "lesyeuxouverts@medor.coop"
-        recipients = [obj.email]
-        emails.append((subject, message, sender, recipients))
+#      for obj in queryset:
+#          subject = "Médor SCRL FS. Détails de votre paiement"
+#          message = render_to_string('subscribe/subscription-reminder-first.txt', {'obj': obj})
+#          sender = "lesyeuxouverts@medor.coop"
+#          recipients = [obj.email]
+#          emails.append((subject, message, sender, recipients))
 
-    send_mass_mail(emails, fail_silently=False)
+#      send_mass_mail(emails, fail_silently=False)
 
-subscription_reminder_first.short_description = "Envoyer un premier rappel abonné par email"
-
-
-def subscription_reminder_second(modeladmin, request, queryset):
-    emails = []
-
-    for obj in queryset:
-        subject = "Médor SCRL FS. Détails de votre paiement"
-        message = render_to_string('subscribe/subscription-reminder-second.txt', {'obj': obj})
-        sender = "lesyeuxouverts@medor.coop"
-        recipients = [obj.email]
-        emails.append((subject, message, sender, recipients))
-
-    send_mass_mail(emails, fail_silently=False)
-
-subscription_reminder_second.short_description = "Envoyer un second rappel abonné par email"
+#  subscription_reminder_first.short_description = "Envoyer un premier rappel abonné par email"
 
 
-def subscription_present(modeladmin, request, queryset):
-    emails = []
+#  def subscription_reminder_second(modeladmin, request, queryset):
+#      emails = []
 
-    for obj in queryset:
-        subject = "Médor n'est pas un chien. C'est un cadeau."
-        message = render_to_string('subscribe/subscription-present.txt', {})
-        sender = "lesyeuxouverts@medor.coop"
-        recipients = [obj.email]
-        emails.append((subject, message, sender, recipients))
+#      for obj in queryset:
+#          subject = "Médor SCRL FS. Détails de votre paiement"
+#          message = render_to_string('subscribe/subscription-reminder-second.txt', {'obj': obj})
+#          sender = "lesyeuxouverts@medor.coop"
+#          recipients = [obj.email]
+#          emails.append((subject, message, sender, recipients))
 
-    send_mass_mail(emails, fail_silently=False)
+#      send_mass_mail(emails, fail_silently=False)
 
-subscription_present.short_description = "Envoyer l'offre Noël par email"
-
-
-def cooperation_ag_2015_invitation(modeladmin, request, queryset):
-    emails = []
-
-    for obj in queryset:
-        subject = "Invitation à l'Assemblée Générale Médor 2015"
-        message = render_to_string('subscribe/cooperation-ag2015-invitation.txt', {'obj': obj})
-        sender = "lesyeuxouverts@medor.coop"
-        recipients = [obj.email]
-        emails.append((subject, message, sender, recipients))
-
-    send_mass_mail(emails, fail_silently=False)
-
-cooperation_ag_2015_invitation.short_description = "Envoyer une invitation à l'AG 2015 (version 1er mai 2015)"
+#  subscription_reminder_second.short_description = "Envoyer un second rappel abonné par email"
 
 
-def cooperation_ag_2015(modeladmin, request, queryset):
-    emails = []
+#  def subscription_present(modeladmin, request, queryset):
+#      emails = []
 
-    for obj in queryset:
-        subject = "Invitation à l'Assemblée Générale Médor 2015"
-        message = render_to_string('subscribe/cooperation-ag2015.txt', {'obj': obj})
-        sender = "lesyeuxouverts@medor.coop"
-        recipients = [obj.email]
-        emails.append((subject, message, sender, recipients))
+#      for obj in queryset:
+#          subject = "Médor n'est pas un chien. C'est un cadeau."
+#          message = render_to_string('subscribe/subscription-present.txt', {})
+#          sender = "lesyeuxouverts@medor.coop"
+#          recipients = [obj.email]
+#          emails.append((subject, message, sender, recipients))
 
-    send_mass_mail(emails, fail_silently=False)
+#      send_mass_mail(emails, fail_silently=False)
 
-cooperation_ag_2015.short_description = "Envoyer une invitation à l'AG 2015"
+#  subscription_present.short_description = "Envoyer l'offre Noël par email"
+
+
+#  def cooperation_ag_2015_invitation(modeladmin, request, queryset):
+#      emails = []
+
+#      for obj in queryset:
+#          subject = "Invitation à l'Assemblée Générale Médor 2015"
+#          message = render_to_string('subscribe/cooperation-ag2015-invitation.txt', {'obj': obj})
+#          sender = "lesyeuxouverts@medor.coop"
+#          recipients = [obj.email]
+#          emails.append((subject, message, sender, recipients))
+
+#      send_mass_mail(emails, fail_silently=False)
+
+#  cooperation_ag_2015_invitation.short_description = "Envoyer une invitation à l'AG 2015 (version 1er mai 2015)"
+
+
+#  def cooperation_ag_2015(modeladmin, request, queryset):
+#      emails = []
+
+#      for obj in queryset:
+#          subject = "Invitation à l'Assemblée Générale Médor 2015"
+#          message = render_to_string('subscribe/cooperation-ag2015.txt', {'obj': obj})
+#          sender = "lesyeuxouverts@medor.coop"
+#          recipients = [obj.email]
+#          emails.append((subject, message, sender, recipients))
+
+#      send_mass_mail(emails, fail_silently=False)
+
+#  cooperation_ag_2015.short_description = "Envoyer une invitation à l'AG 2015"
 
 
 def cooperation_reminder_first(modeladmin, request, queryset):
@@ -115,19 +115,19 @@ def cooperation_reminder_second(modeladmin, request, queryset):
 cooperation_reminder_second.short_description = "Envoyer un second rappel coopérateur par email"
 
 
-def cooperation_present(modeladmin, request, queryset):
-    emails = []
+#  def cooperation_present(modeladmin, request, queryset):
+#      emails = []
 
-    for obj in queryset:
-        subject = "Médor n'est pas un chien. C'est un cadeau."
-        message = render_to_string('subscribe/cooperation-present.txt', {'obj': obj})
-        sender = "lesyeuxouverts@medor.coop"
-        recipients = [obj.email]
-        emails.append((subject, message, sender, recipients))
+#      for obj in queryset:
+#          subject = "Médor n'est pas un chien. C'est un cadeau."
+#          message = render_to_string('subscribe/cooperation-present.txt', {'obj': obj})
+#          sender = "lesyeuxouverts@medor.coop"
+#          recipients = [obj.email]
+#          emails.append((subject, message, sender, recipients))
 
-    send_mass_mail(emails, fail_silently=False)
+#      send_mass_mail(emails, fail_silently=False)
 
-cooperation_present.short_description = "Envoyer l'offre Noël par email"
+#  cooperation_present.short_description = "Envoyer l'offre Noël par email"
 
 
 class AlsoCooperatorListFilter(admin.SimpleListFilter):
@@ -150,47 +150,47 @@ class AlsoCooperatorListFilter(admin.SimpleListFilter):
             return queryset.exclude(email__in=valid_emails)
 
 
-class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'status', 'from_issue', 'email', 'invoice_reference', 'structured_communication', 'country', 'creation_date', 'confirmation_date')
-    list_filter = ('status', 'from_issue', AlsoCooperatorListFilter, 'country')
-    list_editable = ('status', 'from_issue')
-    date_hierarchy = 'creation_date'
-    readonly_fields = ('creation_date',)
-    search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
-    fieldsets = (
-        (None, {
-            'fields': (
-                'title',
-                ('first_name', 'last_name'),
-                'email',
-                ('status', 'from_issue', 'creation_date', 'confirmation_date'),
-                'invoice_reference',
-                'comment'
-            )
-        }),
-        ('Infos', {
-            'classes': ('collapse',),
-            'fields': (
-                'street',
-                'number',
-                'letterbox',
-                'city',
-                'zip_code',
-                'country'
-            )
-        }),
-        ('Destinataire', {
-            'classes': ('collapse',),
-            'fields': (
-                'is_gift',
-                'recipient_title',
-                'recipient_first_name',
-                'recipient_last_name',
-                'recipient_email'
-            )
-        }),
-    )
-    actions = [subscription_reminder_first, subscription_reminder_second, subscription_present]
+#  class SubscriptionAdmin(admin.ModelAdmin):
+#      list_display = ('__unicode__', 'status', 'from_issue', 'email', 'invoice_reference', 'structured_communication', 'country', 'creation_date', 'confirmation_date')
+#      list_filter = ('status', 'from_issue', AlsoCooperatorListFilter, 'country')
+#      list_editable = ('status', 'from_issue')
+#      date_hierarchy = 'creation_date'
+#      readonly_fields = ('creation_date',)
+#      search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
+#      fieldsets = (
+#          (None, {
+#              'fields': (
+#                  'title',
+#                  ('first_name', 'last_name'),
+#                  'email',
+#                  ('status', 'from_issue', 'creation_date', 'confirmation_date'),
+#                  'invoice_reference',
+#                  'comment'
+#              )
+#          }),
+#          ('Infos', {
+#              'classes': ('collapse',),
+#              'fields': (
+#                  'street',
+#                  'number',
+#                  'letterbox',
+#                  'city',
+#                  'zip_code',
+#                  'country'
+#              )
+#          }),
+#          ('Destinataire', {
+#              'classes': ('collapse',),
+#              'fields': (
+#                  'is_gift',
+#                  'recipient_title',
+#                  'recipient_first_name',
+#                  'recipient_last_name',
+#                  'recipient_email'
+#              )
+#          }),
+#      )
+#      actions = [subscription_reminder_first, subscription_reminder_second, subscription_present]
 
 
 class AlsoSubscriberListFilter(admin.SimpleListFilter):
@@ -222,9 +222,9 @@ class CooperationAdmin(admin.ModelAdmin):
     actions = [
         cooperation_reminder_first,
         cooperation_reminder_second,
-        cooperation_present,
-        cooperation_ag_2015,
-        cooperation_ag_2015_invitation
+        #  cooperation_present,
+        #  cooperation_ag_2015,
+        #  cooperation_ag_2015_invitation
     ]
 
 
@@ -239,7 +239,21 @@ class ItemMembershipAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'quantity', 'order_status', 'is_shipped', 'order')
     list_filter = ('is_shipped', 'order__status', 'item')
     list_editable = ('is_shipped',)
-    actions = ['export_as_csv']
+    actions = ['subscription_reminder_first', 'export_as_csv']
+
+    def subscription_reminder_first(self, request, queryset):
+        emails = []
+
+        for obj in queryset:
+            subject = "Médor SCRL FS. Détails de votre paiement"
+            message = render_to_string('subscribe/subscription-reminder-first.txt', {'obj': obj.order})
+            sender = "medor@medor.coop"
+            recipients = [obj.order.email]
+            emails.append((subject, message, sender, recipients))
+
+        send_mass_mail(emails, fail_silently=False)
+
+    subscription_reminder_first.short_description = "Envoyer un premier rappel abonné par email"
 
     def export_as_csv(self, request, queryset):
         # Create the HttpResponse object with the appropriate CSV header.
