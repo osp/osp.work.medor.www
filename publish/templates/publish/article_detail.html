@@ -9,12 +9,12 @@
         {% if object.subtitle %}<h2>{{ object.subtitle|safe }}</h2>{% endif %}
         <p class=authors>{{ object.authors|safe }}</p>
         <div class="lead">{{ object.lead|safe }}</div>
-        <dl>
-            {% for contribution in object.contributions.all %}
-            <dt>{{ contribution.role }}</dt>
-            <dd>{{ contribution.contributor }}</dd>
-            {% endfor %}
-        </dl>
+        <!-- <dl> -->
+        <!--     {% for contribution in object.contributions.all %} -->
+        <!--     <dt>{{ contribution.role }}</dt> -->
+        <!--     <dd>{{ contribution.contributor }}</dd> -->
+        <!--     {% endfor %} -->
+        <!-- </dl> -->
     </header>
     {{ object.body|safe }}
         <p class="publication-date">{% if object.articlemembership_set.first %}
