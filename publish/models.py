@@ -203,6 +203,10 @@ class Issue(models.Model):
     def __unicode__(self):
         return self.title or "Sans titre"
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('issue-detail-site', (), {'slug': self.slug})
+
 
 class ArticleMembership(models.Model):
     """
