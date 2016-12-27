@@ -1,62 +1,49 @@
-Django<1.9
-pytz
-
+django>=1.9,<1.10
+pytz==2016.10
 
 # Django CMS
-django-cms<3.3
-django-treebeard>=2.0
-
-djangocms-admin-style>=1.0.6
-
-django-classy-tags>=0.3.4.1
-django-sekizai>=0.7
+django-cms<3.5,>=3.4.1
 
 # Optional, recommended packages
-djangocms-text-ckeditor>=3.0.1
+djangocms-admin-style>=1.2,<1.3
+djangocms-text-ckeditor<3.3,>=3.2
 
-djangocms-column
-djangocms-googlemap
-djangocms-inherit
-djangocms-link
-djangocms-style
+django-reversion>=1.10,<2
+django-reversion-compare<0.7
 
-django-reversion>=1.8.7,<1.9
-django-reversion-compare<0.6
-
-easy_thumbnails
-django-filer>=0.9.12
-cmsplugin-filer>=0.10.2
-Pillow>=2.3
-
+# File management
+django-filer>=1.2,<1.3
+cmsplugin-filer>=1.1,<1.2
+Pillow>=2
 
 # Exporting data to csv with unicode support
-unicodecsv==0.9.4
+unicodecsv>=0.9,<0.15
 
 # Event list on the homepage (subscribe_tags)
 caldav==0.4.0
 
 # Django compressor
-django-compressor==1.4
-cssmin==0.2.0
+django-compressor==2.1
 
 # Caching
-python-memcached==1.53
+# python-memcached>=1.5,<1.6
+python-memcached
 
 # Registration, so people can create themselves accounts
-django-registration-redux
+django-registration-redux==1.4
 
 # Markdown, to format article proposals
 Markdown>=2
 
 # Application publish
-django-admin-sortable2
-djangorestframework
+django-admin-sortable2>=0.6,<0.7
+djangorestframework>=3.4,<3.5
 django-filter==0.11.0
-django-cors-headers==1.1.0
-django-ckeditor==5.0.2
+django-cors-headers>=1.1,<1.4
+django-ckeditor>=5.0,<5.2
 
 # Upgrade to dj 1.8 needs this
-django-formtools
+django-formtools==1.0
 
 # Temporarilly fixes <https://github.com/divio/djangocms-text-ckeditor/pull/335>
 html5lib>=0.90,!=0.9999,!=0.99999,<0.99999999

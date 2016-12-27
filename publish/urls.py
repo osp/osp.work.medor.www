@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import url, include
 from django.views.generic.base import RedirectView
 
 from rest_framework import serializers, viewsets, routers
@@ -94,7 +94,7 @@ router.register(r'article', ArticleViewSet)
 router.register(r'article-membership', ArticleMembershipViewSet)
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', ArticleMembershipWebListView.as_view(), name='feed'),
     url(r'^numero/$', IssueListView.as_view(), name='issue-list'),
     url(r'^numero/(?P<slug>[-\w]+)/$', IssueDetailView.as_view(), name='issue-detail-site'),
@@ -115,4 +115,4 @@ urlpatterns = patterns('',
     # Additionally, we include login URLs for the browsable API.
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-)
+]
