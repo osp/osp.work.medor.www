@@ -9,18 +9,23 @@ from rest_framework import filters, permissions
 
 # Serializers define the API representation.
 class RubricSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Rubric
 
 
 # Serializers define the API representation.
 class LicenseSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Issue
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
-    rubric = RubricSerializer(required=False)
+    id = serializers.ReadOnlyField()
+    rubric = RubricSerializer(reauired=False)
 
     class Meta:
         model = Article
@@ -28,6 +33,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
     article = ArticleSerializer()
 
     class Meta:
@@ -37,6 +43,7 @@ class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
 
 # Serializers define the API representation.
 class IssueSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
     articlemembership_set = ArticleMembershipSerializer(many=True)
 
     class Meta:
