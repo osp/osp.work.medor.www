@@ -25,7 +25,7 @@ class LicenseSerializer(serializers.HyperlinkedModelSerializer):
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
-    rubric = RubricSerializer(reauired=False)
+    rubric = RubricSerializer(required=False)
 
     class Meta:
         model = Article
