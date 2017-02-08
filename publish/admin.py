@@ -31,6 +31,13 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     extra = 0
     readonly_fields = ('links',)
 
+    # FIXME: this is a dirty trick to inject a css rule that fix a bug with
+    # django admin sortable and admin style
+    class Media:
+        css = {
+            "all": ("data:text/css;base64,Lm9yaWdpbmFsIHB7ZGlzcGxheTogbm9uZTt9",)
+        }
+
     def links(self, instance):
         """
         Provide links to the relevant CSS, raw HTML, HTML2print template
