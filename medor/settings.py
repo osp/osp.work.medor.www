@@ -269,7 +269,7 @@ CKEDITOR_CONFIGS = {
         ]),
         'image2_prefillDimensions': False,
         'admin_url': '/admin/',
-        'contentsCss':'https://medor.coop/static/CACHE/css/f3b96be794f8.css',
+        'contentsCss': 'https://medor.coop/static/CACHE/css/f3b96be794f8.css',
         'toolbar_Custom': [
             ['Format'],
             ['Pull-out', 'Sidebar', 'Footer'],
@@ -277,7 +277,7 @@ CKEDITOR_CONFIGS = {
             ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent', '-', ''],
             ['Link', 'Unlink', 'Image'],
             ['RemoveFormat', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
-            ['Find', 'Replace'],
+            ['Find', 'Replace', 'SpecialChar'],
             ['Source', 'Maximize'
                 # ,'Footnotes'
                 #'Filer Image'
