@@ -8,6 +8,7 @@ class RetailOutlet(models.Model):
     """
     Represents a place where to buy Médor
     """
+    is_published = models.BooleanField(default=True)
     name = models.CharField('nom', max_length=1024)
     address = models.CharField('adresse', max_length=1024, blank=True)
     zip_code = models.PositiveSmallIntegerField('code postal', blank=True, null=True)

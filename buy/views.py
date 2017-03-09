@@ -6,7 +6,6 @@ import unicodecsv
 from django.http import HttpResponse
 
 
-
 def retail_outlet_as_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
@@ -21,7 +20,7 @@ def retail_outlet_as_csv(request):
         "longitude",
     ])
 
-    for r in RetailOutlet.objects.all():
+    for r in RetailOutlet.objects.filter(is_published=True):
         writer.writerow([
             r.name,
             u"%s, %s %s, %s" % (r.address, r.zip_code, r.city, r.country),
