@@ -4,7 +4,8 @@ from django.views.generic.base import RedirectView
 from rest_framework import serializers, viewsets, routers
 from .views import ArticleMembershipWebListView, ArticleDetailView, IssueListView, IssueDetailView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
 from .models import Article, ArticleMembership, Issue, License, Rubric
-from rest_framework import filters, permissions
+from rest_framework import permissions
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 # Serializers define the API representation.
@@ -13,6 +14,7 @@ class RubricSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Rubric
+        fields = '__all__'
 
 
 # Serializers define the API representation.
@@ -21,6 +23,7 @@ class LicenseSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Issue
+        fields = '__all__'
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
@@ -39,6 +42,7 @@ class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ArticleMembership
         depth = 1
+        fields = '__all__'
 
 
 # Serializers define the API representation.
@@ -48,6 +52,7 @@ class IssueSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Issue
+        fields = '__all__'
 
 
 # ViewSets define the view behavior.
@@ -80,7 +85,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
 class ArticleMembershipViewSet(viewsets.ModelViewSet):
     queryset = ArticleMembership.objects.all()
     serializer_class = ArticleMembershipSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = ('issue', 'issue__id')
     permission_classes = (permissions.IsAdminUser,)
 

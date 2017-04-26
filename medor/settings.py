@@ -90,8 +90,6 @@ INSTALLED_APPS = (
     # 'admin_enhancer',
     # 'djangocms_blog',
 
-    'django.contrib.webdesign',
-
     'registration',
 
     'django.contrib.sitemaps',

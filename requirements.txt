@@ -1,5 +1,5 @@
-django>=1.9,<1.10
-pytz==2016.10
+django>=1.10,<1.11
+pytz==2017.2
 
 # Django CMS
 django-cms<3.5,>=3.4.1
@@ -8,8 +8,8 @@ django-cms<3.5,>=3.4.1
 djangocms-admin-style>=1.2,<1.3
 djangocms-text-ckeditor<3.3,>=3.2
 
-django-reversion>=1.10,<2
-django-reversion-compare<0.7
+django-reversion>=2.0,<2.1
+django-reversion-compare>=0.7,<0.8
 
 # File management
 django-filer>=1.2,<1.3
@@ -23,30 +23,27 @@ unicodecsv>=0.9,<0.15
 caldav==0.4.0
 
 # Django compressor
-django-compressor==2.1
+django-compressor>=2.1,<2.2
 
 # Caching
 # python-memcached>=1.5,<1.6
 python-memcached
 
 # Registration, so people can create themselves accounts
-django-registration-redux==1.4
+django-registration-redux>=1.6,<1.7
 
 # Markdown, to format article proposals
-Markdown>=2
+Markdown>=2,<3
 
 # Application publish
 django-admin-sortable2>=0.6,<0.7
-djangorestframework>=3.4,<3.5
-django-filter==0.11.0
-django-cors-headers>=1.1,<1.4
-django-ckeditor>=5.0,<5.2
+djangorestframework>=3.6,<3.7
+django-filter>=1.0.1,<1.1
+django-cors-headers>=2,<2.1
+django-ckeditor>=5.2,<5.3
 
 # Upgrade to dj 1.8 needs this
-django-formtools==1.0
-
-# Temporarilly fixes <https://github.com/divio/djangocms-text-ckeditor/pull/335>
-html5lib>=0.90,!=0.9999,!=0.99999,<0.99999999
+django-formtools>=2.0,<2.1
 
 # Typographical filters
 git+git://github.com/aleray/html5lib_typogrify.git
