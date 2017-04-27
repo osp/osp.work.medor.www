@@ -52,7 +52,7 @@ CACHES = {
 }
 # Django CMS cache duration. 5 minutes here.
 CMS_CACHE_DURATIONS = 60 * 5
-MIDDLEWARE_CLASSES = ('django.middleware.cache.UpdateCacheMiddleware',) + MIDDLEWARE_CLASSES + ('django.middleware.cache.FetchFromCacheMiddleware',)
+MIDDLEWARE = ['django.middleware.cache.UpdateCacheMiddleware'] + MIDDLEWARE + ['django.middleware.cache.FetchFromCacheMiddleware']
 
 
 # Calendar infos to display the events on the home page
