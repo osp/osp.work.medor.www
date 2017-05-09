@@ -21,6 +21,8 @@ from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
 from filer.models.imagemodels import Image
 
+from publish.utils import typogrify
+
 SENTENCE_LAST_CHARACTER = re.compile('[.!?]')
 
 
@@ -129,6 +131,10 @@ class Article(models.Model):
     override_description = models.TextField('exergue spécifique pour le web', blank=True)
     override_image = FilerImageField(verbose_name='spécifier image aperçu', blank=True, null=True,
              on_delete=models.SET_NULL)
+
+    def save(self, *args, **kwargs):
+        self.body = typogrify(self.body)
+        super(Article, self).save(*args, **kwargs) # Call the "real" save() method.
 
     def get_excerpt(self):
         """
