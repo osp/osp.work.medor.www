@@ -133,6 +133,7 @@ class Article(models.Model):
              on_delete=models.SET_NULL)
 
     def save(self, *args, **kwargs):
+        self.lead = typogrify(self.lead)
         self.body = typogrify(self.body)
         super(Article, self).save(*args, **kwargs) # Call the "real" save() method.
 
