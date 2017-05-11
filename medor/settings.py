@@ -274,6 +274,10 @@ CKEDITOR_CONFIGS = {
         'format_normal': {'element': 'p', 'name' : 'Texte normal'},
         'entities': False,
         'image2_captionedClass': '',
+        'wordcount': {
+            'showCharCount': True,
+            'countSpacesAsChars': True
+        },
         'extraAllowedContent': '; '.join([
             'h1 abbr figure figcaption footer small dl dt dd',
             'div[class]',
@@ -302,6 +306,8 @@ CKEDITOR_CONFIGS = {
             ],
         ],
         'extraPlugins': ','.join([
+            'wordcount',
+            'notification',
             'image2',
             'pull-out',
             'footer',
