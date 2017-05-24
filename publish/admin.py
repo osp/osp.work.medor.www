@@ -9,7 +9,6 @@ from django.utils.safestring import mark_safe
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from .models import ArticleMembership, ArticleMembershipWeb, Article, Issue, License, Rubric, Contribution, Contributor, Role
 
-from reversion.admin import VersionAdmin
 from reversion_compare.admin import CompareVersionAdmin
 
 
