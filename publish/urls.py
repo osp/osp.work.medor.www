@@ -3,7 +3,7 @@ from django.views.generic.base import RedirectView
 
 from rest_framework import serializers, viewsets, routers
 from .views import ArticleMembershipWebListView, ArticleDetailView, IssueListView, IssueDetailView, ArticleMembershipDetailView, ArticleMembershipDetailRawView, ArticleMembershipDetailCSSView, ArticleMembershipDetailTplView
-from .models import Article, ArticleMembership, Issue, License, Rubric
+from .models import Article, ArticleMembership, Issue, License, Rubric, Contribution, Contributor, Role
 from rest_framework import permissions
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -26,9 +26,38 @@ class LicenseSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
+# Serializers define the API representation.
+class RoleSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
+    class Meta:
+        model = Role
+        fields = '__all__'
+
+
+# Serializers define the API representation.
+class ContributorSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
+    class Meta:
+        model = Contributor
+        fields = '__all__'
+
+# Serializers define the API representation.
+class ContributionSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+    contributor = ContributorSerializer()
+    role = RoleSerializer()
+
+    class Meta:
+        model = Contribution
+        fields = ['contributor', 'role']
+
+
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
     rubric = RubricSerializer(required=False)
+    contributions = ContributionSerializer(many=True)
 
     class Meta:
         model = Article
@@ -59,6 +88,27 @@ class IssueSerializer(serializers.HyperlinkedModelSerializer):
 class RubricViewSet(viewsets.ModelViewSet):
     queryset = Rubric.objects.all()
     serializer_class = RubricSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+#  ViewSets define the view behavior.
+class RoleViewSet(viewsets.ModelViewSet):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+#  ViewSets define the view behavior.
+class ContributorViewSet(viewsets.ModelViewSet):
+    queryset = Contributor.objects.all()
+    serializer_class = ContributorSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+#  ViewSets define the view behavior.
+class ContributionViewSet(viewsets.ModelViewSet):
+    queryset = Contribution.objects.all()
+    serializer_class = ContributionSerializer
     permission_classes = (permissions.IsAdminUser,)
 
 
@@ -96,6 +146,9 @@ router.register(r'rubric', RubricViewSet)
 router.register(r'license', LicenseViewSet)
 router.register(r'issue', IssueViewSet)
 router.register(r'article', ArticleViewSet)
+router.register(r'contributor', ContributorViewSet)
+router.register(r'role', RoleViewSet)
+router.register(r'contribution', ContributionViewSet)
 router.register(r'article-membership', ArticleMembershipViewSet)
 
 
