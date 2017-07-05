@@ -48,6 +48,7 @@ class ContributionSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
     contributor = ContributorSerializer()
     role = RoleSerializer()
+    license = LicenseSerializer()
 
     class Meta:
         model = Contribution
