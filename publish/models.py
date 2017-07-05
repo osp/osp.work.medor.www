@@ -87,6 +87,7 @@ class Contribution(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
     contributor = models.ForeignKey(Contributor)
     role = models.ForeignKey(Role)
+    license = models.ForeignKey(License, null=True, blank=True, verbose_name="licence")
 
     def __unicode__(self):
         return self.contributor.__unicode__()
