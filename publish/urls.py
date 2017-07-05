@@ -22,7 +22,7 @@ class LicenseSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
 
     class Meta:
-        model = Issue
+        model = License
         fields = '__all__'
 
 
@@ -51,7 +51,7 @@ class ContributionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Contribution
-        fields = ['id', 'contributor', 'role']
+        fields = ['id', 'contributor', 'role', 'licence']
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
