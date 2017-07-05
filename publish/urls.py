@@ -51,7 +51,7 @@ class ContributionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Contribution
-        fields = ['id', 'contributor', 'role', 'licence']
+        fields = ['id', 'contributor', 'role', 'license']
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
