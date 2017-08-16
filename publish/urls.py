@@ -68,6 +68,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 class ArticleMembershipSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
     article = ArticleSerializer()
+    folio = serializers.ReadOnlyField()
 
     class Meta:
         model = ArticleMembership
