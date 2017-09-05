@@ -94,8 +94,9 @@ class ArticleAdmin(CompareVersionAdmin):
     inlines = (ContributionInline,)
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'rubric', 'status', 'authors', 'peer_reviewers')
-    list_filter = ('status', InIssueListFilter)
+    list_filter = ('status', 'published_online', 'rubric', InIssueListFilter)
     readonly_fields = ('description_explanation', 'image_explanation')
+    search_fields = ("title",)
     fieldsets = (
         (None, {
             'fields': (
