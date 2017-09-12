@@ -230,6 +230,7 @@ class CooperationAdmin(admin.ModelAdmin):
 
 class ItemAdmin(admin.ModelAdmin):
     model = Item
+    save_as = True
     list_display = ('__unicode__', 'is_published', 'transaction_type', 'price')
     list_filter = ('is_published', 'transaction_type',)
 
