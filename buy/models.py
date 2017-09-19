@@ -20,6 +20,7 @@ class RetailOutlet(models.Model):
     longitude = models.FloatField(_('longitude'),  blank=True, null=True)
 
     class Meta:
+        ordering = ("name",)
         verbose_name = _("retail outlet")
         verbose_name_plural = _("retail outlets")
 

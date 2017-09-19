@@ -13,7 +13,9 @@ class RetailOutletAdmin(admin.ModelAdmin):
     """
     list_display = ('__unicode__', 'name', 'zip_code', 'city', 'is_published')
     list_editable = ('is_published',)
+    list_filter = ('is_published',)
     actions = ['publish', 'unpublish']
+    search_fields = ("name", "city")
 
     def publish(self, request, queryset):
         queryset.update(is_published=True)
