@@ -19,7 +19,7 @@
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% thumbnail object.image 1200x630 crop %}" />
     {% endif %}
     <!-- No need for a separate og:description as it falls back to meta[name=description]-->
-    <meta name="description" content="{% firstof object.description description %}" />
+    <meta name="description" content="{% firstof object.description|striptags|safe description|striptags|safe %}" />
 
     {% block meta %}{% endblock %}
 
