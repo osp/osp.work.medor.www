@@ -47,5 +47,10 @@ django-formtools>=2.0,<2.2
 # Upgrade to dj 1.11 needs this
 easy-thumbnails>=2.4.2,<2.5
 
+# Upgrade to dj 1.11 needs this
+# see <https://github.com/divio/djangocms-attributes-field/issues/20>
+# see <https://github.com/divio/cmsplugin-filer/blob/develop/setup.py>
+djangocms-attributes-field==0.3.0
+
 # Typographical filters
 git+git://github.com/aleray/html5lib_typogrify.git
