@@ -30,6 +30,18 @@ def deploy(branch='master'):
     run('touch %(path)s/app/medor/wsgi.py' % env)
 
 
+def upgrade_requirements():
+    """
+    upgrade requirements
+    """
+
+    with cd('%(path)s/app' % env):
+        with prefix('source %(path)s/venv/bin/activate' % env):
+            run('pip install -r requirements.txt --upgrade')
+
+    run('touch %(path)s/app/medor/wsgi.py' % env)
+
+
 def migrate():
     """
     runs migrations on server
