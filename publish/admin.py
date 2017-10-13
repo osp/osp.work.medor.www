@@ -107,7 +107,7 @@ class ArticleAdmin(CompareVersionAdmin):
                 'rubric',
                 ('status', 'license'),
                 ('authors', 'peer_reviewers'),
-                ('in_toc', 'published_online'),
+                ('published_online',),
                 'lead',
                 'body',
             )
