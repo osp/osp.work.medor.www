@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.forms import formset_factory
-from subscribe.models import Cooperation, Subscription, Item, ShippingDetails, Order
+from subscribe.models import Cooperation, Subscription, Item, ShippingDetails
 from subscribe.fields import CustomOrderMultipleChoiceField
 from subscribe.widgets import CustomCheckboxSelectMultiple
 
@@ -156,9 +155,9 @@ class ItemChoiceForm(forms.Form):
     required_css_class = 'required'
 
     subscriptions = CustomOrderMultipleChoiceField(queryset=Item.objects.filter(is_published=True, transaction_type=1),
-            widget=CustomCheckboxSelectMultiple(), required=False, label="Je m'abonne")
+            widget=CustomCheckboxSelectMultiple, required=False, label="Je m'abonne")
     per_items = CustomOrderMultipleChoiceField(queryset=Item.objects.filter(is_published=True, transaction_type=2),
-            widget=CustomCheckboxSelectMultiple(), required=False, label="J'achète des numéros à la pièce")
+            widget=CustomCheckboxSelectMultiple, required=False, label="J'achète des numéros à la pièce")
 
     def clean(self):
         """Makes sure that there is at least one selected Item"""
