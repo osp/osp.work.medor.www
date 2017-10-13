@@ -22,6 +22,7 @@ class RoleAdmin(admin.ModelAdmin):
 
 class ContributionInline(GenericTabularInline):
     model = Contribution
+    extra = 0
 
 
 class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -34,7 +35,7 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     # django admin sortable and admin style
     class Media:
         css = {
-            "all": ("data:text/css;base64,Lm9yaWdpbmFsIHB7ZGlzcGxheTogbm9uZTt9",)
+            'all': ('admin/custom_admin.css', )
         }
 
     def links(self, instance):
