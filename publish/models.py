@@ -127,7 +127,6 @@ class Article(models.Model):
     peer_reviewers = models.CharField("parrains ou marraines", max_length=1024, blank=True)
     contributions = GenericRelation(Contribution)
     status = models.PositiveSmallIntegerField('statut', choices=STATUS_CHOICES, default=0)
-    in_toc = models.BooleanField('montré dans le table de matière', default=True)
     published_online = models.BooleanField('publié en ligne', default=False)
     override_description = models.TextField('exergue spécifique pour le web', blank=True)
     override_image = FilerImageField(verbose_name='spécifier image aperçu', blank=True, null=True,
@@ -220,6 +219,7 @@ class ArticleMembership(models.Model):
     """
     Registers articles in issues membership
     """
+    in_toc = models.BooleanField('montré dans le table de matière', default=True)
     article = models.ForeignKey(Article, null=True, blank=True)
     issue = models.ForeignKey(Issue)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)

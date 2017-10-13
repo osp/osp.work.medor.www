@@ -6,7 +6,7 @@
     <h1>{{ object }}</h1>
 </header>
 {% for membership in object.articlemembership_set.all %}
-    {% if membership.article.in_toc %}
+    {% if membership.in_toc %}
     <div class="gros-article sommaire" {% if membership.article.image %}style="background-image:url({% thumbnail membership.article.image 1200x630 crop %})"{% endif %}>
        
         <div class="gros-extrait">
