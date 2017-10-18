@@ -3,7 +3,7 @@
 
      <ol>
      {% for membership in obj.articlemembership_set.all %}
-        <li><a href="{% url 'article-membership-detail' membership.id %}">{{ membership.article.title }}</a></li>
+        <li>{{ membership.article.title }}</li>
      {% endfor %}
      </ol>
 {% endfor %}

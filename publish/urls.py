@@ -5,7 +5,7 @@ from django.views.generic.base import RedirectView
 from rest_framework import routers
 
 
-from .views import ArticleMembershipWebListView, ArticleListView, ArticleDetailView, IssueDetailView
+from .views import ArticleMembershipWebListView, ArticleListView, ArticleDetailView, IssueListView, IssueDetailView
 from .views import RubricViewSet, LicenseViewSet, IssueViewSet, ArticleViewSet, ContributorViewSet, ContributionViewSet, RoleViewSet, ArticleMembershipViewSet
 
 
@@ -23,7 +23,8 @@ router.register(r'article-membership', ArticleMembershipViewSet)
 
 urlpatterns = [
     url(r'^$', ArticleMembershipWebListView.as_view(), name='feed'),
-    #  url(r'^numero/$', IssueListView.as_view(), name='issue-list'),
+
+    url(r'^numero/$', IssueListView.as_view(), name='issue-list'),
     url(r'^numero/(?P<slug>[-\w]+)/$', IssueDetailView.as_view(), name='issue-detail-site'),
 
     url(r'^article/$', ArticleListView.as_view(), name='article-list'),
