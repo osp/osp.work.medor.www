@@ -4,7 +4,69 @@ from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
 from django.http import Http404
+
+from rest_framework import viewsets, permissions
+from django_filters.rest_framework import DjangoFilterBackend
+
 from .models import Article, Issue, ArticleMembership, ArticleMembershipWeb
+from .models import License, Rubric, Contribution, Contributor, Role
+from .serializers import RubricSerializer, RoleSerializer, ContributorSerializer, ContributionSerializer, LicenseSerializer, IssueSerializer, ArticleSerializer, ArticleMembershipSerializer
+
+
+# ViewSets define the view behavior.
+class RubricViewSet(viewsets.ModelViewSet):
+    queryset = Rubric.objects.all()
+    serializer_class = RubricSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+#  ViewSets define the view behavior.
+class RoleViewSet(viewsets.ModelViewSet):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+#  ViewSets define the view behavior.
+class ContributorViewSet(viewsets.ModelViewSet):
+    queryset = Contributor.objects.all()
+    serializer_class = ContributorSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+#  ViewSets define the view behavior.
+class ContributionViewSet(viewsets.ModelViewSet):
+    queryset = Contribution.objects.all()
+    serializer_class = ContributionSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+# ViewSets define the view behavior.
+class LicenseViewSet(viewsets.ModelViewSet):
+    queryset = License.objects.all()
+    serializer_class = LicenseSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+# ViewSets define the view behavior.
+class IssueViewSet(viewsets.ModelViewSet):
+    queryset = Issue.objects.all()
+    serializer_class = IssueSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = (permissions.IsAdminUser,)
+
+
+class ArticleMembershipViewSet(viewsets.ModelViewSet):
+    queryset = ArticleMembership.objects.all()
+    serializer_class = ArticleMembershipSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('issue', 'issue__id')
+    permission_classes = (permissions.IsAdminUser,)
 
 
 class IssueListView(ListView):
