@@ -87,6 +87,14 @@ class IssueDetailView(DetailView):
     model = Issue
 
 
+class ArticleListView(ListView):
+    """
+    Archive of articles published on the web
+    """
+    queryset = Article.objects.filter(published_online=True)
+    paginate_by = 10
+
+
 class ArticleDetailView(DetailView):
     """
     An article

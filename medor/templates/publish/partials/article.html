@@ -1,0 +1,46 @@
+{% load thumbnail %}
+
+<article class="article">
+    <header>
+        <p class="lead-image"><img src="{% thumbnail article.image 400x300 %}" alt=""></p>
+
+        {% if article.rubric.title %}
+        <p class="rubric-title">{{ article.rubric.title|safe }}</p>
+        {% endif %}
+
+        {% if article.rubric.subtitle %}
+        <p class="rubric-subtitle">{{ article.rubric.subtitle|safe }}</p>
+        {% endif %}
+
+        <h1 class="headline">
+            <a href="{{ article.get_absolute_url }}">{{ article.title|safe }}</a>
+        </h1>
+
+        {% if article.subtitle %}
+        <p class="subhead">{{ article.subtitle|safe }}</p>
+        {% endif %}
+
+        <!-- <p class="byline">{{ article.authors|safe }}</p> -->
+
+        <div class="lead">
+        {{ article.lead|safe }}
+        <!-- {{ article.description|safe }}  -->
+        </div>
+    </header>
+
+    <p class="publication-date">
+    {% if article.articlemembership_set.first %}
+        {% with article.articlemembership_set.first as print_publication %}
+        Publié dans {{ print_publication.issue }}<!-- {{ print_publication.issue.publish_date|date:"d/m/Y" }}-->,
+            {% if print_publication.single_page %}
+                page {{ print_publication.first_page}}.
+            {% else %}
+                pages {{ print_publication.first_page}}–{{ print_publication.last_page}}.
+            {% endif %}<br/>
+        {% endwith %}
+    {% endif %}
+
+    {% if article.articlemembershipweb_set.first %}
+        Publication en ligne: {{ article.articlemembershipweb_set.first.web_publish_date|date:"d/m/Y" }}.
+    {% endif %}</p>
+</article>
