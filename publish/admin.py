@@ -29,7 +29,6 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     model = ArticleMembership
     orderable_field = 'order'
     extra = 0
-    readonly_fields = ('links',)
 
     # FIXME: this is a dirty trick to inject a css rule that fix a bug with
     # django admin sortable and admin style
@@ -37,29 +36,6 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
         css = {
             'all': ('admin/custom_admin.css', )
         }
-
-    def links(self, instance):
-        """
-        Provide links to the relevant CSS, raw HTML, HTML2print template
-        in the admin display of an ArticleMemberShip
-        """
-        # is the instance a proxy? it only works when I call it first this way:
-        instance.__unicode__()
-
-        if not instance.article:
-            return u""
-        else:
-            pk = instance.id
-            css_link = reverse('article-membership-detail-css', args=[pk])
-            html_link = reverse('article-membership-detail-html', args=[pk])
-            tpl_link = reverse('article-membership-detail-tpl', args=[pk])
-            return mark_safe(
-                '<a href="%s">CSS</a>, <a href="%s">raw HTML</a>, <a href="%s">template</a>' %
-                (css_link, html_link, tpl_link)
-            )
-
-    links.short_description = "Links"
-    links.allow_tags = True
 
 
 class ArticleMembershipWebAdmin(SortableAdminMixin, admin.ModelAdmin):
