@@ -87,6 +87,20 @@ class IssueDetailView(DetailView):
     model = Issue
 
 
+class ContributorListView(ListView):
+    """
+    A list of all contributors
+    """
+    model = Contributor
+
+
+class ContributorDetailView(DetailView):
+    """
+    The Table of Contents for an issue
+    """
+    model = Contributor
+
+
 class ArticleListView(ListView):
     """
     Archive of articles published on the web

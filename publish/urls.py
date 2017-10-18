@@ -5,7 +5,7 @@ from django.views.generic.base import RedirectView
 from rest_framework import routers
 
 
-from .views import ArticleMembershipWebListView, ArticleListView, ArticleDetailView, IssueListView, IssueDetailView
+from .views import ArticleMembershipWebListView, ArticleListView, ArticleDetailView, IssueListView, IssueDetailView, ContributorListView, ContributorDetailView
 from .views import RubricViewSet, LicenseViewSet, IssueViewSet, ArticleViewSet, ContributorViewSet, ContributionViewSet, RoleViewSet, ArticleMembershipViewSet
 
 
@@ -29,6 +29,9 @@ urlpatterns = [
 
     url(r'^article/$', ArticleListView.as_view(), name='article-list'),
     url(r'^article/(?P<slug>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail-site'),
+
+    url(r'^contributeurs/$', ContributorListView.as_view(), name='contributor-list'),
+    url(r'^contributeurs/(?P<pk>\d+)/$', ContributorDetailView.as_view(), name='contributor-detail'),
 
     # legacy urls
     url(r'^bug/$', RedirectView.as_view(url='/article/le-jour-ou-la-belgique-bugge/', permanent=True)),
