@@ -218,7 +218,7 @@ class CooperationAdmin(admin.ModelAdmin):
     list_filter = ('status', 'country', AlsoSubscriberListFilter)
     list_editable = ('status',)
     date_hierarchy = 'creation_date'
-    search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
+    search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference', 'zip_code', 'street', 'city')
     actions = [
         cooperation_reminder_first,
         cooperation_reminder_second,
@@ -332,7 +332,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('status', 'shipping_details__country')
     date_hierarchy = 'confirmation_date'
     readonly_fields = ('creation_date', 'confirmation_date', 'invoice_reference', 'structured_communication', 'grand_total')
-    search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference')
+    search_fields = ('first_name', 'last_name', 'status', 'email', 'invoice_reference', 'shipping_details__first_name', 'shipping_details__last_name', 'shipping_details__email', 'shipping_details__street', 'shipping_details__postcode', 'shipping_details__city')
     actions = ['export_as_csv', 'reminder_first', 'reminder_second']
 
     def export_as_csv(self, request, queryset):
