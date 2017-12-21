@@ -212,6 +212,8 @@ table + h3 {
 }
 
 .article-detail p + p { margin-top: @line-height; }
+.article-detail figure { margin-top: @line-height!important; margin-bottom: @line-height!important}
+.article-detail figcaption { padding-top: @line-height }
 
 sup {
     font-size: 7 * @unit;
@@ -540,6 +542,9 @@ figcaption footer small {
 
 //
 //Tiret avant le nom de l'auteur de la sitation
+.pull-out > blockquote {
+	margin: 0;
+}
 .pull-out > blockquote footer:before {
     content: '— ';
 
@@ -549,11 +554,11 @@ figcaption footer small {
 .pull-out {
     font-family: 'Erbarre';
 
-    /* margin: (@line-height * 2) 0 (@line-height * 2) -@col-gutter-width; */
+    margin: (@line-height * 2) (@line-height * 4) (@line-height * 2) (@line-height * 4);
 }
 
 .pull-out > blockquote > p {
-    font-size: 2em ;
+    font-size: 1.6em ;
     font-weight: bold;
     line-height: @line-height * 1.5;
 }
