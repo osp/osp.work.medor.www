@@ -282,7 +282,7 @@ CKEDITOR_CONFIGS = {
         'extraAllowedContent': '; '.join([
             'h1 abbr figure figcaption footer small dl dt dd',
             'div[class]',
-            'aside[id](exergue,making-of,encadre,pull-out,sidebar,footnotes)',
+            'aside[id](exergue,making-of,encadre,pull-out,sidebar,footnotes){margin,max-width,margin}',
             'p(chapeau,intro-medor,question,auteur,fin,debut,footer-byline,endnote)',
             'ol(footnotes)',
             'img[data-*]{margin,max-width,margin}',
