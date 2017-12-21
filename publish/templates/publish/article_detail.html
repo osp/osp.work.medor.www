@@ -1,7 +1,7 @@
 {% extends "base3.html" %}
 
 {% block content %}
-<article>
+<article class="article-detail">
     <header>
         <p class="rubrique-title">{{ object.rubric.title|safe }}</p>
         {% if object.rubric.subtitle %}<p class="rubrique-subtitle">{{ object.rubric.subtitle|safe }}</p>{% endif %}
@@ -16,21 +16,24 @@
         <!--     {% endfor %} -->
         <!-- </dl> -->
     </header>
-    {{ object.body|safe }}
-        <p class="publication-date">{% if object.articlemembership_set.first %}
-        {% with object.articlemembership_set.first as print_publication %}
-        Publié dans {{ print_publication.issue }}<!-- {{ print_publication.issue.publish_date|date:"d/m/Y" }}-->,
-	        {% if print_publication.single_page %}
-	            page {{ print_publication.first_page}}.
-	        {% else %}
-	            pages {{ print_publication.first_page}}–{{ print_publication.last_page}}.
-	        {% endif %}<br/>
-        {% endwith %}
-        {% endif %}
-        {% if object.articlemembershipweb_set.first %}
-        	Publication en ligne: {{ object.articlemembershipweb_set.first.web_publish_date|date:"d/m/Y" }}.
-        {% endif %}</p>
 
+    <div class="body">
+    {{ object.body|safe }}
+    </div>
+
+    <p class="publication-date">{% if object.articlemembership_set.first %}
+    {% with object.articlemembership_set.first as print_publication %}
+    Publié dans {{ print_publication.issue }}<!-- {{ print_publication.issue.publish_date|date:"d/m/Y" }}-->,
+            {% if print_publication.single_page %}
+                page {{ print_publication.first_page}}.
+            {% else %}
+                pages {{ print_publication.first_page}}–{{ print_publication.last_page}}.
+            {% endif %}<br/>
+    {% endwith %}
+    {% endif %}
+    {% if object.articlemembershipweb_set.first %}
+    	Publication en ligne: {{ object.articlemembershipweb_set.first.web_publish_date|date:"d/m/Y" }}.
+    {% endif %}</p>
 </article>
 {% endblock %}
 
