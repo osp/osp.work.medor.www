@@ -280,12 +280,13 @@ CKEDITOR_CONFIGS = {
             'countSpacesAsChars': True
         },
         'extraAllowedContent': '; '.join([
-            'h1 abbr figure figcaption footer small dl dt dd',
+            'h1 abbr figcaption footer small dl dt dd',
             'div[class]',
-            'aside[id](exergue,making-of,encadre,pull-out,sidebar,footnotes){margin,max-width,margin}',
+            'aside[id](exergue,making-of,encadre,pull-out,sidebar,footnotes)',
             'p(chapeau,intro-medor,question,auteur,fin,debut,footer-byline,endnote)',
             'ol(footnotes)',
             'img[data-*]{margin,max-width,margin}',
+            'figure{margin,max-width,margin}',
             'video[controls,src]',
             'span(lettrine,print-only,auteur,ellipsis,blank,keep)',
             'iframe[src,width,height,frameborder,webkitallowfullscreen,mozallowfullscreen,allowfullscreen]',
