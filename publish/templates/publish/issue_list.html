@@ -1,18 +1,38 @@
 {% extends "base3.html" %}
 
+{% load thumbnail %}
+
 
 {% block content %}
 {% for obj in object_list %}
     <h2><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></h2>
 
-     {% if object.cover %}
-     <img src="{{ obj.cover }}" />
+     {% if obj.cover %}
+     <img src="{% thumbnail obj.cover 400x400 %}" />
      {% endif %}
+
+     <hr>
+     <p>Avec:</p>
+     <ul>
+     {% for contribution in obj.contributions.all %}
+     <li><a href="{{ contribution.contributor.get_absolute_url }}">{{ contribution }}</a> ({{ contribution.role }})</li>
+     {% endfor %}
+     </ul>
+     <hr>
+
+     {% with obj.articlemembership_set.first as edito %}
+     <h1>Edito: {{ edito.article.title }}</h1>
+     {{ edito.article.body|truncatechars_html:500|safe }}
+
+     <p><a href="{{ edito.article.get_absolute_url }}">Lire la suite</a></p>
+     {% endwith %}
+
+     <hr>
 
      <ol>
      {% for membership in obj.articlemembership_set.all %}
      {% if membership.article %}
-        <li>{{ membership.article.title|safe }}</li>
+     <li><a href="{{ membership.article.get_absolute_url }}">{{ membership.article.title|safe }}</a>, par {% cycle 'Pierrette' 'Paulette' 'Jacqueline' %}</li>
      {% endif %}
      {% endfor %}
      </ol>
