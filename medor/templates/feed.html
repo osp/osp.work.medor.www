@@ -29,7 +29,7 @@
     {% endwith %}
 
 
-    <div class="sidebar">
+    <div class="feed-sidebar">
             <a href="{% url 'issue-detail-site' '17-18-hiver' %}"><img src="{{ STATIC_URL }}img/pile-de-medors-6-7-8-9.png"></a>
             <p>Médor N<sup>0</sup>9 sort! Découvrez <a href="{% url 'issue-detail-site' '17-18-hiver' %}">son sommaire</a> et gardez les yeux ouverts en l’achetant en <a href="{% page_url 'acheter' %}">librairie</a> ou en prenant un <a href="{% url 'subscribe-wizard' %}">abonnement pour un ou deux ans</a>.</p>
     </div>
@@ -72,15 +72,15 @@
     
    
     
-    <div class="sidebar">
+    <div class="feed-sidebar">
         {% include "subscribe/partials/arrow-subscribe.html" %}
     </div>
 
-    <div class="sidebar">
+    <div class="feed-sidebar">
         {% include "subscribe/partials/arrow-cooperate.html" %}
     </div>
 
-    <div class="sidebar">
+    <div class="feed-sidebar">
                 <h2>Les rendez-vous Médor</h2>
                 {% get_next_events as events %}
                 {% for event in events %}
