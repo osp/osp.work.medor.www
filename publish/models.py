@@ -210,6 +210,7 @@ class Issue(models.Model):
     slug = models.SlugField("Slug", max_length=1024, blank=True, help_text="le texte utilisé pour construire les URLs")
     publish_date = models.DateTimeField("Date de publication", blank=True, null=True, help_text="la date de sortie du numéro")
     contributions = GenericRelation(Contribution)
+    cover = FilerImageField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Numéro"

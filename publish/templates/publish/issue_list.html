@@ -1,9 +1,21 @@
+{% extends "base3.html" %}
+
+
+{% block content %}
 {% for obj in object_list %}
-     {{ obj }}
+    <h2><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></h2>
+
+     {% if object.cover %}
+     <img src="{{ obj.cover }}" />
+     {% endif %}
 
      <ol>
      {% for membership in obj.articlemembership_set.all %}
-        <li>{{ membership.article.title }}</li>
+     {% if membership.article %}
+        <li>{{ membership.article.title|safe }}</li>
+     {% endif %}
      {% endfor %}
      </ol>
 {% endfor %}
+
+{% endblock %}
