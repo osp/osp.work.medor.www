@@ -14,7 +14,8 @@ from reversion_compare.admin import CompareVersionAdmin
 
 
 class ContributorAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__unicode__', 'is_team')
+    list_filter = ('is_team',)
 
 class RoleAdmin(admin.ModelAdmin):
     pass
@@ -51,6 +52,7 @@ class LicenseAdmin(admin.ModelAdmin):
 
 
 class IssueAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'published_online')
     inlines = (ContributionInline, ArticleMembershipInline)
 
 
@@ -71,7 +73,7 @@ class ArticleAdmin(CompareVersionAdmin):
     inlines = (ContributionInline,)
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'rubric', 'status', 'authors', 'peer_reviewers')
-    list_filter = ('status', 'published_online', 'rubric', InIssueListFilter)
+    list_filter = ('status', 'published_online', 'rubric', 'contributions__license', 'contributions__role', InIssueListFilter)
     readonly_fields = ('creation_date', 'modified_date', 'description_explanation', 'image_explanation')
     search_fields = ("title",)
     fieldsets = (

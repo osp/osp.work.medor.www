@@ -209,6 +209,7 @@ class Issue(models.Model):
     title = models.CharField("Titre", max_length=1024, blank=True)
     slug = models.SlugField("Slug", max_length=1024, blank=True, help_text="le texte utilisé pour construire les URLs")
     publish_date = models.DateTimeField("Date de publication", blank=True, null=True, help_text="la date de sortie du numéro")
+    published_online = models.BooleanField('publié en ligne', default=False)
     contributions = GenericRelation(Contribution)
     cover = FilerImageField(blank=True, null=True)
 

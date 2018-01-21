@@ -2,6 +2,9 @@
 {% load thumbnail %}
 
 {% block content %}
+
+
+{% if membership.published_online or user.is_authenticated %}
 <header>
     <h1>{{ object }}</h1>
 </header>
@@ -47,4 +50,7 @@
     </div>
     {% endif %}
 {% endfor %}
+{% else %}
+<p>Désolé, ce numéro n'est pas encore publié!</p>
+{% endif %}
 {% endblock %}

@@ -1,13 +1,20 @@
 {% extends "base3.html" %}
 
+{% load thumbnail %}
+
 
 {% block content %}
 <h2>{{ object.name }}</h2>
-<p>{{ object.biography }}</p>
+
+{% if object.image %}
+<img src="{% thumbnail object.image 400x400 %}" />
+{% endif %}
+
+{% if object.biography %}
+<div>{{ object.biography|safe }}</div>
+{% endif %}
 
 <h3>Contributions</h3>
-
-<img src="{{ object.image.url }}" />
 
 <ul>
 {% for rel in object.contribution_set.all %}
