@@ -1,0 +1,226 @@
+// classe à nettoyer
+// auteur
+
+/* Articles */
+
+/* utilisé sur la pages d'accueil et les pages d'articles */
+
+.rubrique-title {
+    margin-top: 0;
+    margin-bottom: -2 * @unit;
+    border-bottom: 2 * @unit solid;
+    display: inline-block;
+
+    font-family: "Erbar condensed";
+    font-weight: bold;
+    font-size: 9 * @unit;
+    line-height: @line-height;
+    text-transform: uppercase;
+}
+
+.rubrique-subtitle {
+    font-size: 9 * @unit;
+    font-family: "Alfphabet-Condensed";
+    padding-top:  @line-height / 5;
+    margin-bottom: 20 * @unit;
+}
+
+
+/* Uniquement sur les pages d'articles */
+
+.article-detail {
+    .lead {
+        font-family: "Bagnard";
+        line-height:  @line-height * 1.5;
+        font-weight: normal;
+        font-size: 12 * @unit;
+        margin-bottom: @line-height;
+    }
+
+    p + p { margin-top: @line-height; }
+
+    figure {
+        position: relative;
+        width: 100%;
+        margin-top: @line-height!important; 
+        margin-bottom: @line-height!important;
+    }
+
+    figure img {
+        box-sizing: border-box;
+        padding: 16px;
+        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    figcaption {
+        padding-top: @line-height;
+        position: absolute;
+        font-family: "Alfphabet", sans-serif;
+        font-size: 7 * @unit;
+        line-height: 9 * @unit;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    figcaption p {
+        background-color: white;
+        padding: 6 * @unit 1em;
+        position: absolute;
+        left: 0;
+        bottom: -2 * @unit;
+    }
+
+    figcaption footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: calc(~"100% + 9 * @unit");
+        margin: 0;
+        -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+        -webkit-transform-origin: left bottom;
+                transform-origin: left bottom;
+    }
+
+    figcaption footer small {
+        font-size: 6 * @unit;
+        line-height: 6 * @unit
+    }
+
+    // footer
+
+    .auteur {
+        text-indent: 0 !important;
+        margin-top: @line-height;
+        font-weight: normal;
+        font-family: 'Bagnard';
+        margin-top: -1 * @unit;
+        font-size: 8.5 * @unit;
+    }
+
+    p.fin::after {
+        content: " \E011";
+        font-size: 6.5 * @unit;
+        font-family: "Medor";
+        color: inherit !important;
+    }
+
+    .publication-date {
+        font-family: 'Bagnard';
+        font-size: 6.5 * @unit;
+    }
+}
+
+.footnotes {
+    font-family: 'Alfphabet-Condensed';
+    margin: 0;
+    margin-top: @line-height;
+    font-size: 7.5 * @unit;
+    line-height: (@line-height / 8) * 6;
+    list-style-type: none;
+}
+
+.footnotes a[name^="sdfootnote"]:after { content: "." }
+.footnotes li { margin-bottom: (@line-height / 8) * 6; }
+
+
+.sidebar {
+    outline: 2px solid;
+    padding: 1em;
+    font-family: "Erbar condensed";
+    color: #657576;
+
+    b {
+        font-weight: bold;
+    }
+}
+
+.sidebar h1 {
+    font-family: "Erbar condensed";
+    text-align: left;
+    font-size: 14pt;
+    text-transform: uppercase;
+}
+
+.sidebar p + h1 {
+    margin-top: 12pt;
+}
+
+aside.exergue > blockquote {
+    font-family: "Erbar condensed";
+    font-size: 18 * @unit;
+    font-weight: bold;
+    line-height: @line-height * 1.5;
+}
+
+aside.exergue > blockquote:first-of-type { margin: 0; }
+aside.exergue > blockquote + h2 { margin-top: @line-height; }
+aside.exergue > blockquote p + p { margin: 0; }
+aside.exergue > blockquote em { font-style: normal; }
+aside.exergue > blockquote footer {
+    font-size: 12 * @unit;
+    line-height: @line-height;
+    font-weight: normal;
+}
+aside.exergue > blockquote footer:before {
+    content: "— ";
+    color: inherit!important;
+}
+
+
+
+//Tiret avant le nom de l'auteur de la sitation
+.pull-out > blockquote {
+	margin: 0;
+}
+.pull-out > blockquote footer:before {
+    content: '— ';
+
+    color: inherit;
+}
+
+.pull-out {
+    font-family: "Erbar condensed";
+
+    margin: (@line-height * 2) (@line-height * 4) (@line-height * 2) (@line-height * 4);
+}
+
+.pull-out > blockquote > p {
+    font-size: 1.6em ;
+    font-weight: bold;
+    line-height: @line-height * 1.5;
+}
+
+.pull-out > blockquote > footer {
+    /* font-size: 12pt; */
+    /* line-height: @line-height; */
+
+    margin-top: 6pt;
+}
+
+.pull-out > blockquote em {
+	font-style: normal;
+}
+
+.making-of {
+    border-top: 4 * @unit double;
+    padding-top: @line-height - 4 * @unit;
+    margin-top: 2 * @line-height;
+    font-family: "Alfphabet";
+}
+
+.making-of h1 {
+    font-size: @line-height;
+    font-weight: normal
+}
+.making-of h1 em {
+    text-transform: uppercase;
+    font-family: "Medor";
+    font-size: 9.5 * @unit;
+    font-style: normal;
+}
+

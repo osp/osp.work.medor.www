@@ -2,16 +2,18 @@
     #IMPORTS
 \*------------------------------------*/
 
+@import "variables.less";
 @import "colors.less";
 @import "fonts.less";
 @import "mixins.less";
 @import "grid.less";
 @import "arrows.less";
 @import "feed.less";
+@import "magazine.less";
+@import "jadore.less";
+@import "other.less";
+@import "article.less";
 
-
-@unit: 2.2px;
-@line-height: 12 * @unit;
 
 /* BTW I think I need to change this file for CSS changes to be picked up
  * by Django Compressor: changing a dependent file won’t work. */
@@ -25,30 +27,9 @@ body {
     line-height: @line-height;
 }
 
-h1,
-h2,
-h3 {
-    margin: 0;
-    padding: 0;
-}
-
-p { margin: 0; }
-
-td {
-    padding-right: 20px;
-    text-align: right;
-}
-td:last-child {
-    padding-right: inherit;
-}
-td:first-child {
-    text-align: inherit;
-}
 em { font-style: italic; }
 
-a {
-    color: @color-A2;
-}
+a { color: @color-A2; }
 
 sup {
     top: 0;
@@ -58,83 +39,11 @@ sup {
     vertical-align: super;
 }
 
-figure {
-    position: relative;
-    margin: 0
-}
-
-figure img {
-    box-sizing: border-box;
-    padding: 16px;
-    display: block;
-    position: relative;
-    width: 100%;
-    text-align: center;
-}
-
-/* Different titres */
-
-.rubrique-title {
-    margin-top: 0;
-    margin-bottom: -2 * @unit;
-    border-bottom: 2 * @unit solid;
-    display: inline-block;
-
-    font-family: "Erbar condensed";
-    font-weight: bold;
-    font-size: 9 * @unit;
-    line-height: @line-height;
-    text-transform: uppercase;
-}
-
-.rubrique-subtitle {
-    font-size: 9 * @unit;
-    font-family: "Alfphabet-Condensed";
-    padding-top:  @line-height / 5;
-    margin-bottom: 20 * @unit;
-}
-
-p.auteur {
-    text-indent: 0 !important;
-    margin-top: @line-height;
-    font-weight: normal;
-    font-family: 'Bagnard';
-    margin-top: -1 * @unit;
-    font-size: 8.5 * @unit;
-}
-
-.auteur {
-    text-indent: 0 !important;
-    margin-top: @line-height;
-    font-weight: normal;
-    font-family: 'Bagnard';
-    margin-top: -1 * @unit;
-    font-size: 8.5 * @unit;
-}
-p.fin::after {
-    content: " \E011";
-    font-size: 6.5 * @unit;
-    font-family: "Medor";
-    color: inherit !important;
-}
-p.publication-date {
-    font-family: 'Bagnard';
-    font-size: 6.5 * @unit;
-}
-
 header > h1,
 header > h2 {
     font-family: "Erbar condensed";
     font-weight: bold;
     text-transform: uppercase;
-}
-
-.interview > header > h1 {
-  text-transform: uppercase;
-  font-size: 37 * @unit;
-  font-family: Alfphabet;
-  font-weight: normal;
-  text-align: center;
 }
 
 header > h1 {
@@ -151,31 +60,14 @@ header > h2 {
     font-size: 18 * @unit;
 }
 
-.interview > header h2 {
-    margin-top: @line-height;
-
-    font-size: 18 * @unit;
-    line-height:  @line-height;
-}
-
 header > .authors {
     font-family: "Erbar condensed";
     font-weight: bold;
-    padding: 0;
     font-size: 18 * @unit;
     line-height: 18 * @unit;
     margin-bottom: @line-height;
 }
 
-.lead {
-    font-family: "Bagnard";
-    line-height:  @line-height * 1.5;
-    font-weight: normal;
-    font-size: 12 * @unit;
-    padding: 0;
-    margin: 0;
-    margin-bottom: @line-height;
-}
 h2,
 h3 {
     font-family: "Erbar condensed";
@@ -184,7 +76,6 @@ h3 {
     text-transform: uppercase;
     font-size: 18 * @unit;
     top: @line-height * .5 * -1;
-    margin-bottom: 0;
     letter-spacing: 0.02em;
 }
 
@@ -211,185 +102,11 @@ table + h3 {
     margin-top: @line-height * 2;
 }
 
-.article-detail p + p { margin-top: @line-height; }
-.article-detail figure { margin-top: @line-height!important; margin-bottom: @line-height!important}
-.article-detail figcaption { padding-top: @line-height }
-
 sup {
     font-size: 7 * @unit;
     top: 0;
     vertical-align: super;
     padding-left: 0.125em;
-}
-
-.making-of {
-    border-top: 4 * @unit double;
-    padding-top: @line-height - 4 * @unit;
-    margin-top: 2 * @line-height;
-    font-family: "Alfphabet";
-}
-
-.making-of h1 {
-    font-size: @line-height;
-    font-weight: normal
-}
-.making-of h1 em {
-    text-transform: uppercase;
-    font-family: "Medor";
-    font-size: 9.5 * @unit;
-    font-style: normal;
-}
-
-.footnotes {
-    font-family: 'Alfphabet-Condensed';
-    margin: 0;
-    margin-top: @line-height;
-    font-size: 7.5 * @unit;
-    line-height: (@line-height / 8) * 6;
-    list-style-type: none;
-}
-
-.footnotes a[name^="sdfootnote"]:after { content: "." }
-.footnotes li { margin-bottom: (@line-height / 8) * 6; }
-
-aside.exergue > blockquote {
-    font-family: "Erbar condensed";
-    font-size: 18 * @unit;
-    font-weight: bold;
-    line-height: @line-height * 1.5;
-}
-
-aside.exergue > blockquote:first-of-type { margin: 0; }
-aside.exergue > blockquote + h2 { margin-top: @line-height; }
-aside.exergue > blockquote p + p { margin: 0; }
-aside.exergue > blockquote em { font-style: normal; }
-aside.exergue > blockquote footer {
-    font-size: 12 * @unit;
-    line-height: @line-height;
-    font-weight: normal;
-}
-aside.exergue > blockquote footer:before {
-    content: "— ";
-    color: inherit!important;
-}
-
-figure {
-    position: relative;
-    width: 100%;
-}
-
-figcaption {
-    position: absolute;
-    font-family: "Alfphabet", sans-serif;
-    font-size: 7 * @unit;
-    line-height: 9 * @unit;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
-figcaption p {
-    background-color: white;
-    padding: 6 * @unit 1em;
-    position: absolute;
-    left: 0;
-    bottom: -2 * @unit;
-}
-
-figcaption footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: calc(~"100% + 9 * @unit");
-    margin: 0;
-    -webkit-transform: rotate(270deg);
-            transform: rotate(270deg);
-    -webkit-transform-origin: left bottom;
-            transform-origin: left bottom;
-}
-
-figcaption footer small {
-    font-size: 6 * @unit;
-    line-height: 6 * @unit
-}
-
-
-#dna {
-
-   -webkit-column-width: 300px;
-   -moz-column-width: 300px;
-   column-width: 300px;
-
-    div {
-        -webkit-column-break-inside: avoid;
-          page-break-inside: avoid;
-               break-inside: avoid;
-    }
-
-    h3 {
-        font-size: inherit;
-        font-family: "urw-grotesk-t";
-        font-size: 1.2em;
-        color: @color-A2;
-        text-align: left;
-        text-transform: uppercase;
-        letter-spacing: .1em;
-        text-indent: 1.21em;
-    }
-}
-
-
-/* status */
-#portraits {
-}
-#portraits .jcarousel-item {
-    display: inline-block;
-    font-family: "urw-grotesk-t";
-    font-size: 16px;
-    line-height: 1.21em;
-}
-/*100 + 200*/
-
-@banane: 240px;
-
-
-#portraits .jcarousel-item figure {
-    height: 250px;
-}
-#portraits .jcarousel-item .bio {
-    vertical-align: middle;
-    display: inline-block;
-    height: 422px;
-    width: 240px;
-}
-#portraits .jcarousel-item:hover .bio {
-}
-
-#portraits figure img {
-  width: 225px;
-  height: 225px;
-}
-
-#libraires {
-   -webkit-column-width: 200px;
-   -moz-column-width: 200px;
-   column-width: 200px;
-   
-   
-    dt {
-        font-family: 'Alfphabet-Condensed';
-        margin: 0;
-    }
-    dd {
-        font-size: 7 * @unit;
-        margin: 0;
-        padding-left: 14 * @unit;
-        text-indent: -7 * @unit;
-    }
-}
-
-.print-only {
-  display: none;
 }
 
 @media print {
@@ -403,171 +120,4 @@ figcaption footer small {
     section {
         margin-top: 0;
     }
-}
-
-// To style legal notice like the Mithra one
-.notice {
-    background-color: #fffd73;
-    padding: 27px;
-    margin-bottom: 27px;
-    font-family: "Erbar condensed";
-}
-
-.notice > h2 {
-    font-size: 40px;
-    margin-bottom: 14px;
-}
-
-.notice > p {
-    font-size: 21px;
-    line-height: 26px;
-    text-align: left;
-    text-indent: 0px;
-    text-transform: none;
-    font-family: inherit;
-}
-
-
-
-.flex {                                                                                                                                        
-    display: -webkit-box;                                                                                                                                        
-    display: -ms-flexbox;                                                                                                                                        
-    display: flex;
-}
-
-.flex--col {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-}
-
-.flex__item {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-}
-
-.jadore--details {
-    font-size: 9 * @unit;
-    font-family: "Alfphabet-Condensed";
-    padding-top:  @line-height / 5;
-    margin-bottom: 20 * @unit;
-}
-
-.jadore__btn_set {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    text-align: right;
-}
-
-.jadore__btn {
-    font-family: 'urw-grotesk-t';
-    color: white;
-    font-size: 20px;
-    border: 0;
-    background-color: #2a85a4;
-    padding: 0.5em;
-}
-
-.jadore--details {
-    background-color: #fffd73;
-    box-sizing: border-box;
-    padding: 32px;
-}
-
-.jadore--details .flex__item {
-    margin: 32px;
-    box-sizing: border-box;
-}
-
-.jadore--details label { display: block; }
-
-.jadore--details input[type=text],
-.jadore--details input[type=email] {
-    -webkit-appearance: none;
-    outline: none;
-    background-color: white;
-    width: 100%;
-
-    border: none;
-    box-sizing: border-box;
-    display: inline-block;
-    position: relative;
-    padding: 4px;
-    margin: 0;
-    margin-bottom: 16px;
-}
-
-.jadore__col {
-    width: 50%;
-    float: left;
-    box-sizing: border-box;
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
-@media screen and (max-width: 640px) {
-    .jadore__col {
-        width: 100%;
-        padding-right: 0;
-        padding-left: 0;
-    }
-}
-
-
-.sidebar {
-    outline: 2px solid;
-    padding: 1em;
-    font-family: "Erbar condensed";
-    color: #657576;
-
-    b {
-        font-weight: bold;
-    }
-}
-
-.sidebar h1 {
-    font-family: "Erbar condensed";
-    text-align: left;
-    font-size: 14pt;
-    text-transform: uppercase;
-}
-
-.sidebar p + h1 {
-    margin-top: 12pt;
-}
-
-//
-//Tiret avant le nom de l'auteur de la sitation
-.pull-out > blockquote {
-	margin: 0;
-}
-.pull-out > blockquote footer:before {
-    content: '— ';
-
-    color: inherit;
-}
-
-.pull-out {
-    font-family: "Erbar condensed";
-
-    margin: (@line-height * 2) (@line-height * 4) (@line-height * 2) (@line-height * 4);
-}
-
-.pull-out > blockquote > p {
-    font-size: 1.6em ;
-    font-weight: bold;
-    line-height: @line-height * 1.5;
-}
-
-.pull-out > blockquote > footer {
-    /* font-size: 12pt; */
-    /* line-height: @line-height; */
-
-    margin-top: 6pt;
-}
-
-.pull-out > blockquote em {
-	font-style: normal;
 }
