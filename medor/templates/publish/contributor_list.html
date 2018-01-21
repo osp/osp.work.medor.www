@@ -2,7 +2,9 @@
 
 
 {% block content %}
+<ul>
 {% for contributor in object_list %}
-<h2>{{ contributor.name }}</h2>
+<li><a href="{{ contributor.get_absolute_url }}">{{ contributor.name }}</a></li>
 {% endfor %}
+</ul>
 {% endblock %}

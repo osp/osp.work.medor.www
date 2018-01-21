@@ -3,4 +3,17 @@
 
 {% block content %}
 <h2>{{ object.name }}</h2>
+<p>{{ object.biography }}</p>
+
+<h3>Contributions</h3>
+
+<img src="{{ object.image.url }}" />
+
+<ul>
+{% for rel in object.contribution_set.all %}
+<li><a href="{{ rel.content_object.get_absolute_url }}">{{rel.content_object|safe }}</a> ({{ rel.role }})</li>
+{% endfor %}
+</ul>
+
+
 {% endblock %}

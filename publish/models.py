@@ -63,9 +63,16 @@ class Contributor(models.Model):
     Represents a contributor, like a journalist or an illustrator.
     """
     name = models.CharField('nom', max_length=1024, blank=True)
+    biography = models.TextField(blank=True)
+    image = FilerImageField(blank=True, null=True)
+    is_team = models.BooleanField(default="False")
 
     def __unicode__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('contributor-detail', (), {'pk': self.pk})
 
 
 class Role(models.Model):
@@ -114,8 +121,8 @@ class Article(models.Model):
         (3, u'prêt')
     )
 
-    creation_date = models.DateTimeField('date de création', auto_now_add=True)
-    modified_date = models.DateTimeField('date de modification', auto_now=True)
+    creation_date = models.DateTimeField('date de création', auto_now_add=True, editable=True)
+    modified_date = models.DateTimeField('date de modification', auto_now=True, editable=True)
     license = models.ForeignKey(License, null=True, blank=True, verbose_name="licence")
     title = models.CharField('titre', max_length=1024, blank=True)
     subtitle = models.CharField('sous-titre', max_length=1024, blank=True)

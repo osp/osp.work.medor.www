@@ -72,7 +72,7 @@ class ArticleAdmin(CompareVersionAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('__unicode__', 'rubric', 'status', 'authors', 'peer_reviewers')
     list_filter = ('status', 'published_online', 'rubric', InIssueListFilter)
-    readonly_fields = ('description_explanation', 'image_explanation')
+    readonly_fields = ('creation_date', 'modified_date', 'description_explanation', 'image_explanation')
     search_fields = ("title",)
     fieldsets = (
         (None, {
@@ -82,6 +82,7 @@ class ArticleAdmin(CompareVersionAdmin):
                 'slug',
                 'rubric',
                 ('status', 'license'),
+                ('creation_date', 'modified_date'),
                 ('authors', 'peer_reviewers'),
                 ('published_online',),
                 'lead',
