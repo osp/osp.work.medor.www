@@ -26,13 +26,13 @@
 
     {% addtoblock "css" %}
     {% if debug %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
     <!-- This is the client-side way to compile less and an ok choice for local dev -->
     <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}medor/less/style.less" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/font-awesome/css/font-awesome.css"/>
     {% else %}
     {% compress css %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/reset-css/reset.css">
     <!-- This is the nifty django-compressor way to compile your less files in css -->
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}medor/less/style.less" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}components/font-awesome/css/font-awesome.css"/>
