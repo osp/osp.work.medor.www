@@ -39,7 +39,7 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
 
 
 class ArticleMembershipWebAdmin(SortableAdminMixin, admin.ModelAdmin):
-    pass
+    list_display = ('__unicode__', 'web_publish_date', 'visible')
 
 
 class RubricAdmin(admin.ModelAdmin):

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
 from django.http import Http404
+from django.utils import timezone
 
 from rest_framework import viewsets, permissions
 from django_filters.rest_framework import DjangoFilterBackend
@@ -131,6 +132,9 @@ class ArticleMembershipWebListView(ListView):
     """
     List view for articles published online (the homepage)
     """
-    model = ArticleMembershipWeb
 
     template_name = 'feed.html'
+
+    def get_queryset(self):
+        """ Do not publish article in the future """
+        return ArticleMembershipWeb.objects.filter(web_publish_date__lte=timezone.now())
