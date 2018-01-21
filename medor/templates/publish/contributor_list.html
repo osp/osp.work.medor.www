@@ -4,7 +4,11 @@
 {% block content %}
 <ul>
 {% for contributor in object_list %}
-<li><a href="{{ contributor.get_absolute_url }}">{{ contributor.name }}</a></li>
+<li><a href="{{ contributor.get_absolute_url }}">{{ contributor.name }}{% if contributor.is_team %} (médorien){% endif%}</a></li>
 {% endfor %}
 </ul>
+
 {% endblock %}
+
+
+

@@ -63,7 +63,7 @@ class Contributor(models.Model):
     Represents a contributor, like a journalist or an illustrator.
     """
     name = models.CharField('nom', max_length=1024, blank=True)
-    biography = models.TextField(blank=True)
+    biography = RichTextField(blank=True)
     image = FilerImageField(blank=True, null=True)
     is_team = models.BooleanField(default="False")
 
