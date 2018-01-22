@@ -30,6 +30,7 @@ class ArticleMembershipInline(SortableInlineAdminMixin, admin.TabularInline):
     model = ArticleMembership
     orderable_field = 'order'
     extra = 0
+    readonly_fields = ('id',)
 
     # FIXME: this is a dirty trick to inject a css rule that fix a bug with
     # django admin sortable and admin style
