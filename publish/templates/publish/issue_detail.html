@@ -4,7 +4,7 @@
 {% block content %}
 
 
-{% if membership.published_online or user.is_authenticated %}
+{% if object.published_online or user.is_authenticated %}
 <header>
     <h1>{{ object }}</h1>
 </header>
