@@ -11,9 +11,9 @@ from models import RetailOutlet
 class RetailOutletAdmin(admin.ModelAdmin):
     """
     """
-    list_display = ('__unicode__', 'name', 'zip_code', 'city', 'is_published')
-    list_editable = ('is_published',)
-    list_filter = ('is_published',)
+    list_display = ('__unicode__', 'name', 'zip_code', 'city', 'is_published', 'is_article_27')
+    list_editable = ('is_published', 'is_article_27')
+    list_filter = ('is_published', 'is_article_27')
     actions = ['publish', 'unpublish']
     search_fields = ("name", "city")
 
