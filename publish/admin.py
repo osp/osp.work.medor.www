@@ -77,6 +77,7 @@ class ArticleAdmin(CompareVersionAdmin):
     list_filter = ('status', 'published_online', 'rubric', 'contributions__license', 'contributions__role', InIssueListFilter)
     readonly_fields = ('creation_date', 'modified_date', 'description_explanation', 'image_explanation')
     search_fields = ("title",)
+    filter_horizontal = ("related_articles",)
     fieldsets = (
         (None, {
             'fields': (
@@ -88,6 +89,7 @@ class ArticleAdmin(CompareVersionAdmin):
                 ('creation_date', 'modified_date'),
                 ('authors', 'peer_reviewers'),
                 ('published_online',),
+                'related_articles',
                 'lead',
                 'body',
             )
