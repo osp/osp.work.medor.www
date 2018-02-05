@@ -33,13 +33,6 @@ urlpatterns = [
     url(r'^contributeurs/$', ContributorListView.as_view(), name='contributor-list'),
     url(r'^contributeurs/(?P<pk>\d+)/$', ContributorDetailView.as_view(), name='contributor-detail'),
 
-    # legacy urls
-    url(r'^bug/$', RedirectView.as_view(url='/article/le-jour-ou-la-belgique-bugge/', permanent=True)),
-    url(r'^ag-2015/$', RedirectView.as_view(url='/article/ag-2015/', permanent=True)),
-    url(r'^en-attendant-medor/2015/06/09/instruction-judiciaire-francois-fornieri-mithra/$', RedirectView.as_view(url='/article/instruction-judiciaire-ouverte-contre-francois-fornieri-et-mithra/', permanent=True)),
-    url(r'^en-attendant-medor/2015/11/17/vie-privee-stib/$', RedirectView.as_view(url='/article/le-silence-du-tram/', permanent=True)),
-    url(r'^en-attendant-medor/\d\d\d\d/\d\d/\d\d/(?P<slug>[-\w]+)/$', RedirectView.as_view(pattern_name='article-detail-site', permanent=True)),
-
     # Wire up our API using automatic URL routing.
     # Additionally, we include login URLs for the browsable API.
     url(r'^api/', include(router.urls, namespace='api')),
