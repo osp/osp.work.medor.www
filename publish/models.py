@@ -138,7 +138,7 @@ class Article(models.Model):
     override_description = models.TextField('exergue spécifique pour le web', blank=True)
     override_image = FilerImageField(verbose_name='spécifier image aperçu', blank=True, null=True,
              on_delete=models.SET_NULL)
-    related_articles = models.ManyToManyField("self")
+    related_articles = models.ManyToManyField("self", blank=True)
 
 
     def save(self, *args, **kwargs):
